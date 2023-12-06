@@ -1,4 +1,0 @@
-ToolSet: 11.0 w64 (local)@E:\Programming Software\CLion Nova\bin\mingw
-Options: 
-
-Options:-DCMAKE_MAKE_PROGRAM=E:/Programming Software/CLion Nova/bin/ninja/win/x64/ninja.exe

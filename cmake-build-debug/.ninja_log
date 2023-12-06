@@ -1,9 +1,0 @@
-# ninja log v5
-0	104	7236039067593382	build.ninja	7f378e40684adffb
-0	450	7236031374383164	CMakeFiles/UdemyYears.dir/main.cpp.obj	32a46337ad05282c
-451	548	7236031375322455	UdemyYears.exe	9dfd04b93a743265
-0	342	7236032917025569	CMakeFiles/Game.dir/UdemyYears/src/main.cpp.obj	697b617b32505c36
-344	404	7236032917635562	Game.exe	ed935c99d9e66ec7
-0	115	7236039067593382	build.ninja	7f378e40684adffb
-1	337	7236039071433381	UdemyYears/CMakeFiles/Game.dir/src/main.cpp.obj	adee9200c92fee23
-337	396	7236039072003379	UdemyYears/Game.exe	b6ec632741e5c084
