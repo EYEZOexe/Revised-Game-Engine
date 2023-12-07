@@ -16,7 +16,12 @@ namespace Framework
         void Run();
 
     private:
+        static void Tick(float a_deltaTime);
+        void Render();
+
         sf::RenderWindow m_window;
+        float m_targetFrameRate;
+        sf::Clock m_tick;
     };
 }
 
