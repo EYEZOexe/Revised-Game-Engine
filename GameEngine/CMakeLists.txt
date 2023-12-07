@@ -2,11 +2,15 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Application.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Application.cpp
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/World.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/World.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Core.cpp
-        include/Framework/Core.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Core.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
+
 
 
 )

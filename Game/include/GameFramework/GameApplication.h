@@ -11,7 +11,8 @@ namespace GameFramework
 {
     class GameApplication : public Framework::Application
     {
-
+    public:
+        GameApplication();
     };
 }
 

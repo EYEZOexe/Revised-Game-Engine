@@ -4,13 +4,15 @@
 
 #include "Framework/Application.h"
 #include "Framework/Core.h"
+#include "Framework/World.h"
 
 
 namespace Framework
 {
     Application::Application()
-        : m_window{sf::VideoMode(600,800), "My Game"},
-        m_targetFrameRate{60.0f}
+        : m_window{sf::VideoMode(600,800), "My Game"}
+        , m_targetFrameRate{60.0f}
+        , m_currentWorld(nullptr)
     {
 
     }
@@ -20,7 +22,7 @@ namespace Framework
         m_tick.restart();
 
         float timePassed = 0.0f;
-        float targetDeltaTime = 1.0f / m_targetFrameRate;
+        const float targetDeltaTime = 1.0f / m_targetFrameRate;
 
         while (m_window.isOpen())
         {
@@ -32,7 +34,7 @@ namespace Framework
                     m_window.close();
                 }
             }
-            float frameDeltaTime = m_tick.restart().asSeconds();
+            const float frameDeltaTime = m_tick.restart().asSeconds();
             timePassed += frameDeltaTime;
             while (timePassed > targetDeltaTime)
             {
@@ -41,13 +43,19 @@ namespace Framework
                 RenderFramework();
             }
 
-            GE_LOG("Ticking at framerate: %f", 1.0f / frameDeltaTime);
+            //GE_LOG("Ticking at framerate: %f", 1.0f / frameDeltaTime);
         }
     }
 
     void Application::TickFramework(float a_deltaTime)
     {
+
         Tick(a_deltaTime);
+
+        if (m_currentWorld != nullptr)
+        {
+            m_currentWorld->WorldTickFramework(a_deltaTime);
+        }
     }
 
     void Application::RenderFramework()

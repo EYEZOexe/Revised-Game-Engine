@@ -3,6 +3,7 @@
 //
 
 #include "GameFramework/GameApplication.h"
+#include "Framework/World.h"
 
 Framework::Application* GetApplication()
 {
@@ -11,5 +12,8 @@ Framework::Application* GetApplication()
 
 namespace GameFramework
 {
-
+    GameApplication::GameApplication()
+    {
+        LoadWorld<Framework::World>();
+    }
 }
