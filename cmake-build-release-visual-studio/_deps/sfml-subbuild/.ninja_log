@@ -1,0 +1,21 @@
+# ninja log v5
+0	45	7236319380313791	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir	13f64ac8c6be9de2
+0	45	7236319380313791	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir	13f64ac8c6be9de2
+45	21453	7236319594408195	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download	ca052c597cb39db6
+45	21453	7236319594408195	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download	ca052c597cb39db6
+21453	21537	0	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update	9170d247c2831327
+21453	21537	0	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update	9170d247c2831327
+21538	21572	7236319595598193	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch	f9ed091051b0a77c
+21538	21572	7236319595598193	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch	f9ed091051b0a77c
+21572	21604	7236319595918194	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure	683b621c4832a2ad
+21572	21604	7236319595918194	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure	683b621c4832a2ad
+21604	21637	7236319596248187	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build	40d6c112d2d4c9bb
+21604	21637	7236319596248187	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build	40d6c112d2d4c9bb
+21637	21668	7236319596558192	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install	63a45737e08667ba
+21637	21668	7236319596558192	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install	63a45737e08667ba
+21668	21703	7236319596898214	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test	2b2eafbe7a7f7d2e
+21668	21703	7236319596898214	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test	2b2eafbe7a7f7d2e
+21703	21747	7236319597348192	CMakeFiles/sfml-populate-complete	78c67f6111423ba
+21703	21747	7236319597348192	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-done	78c67f6111423ba
+21703	21747	7236319597348192	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/CMakeFiles/sfml-populate-complete	78c67f6111423ba
+21703	21747	7236319597348192	E:/Coding Projects/UdemyYears/cmake-build-release-visual-studio/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-done	78c67f6111423ba

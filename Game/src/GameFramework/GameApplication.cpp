@@ -5,6 +5,7 @@
 #include "GameFramework/GameApplication.h"
 #include "Framework/World.h"
 #include "Framework/Actor.h"
+#include "config.h"
 
 Framework::Application* GetApplication()
 {
@@ -19,7 +20,7 @@ namespace GameFramework
         const Framework::Wptr<Framework::World> newWorld = LoadWorld<Framework::World>();
         newWorld.lock()->SpawnActor<Framework::Actor>();
         m_actorToDestroy = newWorld.lock()->SpawnActor<Framework::Actor>();
-        m_actorToDestroy.lock()->SetActorTexture("E:/Coding Projects/UdemyYears/Game/assets/PNG/playerShip1_blue.png");
+        m_actorToDestroy.lock()->SetActorTexture(GetAssetDirectory() + "PNG/playerShip1_blue.png");
         m_counter = 0.0f;
     }
 
