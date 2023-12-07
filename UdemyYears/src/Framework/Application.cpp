@@ -37,18 +37,38 @@ namespace Framework
             while (timePassed > targetDeltaTime)
             {
                 timePassed -= targetDeltaTime;
-                Tick(targetDeltaTime);
+                TickFramework(targetDeltaTime);
+                RenderFramework();
             }
         }
     }
 
-    void Application::Tick(float a_deltaTime)
+    void Application::TickFramework(float a_deltaTime)
     {
-        std::cout << "Ticking at framerate: " << 1.0f/a_deltaTime << std::endl;
+        Tick(a_deltaTime);
+    }
+
+    void Application::RenderFramework()
+    {
+        m_window.clear();
+
+        Render();
+
+        m_window.display();
     }
 
     void Application::Render()
     {
-        
+        sf::RectangleShape rect{sf::Vector2f{100, 100}};
+        rect.setFillColor(sf::Color::Green);
+        rect.setOrigin(50,50);
+        rect.setPosition(m_window.getSize().x/2.0f, m_window.getSize().y/2.0f);
+
+        m_window.draw(rect);
+    }
+
+    void Application::Tick(float a_deltaTime)
+    {
+
     }
 }

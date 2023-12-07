@@ -16,8 +16,11 @@ namespace Framework
         void Run();
 
     private:
-        static void Tick(float a_deltaTime);
-        void Render();
+        void TickFramework(float a_deltaTime);
+        void RenderFramework();
+
+        virtual void Render();
+        virtual void Tick(float a_deltaTime);
 
         sf::RenderWindow m_window;
         float m_targetFrameRate;
