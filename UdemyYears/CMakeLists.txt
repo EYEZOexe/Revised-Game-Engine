@@ -1,6 +1,10 @@
 add_executable(${UDEMY_YEARS_GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Application.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Application.cpp
 )
+
+target_include_directories(${UDEMY_YEARS_GAME_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the game target
 
 target_link_libraries(${UDEMY_YEARS_GAME_TARGET_NAME} PUBLIC sfml-graphics) # Links the SFML graphics library to the game target
 target_link_libraries(${UDEMY_YEARS_GAME_TARGET_NAME} PUBLIC sfml-window) # Links the SFML window library to the game target
