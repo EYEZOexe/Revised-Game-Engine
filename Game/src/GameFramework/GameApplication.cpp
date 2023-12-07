@@ -24,7 +24,7 @@ namespace GameFramework
         m_counter = 0.0f;
     }
 
-    void GameApplication::Tick(float a_deltaTime)
+    void GameApplication::Tick(const float a_deltaTime)
     {
         m_counter += a_deltaTime;
         if (m_counter > 2.0f)
