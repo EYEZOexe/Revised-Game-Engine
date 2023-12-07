@@ -4,6 +4,7 @@
 
 #include "GameFramework/GameApplication.h"
 #include "Framework/World.h"
+#include "Framework/Actor.h"
 
 Framework::Application* GetApplication()
 {
@@ -14,6 +15,7 @@ namespace GameFramework
 {
     GameApplication::GameApplication()
     {
-        LoadWorld<Framework::World>();
+        const Framework::Wptr<Framework::World> newWorld = LoadWorld<Framework::World>();
+        newWorld.lock()->SpawnActor<Framework::Actor>();
     }
 }

@@ -4,12 +4,15 @@
 
 #include "Framework/World.h"
 #include "Framework/Core.h"
+#include "Framework/Actor.h"
 
 namespace Framework
 {
     World::World(Application* a_owningApplication)
         : m_owningApplication(a_owningApplication)
         , m_bIsPlaying(false)
+        , m_actors{}
+        , m_actorsToAdd{}
     {
 
     }
@@ -23,8 +26,21 @@ namespace Framework
         }
     }
 
-    void World::WorldTickFramework(float a_deltaTime)
+    void World::WorldTickFramework(const float a_deltaTime)
     {
+        for (const Sptr<Actor>& a_actor : m_actorsToAdd)
+        {
+            m_actors.push_back(a_actor);
+            a_actor->ActorBeginPlayFramework();
+        }
+
+        m_actorsToAdd.clear();
+
+        for (const Sptr<Actor>& a_actor : m_actors)
+        {
+            a_actor->ActorTick(a_deltaTime);
+        }
+
         WorldTick(a_deltaTime);
     }
 
@@ -40,6 +56,6 @@ namespace Framework
 
     void World::WorldTick(float a_deltaTime)
     {
-        GE_LOG("Tick at frame rate %f", 1.0f / a_deltaTime);
+        GE_LOG("World Tick at frame rate %f", 1.0f / a_deltaTime);
     }
 }
