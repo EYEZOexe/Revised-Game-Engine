@@ -15,6 +15,7 @@ namespace Framework
     public:
         static AssetManager& Get();
         Sptr<sf::Texture> LoadTexture(const std::string& filename);
+        void Clear();
     protected:
         AssetManager();
 

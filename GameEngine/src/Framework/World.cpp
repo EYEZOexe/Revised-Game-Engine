@@ -68,11 +68,11 @@ namespace Framework
 
     void World::BeginPlay()
     {
-        GE_LOG("Begin Play");
+
     }
 
     void World::WorldTick(float a_deltaTime)
     {
-        GE_LOG("World Tick at frame rate %f", 1.0f / a_deltaTime);
+
     }
 }

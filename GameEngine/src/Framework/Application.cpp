@@ -5,6 +5,7 @@
 #include "Framework/Application.h"
 #include "Framework/Core.h"
 #include "Framework/World.h"
+#include "Framework/AssetManager.h"
 
 
 namespace Framework
@@ -14,6 +15,8 @@ namespace Framework
         , m_targetFrameRate(60)
         , m_tick{}
         , m_currentWorld(nullptr)
+        , m_ClearTimer{}
+        , m_ClearTimeInterval(2.0f)
     {
 
     }
@@ -43,8 +46,6 @@ namespace Framework
                 TickFramework(targetDeltaTime);
                 RenderFramework();
             }
-
-            //GE_LOG("Ticking at framerate: %f", 1.0f / frameDeltaTime);
         }
     }
 
@@ -56,6 +57,12 @@ namespace Framework
         if (m_currentWorld != nullptr)
         {
             m_currentWorld->WorldTickFramework(a_deltaTime);
+        }
+
+        if (m_ClearTimer.getElapsedTime().asSeconds() >= m_ClearTimeInterval)
+        {
+            m_ClearTimer.restart();
+            AssetManager::Get().Clear();
         }
     }
 

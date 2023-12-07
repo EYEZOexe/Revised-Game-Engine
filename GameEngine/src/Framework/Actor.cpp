@@ -41,12 +41,12 @@ namespace Framework
 
     void Actor::ActorBeginPlay()
     {
-        GE_LOG("Actor Begin Play");
+
     }
 
     void Actor::ActorTick(float a_deltaTime)
     {
-        GE_LOG("Actor Tick");
+
     }
 
     void Actor::SetActorTexture(const std::string& a_texturePath)

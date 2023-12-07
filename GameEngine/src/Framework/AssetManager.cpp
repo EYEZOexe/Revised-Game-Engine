@@ -35,6 +35,22 @@ namespace Framework
         return Sptr<sf::Texture> {nullptr}; // return nullptr if texture is not loaded
     }
 
+    void AssetManager::Clear()
+    {
+        for (auto iterator = m_mLoadedTextures.begin(); iterator != m_mLoadedTextures.end();)
+        {
+            if (iterator->second.use_count() == 1)
+            {
+                GE_LOG("Cleaning up texture: %s", iterator->first.c_str());
+                iterator = m_mLoadedTextures.erase(iterator);
+            }
+            else
+            {
+                ++iterator;
+            }
+        }
+    }
+
     AssetManager::AssetManager()
     {
 

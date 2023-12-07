@@ -38,6 +38,8 @@ namespace Framework
 
         // Shared Pointers are a type of smart pointer that automatically manages the lifetime of an object and its memory.
         Sptr<World> m_currentWorld;
+        sf::Clock m_ClearTimer;
+        float m_ClearTimeInterval;
     };
 
     // Template Implementations
