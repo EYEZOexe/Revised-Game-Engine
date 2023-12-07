@@ -3,7 +3,7 @@
 //
 
 #include "Framework/Application.h"
-#include <iostream>
+#include <stdio.h>
 
 
 namespace Framework
@@ -40,6 +40,7 @@ namespace Framework
                 TickFramework(targetDeltaTime);
                 RenderFramework();
             }
+            printf("ticking at framerate: %f\n" , 1.0f / targetDeltaTime);
         }
     }
 
