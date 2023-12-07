@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
-project(UdemyYears
+project(GameEngine
         VERSION 1.0.0 # version of project 3rd number is patch/bugfix 2nd is minor but new features that wouldnt cause anything to break 1st is major changes that would break things
         LANGUAGES C CXX # Languages used in project
 )
@@ -21,7 +21,9 @@ FetchContent_Declare( # Declares the SFML library
 
 FetchContent_MakeAvailable(${SFML_LIB_NAME}) # Makes the SFML library available
 
-set(UDEMY_YEARS_GAME_TARGET_NAME Game) # Sets the target name for the game
+set(GAME_ENGINE_TARGET_NAME GameEngine) # Sets the target name for the game
+set(GAME_TARGET_NAME Game) # Sets the target name for the game
 
-add_subdirectory(UdemyYears) # Adds the UdemyYears directory to the project
+add_subdirectory(GameEngine) # Adds the GameEngine directory to the project
+add_subdirectory(Game) # Adds the Game directory to the project
 
