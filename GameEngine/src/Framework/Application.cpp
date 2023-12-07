@@ -3,7 +3,7 @@
 //
 
 #include "Framework/Application.h"
-#include <stdio.h>
+#include "Framework/Core.h"
 
 
 namespace Framework
@@ -32,15 +32,16 @@ namespace Framework
                     m_window.close();
                 }
             }
-
-            timePassed += m_tick.restart().asSeconds();
+            float frameDeltaTime = m_tick.restart().asSeconds();
+            timePassed += frameDeltaTime;
             while (timePassed > targetDeltaTime)
             {
                 timePassed -= targetDeltaTime;
                 TickFramework(targetDeltaTime);
                 RenderFramework();
             }
-            printf("ticking at framerate: %f\n" , 1.0f / targetDeltaTime);
+
+            GE_LOG("Ticking at framerate: %f", 1.0f / frameDeltaTime);
         }
     }
 
