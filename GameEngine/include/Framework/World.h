@@ -6,6 +6,7 @@
 #define WORLD_H
 
 #include "Framework/Core.h"
+#include "SFML/Graphics.hpp"
 
 
 namespace Framework
@@ -20,6 +21,7 @@ namespace Framework
 
         void BeginPlayFramework();
         void WorldTickFramework(float a_deltaTime);
+        void Render(sf::RenderWindow& a_window);
 
         virtual ~World(); //whenever you need something to be inherited you have a virtual destructor to make sure that the destructor of the child class is called first and then the destructor of the parent class is called
 

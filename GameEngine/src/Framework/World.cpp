@@ -45,12 +45,20 @@ namespace Framework
             }
             else
             {
-                iteration->get()->ActorTick(a_deltaTime);
+                iteration->get()->ActorTickFramework(a_deltaTime);
                 ++iteration;
             }
         }
 
         WorldTick(a_deltaTime);
+    }
+
+    void World::Render(sf::RenderWindow& a_window)
+    {
+        for (const auto& actor : m_actors)
+        {
+            actor->Render(a_window);
+        }
     }
 
     World::~World()

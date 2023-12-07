@@ -17,7 +17,7 @@ namespace Framework
     class Application
     {
     public:
-        Application();
+        Application(unsigned int a_windowWidth, unsigned int a_windowHeight, const std::string& a_windowTitle, sf::Uint32 a_windowStyle);
         void Run();
 
         // Weak Pointers are a type of smart pointer that provides a non-owning "weak" reference to an object that's managed by another shared pointer.

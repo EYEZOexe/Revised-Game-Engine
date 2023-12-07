@@ -7,10 +7,13 @@
 
 namespace Framework
 {
-    Actor::Actor(World* a_owningWorld)
+    Actor::Actor(World* a_owningWorld, const std::string& a_texturePath)
         : m_owningWorld(a_owningWorld)
         , m_bIsPlaying(false)
+        , m_sprite{}
+        , m_texture{}
     {
+        SetActorTexture(a_texturePath);
     }
 
     Actor::~Actor()
@@ -27,6 +30,14 @@ namespace Framework
         }
     }
 
+    void Actor::ActorTickFramework(const float a_deltaTime)
+    {
+        if (!IsPendingKill())
+        {
+            ActorTick(a_deltaTime);
+        }
+    }
+
     void Actor::ActorBeginPlay()
     {
         GE_LOG("Actor Begin Play");
@@ -35,5 +46,24 @@ namespace Framework
     void Actor::ActorTick(float a_deltaTime)
     {
         GE_LOG("Actor Tick");
+    }
+
+    void Actor::SetActorTexture(const std::string& a_texturePath)
+    {
+        m_texture.loadFromFile(a_texturePath);
+        m_sprite.setTexture(m_texture);
+
+        const int width = m_texture.getSize().x;
+        const int height = m_texture.getSize().y;
+
+        m_sprite.setTextureRect(sf::IntRect{sf::Vector2i{}, sf::Vector2i{width, height}});
+    }
+
+    void Actor::Render(sf::RenderWindow& a_window)
+    {
+        if (IsPendingKill()) //if the actor is pending kill, we don't want to render it
+            return;
+
+        a_window.draw(m_sprite);
     }
 }

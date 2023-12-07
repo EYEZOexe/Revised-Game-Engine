@@ -9,9 +9,10 @@
 
 namespace Framework
 {
-    Application::Application()
-        : m_window{sf::VideoMode(600,800), "My Game"}
-        , m_targetFrameRate{60.0f}
+    Application::Application(unsigned a_windowWidth, unsigned a_windowHeight, const std::string& a_windowTitle, sf::Uint32 a_windowStyle)
+        : m_window(sf::VideoMode(a_windowWidth, a_windowHeight), a_windowTitle, a_windowStyle)
+        , m_targetFrameRate(60)
+        , m_tick{}
         , m_currentWorld(nullptr)
     {
 
@@ -69,12 +70,10 @@ namespace Framework
 
     void Application::Render()
     {
-        sf::RectangleShape rect{sf::Vector2f{100, 100}};
-        rect.setFillColor(sf::Color::Green);
-        rect.setOrigin(50,50);
-        rect.setPosition(m_window.getSize().x/2.0f, m_window.getSize().y/2.0f);
-
-        m_window.draw(rect);
+        if (m_currentWorld != nullptr)
+        {
+            m_currentWorld->Render(m_window);
+        }
     }
 
     void Application::Tick(float a_deltaTime)

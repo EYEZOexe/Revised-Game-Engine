@@ -14,10 +14,12 @@ Framework::Application* GetApplication()
 namespace GameFramework
 {
     GameApplication::GameApplication()
+        : Application{600, 900, "Game", sf::Style::Titlebar | sf::Style::Close}
     {
         const Framework::Wptr<Framework::World> newWorld = LoadWorld<Framework::World>();
         newWorld.lock()->SpawnActor<Framework::Actor>();
         m_actorToDestroy = newWorld.lock()->SpawnActor<Framework::Actor>();
+        m_actorToDestroy.lock()->SetActorTexture("E:/Coding Projects/UdemyYears/Game/assets/PNG/playerShip1_blue.png");
         m_counter = 0.0f;
     }
 

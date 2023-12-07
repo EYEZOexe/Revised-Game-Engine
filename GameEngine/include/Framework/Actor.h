@@ -5,7 +5,10 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
+#include "SFML/Graphics.hpp"
+#include "Framework/Core.h"
 #include "Framework/Object.h"
+
 
 namespace Framework
 {
@@ -14,17 +17,22 @@ namespace Framework
     class Actor : public Object
     {
     public:
-        Actor(World* a_owningWorld);
+        Actor(World* a_owningWorld, const std::string& a_texturePath = "");
         virtual ~Actor();
 
         void ActorBeginPlayFramework();
+        void ActorTickFramework(float a_deltaTime);
         virtual void ActorBeginPlay();
-
         virtual void ActorTick(float a_deltaTime);
+        void SetActorTexture(const std::string& a_texturePath);
+        void Render(sf::RenderWindow& a_window);
 
     private:
         World* m_owningWorld;
         bool m_bIsPlaying;
+
+        sf::Sprite m_sprite;
+        sf::Texture m_texture;
     };
 }
 
