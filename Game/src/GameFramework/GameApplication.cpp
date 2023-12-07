@@ -17,5 +17,19 @@ namespace GameFramework
     {
         const Framework::Wptr<Framework::World> newWorld = LoadWorld<Framework::World>();
         newWorld.lock()->SpawnActor<Framework::Actor>();
+        m_actorToDestroy = newWorld.lock()->SpawnActor<Framework::Actor>();
+        m_counter = 0.0f;
+    }
+
+    void GameApplication::Tick(float a_deltaTime)
+    {
+        m_counter += a_deltaTime;
+        if (m_counter > 2.0f)
+        {
+            if (!m_actorToDestroy.expired())
+            {
+                m_actorToDestroy.lock()->ObjectDestroy();
+            }
+        }
     }
 }

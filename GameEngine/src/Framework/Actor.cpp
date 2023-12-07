@@ -15,7 +15,7 @@ namespace Framework
 
     Actor::~Actor()
     {
-
+        GE_LOG("Actor Destroyed");
     }
 
     void Actor::ActorBeginPlayFramework()

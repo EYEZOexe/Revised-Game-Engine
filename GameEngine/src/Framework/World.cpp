@@ -36,9 +36,18 @@ namespace Framework
 
         m_actorsToAdd.clear();
 
-        for (const Sptr<Actor>& a_actor : m_actors)
+        //this ensures that we can remove actors without breaking the loop
+        for (auto iteration = m_actors.begin(); iteration != m_actors.end();) // we use iterator cause we are deleting from the vector
         {
-            a_actor->ActorTick(a_deltaTime);
+            if (iteration->get()->IsPendingKill())
+            {
+                iteration = m_actors.erase(iteration); //iterating differently based on if we are destroying the current actor
+            }
+            else
+            {
+                iteration->get()->ActorTick(a_deltaTime);
+                ++iteration;
+            }
         }
 
         WorldTick(a_deltaTime);

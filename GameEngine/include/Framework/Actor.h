@@ -5,12 +5,13 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
+#include "Framework/Object.h"
 
 namespace Framework
 {
     class World;
 
-    class Actor
+    class Actor : public Object
     {
     public:
         Actor(World* a_owningWorld);
