@@ -32,7 +32,7 @@ namespace Framework
         bool m_bIsPlaying;
 
         sf::Sprite m_sprite;
-        sf::Texture m_texture;
+        Sptr<sf::Texture> m_texture;
     };
 }
 

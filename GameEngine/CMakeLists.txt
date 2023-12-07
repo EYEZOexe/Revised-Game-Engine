@@ -1,4 +1,4 @@
-add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Adds the executable for the game
+add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Application.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Application.cpp
 
@@ -11,12 +11,14 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Object.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Object.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/AssetManager.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/AssetManager.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Core.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Core.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
-
 )
 
 target_include_directories(${GAME_ENGINE_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the game target

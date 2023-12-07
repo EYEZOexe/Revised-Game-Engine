@@ -4,6 +4,7 @@
 
 #include "Framework/Actor.h"
 #include "Framework/Core.h"
+#include "Framework/AssetManager.h"
 
 namespace Framework
 {
@@ -50,11 +51,15 @@ namespace Framework
 
     void Actor::SetActorTexture(const std::string& a_texturePath)
     {
-        m_texture.loadFromFile(a_texturePath);
-        m_sprite.setTexture(m_texture);
+        AssetManager& assetManager = AssetManager::Get();
 
-        const int width = m_texture.getSize().x;
-        const int height = m_texture.getSize().y;
+        m_texture = assetManager.LoadTexture(a_texturePath);
+        if (!m_texture) return;
+
+        m_sprite.setTexture(*m_texture); // dereference the texture pointer to get the texture
+
+        const int width = m_texture->getSize().x;
+        const int height = m_texture->getSize().y;
 
         m_sprite.setTextureRect(sf::IntRect{sf::Vector2i{}, sf::Vector2i{width, height}});
     }
