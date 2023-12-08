@@ -5,6 +5,7 @@
 #include "Framework/Actor.h"
 #include "Framework/Core.h"
 #include "Framework/AssetManager.h"
+#include "Framework/MathUtility.h"
 
 namespace Framework
 {
@@ -62,6 +63,7 @@ namespace Framework
         const int height = m_texture->getSize().y;
 
         m_sprite.setTextureRect(sf::IntRect{sf::Vector2i{}, sf::Vector2i{width, height}});
+        CenterActorOrigin();
     }
 
     void Actor::Render(sf::RenderWindow& a_window)
@@ -70,5 +72,41 @@ namespace Framework
             return;
 
         a_window.draw(m_sprite);
+    }
+
+    void Actor::SetActorLocation(const sf::Vector2f& a_location)
+    {
+        m_sprite.setPosition(a_location);
+    }
+
+    void Actor::SetActorRotation(float a_rotation)
+    {
+        m_sprite.setRotation(a_rotation);
+    }
+
+    void Actor::AddActorLocationOffset(const sf::Vector2f& a_locationOffset)
+    {
+        SetActorLocation(GetActorLocation() + a_locationOffset);
+    }
+
+    void Actor::AddActorRotationOffset(float a_rotationOffset)
+    {
+        SetActorRotation(GetActorRotation() + a_rotationOffset);
+    }
+
+    sf::Vector2f Actor::GetActorForwardVector() const
+    {
+        return RotationToVector(GetActorRotation());
+    }
+
+    sf::Vector2f Actor::GetActorRightVector() const
+    {
+        return RotationToVector(GetActorRotation() + 90.0f);
+    }
+
+    void Actor::CenterActorOrigin()
+    {
+        sf::FloatRect bounds = m_sprite.getGlobalBounds();
+        m_sprite.setOrigin(bounds.width / 2.0f, bounds.height / 2.0f);
     }
 }

@@ -21,6 +21,8 @@ namespace GameFramework
         newWorld.lock()->SpawnActor<Framework::Actor>();
         m_actorToDestroy = newWorld.lock()->SpawnActor<Framework::Actor>();
         m_actorToDestroy.lock()->SetActorTexture(GetAssetDirectory() + "PNG/playerShip1_blue.png");
+        m_actorToDestroy.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
+        m_actorToDestroy.lock()->SetActorRotation(180.0f);
         m_counter = 0.0f;
     }
 

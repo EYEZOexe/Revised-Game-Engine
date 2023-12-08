@@ -27,13 +27,26 @@ namespace Framework
         void SetActorTexture(const std::string& a_texturePath);
         void Render(sf::RenderWindow& a_window);
 
+        void SetActorLocation(const sf::Vector2f& a_location);
+        void SetActorRotation(float a_rotation);
+        void AddActorLocationOffset(const sf::Vector2f& a_locationOffset);
+        void AddActorRotationOffset(float a_rotationOffset);
+
+        sf::Vector2f GetActorLocation() const { return m_sprite.getPosition();};
+        float GetActorRotation() const {return m_sprite.getRotation();};
+        sf::Vector2f GetActorForwardVector() const;
+        sf::Vector2f GetActorRightVector() const;
+
     private:
+        void CenterActorOrigin();
+
         World* m_owningWorld;
         bool m_bIsPlaying;
 
         sf::Sprite m_sprite;
         Sptr<sf::Texture> m_texture;
     };
+
 }
 
 
