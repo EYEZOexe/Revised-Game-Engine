@@ -17,18 +17,18 @@ namespace Framework
         return *assetManager;
     }
 
-    Sptr<sf::Texture> AssetManager::LoadTexture(const std::string& filename)
+    Sptr<sf::Texture> AssetManager::LoadTexture(const std::string& a_filename)
     {
-        const auto pairFound = m_mLoadedTextures.find(filename); // check if texture is already loaded
+        const auto pairFound = m_mLoadedTextures.find(a_filename); // check if texture is already loaded
         if (pairFound != m_mLoadedTextures.end()) // if texture is already loaded
         {
             return pairFound->second; // return texture
         }
 
         Sptr<sf::Texture> newTexture{new sf::Texture}; // load texture
-        if (newTexture->loadFromFile(filename)) // if texture is loaded
+        if (newTexture->loadFromFile(m_assetDirectory + a_filename)) // if texture is loaded
         {
-            m_mLoadedTextures.insert({filename, newTexture}); // insert texture into map
+            m_mLoadedTextures.insert({a_filename, newTexture}); // insert texture into map
             return newTexture; // return texture
         }
 
@@ -51,7 +51,12 @@ namespace Framework
         }
     }
 
-    AssetManager::AssetManager()
+    void AssetManager::SetAssetDirectory(const std::string& a_directory)
+    {
+        m_assetDirectory = a_directory;
+    }
+
+    AssetManager::AssetManager() : m_assetDirectory{}
     {
 
     }

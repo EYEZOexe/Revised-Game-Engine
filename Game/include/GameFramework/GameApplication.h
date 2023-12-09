@@ -10,7 +10,7 @@
 
 namespace GameFramework
 {
-    class Spaceship;
+    class PlayerSpaceship;
 
     class GameApplication : public Framework::Application
     {
@@ -19,7 +19,7 @@ namespace GameFramework
         virtual void Tick(float a_deltaTime) override;
     private:
         float m_counter;
-        Framework::Wptr<Spaceship> testPlayerSpaceship;
+        Framework::Wptr<PlayerSpaceship> testPlayerSpaceship;
     };
 }
 

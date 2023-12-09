@@ -13,7 +13,7 @@ namespace GameFramework
 
     }
 
-    void Spaceship::ActorTick(float a_deltaTime)
+    void Spaceship::ActorTick(const float a_deltaTime)
     {
         Actor::ActorTick(a_deltaTime);
         AddActorLocationOffset(GetVelocity() * a_deltaTime);

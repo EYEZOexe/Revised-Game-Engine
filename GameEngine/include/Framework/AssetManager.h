@@ -14,14 +14,16 @@ namespace Framework
     {
     public:
         static AssetManager& Get();
-        Sptr<sf::Texture> LoadTexture(const std::string& filename);
+        Sptr<sf::Texture> LoadTexture(const std::string& a_filename);
         void Clear();
+        void SetAssetDirectory(const std::string& a_directory);
     protected:
         AssetManager();
 
     private:
         static Uptr<AssetManager> assetManager;
         UMap<std::string, Sptr<sf::Texture>> m_mLoadedTextures;
+        std::string m_assetDirectory;
     };
 }
 
