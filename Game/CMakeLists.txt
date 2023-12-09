@@ -1,7 +1,14 @@
 add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/include/GameFramework/GameApplication.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/GameFramework/GameApplication.cpp
-        config.h.in
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Spaceship/Spaceship.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Spaceship/Spaceship.cpp
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Player/PlayerSpaceship.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/PlayerSpaceship.cpp
+
+
 )
 
 target_include_directories(${GAME_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the game target
@@ -30,6 +37,6 @@ add_custom_command(
 )
 
 configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
+        "${CMAKE_CURRENT_SOURCE_DIR}/config.in"
         "${CMAKE_CURRENT_SOURCE_DIR}/include/config.h" ESCAPE_QUOTES # Configures the config.h file
 )

@@ -4,12 +4,19 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
+#include "Framework/Actor.h"
 
 
+namespace GameFramework
+{
+    class Player
+    {
+    public:
+        Player();
+        ~Player();
+    };
 
-class Player {
-
-};
+}
 
 
 

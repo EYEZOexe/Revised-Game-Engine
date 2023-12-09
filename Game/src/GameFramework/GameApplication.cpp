@@ -5,6 +5,7 @@
 #include "GameFramework/GameApplication.h"
 #include "Framework/World.h"
 #include "Framework/Actor.h"
+#include "Spaceship/Spaceship.h"
 #include "config.h"
 
 Framework::Application* GetApplication()
@@ -19,10 +20,10 @@ namespace GameFramework
     {
         const Framework::Wptr<Framework::World> newWorld = LoadWorld<Framework::World>();
         newWorld.lock()->SpawnActor<Framework::Actor>();
-        m_actorToDestroy = newWorld.lock()->SpawnActor<Framework::Actor>();
-        m_actorToDestroy.lock()->SetActorTexture(GetAssetDirectory() + "PNG/playerShip1_blue.png");
-        m_actorToDestroy.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
-        m_actorToDestroy.lock()->SetActorRotation(180.0f);
+        testPlayerSpaceship = newWorld.lock()->SpawnActor<Spaceship>();
+        testPlayerSpaceship.lock()->SetActorTexture(GetAssetDirectory() + "PNG/playerShip1_blue.png");
+        testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
+        testPlayerSpaceship.lock()->SetVelocity(sf::Vector2f(0.0f, -200.0f));
         m_counter = 0.0f;
     }
 
@@ -31,9 +32,9 @@ namespace GameFramework
         m_counter += a_deltaTime;
         if (m_counter > 2.0f)
         {
-            if (!m_actorToDestroy.expired())
+            if (!testPlayerSpaceship.expired())
             {
-                m_actorToDestroy.lock()->ObjectDestroy();
+                testPlayerSpaceship.lock()->ObjectDestroy();
             }
         }
     }
