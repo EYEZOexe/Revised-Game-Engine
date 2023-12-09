@@ -3,6 +3,8 @@
 //
 
 #include "Player/PlayerSpaceship.h"
+
+#include "Framework/MathUtility.h"
 #include "SFML/System.hpp"
 
 namespace GameFramework
@@ -31,7 +33,8 @@ namespace GameFramework
         {
             m_playerMoveInput.y = 1.0f;
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             m_playerMoveInput.x = -1.0f;
         }
@@ -39,6 +42,14 @@ namespace GameFramework
         {
             m_playerMoveInput.x = 1.0f;
         }
+
+        NormalisePlayerInput();
+    }
+
+    void PlayerSpaceship::NormalisePlayerInput()
+    {
+        Framework::NormalizeVector(m_playerMoveInput);
+        GE_LOG("Move input is now: %f, %f", m_playerMoveInput.x, m_playerMoveInput.y);
     }
 
     void PlayerSpaceship::HandlePlayerMovementInput(float a_deltaTime)

@@ -20,6 +20,7 @@ namespace GameFramework
 
     private:
         void HandlePlayerInput();
+        void NormalisePlayerInput();
         void HandlePlayerMovementInput(float a_deltaTime);
         sf::Vector2f m_playerMoveInput;
         float m_playerSpeed;
