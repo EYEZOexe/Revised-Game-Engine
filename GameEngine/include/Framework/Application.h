@@ -24,6 +24,8 @@ namespace Framework
         template<typename a_worldType>
         Wptr<a_worldType> LoadWorld(); // Templates are defined in the header file
 
+        sf::Vector2u GetWindowSize() const { return m_window.getSize(); }
+
 
     private:
         void TickFramework(float a_deltaTime);

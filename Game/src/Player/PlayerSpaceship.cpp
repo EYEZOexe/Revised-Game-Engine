@@ -43,6 +43,7 @@ namespace GameFramework
             m_playerMoveInput.x = 1.0f;
         }
 
+        HandlePlayerClampPosition();
         NormalisePlayerInput();
     }
 
@@ -56,6 +57,30 @@ namespace GameFramework
     {
         SetVelocity(m_playerMoveInput * m_playerSpeed);
         m_playerMoveInput.x = m_playerMoveInput.y = 0.0f; // Reset the input
+    }
+
+    void PlayerSpaceship::HandlePlayerClampPosition()
+    {
+        sf::Vector2f playerLocation = GetActorLocation();
+        if (playerLocation.x < 0.0f && m_playerMoveInput.x == -1.0f)
+        {
+            m_playerMoveInput.x = 0;
+        }
+
+        if (playerLocation.x > GetWindowSize().x && m_playerMoveInput.x == 1.0f)
+        {
+            m_playerMoveInput.x = 0.0f;
+        }
+
+        if (playerLocation.y < 0.0f && m_playerMoveInput.y == -1)
+        {
+            m_playerMoveInput.y = 0.0f;
+        }
+
+        if (playerLocation.y > GetWindowSize().y && m_playerMoveInput.y == 1.0f)
+        {
+            m_playerMoveInput.y = 0.0f;
+        }
     }
 }
 

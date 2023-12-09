@@ -5,6 +5,7 @@
 #include "Framework/World.h"
 #include "Framework/Core.h"
 #include "Framework/Actor.h"
+#include "Framework/Application.h"
 
 namespace Framework
 {
@@ -64,6 +65,11 @@ namespace Framework
     World::~World()
     {
 
+    }
+
+    sf::Vector2u World::GetWindowSize() const
+    {
+        return m_owningApplication->GetWindowSize();
     }
 
     void World::BeginPlay()

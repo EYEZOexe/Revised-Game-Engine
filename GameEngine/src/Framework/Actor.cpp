@@ -6,6 +6,7 @@
 #include "Framework/Core.h"
 #include "Framework/AssetManager.h"
 #include "Framework/MathUtility.h"
+#include "Framework/World.h"
 
 namespace Framework
 {
@@ -102,6 +103,11 @@ namespace Framework
     sf::Vector2f Actor::GetActorRightVector() const
     {
         return RotationToVector(GetActorRotation() + 90.0f);
+    }
+
+    sf::Vector2u Actor::GetWindowSize() const
+    {
+        return m_owningWorld->GetWindowSize();
     }
 
     void Actor::CenterActorOrigin()

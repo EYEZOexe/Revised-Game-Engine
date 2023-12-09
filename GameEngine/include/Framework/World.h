@@ -28,6 +28,8 @@ namespace Framework
         template<typename a_ActorType>
         Wptr<a_ActorType> SpawnActor();
 
+        sf::Vector2u GetWindowSize() const;
+
 
     private:
         void BeginPlay();
