@@ -5,8 +5,8 @@
 #ifndef SPACESHIP_H
 #define SPACESHIP_H
 
-#include "Framework/Actor.h"
-#include "Framework/World.h"
+#include "LabyrinthEngine/Actor.h"
+#include "LabyrinthEngine/World.h"
 
 namespace labyrinth_engine
 {

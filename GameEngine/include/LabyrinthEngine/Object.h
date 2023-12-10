@@ -5,8 +5,6 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-
-
 namespace labyrinth_engine
 {
     class Object

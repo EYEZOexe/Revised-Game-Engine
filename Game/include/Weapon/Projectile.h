@@ -5,7 +5,7 @@
 #ifndef PROJECTILE_H
 #define PROJECTILE_H
 
-#include "Framework/Actor.h"
+#include "LabyrinthEngine/Actor.h"
 
 namespace labyrinth_engine
 {

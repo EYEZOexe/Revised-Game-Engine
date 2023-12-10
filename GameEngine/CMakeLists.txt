@@ -1,24 +1,27 @@
 add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Application.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Application.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Application.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Application.cpp
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/World.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/World.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/World.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/World.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Actor.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Actor.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Actor.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Actor.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Object.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Object.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Object.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Object.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/AssetManager.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/AssetManager.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/AssetManager.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/AssetManager.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/MathUtility.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/MathUtility.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/MathUtility.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/MathUtility.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/Core.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Framework/Core.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/PhysicsSystem.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/PhysicsSystem.cpp
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Core.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Core.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp

@@ -5,9 +5,9 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
-#include "SFML/Graphics.hpp"
-#include "Framework/Core.h"
-#include "Framework/Object.h"
+#include <SFML/Graphics.hpp>
+#include "Core.h"
+#include "Object.h"
 
 
 namespace labyrinth_engine

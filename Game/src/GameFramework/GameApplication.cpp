@@ -2,10 +2,10 @@
 // Created by Tomas Tzorta on 07/12/2023.
 //
 
-#include "GameFramework/GameApplication.h"
-#include "Framework/World.h"
-#include "Framework/Actor.h"
-#include "Framework/AssetManager.h"
+#include "GameName/GameApplication.h"
+#include "LabyrinthEngine/World.h"
+#include "LabyrinthEngine/Actor.h"
+#include "LabyrinthEngine/AssetManager.h"
 #include "Player/PlayerSpaceship.h"
 #include "config.h"
 

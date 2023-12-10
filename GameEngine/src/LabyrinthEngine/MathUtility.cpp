@@ -2,7 +2,7 @@
 // Created by Tomas Tzorta on 08/12/2023.
 //
 
-#include "Framework/MathUtility.h"
+#include "LabyrinthEngine/MathUtility.h"
 
 namespace labyrinth_engine
 {

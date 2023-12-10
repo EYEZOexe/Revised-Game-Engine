@@ -1,5 +1,5 @@
 add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/GameFramework/GameApplication.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/GameName/GameApplication.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/GameFramework/GameApplication.cpp
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Spaceship/Spaceship.h

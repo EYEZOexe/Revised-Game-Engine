@@ -5,9 +5,8 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include "Framework/Core.h"
-#include "SFML/Graphics.hpp"
-
+#include <SFML/Graphics.hpp>
+#include "Core.h"
 
 namespace labyrinth_engine
 {

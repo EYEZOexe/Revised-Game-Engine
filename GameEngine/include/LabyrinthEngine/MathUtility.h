@@ -5,7 +5,7 @@
 #ifndef MATHUTILITY_H
 #define MATHUTILITY_H
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 namespace labyrinth_engine
 {

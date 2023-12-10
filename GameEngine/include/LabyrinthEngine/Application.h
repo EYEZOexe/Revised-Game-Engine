@@ -6,7 +6,7 @@
 #define APPLICATION_H
 
 #include <SFML/Graphics.hpp>
-#include <Framework/Core.h>
+#include "Core.h"
 
 #include "World.h"
 

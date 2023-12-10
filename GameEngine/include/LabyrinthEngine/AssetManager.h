@@ -5,8 +5,8 @@
 #ifndef ASSETMANAGER_H
 #define ASSETMANAGER_H
 
-#include "SFML/Graphics.hpp"
-#include "Framework/Core.h"
+#include <SFML/Graphics.hpp>
+#include "Core.h"
 
 namespace labyrinth_engine
 {
