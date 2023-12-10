@@ -11,7 +11,7 @@
 #include <map>
 #include <unordered_map>
 
-namespace Framework
+namespace labyrinth_engine
 {
     template<typename T>
     using Uptr = std::unique_ptr<T>;

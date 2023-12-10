@@ -6,16 +6,14 @@
 #define PLAYER_H
 #include "Spaceship/Spaceship.h"
 
-
-
-namespace GameFramework
+namespace labyrinth_engine
 {
-    class BulletShooter;
+    class Launcher;
 
     class PlayerSpaceship : public Spaceship
     {
     public:
-        PlayerSpaceship(Framework::World* a_owningWorld, const std::string& a_path = "PNG/playerShip1_blue.png");
+        PlayerSpaceship(World* a_owningWorld, const std::string& a_path = "PNG/playerShip1_blue.png");
 
         void ActorTick(float a_deltaTime) override;
 
@@ -33,7 +31,7 @@ namespace GameFramework
         sf::Vector2f m_playerMoveInput;
         float m_playerSpeed;
 
-        Framework::Uptr<BulletShooter> m_bulletShooter;
+        Uptr<Launcher> m_projectileLauncher;
     };
 
 }

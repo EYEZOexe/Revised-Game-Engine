@@ -8,7 +8,7 @@
 #include "Framework/MathUtility.h"
 #include "Framework/World.h"
 
-namespace Framework
+namespace labyrinth_engine
 {
     Actor::Actor(World* a_owningWorld, const std::string& a_texturePath)
         : m_owningWorld(a_owningWorld)

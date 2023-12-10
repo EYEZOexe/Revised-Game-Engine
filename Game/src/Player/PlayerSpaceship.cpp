@@ -6,15 +6,15 @@
 
 #include "Framework/MathUtility.h"
 #include "SFML/System.hpp"
-#include "Weapon/BulletShooter.h"
+#include "Weapon/ProjectileLauncher.h"
 
-namespace GameFramework
+namespace labyrinth_engine
 {
-    PlayerSpaceship::PlayerSpaceship(Framework::World* a_owningWorld, const std::string& a_path)
+    PlayerSpaceship::PlayerSpaceship(World* a_owningWorld, const std::string& a_path)
         : Spaceship{a_owningWorld, a_path}
         , m_playerMoveInput{}
         , m_playerSpeed{200.0f}
-        , m_bulletShooter{new BulletShooter{this}}
+        , m_projectileLauncher{new ProjectileLauncher{this, 0.3f}}
     {
     }
 
@@ -27,9 +27,9 @@ namespace GameFramework
 
     void PlayerSpaceship::Fire()
     {
-        if (m_bulletShooter)
+        if (m_projectileLauncher)
         {
-            m_bulletShooter->Fire();
+            m_projectileLauncher->Fire();
         }
     }
 
@@ -64,7 +64,7 @@ namespace GameFramework
 
     void PlayerSpaceship::NormalisePlayerInput()
     {
-        Framework::NormalizeVector(m_playerMoveInput);
+        NormalizeVector(m_playerMoveInput);
     }
 
     void PlayerSpaceship::HandlePlayerMovementInput(float a_deltaTime)

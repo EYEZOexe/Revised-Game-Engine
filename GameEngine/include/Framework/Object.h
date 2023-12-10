@@ -7,7 +7,7 @@
 
 
 
-namespace Framework
+namespace labyrinth_engine
 {
     class Object
     {

@@ -8,7 +8,7 @@
 #include "Framework/AssetManager.h"
 
 
-namespace Framework
+namespace labyrinth_engine
 {
     Application::Application(unsigned a_windowWidth, unsigned a_windowHeight, const std::string& a_windowTitle, sf::Uint32 a_windowStyle)
         : m_window(sf::VideoMode(a_windowWidth, a_windowHeight), a_windowTitle, a_windowStyle)

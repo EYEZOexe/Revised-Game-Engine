@@ -8,7 +8,7 @@
 #include "SFML/Graphics.hpp"
 #include "Framework/Core.h"
 
-namespace Framework
+namespace labyrinth_engine
 {
     class AssetManager
     {

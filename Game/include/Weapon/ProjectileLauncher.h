@@ -2,32 +2,24 @@
 // Created by NAT20 on 09/12/2023.
 //
 
-#ifndef WEAPON_H
-#define WEAPON_H
+#ifndef BULLETSHOOTER_H
+#define BULLETSHOOTER_H
 
-#include "Framework/Actor.h"
+#include <SFML/System.hpp>
+#include "Launcher.h"
 
-namespace GameFramework
+namespace labyrinth_engine
 {
-    class Framework::Actor;
-
-    class ProjectileLauncher
+    class ProjectileLauncher : public Launcher
     {
     public:
-        void Fire();
-
-        virtual bool CanFire() const {return true;}
-        virtual bool IsOnCooldown() const {return false;}
-
-        Framework::Actor* GetOwner() const {return m_owner;}
-
-    protected:
-        ProjectileLauncher(Framework::Actor* a_owner);
-
+        ProjectileLauncher(Actor* a_owner, float a_cooldownTime = 1.0f);
+        bool IsOnCooldown() const override;
     private:
-        virtual void OnFire() = 0;
-        Framework::Actor* m_owner;
+        void OnFire() override;
+        sf::Clock m_cooldown;
+        float m_cooldownTime;
     };
 }
 
-#endif //WEAPON_H
+#endif //BULLETSHOOTER_H

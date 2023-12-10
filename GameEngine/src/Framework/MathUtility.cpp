@@ -4,7 +4,7 @@
 
 #include "Framework/MathUtility.h"
 
-namespace Framework
+namespace labyrinth_engine
 {
     constexpr float PI = 3.14159265358979323846f;
 

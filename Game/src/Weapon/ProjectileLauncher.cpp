@@ -2,13 +2,13 @@
 // Created by NAT20 on 09/12/2023.
 //
 
-#include "Weapon/ProjectileLauncher.h"
+#include "Weapon/Launcher.h"
 
 
 
-namespace GameFramework
+namespace labyrinth_engine
 {
-    void ProjectileLauncher::Fire()
+    void Launcher::Fire()
     {
         if(CanFire() && !IsOnCooldown())
         {
@@ -16,7 +16,7 @@ namespace GameFramework
         }
     }
 
-    ProjectileLauncher::ProjectileLauncher(Framework::Actor* a_owner)
+    Launcher::Launcher(Actor* a_owner)
         : m_owner(a_owner)
     {
 

@@ -10,7 +10,7 @@
 #include "Framework/Object.h"
 
 
-namespace Framework
+namespace labyrinth_engine
 {
     class World;
 

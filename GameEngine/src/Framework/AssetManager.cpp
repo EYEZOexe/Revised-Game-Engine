@@ -4,7 +4,7 @@
 
 #include "Framework/AssetManager.h"
 
-namespace Framework
+namespace labyrinth_engine
 {
     Uptr<AssetManager> AssetManager::assetManager{nullptr}; // singleton
 

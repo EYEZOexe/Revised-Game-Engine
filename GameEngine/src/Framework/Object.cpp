@@ -5,7 +5,7 @@
 #include "Framework/Object.h"
 #include "Framework/Core.h"
 
-namespace Framework
+namespace labyrinth_engine
 {
     Object::Object()
         : m_bIsPendingKill(false)

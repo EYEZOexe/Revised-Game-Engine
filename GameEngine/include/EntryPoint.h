@@ -5,12 +5,12 @@
 #ifndef ENTRYPOINT_H
 #define ENTRYPOINT_H
 
-namespace Framework
+namespace labyrinth_engine
 {
     class Application;
 }
 
-extern Framework::Application* GetApplication();
+extern labyrinth_engine::Application* GetApplication();
 
 
 

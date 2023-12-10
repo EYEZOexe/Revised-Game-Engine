@@ -9,20 +9,20 @@
 #include "Player/PlayerSpaceship.h"
 #include "config.h"
 
-
-Framework::Application* GetApplication()
+labyrinth_engine::Application* GetApplication()
 {
-    return new GameFramework::GameApplication();
+    return new labyrinth_engine::GameApplication();
 }
 
-namespace GameFramework
+
+namespace labyrinth_engine
 {
     GameApplication::GameApplication()
         : Application{600, 900, "Game", sf::Style::Titlebar | sf::Style::Close}
     {
-        Framework::AssetManager::Get().SetAssetDirectory(GetAssetDirectory());
-        const Framework::Wptr<Framework::World> newWorld = LoadWorld<Framework::World>();
-        newWorld.lock()->SpawnActor<Framework::Actor>();
+        AssetManager::Get().SetAssetDirectory(GetAssetDirectory());
+        const Wptr<World> newWorld = LoadWorld<World>();
+        newWorld.lock()->SpawnActor<Actor>();
         testPlayerSpaceship = newWorld.lock()->SpawnActor<PlayerSpaceship>();
         testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
     }

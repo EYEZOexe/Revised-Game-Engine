@@ -9,7 +9,7 @@
 #include "SFML/Graphics.hpp"
 
 
-namespace Framework
+namespace labyrinth_engine
 {
     class Actor;
     class Application;

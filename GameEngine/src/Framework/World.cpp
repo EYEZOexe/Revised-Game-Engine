@@ -7,7 +7,7 @@
 #include "Framework/Actor.h"
 #include "Framework/Application.h"
 
-namespace Framework
+namespace labyrinth_engine
 {
     World::World(Application* a_owningApplication)
         : m_owningApplication(a_owningApplication)

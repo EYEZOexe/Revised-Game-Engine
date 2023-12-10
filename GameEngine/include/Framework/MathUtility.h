@@ -7,7 +7,7 @@
 
 #include "SFML/Graphics.hpp"
 
-namespace Framework
+namespace labyrinth_engine
 {
     sf::Vector2f RotationToVector(float a_rotation);
     float DegreesToradians(float a_degrees);

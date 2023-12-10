@@ -7,7 +7,7 @@
 
 int main()
 {
-    Framework::Application* application = GetApplication();
+    labyrinth_engine::Application* application = GetApplication();
     application->Run();
     delete application;
 }

@@ -8,18 +8,18 @@
 #include "Framework/Application.h"
 #include "Framework/Core.h"
 
-namespace GameFramework
+namespace labyrinth_engine
 {
     class PlayerSpaceship;
 
-    class GameApplication : public Framework::Application
+    class GameApplication : public Application
     {
     public:
         GameApplication();
         void Tick(float a_deltaTime) override;
     private:
         float m_counter;
-        Framework::Wptr<PlayerSpaceship> testPlayerSpaceship;
+        Wptr<PlayerSpaceship> testPlayerSpaceship;
     };
 }
 
