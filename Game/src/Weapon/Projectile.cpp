@@ -23,7 +23,7 @@ namespace labyrinth_engine
 
         if (IsActorOutOfBounds())
         {
-            ObjectDestroy();
+            Destroy();
         }
     }
 

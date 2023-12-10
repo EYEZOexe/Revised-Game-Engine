@@ -180,6 +180,12 @@ namespace labyrinth_engine
         LE_LOG("Overlap Finished");
     }
 
+    void Actor::Destroy()
+    {
+        RemoveActorPhysics();
+        Object::Destroy();
+    }
+
     void Actor::InitialiseActorPhysics()
     {
         if (!m_physicsBody)
@@ -193,6 +199,7 @@ namespace labyrinth_engine
         if (m_physicsBody)
         {
            PhysicsSystem::GetInstance().RemoveListener(m_physicsBody); //remove actor from physics world
+           m_physicsBody = nullptr;
         }
     }
 

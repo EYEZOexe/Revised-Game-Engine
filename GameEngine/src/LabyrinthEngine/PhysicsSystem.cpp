@@ -21,7 +21,6 @@ namespace labyrinth_engine
         if (!physicsSystem)
         {
             physicsSystem = std::move(Uptr<PhysicsSystem>{new PhysicsSystem});
-
         }
 
         return *physicsSystem;
@@ -29,7 +28,8 @@ namespace labyrinth_engine
 
     void PhysicsSystem::Update(float a_deltaTime)
     {
-        m_physicsWorld.Step(a_deltaTime, m_velocityIterations, m_positionIterations);
+        CalculateListenersToRemove(); //calculate listeners to remove
+        m_physicsWorld.Step(a_deltaTime, m_velocityIterations, m_positionIterations); //update physics world
     }
 
     b2Body* PhysicsSystem::AddListener(Actor* a_actor)
@@ -62,7 +62,12 @@ namespace labyrinth_engine
 
     void PhysicsSystem::RemoveListener(b2Body* a_body)
     {
-        //TODO: remove body from world
+        m_listenersToRemove.insert(a_body);
+    }
+
+    void PhysicsSystem::Clear()
+    {
+        physicsSystem = std::move(Uptr<PhysicsSystem>{new PhysicsSystem});
     }
 
     PhysicsSystem::PhysicsSystem()
@@ -71,9 +76,20 @@ namespace labyrinth_engine
         , m_velocityIterations{8}
         , m_positionIterations{3}
         , m_contactListner{}
+        , m_listenersToRemove{}
     {
         m_physicsWorld.SetContactListener(&m_contactListner);
         m_physicsWorld.SetAllowSleeping(false);
+    }
+
+    void PhysicsSystem::CalculateListenersToRemove()
+    {
+        for (auto listener : m_listenersToRemove)
+        {
+            m_physicsWorld.DestroyBody(listener);
+        }
+
+        m_listenersToRemove.clear();
     }
 
     void PhysicsContactListner::BeginContact(b2Contact* contact)

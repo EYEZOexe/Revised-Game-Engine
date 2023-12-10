@@ -13,7 +13,7 @@ namespace labyrinth_engine
         Object();
         virtual ~Object();
 
-        void ObjectDestroy();
+        virtual void Destroy();
         bool IsPendingKill() const {return m_bIsPendingKill;}
 
     private:

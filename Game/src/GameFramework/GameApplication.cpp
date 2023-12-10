@@ -28,10 +28,19 @@ namespace labyrinth_engine
         Wptr<Spaceship> testSpaceship = newWorld.lock()->SpawnActor<Spaceship>();
         testSpaceship.lock()->SetActorTexture("PNG/playerShip1_blue.png");
         testSpaceship.lock()->SetActorLocation(sf::Vector2f(100.0f, 50.0f));
+        m_counter = 0;
     }
 
     void GameApplication::Tick(const float a_deltaTime)
     {
+        m_counter += a_deltaTime;
 
+        if (m_counter > 10.0f)
+        {
+            if (!testPlayerSpaceship.expired())
+            {
+                testPlayerSpaceship.lock()->Destroy();
+            }
+        }
     }
 }

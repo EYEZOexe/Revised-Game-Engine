@@ -49,6 +49,7 @@ namespace labyrinth_engine
         void SetEnableActorPhysics(bool a_bIsEnabled);
         virtual void OnActorBeginOverlap(Actor* m_actor);
         virtual void OnActorEndOverlap(Actor* m_actor);
+        void Destroy() override;
 
     private:
         void InitialiseActorPhysics();

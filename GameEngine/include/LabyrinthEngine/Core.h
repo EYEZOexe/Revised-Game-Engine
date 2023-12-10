@@ -10,6 +10,7 @@
 #include <vector>
 #include <map>
 #include <unordered_map>
+#include <unordered_set>
 
 namespace labyrinth_engine
 {
@@ -30,6 +31,9 @@ namespace labyrinth_engine
 
     template<typename a_keyType, typename a_valueType, typename a_hasher = std::hash<a_keyType>>
     using UMap = std::unordered_map<a_keyType, a_valueType, a_hasher>; // a hash map or dictionary is faster than a map but it's unordered.
+
+    template<typename T>
+    using USet = std::unordered_set<T>; // a hash set is faster than a set but it's unordered.
 
 
 #define LE_LOG(x, ...) printf(x "\n", ##__VA_ARGS__), fflush(stdout) // This is a macro, the 2 ## are for when there are no arguments, it will still compile.

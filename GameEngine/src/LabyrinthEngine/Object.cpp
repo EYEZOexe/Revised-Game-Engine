@@ -17,7 +17,7 @@ namespace labyrinth_engine
         LE_LOG("Object Destroyed");
     }
 
-    void Object::ObjectDestroy()
+    void Object::Destroy()
     {
         m_bIsPendingKill = true;
     }

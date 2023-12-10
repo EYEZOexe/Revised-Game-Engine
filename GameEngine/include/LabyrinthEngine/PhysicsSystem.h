@@ -36,17 +36,24 @@ namespace labyrinth_engine
         //getters
         float GetPhysicsScale() const { return m_physicsScale; }
 
+        static void Clear();
+
 
 
     protected:
         PhysicsSystem();
     private:
+        void CalculateListenersToRemove();
         static Uptr<PhysicsSystem> physicsSystem;
         b2World m_physicsWorld;
         float m_physicsScale;
         int m_velocityIterations;
         int m_positionIterations;
+
         PhysicsContactListner m_contactListner;
+
+        USet<b2Body*> m_listenersToRemove;
+
     };
 }
 
