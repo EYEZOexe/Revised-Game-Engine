@@ -17,6 +17,9 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Weapon/Projectile.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/Projectile.cpp
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Gameplay/HealthComponent.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Gameplay/HealthComponent.cpp
+
 
 )
 

@@ -9,6 +9,7 @@ namespace labyrinth_engine
     Spaceship::Spaceship(World* a_owningWorld, const std::string& a_texturePath)
         : Actor(a_owningWorld, a_texturePath)
         , m_velocity{}
+        , m_healthComponent(100.0f, 100.0f)
     {
 
     }

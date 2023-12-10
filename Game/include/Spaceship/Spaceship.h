@@ -7,6 +7,7 @@
 
 #include "LabyrinthEngine/Actor.h"
 #include "LabyrinthEngine/World.h"
+#include "Gameplay/HealthComponent.h"
 
 namespace labyrinth_engine
 {
@@ -23,6 +24,7 @@ namespace labyrinth_engine
         void ActorBeginPlay() override;
     private:
         sf::Vector2f m_velocity;
+        HealthComponent m_healthComponent;
     };
 
 }
