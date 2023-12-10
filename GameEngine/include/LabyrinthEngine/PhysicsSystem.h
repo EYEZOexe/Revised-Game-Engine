@@ -25,9 +25,12 @@ namespace labyrinth_engine
         static PhysicsSystem& GetInstance();
         void Update(float a_deltaTime);
         b2Body* AddListener(Actor* a_actor); //add actor to physics world
+        void RemoveListener(b2Body* a_body); //remove actor from physics world
 
         //getters
         float GetPhysicsScale() const { return m_physicsScale; }
+
+
 
     protected:
         PhysicsSystem();

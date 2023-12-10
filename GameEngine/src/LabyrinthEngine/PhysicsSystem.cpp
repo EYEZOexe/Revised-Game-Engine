@@ -60,6 +60,11 @@ namespace labyrinth_engine
         return body;
     }
 
+    void PhysicsSystem::RemoveListener(b2Body* a_body)
+    {
+        //TODO: remove body from world
+    }
+
     PhysicsSystem::PhysicsSystem()
         : m_physicsWorld{b2Vec2{0.0f, 0.0f}} //gravity
         , m_physicsScale{0.01f} //1 meter = 100 pixels

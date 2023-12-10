@@ -2,11 +2,14 @@
 // Created by Tomas Tzorta on 07/12/2023.
 //
 
+#include "box2d/b2_body.h"
+
 #include "LabyrinthEngine/Actor.h"
 #include "LabyrinthEngine/Core.h"
 #include "LabyrinthEngine/AssetManager.h"
 #include "LabyrinthEngine/MathUtility.h"
 #include "LabyrinthEngine/World.h"
+#include "LabyrinthEngine/PhysicsSystem.h"
 
 namespace labyrinth_engine
 {
@@ -15,6 +18,8 @@ namespace labyrinth_engine
         , m_bIsPlaying(false)
         , m_sprite{}
         , m_texture{}
+        , m_physicsBody{nullptr}
+        , m_bIsPhysicsEnabled{false}
     {
         SetActorTexture(a_texturePath);
     }
@@ -146,6 +151,51 @@ namespace labyrinth_engine
         }
 
         return false;
+    }
+
+    bool Actor::SetEnableActorPhysics(const bool a_bIsEnabled)
+    {
+        m_bIsPhysicsEnabled = a_bIsEnabled;
+
+        if (m_bIsPhysicsEnabled)
+        {
+            InitialiseActorPhysics();
+            return true;
+        }
+        else
+        {
+            RemoveActorPhysics();
+            return false;
+        }
+
+    }
+
+    void Actor::InitialiseActorPhysics()
+    {
+        if (!m_physicsBody)
+        {
+            PhysicsSystem::GetInstance().AddListener(this); //add actor to physics world
+        }
+    }
+
+    void Actor::RemoveActorPhysics()
+    {
+        if (m_physicsBody)
+        {
+            PhysicsSystem::GetInstance().RemoveListener(m_physicsBody); //remove actor from physics world
+        }
+    }
+
+    void Actor::UpdatePhysicsTransform()
+    {
+        if (m_physicsBody)
+        {
+            float physicsScale = PhysicsSystem::GetInstance().GetPhysicsScale();
+            b2Vec2 physicsPosition{GetActorLocation().x * physicsScale, GetActorLocation().y * physicsScale};
+            float physicsRotation = DegreesToradians(GetActorRotation());
+
+            m_physicsBody->SetTransform(physicsPosition, physicsRotation);
+        }
     }
 
     void Actor::CenterActorOrigin()

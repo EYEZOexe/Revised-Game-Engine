@@ -23,4 +23,10 @@ namespace labyrinth_engine
     {
 
     }
+
+    void Spaceship::ActorBeginPlay()
+    {
+        Actor::ActorBeginPlay();
+        SetEnableActorPhysics(true);
+    }
 }

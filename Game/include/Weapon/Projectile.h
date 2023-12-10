@@ -15,6 +15,7 @@ namespace labyrinth_engine
         Projectile(World* a_world, Actor* a_owner, const std::string& a_texturePath, float a_speed = 600.0f, float a_damage = 10.0f);
 
         void ActorTick(float a_deltaTime) override;
+        void ActorBeginPlay() override;
 
         // Getters and Setters
         void SetProjectileSpeed(const float a_speed) { m_speed = a_speed; };

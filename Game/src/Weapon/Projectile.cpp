@@ -27,6 +27,13 @@ namespace labyrinth_engine
         }
     }
 
+    void Projectile::ActorBeginPlay()
+    {
+        Actor::ActorBeginPlay(); // Call the base class version of this function
+
+        SetEnableActorPhysics(true);
+    }
+
     void Projectile::MoveProjectile(float a_deltaTime)
     {
         AddActorLocationOffset(GetActorForwardVector() * m_speed * a_deltaTime); // Move the projectile forward

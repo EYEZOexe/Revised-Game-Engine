@@ -20,6 +20,7 @@ namespace labyrinth_engine
         sf::Vector2f GetVelocity() const { return m_velocity; }
 
         virtual void Fire();
+        void ActorBeginPlay() override;
     private:
         sf::Vector2f m_velocity;
     };

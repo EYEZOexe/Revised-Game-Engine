@@ -9,6 +9,7 @@
 #include "Core.h"
 #include "Object.h"
 
+class b2Body;
 
 namespace labyrinth_engine
 {
@@ -44,8 +45,12 @@ namespace labyrinth_engine
         World* GetWorld() const { return m_owningWorld; };
 
         bool IsActorOutOfBounds() const;
+        bool SetEnableActorPhysics(bool a_bIsEnabled);
 
     private:
+        void InitialiseActorPhysics();
+        void RemoveActorPhysics();
+        void UpdatePhysicsTransform();
         void CenterActorOrigin();
 
         World* m_owningWorld;
@@ -53,6 +58,8 @@ namespace labyrinth_engine
 
         sf::Sprite m_sprite;
         Sptr<sf::Texture> m_texture;
+        b2Body* m_physicsBody;
+        bool m_bIsPhysicsEnabled;
     };
 
 }
