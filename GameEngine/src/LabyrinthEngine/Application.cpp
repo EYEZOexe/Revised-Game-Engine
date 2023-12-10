@@ -6,6 +6,7 @@
 #include "LabyrinthEngine/Core.h"
 #include "LabyrinthEngine/World.h"
 #include "LabyrinthEngine/AssetManager.h"
+#include "LabyrinthEngine/PhysicsSystem.h"
 
 
 namespace labyrinth_engine
@@ -58,6 +59,8 @@ namespace labyrinth_engine
         {
             m_currentWorld->WorldTickFramework(a_deltaTime);
         }
+
+        PhysicsSystem::GetInstance().Update(a_deltaTime); //Physics Update
 
         if (m_ClearTimer.getElapsedTime().asSeconds() >= m_ClearTimeInterval)
         {
