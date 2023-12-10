@@ -33,7 +33,8 @@ namespace labyrinth_engine
         void AddActorLocationOffset(const sf::Vector2f& a_locationOffset);
         void AddActorRotationOffset(float a_rotationOffset);
 
-        sf::Vector2f GetActorLocation() const { return m_sprite.getPosition();};
+        sf::Vector2f GetActorLocation() const { return m_sprite.getPosition();}
+
         float GetActorRotation() const {return m_sprite.getRotation();};
         sf::Vector2f GetActorForwardVector() const;
         sf::Vector2f GetActorRightVector() const;
@@ -45,7 +46,9 @@ namespace labyrinth_engine
         World* GetWorld() const { return m_owningWorld; };
 
         bool IsActorOutOfBounds() const;
-        bool SetEnableActorPhysics(bool a_bIsEnabled);
+        void SetEnableActorPhysics(bool a_bIsEnabled);
+        virtual void OnActorBeginOverlap(Actor* m_actor);
+        virtual void OnActorEndOverlap(Actor* m_actor);
 
     private:
         void InitialiseActorPhysics();

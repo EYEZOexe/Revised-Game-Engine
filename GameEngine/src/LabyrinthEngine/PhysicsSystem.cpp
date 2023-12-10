@@ -4,9 +4,9 @@
 
 
 #include <box2d/b2_body.h>
+#include <box2d/b2_contact.h>
 #include <box2d/b2_fixture.h>
 #include <box2d/b2_polygon_shape.h>
-
 
 #include "LabyrinthEngine/Actor.h"
 #include "LabyrinthEngine/PhysicsSystem.h"
@@ -70,7 +70,51 @@ namespace labyrinth_engine
         , m_physicsScale{0.01f} //1 meter = 100 pixels
         , m_velocityIterations{8}
         , m_positionIterations{3}
+        , m_contactListner{}
     {
+        m_physicsWorld.SetContactListener(&m_contactListner);
+        m_physicsWorld.SetAllowSleeping(false);
+    }
 
+    void PhysicsContactListner::BeginContact(b2Contact* contact)
+    {
+        auto actorA = reinterpret_cast<Actor*>(contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+        auto actorB = reinterpret_cast<Actor*>(contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+
+        if (actorA && !actorA->IsPendingKill())
+        {
+            actorA->OnActorBeginOverlap(actorB);
+        }
+
+        if (actorB && !actorB->IsPendingKill())
+        {
+            actorB->OnActorBeginOverlap(actorA);
+        }
+    }
+
+    void PhysicsContactListner::EndContact(b2Contact* contact)
+    {
+        Actor* actorA = nullptr;
+        Actor* actorB = nullptr;
+
+        if (contact->GetFixtureA() && contact->GetFixtureA()->GetBody())
+        {
+            actorA = reinterpret_cast<Actor*>(contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+        }
+
+        if (contact->GetFixtureB() && contact->GetFixtureB()->GetBody())
+        {
+            actorB = reinterpret_cast<Actor*>(contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+        }
+
+        if (actorA && !actorA->IsPendingKill())
+        {
+            actorA->OnActorEndOverlap(actorB);
+        }
+
+        if (actorB && !actorB->IsPendingKill())
+        {
+            actorB->OnActorEndOverlap(actorA);
+        }
     }
 }

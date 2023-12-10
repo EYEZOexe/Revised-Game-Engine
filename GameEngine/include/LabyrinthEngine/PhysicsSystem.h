@@ -19,6 +19,12 @@ namespace labyrinth_engine
 
 namespace labyrinth_engine
 {
+    class PhysicsContactListner : public b2ContactListener
+    {
+        void BeginContact(b2Contact* contact) override;
+        void EndContact(b2Contact* contact) override;
+    };
+
     class PhysicsSystem
     {
     public:
@@ -40,6 +46,7 @@ namespace labyrinth_engine
         float m_physicsScale;
         int m_velocityIterations;
         int m_positionIterations;
+        PhysicsContactListner m_contactListner;
     };
 }
 

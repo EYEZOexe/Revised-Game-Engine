@@ -41,7 +41,7 @@ namespace labyrinth_engine
         {
             if (iterator->second.use_count() == 1)
             {
-                GE_LOG("Cleaning up texture: %s", iterator->first.c_str());
+                LE_LOG("Cleaning up texture: %s", iterator->first.c_str());
                 iterator = m_mLoadedTextures.erase(iterator);
             }
             else

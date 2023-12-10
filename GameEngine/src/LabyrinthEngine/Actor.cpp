@@ -26,7 +26,7 @@ namespace labyrinth_engine
 
     Actor::~Actor()
     {
-        GE_LOG("Actor Destroyed");
+        LE_LOG("Actor Destroyed");
     }
 
     void Actor::ActorBeginPlayFramework()
@@ -83,11 +83,13 @@ namespace labyrinth_engine
     void Actor::SetActorLocation(const sf::Vector2f& a_location)
     {
         m_sprite.setPosition(a_location);
+        UpdatePhysicsTransform();
     }
 
     void Actor::SetActorRotation(float a_rotation)
     {
         m_sprite.setRotation(a_rotation);
+        UpdatePhysicsTransform();
     }
 
     void Actor::AddActorLocationOffset(const sf::Vector2f& a_locationOffset)
@@ -153,28 +155,36 @@ namespace labyrinth_engine
         return false;
     }
 
-    bool Actor::SetEnableActorPhysics(const bool a_bIsEnabled)
+    void Actor::SetEnableActorPhysics(const bool a_bIsEnabled)
     {
         m_bIsPhysicsEnabled = a_bIsEnabled;
 
         if (m_bIsPhysicsEnabled)
         {
             InitialiseActorPhysics();
-            return true;
         }
         else
         {
             RemoveActorPhysics();
-            return false;
         }
 
+    }
+
+    void Actor::OnActorBeginOverlap(Actor* m_actor)
+    {
+        LE_LOG("Overlap");
+    }
+
+    void Actor::OnActorEndOverlap(Actor* m_actor)
+    {
+        LE_LOG("Overlap Finished");
     }
 
     void Actor::InitialiseActorPhysics()
     {
         if (!m_physicsBody)
         {
-            PhysicsSystem::GetInstance().AddListener(this); //add actor to physics world
+           m_physicsBody = PhysicsSystem::GetInstance().AddListener(this); //add actor to physics world
         }
     }
 
@@ -182,7 +192,7 @@ namespace labyrinth_engine
     {
         if (m_physicsBody)
         {
-            PhysicsSystem::GetInstance().RemoveListener(m_physicsBody); //remove actor from physics world
+           PhysicsSystem::GetInstance().RemoveListener(m_physicsBody); //remove actor from physics world
         }
     }
 

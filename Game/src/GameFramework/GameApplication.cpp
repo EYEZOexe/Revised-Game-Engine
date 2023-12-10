@@ -22,9 +22,12 @@ namespace labyrinth_engine
     {
         AssetManager::Get().SetAssetDirectory(GetAssetDirectory());
         const Wptr<World> newWorld = LoadWorld<World>();
-        newWorld.lock()->SpawnActor<Actor>();
         testPlayerSpaceship = newWorld.lock()->SpawnActor<PlayerSpaceship>();
         testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
+
+        Wptr<Spaceship> testSpaceship = newWorld.lock()->SpawnActor<Spaceship>();
+        testSpaceship.lock()->SetActorTexture("PNG/playerShip1_blue.png");
+        testSpaceship.lock()->SetActorLocation(sf::Vector2f(100.0f, 50.0f));
     }
 
     void GameApplication::Tick(const float a_deltaTime)
