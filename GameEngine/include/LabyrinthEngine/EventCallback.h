@@ -4,11 +4,13 @@
 
 #ifndef DELEGATE_H
 #define DELEGATE_H
+#include <functional>
+
 #include "Core.h"
-#include "LabyrinthEngine/Object.h"
 
 namespace labyrinth_engine
 {
+    class Object;
     template <typename ... Arguments> // variadic template
     class EventCallback
     {
@@ -16,8 +18,34 @@ namespace labyrinth_engine
         template<typename ClassName>
         void Bind(Wptr<Object> a_object, void (ClassName::*a_function)(Arguments...))
         {
-
+            std::function<bool(Arguments...)> callbackFunction = [a_object, a_function](Arguments... args)->bool
+            {
+                if (!a_object.expired())
+                {
+                    (static_cast<ClassName*>(a_object.lock().get())->*a_function)(args...);
+                    return true;
+                }
+                return false;
+            };
+            m_functions.push_back(callbackFunction);
         }
+
+        void Broadcast(Arguments... args)
+        {
+            for (auto i = m_functions.begin(); i != m_functions.end();)
+            {
+                if ((*i)(args...))
+                {
+                    ++i;
+                }
+                else
+                {
+                    i = m_functions.erase(i);
+                }
+            }
+        }
+    private:
+        Vec<std::function<bool(Arguments...)>> m_functions;
     };
 }
 

@@ -8,6 +8,7 @@
 #include <memory>
 
 #include "Core.h"
+#include "LabyrinthEngine/EventCallback.h"
 
 namespace labyrinth_engine
 {
@@ -22,6 +23,7 @@ namespace labyrinth_engine
 
         Wptr<Object> GetWeakReference();
         Wptr<const Object> GetWeakReference() const;
+        EventCallback<Object*> OnDestroy;
 
     private:
         bool m_bIsPendingKill;

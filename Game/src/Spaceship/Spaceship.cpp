@@ -31,10 +31,12 @@ namespace labyrinth_engine
         SetEnableActorPhysics(true);
 
         m_healthComponent.OnDamage.Bind(GetWeakReference(), &Spaceship::OnHealthChange);
+
+        m_healthComponent.OnDamage.Broadcast(10, 89, 100);
     }
 
     void Spaceship::OnHealthChange(float a_amount, float a_currentHealth, float a_maxHealth)
     {
-
+        LE_LOG("health changed by: %f, and is now: %f/%f", a_amount, a_currentHealth, a_maxHealth);
     }
 }

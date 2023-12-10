@@ -19,6 +19,7 @@ namespace labyrinth_engine
 
     void Object::Destroy()
     {
+        OnDestroy.Broadcast(this);
         m_bIsPendingKill = true;
     }
 
