@@ -30,6 +30,11 @@ namespace labyrinth_engine
         Actor::ActorBeginPlay();
         SetEnableActorPhysics(true);
 
-        Wptr<Object> selfReference = GetWeakReference();
+        m_healthComponent.OnDamage.Bind(GetWeakReference(), &Spaceship::OnHealthChange);
+    }
+
+    void Spaceship::OnHealthChange(float a_amount, float a_currentHealth, float a_maxHealth)
+    {
+
     }
 }

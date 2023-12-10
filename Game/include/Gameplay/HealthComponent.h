@@ -5,6 +5,8 @@
 #ifndef HEALTHCOMPONENT_H
 #define HEALTHCOMPONENT_H
 
+#include "LabyrinthEngine/EventCallback.h"
+
 namespace labyrinth_engine
 {
     class HealthComponent
@@ -23,6 +25,8 @@ namespace labyrinth_engine
         // Getters
         float GetHealth() const {return m_health;}
         float GetMaxHealth() const {return m_maxHealth;}
+
+        EventCallback<float, float, float> OnDamage;
 
     private:
         float m_health;

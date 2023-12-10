@@ -20,11 +20,15 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
         ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/PhysicsSystem.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/PhysicsSystem.cpp
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/EventCallback.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/EventCallback.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Core.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Core.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
+
 
 )
 
