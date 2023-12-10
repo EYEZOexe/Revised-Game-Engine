@@ -5,9 +5,13 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
+#include <memory>
+
+#include "Core.h"
+
 namespace labyrinth_engine
 {
-    class Object
+    class Object : public std::enable_shared_from_this<Object> //weak from this
     {
     public:
         Object();
@@ -15,6 +19,9 @@ namespace labyrinth_engine
 
         virtual void Destroy();
         bool IsPendingKill() const {return m_bIsPendingKill;}
+
+        Wptr<Object> GetWeakReference();
+        Wptr<const Object> GetWeakReference() const;
 
     private:
         bool m_bIsPendingKill;

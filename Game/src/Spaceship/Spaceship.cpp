@@ -29,5 +29,7 @@ namespace labyrinth_engine
     {
         Actor::ActorBeginPlay();
         SetEnableActorPhysics(true);
+
+        Wptr<Object> selfReference = GetWeakReference();
     }
 }
