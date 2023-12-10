@@ -63,6 +63,10 @@ namespace labyrinth_engine
         {
             m_ClearTimer.restart();
             AssetManager::Get().Clear();
+            if (m_currentWorld)
+            {
+                m_currentWorld->Clear();
+            }
         }
     }
 

@@ -37,9 +37,13 @@ namespace labyrinth_engine
         sf::Vector2f GetActorForwardVector() const;
         sf::Vector2f GetActorRightVector() const;
 
+        sf::FloatRect GetActorBounds() const;
+
         sf::Vector2u GetWindowSize() const;
 
         World* GetWorld() const { return m_owningWorld; };
+
+        bool IsActorOutOfBounds() const;
 
     private:
         void CenterActorOrigin();

@@ -38,17 +38,10 @@ namespace labyrinth_engine
         m_actorsToAdd.clear();
 
         //this ensures that we can remove actors without breaking the loop
-        for (auto iteration = m_actors.begin(); iteration != m_actors.end();) // we use iterator cause we are deleting from the vector
+        for (auto i = m_actors.begin(); i != m_actors.end();) // we use iterator cause we are deleting from the vector
         {
-            if (iteration->get()->IsPendingKill())
-            {
-                iteration = m_actors.erase(iteration); //iterating differently based on if we are destroying the current actor
-            }
-            else
-            {
-                iteration->get()->ActorTickFramework(a_deltaTime);
-                ++iteration;
-            }
+            i->get()->ActorTickFramework(a_deltaTime);
+            ++i;
         }
 
         WorldTick(a_deltaTime);
@@ -70,6 +63,21 @@ namespace labyrinth_engine
     sf::Vector2u World::GetWindowSize() const
     {
         return m_owningApplication->GetWindowSize();
+    }
+
+    void World::Clear()
+    {
+        for (auto i = m_actors.begin(); i != m_actors.end();)
+        {
+            if (i->get()->IsPendingKill())
+            {
+                i = m_actors.erase(i);
+            }
+            else
+            {
+                ++i;
+            }
+        }
     }
 
     void World::BeginPlay()

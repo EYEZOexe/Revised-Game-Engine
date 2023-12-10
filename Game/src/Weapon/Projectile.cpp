@@ -20,6 +20,11 @@ namespace labyrinth_engine
         Actor::ActorTick(a_deltaTime); // Call the base class version of this function
 
         MoveProjectile(a_deltaTime);
+
+        if (IsActorOutOfBounds())
+        {
+            ObjectDestroy();
+        }
     }
 
     void Projectile::MoveProjectile(float a_deltaTime)

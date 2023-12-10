@@ -30,6 +30,8 @@ namespace labyrinth_engine
 
         sf::Vector2u GetWindowSize() const;
 
+        void Clear();
+
 
     private:
         void BeginPlay();

@@ -105,9 +105,47 @@ namespace labyrinth_engine
         return RotationToVector(GetActorRotation());
     }
 
+    sf::FloatRect Actor::GetActorBounds() const
+    {
+        return m_sprite.getGlobalBounds();
+    }
+
     sf::Vector2u Actor::GetWindowSize() const
     {
         return m_owningWorld->GetWindowSize();
+    }
+
+    bool Actor::IsActorOutOfBounds() const
+    {
+        float windowWidth = GetWorld()->GetWindowSize().x;
+        float windowHeight = GetWorld()->GetWindowSize().y;
+
+        float width = GetActorBounds().width;
+        float height = GetActorBounds().height;
+
+        sf::Vector2f actorLocation = GetActorLocation();
+
+        if (actorLocation.x < -width)
+        {
+            return true;
+        }
+
+        if (actorLocation.x > windowWidth + width)
+        {
+            return true;
+        }
+
+        if (actorLocation.y < -height)
+        {
+            return true;
+        }
+
+        if (actorLocation.y > windowHeight + height)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     void Actor::CenterActorOrigin()
