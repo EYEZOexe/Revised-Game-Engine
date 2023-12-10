@@ -32,7 +32,7 @@ namespace Framework
     using UMap = std::unordered_map<a_keyType, a_valueType, a_hasher>; // a hash map or dictionary is faster than a map but it's unordered.
 
 
-#define GE_LOG(x, ...) printf(x "\n", ##__VA_ARGS__) // This is a macro, the 2 ## are for when there are no arguments, it will still compile.
+#define GE_LOG(x, ...) printf(x "\n", ##__VA_ARGS__), fflush(stdout) // This is a macro, the 2 ## are for when there are no arguments, it will still compile.
 }
 
 

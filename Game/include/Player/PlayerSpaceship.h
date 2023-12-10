@@ -6,8 +6,12 @@
 #define PLAYER_H
 #include "Spaceship/Spaceship.h"
 
+
+
 namespace GameFramework
 {
+    class BulletShooter;
+
     class PlayerSpaceship : public Spaceship
     {
     public:
@@ -18,13 +22,18 @@ namespace GameFramework
         void SetPlayerSpeed(const float a_speed) { m_playerSpeed = a_speed; }
         float GetPlayerSpeed() const { return m_playerSpeed; }
 
+        void Fire() override;
+
     private:
         void HandlePlayerInput();
         void NormalisePlayerInput();
         void HandlePlayerMovementInput(float a_deltaTime);
         void HandlePlayerClampPosition();
+
         sf::Vector2f m_playerMoveInput;
         float m_playerSpeed;
+
+        Framework::Uptr<BulletShooter> m_bulletShooter;
     };
 
 }

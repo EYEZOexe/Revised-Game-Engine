@@ -18,4 +18,9 @@ namespace GameFramework
         Actor::ActorTick(a_deltaTime);
         AddActorLocationOffset(GetVelocity() * a_deltaTime);
     }
+
+    void Spaceship::Fire()
+    {
+
+    }
 }

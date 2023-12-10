@@ -16,7 +16,7 @@ namespace GameFramework
     {
     public:
         GameApplication();
-        virtual void Tick(float a_deltaTime) override;
+        void Tick(float a_deltaTime) override;
     private:
         float m_counter;
         Framework::Wptr<PlayerSpaceship> testPlayerSpaceship;

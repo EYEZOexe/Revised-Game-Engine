@@ -6,6 +6,7 @@
 
 #include "Framework/MathUtility.h"
 #include "SFML/System.hpp"
+#include "Weapon/BulletShooter.h"
 
 namespace GameFramework
 {
@@ -13,6 +14,7 @@ namespace GameFramework
         : Spaceship{a_owningWorld, a_path}
         , m_playerMoveInput{}
         , m_playerSpeed{200.0f}
+        , m_bulletShooter{new BulletShooter{this}}
     {
     }
 
@@ -21,6 +23,14 @@ namespace GameFramework
         Spaceship::ActorTick(a_deltaTime);
         HandlePlayerInput();
         HandlePlayerMovementInput(a_deltaTime);
+    }
+
+    void PlayerSpaceship::Fire()
+    {
+        if (m_bulletShooter)
+        {
+            m_bulletShooter->Fire();
+        }
     }
 
     void PlayerSpaceship::HandlePlayerInput()
@@ -45,12 +55,16 @@ namespace GameFramework
 
         HandlePlayerClampPosition();
         NormalisePlayerInput();
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            Fire();
+        }
     }
 
     void PlayerSpaceship::NormalisePlayerInput()
     {
         Framework::NormalizeVector(m_playerMoveInput);
-        GE_LOG("Move input is now: %f, %f", m_playerMoveInput.x, m_playerMoveInput.y);
     }
 
     void PlayerSpaceship::HandlePlayerMovementInput(float a_deltaTime)

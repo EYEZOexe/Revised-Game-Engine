@@ -18,6 +18,8 @@ namespace GameFramework
 
         void SetVelocity(const sf::Vector2f& a_velocity) { m_velocity = a_velocity; }
         sf::Vector2f GetVelocity() const { return m_velocity; }
+
+        virtual void Fire();
     private:
         sf::Vector2f m_velocity;
     };
