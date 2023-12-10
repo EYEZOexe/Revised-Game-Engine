@@ -1,5 +1,5 @@
 //
-// Created by NAT20 on 07/12/2023.
+// Created by Tomas Tzorta on 07/12/2023.
 //
 
 #ifndef ACTOR_H
@@ -38,6 +38,8 @@ namespace labyrinth_engine
         sf::Vector2f GetActorRightVector() const;
 
         sf::Vector2u GetWindowSize() const;
+
+        World* GetWorld() const { return m_owningWorld; };
 
     private:
         void CenterActorOrigin();

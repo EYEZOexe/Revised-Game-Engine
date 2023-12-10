@@ -1,5 +1,5 @@
 //
-// Created by NAT20 on 07/12/2023.
+// Created by Tomas Tzorta on 07/12/2023.
 //
 
 #ifndef WORLD_H
@@ -25,8 +25,8 @@ namespace labyrinth_engine
 
         virtual ~World(); //whenever you need something to be inherited you have a virtual destructor to make sure that the destructor of the child class is called first and then the destructor of the parent class is called
 
-        template<typename a_ActorType>
-        Wptr<a_ActorType> SpawnActor();
+        template<typename a_ActorType, typename... arguments>
+        Wptr<a_ActorType> SpawnActor(arguments... a_args);
 
         sf::Vector2u GetWindowSize() const;
 
@@ -43,10 +43,10 @@ namespace labyrinth_engine
     };
 
     //Template Functions
-    template<typename a_ActorType>
-    Wptr<a_ActorType> World::SpawnActor()
+    template<typename a_ActorType, typename... arguments>
+    Wptr<a_ActorType> World::SpawnActor(arguments... a_args)
     {
-        Sptr<a_ActorType> newActor{new a_ActorType(this)};
+        Sptr<a_ActorType> newActor{new a_ActorType(this, a_args...)};
         m_actorsToAdd.push_back(newActor);
         return newActor;
     }

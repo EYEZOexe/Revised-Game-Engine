@@ -1,5 +1,5 @@
 //
-// Created by NAT20 on 09/12/2023.
+// Created by Tomas Tzorta on 09/12/2023.
 //
 
 #ifndef WEAPON_H

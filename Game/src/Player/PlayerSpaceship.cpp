@@ -1,5 +1,5 @@
 //
-// Created by NAT20 on 09/12/2023.
+// Created by Tomas Tzorta on 09/12/2023.
 //
 
 #include "Player/PlayerSpaceship.h"
@@ -14,7 +14,7 @@ namespace labyrinth_engine
         : Spaceship{a_owningWorld, a_path}
         , m_playerMoveInput{}
         , m_playerSpeed{200.0f}
-        , m_projectileLauncher{new ProjectileLauncher{this, 0.3f}}
+        , m_projectileLauncher{new ProjectileLauncher{this, 0.1f}}
     {
     }
 

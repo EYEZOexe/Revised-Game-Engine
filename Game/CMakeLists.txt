@@ -9,10 +9,10 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/PlayerSpaceship.cpp
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Weapon/Launcher.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/ProjectileLauncher.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/Launcher.cpp
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Weapon/ProjectileLauncher.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/BulletShooter.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/ProjectileLauncher.cpp
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Weapon/Projectile.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/Projectile.cpp

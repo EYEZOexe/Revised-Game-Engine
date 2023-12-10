@@ -1,5 +1,5 @@
 //
-// Created by NAT20 on 08/12/2023.
+// Created by Tomas Tzorta on 08/12/2023.
 //
 
 #ifndef MATHUTILITY_H

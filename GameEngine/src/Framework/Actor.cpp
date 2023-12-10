@@ -1,5 +1,5 @@
 //
-// Created by NAT20 on 07/12/2023.
+// Created by Tomas Tzorta on 07/12/2023.
 //
 
 #include "Framework/Actor.h"
@@ -97,12 +97,12 @@ namespace labyrinth_engine
 
     sf::Vector2f Actor::GetActorForwardVector() const
     {
-        return RotationToVector(GetActorRotation());
+        return RotationToVector(GetActorRotation() - 90.0f);
     }
 
     sf::Vector2f Actor::GetActorRightVector() const
     {
-        return RotationToVector(GetActorRotation() + 90.0f);
+        return RotationToVector(GetActorRotation());
     }
 
     sf::Vector2u Actor::GetWindowSize() const
