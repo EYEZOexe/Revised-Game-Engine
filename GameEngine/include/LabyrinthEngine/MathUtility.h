@@ -38,6 +38,10 @@ namespace labyrinth_engine
         return a_vector;
     }
 
+    float InterpolateFloat(float a_start, float a_end, float a_alpha);
+    sf::Color InterpolateColour(const sf::Color& a_start, const sf::Color& a_end, float a_alpha);
+    sf::Vector2f InterpolateVector(const sf::Vector2f& a_start, const sf::Vector2f& a_end, float a_alpha);
+
 }
 
 

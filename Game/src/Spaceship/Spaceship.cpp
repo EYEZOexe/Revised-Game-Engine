@@ -3,6 +3,7 @@
 //
 
 #include "Spaceship/Spaceship.h"
+#include "LabyrinthEngine/MathUtility.h"
 
 namespace labyrinth_engine
 {
@@ -10,6 +11,9 @@ namespace labyrinth_engine
         : Actor(a_owningWorld, a_texturePath)
         , m_velocity{}
         , m_healthComponent(100.0f, 100.0f)
+        , m_hitEffectTime(0.0f)
+        , m_hitEffectDuration(0.2f)
+        , m_hitEffectColor(sf::Color::Red)
     {
 
     }
@@ -17,7 +21,8 @@ namespace labyrinth_engine
     void Spaceship::ActorTick(const float a_deltaTime)
     {
         Actor::ActorTick(a_deltaTime);
-        AddActorLocationOffset(GetVelocity() * a_deltaTime);
+        AddActorLocationOffset(GetVelocity() * a_deltaTime); //move the actor
+        UpdateHitEffect(a_deltaTime); //update the hit effect
     }
 
     void Spaceship::Fire()
@@ -30,7 +35,7 @@ namespace labyrinth_engine
         Actor::ActorBeginPlay();
         SetEnableActorPhysics(true);
 
-        m_healthComponent.OnHealthChange.Bind(GetWeakReference(), &Spaceship::OnHealthChange);
+        m_healthComponent.OnHealthChange.Bind(GetWeakReference(), &Spaceship::OnHealthChange); //bind the function to the event
         m_healthComponent.OnDamage.Bind(GetWeakReference(), &Spaceship::OnDamage);
         m_healthComponent.OnDeath.Bind(GetWeakReference(), &Spaceship::OnDeath);
     }
@@ -38,6 +43,25 @@ namespace labyrinth_engine
     void Spaceship::DoDamage(float a_damage)
     {
         m_healthComponent.SetHealth(-a_damage);
+    }
+
+    void Spaceship::HitEffect()
+    {
+        if (m_hitEffectTime == 0)
+        {
+            m_hitEffectTime = m_hitEffectDuration; //start the hit timer
+        }
+    }
+
+    void Spaceship::UpdateHitEffect(float a_deltaTime)
+    {
+        if (m_hitEffectTime > 0)
+        {
+            m_hitEffectTime -= a_deltaTime; //update the hit timer
+            m_hitEffectTime = m_hitEffectTime > 0 ? m_hitEffectTime : 0; //clamp the hit timer
+
+            GetSprite().setColor(InterpolateColour(sf::Color::White, m_hitEffectColor, m_hitEffectTime));
+        }
     }
 
 
@@ -48,6 +72,7 @@ namespace labyrinth_engine
 
     void Spaceship::OnDamage(float a_damage, float a_currentHealth, float a_maxHealth)
     {
+        HitEffect();
     }
 
     void Spaceship::OnDeath()
