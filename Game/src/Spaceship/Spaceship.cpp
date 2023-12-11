@@ -4,6 +4,7 @@
 
 #include "Spaceship/Spaceship.h"
 #include "LabyrinthFramework/MathUtility.h"
+#include "VFX/Explosion.h"
 
 namespace labyrinth_engine
 {
@@ -77,7 +78,10 @@ namespace labyrinth_engine
 
     void Spaceship::OnDeath()
     {
+        Explosion* explosion = new Explosion();
+        explosion->SpawnExplosion(GetWorld(), GetActorLocation()); //spawn the explosion
         //destroy the actor
         Destroy();
+        delete explosion;
     }
 }

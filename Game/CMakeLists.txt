@@ -20,6 +20,9 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Gameplay/HealthComponent.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Gameplay/HealthComponent.cpp
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/VFX/Explosion.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/VFX/Explosion.h
+
 
 )
 
