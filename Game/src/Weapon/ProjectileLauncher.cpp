@@ -30,7 +30,7 @@ namespace labyrinth_engine
     void ProjectileLauncher::OnFire()
     {
         m_cooldown.restart();
-        Wptr<Projectile> newProjectile = GetOwner()->GetWorld()->SpawnActor<Projectile>(GetOwner(), "PNG/Lasers/laserBlue01.png");
+        Weak<Projectile> newProjectile = GetOwner()->GetWorld()->SpawnActor<Projectile>(GetOwner(), "PNG/Lasers/laserBlue01.png");
         newProjectile.lock()->SetActorLocation(GetOwner()->GetActorLocation());
         newProjectile.lock()->SetActorRotation(GetOwner()->GetActorRotation());
 

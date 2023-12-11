@@ -26,7 +26,7 @@ namespace labyrinth_engine
         virtual ~World(); //whenever you need something to be inherited you have a virtual destructor to make sure that the destructor of the child class is called first and then the destructor of the parent class is called
 
         template<typename a_ActorType, typename... arguments>
-        Wptr<a_ActorType> SpawnActor(arguments... a_args);
+        Weak<a_ActorType> SpawnActor(arguments... a_args);
 
         sf::Vector2u GetWindowSize() const;
 
@@ -40,15 +40,15 @@ namespace labyrinth_engine
         Application* m_owningApplication;
         bool m_bIsPlaying;
 
-        Vec<Sptr<Actor>> m_actors;
-        Vec<Sptr<Actor>> m_actorsToAdd; //reason for this is cause we can't add actors to the vector while we are iterating through it
+        List<Shared<Actor>> m_actors;
+        List<Shared<Actor>> m_actorsToAdd; //reason for this is cause we can't add actors to the vector while we are iterating through it
     };
 
     //Template Functions
     template<typename a_ActorType, typename... arguments>
-    Wptr<a_ActorType> World::SpawnActor(arguments... a_args)
+    Weak<a_ActorType> World::SpawnActor(arguments... a_args)
     {
-        Sptr<a_ActorType> newActor{new a_ActorType(this, a_args...)};
+        Shared<a_ActorType> newActor{new a_ActorType(this, a_args...)};
         m_actorsToAdd.push_back(newActor);
         return newActor;
     }

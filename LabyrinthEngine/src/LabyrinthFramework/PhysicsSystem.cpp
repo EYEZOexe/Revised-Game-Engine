@@ -14,13 +14,13 @@
 
 namespace labyrinth_engine
 {
-    Uptr<PhysicsSystem> PhysicsSystem::physicsSystem{nullptr};
+    Unique<PhysicsSystem> PhysicsSystem::physicsSystem{nullptr};
 
     PhysicsSystem& PhysicsSystem::GetInstance()
     {
         if (!physicsSystem)
         {
-            physicsSystem = std::move(Uptr<PhysicsSystem>{new PhysicsSystem});
+            physicsSystem = std::move(Unique<PhysicsSystem>{new PhysicsSystem});
         }
 
         return *physicsSystem;
@@ -67,7 +67,7 @@ namespace labyrinth_engine
 
     void PhysicsSystem::Clear()
     {
-        physicsSystem = std::move(Uptr<PhysicsSystem>{new PhysicsSystem});
+        physicsSystem = std::move(Unique<PhysicsSystem>{new PhysicsSystem});
     }
 
     PhysicsSystem::PhysicsSystem()

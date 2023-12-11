@@ -21,8 +21,8 @@ namespace labyrinth_engine
         virtual void Destroy();
         bool IsPendingKill() const {return m_bIsPendingKill;}
 
-        Wptr<Object> GetWeakReference();
-        Wptr<const Object> GetWeakReference() const;
+        Weak<Object> GetWeakReference();
+        Weak<const Object> GetWeakReference() const;
         EventCallback<Object*> OnDestroy;
 
     private:

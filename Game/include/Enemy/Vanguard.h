@@ -16,7 +16,7 @@ namespace labyrinth_engine
         void ActorTick(float a_deltaTime) override;
     private:
         void Fire() override;
-        Uptr<ProjectileLauncher> m_projectileLauncher;
+        Unique<ProjectileLauncher> m_projectileLauncher;
     };
 }
 

@@ -16,7 +16,7 @@ namespace labyrinth_engine
     {
     public:
         template<typename ClassName>
-        void Bind(Wptr<Object> a_object, void (ClassName::*a_function)(Arguments...))
+        void Bind(Weak<Object> a_object, void (ClassName::*a_function)(Arguments...))
         {
             std::function<bool(Arguments...)> callbackFunction = [a_object, a_function](Arguments... args)->bool
             {
@@ -45,7 +45,7 @@ namespace labyrinth_engine
             }
         }
     private:
-        Vec<std::function<bool(Arguments...)>> m_functions;
+        List<std::function<bool(Arguments...)>> m_functions;
     };
 }
 

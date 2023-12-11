@@ -6,9 +6,9 @@
 
 namespace labyrinth_engine
 {
-    Uptr<TimeManager> TimeManager::m_timeManager{nullptr};
+    Unique<TimeManager> TimeManager::m_timeManager{nullptr};
 
-    Timer::Timer(Wptr<Object> a_weakObject, std::function<void()> a_function, float a_time, bool a_repeat)
+    Timer::Timer(Weak<Object> a_weakObject, std::function<void()> a_function, float a_time, bool a_repeat)
         : m_function{a_weakObject, a_function}
         , m_time{a_time}
         , m_bRepeat{a_repeat}
@@ -23,6 +23,7 @@ namespace labyrinth_engine
     {
 
     }
+    unsigned int TimeManager::m_currentIndex = 0;
 
     void Timer::Update(float a_deltaTime)
     {
@@ -50,11 +51,29 @@ namespace labyrinth_engine
     }
 
 
-    void TimeManager::UpdateTimerManager(float a_deltaTime)
+    void TimeManager::UpdateTimerManager(const float a_deltaTime)
     {
-        for (Timer& timer : m_timers)
+        for (auto i = m_timers.begin(); i != m_timers.end();)
         {
-            timer.Update(a_deltaTime);
+            if (i->second.IsFinished())
+            {
+                i = m_timers.erase(i);
+            }
+            else
+            {
+                i->second.Update(a_deltaTime);
+                ++i;
+            }
+        }
+    }
+
+    void TimeManager::RemoveTimer(const unsigned int a_index)
+    {
+        auto i = m_timers.find(a_index);
+
+        if (i != m_timers.end())
+        {
+            i->second.SetToFinish();
         }
     }
 
@@ -62,7 +81,7 @@ namespace labyrinth_engine
     {
         if (!m_timeManager)
         {
-            m_timeManager = Uptr<TimeManager>(new TimeManager{});
+            m_timeManager = Unique<TimeManager>(new TimeManager{});
         }
 
         return *m_timeManager;

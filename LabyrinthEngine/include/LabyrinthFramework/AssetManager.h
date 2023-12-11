@@ -14,15 +14,15 @@ namespace labyrinth_engine
     {
     public:
         static AssetManager& Get();
-        Sptr<sf::Texture> LoadTexture(const std::string& a_filename);
+        Shared<sf::Texture> LoadTexture(const std::string& a_filename);
         void Clear();
         void SetAssetDirectory(const std::string& a_directory);
     protected:
         AssetManager();
 
     private:
-        static Uptr<AssetManager> assetManager;
-        UMap<std::string, Sptr<sf::Texture>> m_mLoadedTextures;
+        static Unique<AssetManager> assetManager;
+        Dictionary<std::string, Shared<sf::Texture>> m_mLoadedTextures;
         std::string m_assetDirectory;
     };
 }

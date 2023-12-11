@@ -24,7 +24,7 @@ namespace labyrinth_engine
             float a_particleSizeMin = 1.0f,
             float a_particleSizeMax = 2.0f,
             const sf::Color& a_particleColour = sf::Color::White,
-            const Vec<std::string>& a_particleTextures = {"PNG/Effects/star1.png", "PNG/Effects/star2.png", "PNG/Effects/star3.png"});
+            const List<std::string>& a_particleTextures = {"PNG/Effects/star1.png", "PNG/Effects/star2.png", "PNG/Effects/star3.png"});
         /* End of Constructors and Destructors */
 
         /* Class Functions */
@@ -60,7 +60,7 @@ namespace labyrinth_engine
         float m_particleSizeMin;
         float m_particleSizeMax;
         sf::Color m_particleColour;
-        Vec<std::string>  m_particleTextures;
+        List<std::string>  m_particleTextures;
     };
 }
 

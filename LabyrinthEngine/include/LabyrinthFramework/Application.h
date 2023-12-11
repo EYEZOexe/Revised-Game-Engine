@@ -22,7 +22,7 @@ namespace labyrinth_engine
 
         // Weak Pointers are a type of smart pointer that provides a non-owning "weak" reference to an object that's managed by another shared pointer.
         template<typename a_worldType>
-        Wptr<a_worldType> LoadWorld(); // Templates are defined in the header file
+        Weak<a_worldType> LoadWorld(); // Templates are defined in the header file
 
         sf::Vector2u GetWindowSize() const { return m_window.getSize(); }
 
@@ -39,16 +39,16 @@ namespace labyrinth_engine
         sf::Clock m_tick;
 
         // Shared Pointers are a type of smart pointer that automatically manages the lifetime of an object and its memory.
-        Sptr<World> m_currentWorld;
+        Shared<World> m_currentWorld;
         sf::Clock m_ClearTimer;
         float m_ClearTimeInterval;
     };
 
     // Template Implementations
     template<typename a_worldType>
-    Wptr<a_worldType> Application::LoadWorld()
+    Weak<a_worldType> Application::LoadWorld()
     {
-        Sptr<a_worldType> newWorld{new a_worldType(this)};
+        Shared<a_worldType> newWorld{new a_worldType(this)};
         m_currentWorld = newWorld;
         m_currentWorld->BeginPlayFramework();
         return newWorld;

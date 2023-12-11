@@ -11,7 +11,7 @@ namespace labyrinth_engine
 {
     Explosion::Explosion(int a_particleAmount, float a_particleLifeTimeMin, float a_particleLifeTimeMax,
         float a_particleSpeedMin, float a_particleSpeedMax, float a_particleSizeMin, float a_particleSizeMax, const sf::Color& a_particleColour,
-        const Vec<std::string>& a_particleTextures)
+        const List<std::string>& a_particleTextures)
         : m_particleAmount(a_particleAmount)
         , m_particleLifeTimeMin(a_particleLifeTimeMin)
         , m_particleLifeTimeMax(a_particleLifeTimeMax)
@@ -31,7 +31,7 @@ namespace labyrinth_engine
         for (int i = 0; i < m_particleAmount; i++)
         {
             std::string particleTexture = m_particleTextures[(int)RandomFloat(0, m_particleTextures.size())];
-            Wptr<Particle> newParticle = a_world->SpawnActor<Particle>(particleTexture);
+            Weak<Particle> newParticle = a_world->SpawnActor<Particle>(particleTexture);
 
             newParticle.lock()->RandomiseLifeTime(m_particleLifeTimeMin, m_particleLifeTimeMax);
             newParticle.lock()->SetActorLocation(a_location);

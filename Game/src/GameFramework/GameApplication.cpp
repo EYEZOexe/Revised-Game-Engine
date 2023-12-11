@@ -20,6 +20,6 @@ namespace labyrinth_engine
         : Application{600, 900, "Game", sf::Style::Titlebar | sf::Style::Close}
     {
         AssetManager::Get().SetAssetDirectory(GetAssetDirectory());
-        const Wptr<GameLevelOne> newWorld = LoadWorld<GameLevelOne>();
+        const Weak<GameLevelOne> newWorld = LoadWorld<GameLevelOne>();
     }
 }

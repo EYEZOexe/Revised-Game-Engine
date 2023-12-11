@@ -85,7 +85,7 @@ namespace labyrinth_engine
         bool m_bIsPhysicsEnabled;
 
         sf::Sprite m_sprite;
-        Sptr<sf::Texture> m_texture;
+        Shared<sf::Texture> m_texture;
         b2Body* m_physicsBody;
 
         uint8 m_collisionLayer;

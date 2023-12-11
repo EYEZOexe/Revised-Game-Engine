@@ -17,17 +17,18 @@ namespace labyrinth_engine
         testPlayerSpaceship = SpawnActor<PlayerSpaceship>();
         testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
 
-        Wptr<Vanguard> testSpaceship = SpawnActor<Vanguard>();
+        Weak<Vanguard> testSpaceship = SpawnActor<Vanguard>();
         testSpaceship.lock()->SetActorLocation(sf::Vector2f(100.0f, 50.0f));
     }
 
     void GameLevelOne::BeginPlay()
     {
-        TimeManager::GetInstance().SetTimer(GetWeakReference(), &GameLevelOne::TestCallback, 10.0f);
+        m_timerIndex_test = TimeManager::GetInstance().SetTimer(GetWeakReference(), &GameLevelOne::TestCallback, 2.0f, true);
     }
 
     void GameLevelOne::TestCallback()
     {
         LE_LOG("Test Timer Callback");
+        TimeManager::GetInstance().RemoveTimer(m_timerIndex_test);
     }
 }

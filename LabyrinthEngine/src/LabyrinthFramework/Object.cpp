@@ -23,12 +23,12 @@ namespace labyrinth_engine
         m_bIsPendingKill = true;
     }
 
-    Wptr<Object> Object::GetWeakReference()
+    Weak<Object> Object::GetWeakReference()
     {
         return weak_from_this();
     }
 
-    Wptr<const Object> Object::GetWeakReference() const
+    Weak<const Object> Object::GetWeakReference() const
     {
         return weak_from_this();
     }

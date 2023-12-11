@@ -44,7 +44,7 @@ namespace labyrinth_engine
         PhysicsSystem();
     private:
         void CalculateListenersToRemove();
-        static Uptr<PhysicsSystem> physicsSystem;
+        static Unique<PhysicsSystem> physicsSystem;
         b2World m_physicsWorld;
         float m_physicsScale;
         int m_velocityIterations;
@@ -52,7 +52,7 @@ namespace labyrinth_engine
 
         PhysicsContactListner m_contactListner;
 
-        USet<b2Body*> m_listenersToRemove;
+        Set<b2Body*> m_listenersToRemove;
 
     };
 }

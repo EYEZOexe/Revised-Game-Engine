@@ -29,7 +29,7 @@ namespace labyrinth_engine
 
     void World::WorldTickFramework(const float a_deltaTime)
     {
-        for (const Sptr<Actor>& a_actor : m_actorsToAdd)
+        for (const Shared<Actor>& a_actor : m_actorsToAdd)
         {
             m_actors.push_back(a_actor);
             a_actor->ActorBeginPlayFramework();

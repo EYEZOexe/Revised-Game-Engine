@@ -31,7 +31,7 @@ namespace labyrinth_engine
         sf::Vector2f m_playerMoveInput;
         float m_playerSpeed;
 
-        Uptr<Launcher> m_projectileLauncher;
+        Unique<Launcher> m_projectileLauncher;
     };
 
 }
