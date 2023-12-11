@@ -7,9 +7,25 @@
 
 #include "Core.h"
 #include "Object.h"
+#include <functional>
 
 namespace labyrinth_engine
 {
+    struct Timer
+    {
+    public:
+        Timer(Wptr<Object> a_weakObject, std::function<void()> a_function, float a_time, bool a_repeat);
+        void Update(float a_deltaTime);
+        bool IsFinished() const;
+        void SetToFinish() {m_bIsFinished = true;}
+    private:
+        std::pair<Wptr<Object>, std::function<void()>> m_function;
+        float m_time;
+        bool m_bRepeat;
+        float m_currentTime;
+        bool m_bIsFinished;
+    };
+
     class TimeManager
     {
     public:
@@ -19,6 +35,7 @@ namespace labyrinth_engine
         /* Class Functions */
 
         // Void Functions
+        void UpdateTimerManager(float a_deltaTime);
 
         // Boolean Functions
 
@@ -33,9 +50,9 @@ namespace labyrinth_engine
 
         // Setters
         template <typename ClassName>
-        void SetTimer(Wptr<Object> a_weakObject, void (ClassName::*a_function)(), float a_time, bool a_repeat)
+        void SetTimer(Wptr<Object> a_weakObject, void (ClassName::*a_function)(), float a_time, bool a_repeat = false)
         {
-
+            m_timers.push_back(Timer(a_weakObject, [=] {(static_cast<ClassName*>(a_weakObject.lock().get())->*a_function)(); }, a_time, a_repeat));
         }
 
         // Getters
@@ -48,6 +65,7 @@ namespace labyrinth_engine
 
     private:
         static Uptr<TimeManager> m_timeManager;
+        Vec<Timer> m_timers;
     };
 }
 

@@ -7,6 +7,7 @@
 #include "LabyrinthFramework/World.h"
 #include "LabyrinthFramework/AssetManager.h"
 #include "LabyrinthFramework/PhysicsSystem.h"
+#include "LabyrinthFramework/TimeManager.h"
 
 
 namespace labyrinth_engine
@@ -59,6 +60,8 @@ namespace labyrinth_engine
         {
             m_currentWorld->WorldTickFramework(a_deltaTime);
         }
+
+        TimeManager::GetInstance().UpdateTimerManager(a_deltaTime); //Timer Update
 
         PhysicsSystem::GetInstance().Update(a_deltaTime); //Physics Update
 

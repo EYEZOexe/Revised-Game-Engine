@@ -23,7 +23,7 @@ namespace labyrinth_engine
 
     void GameLevelOne::BeginPlay()
     {
-        TimeManager::GetInstance().SetTimer(GetWeakReference(), &GameLevelOne::TestCallback, 1.0f, true);
+        TimeManager::GetInstance().SetTimer(GetWeakReference(), &GameLevelOne::TestCallback, 10.0f);
     }
 
     void GameLevelOne::TestCallback()
