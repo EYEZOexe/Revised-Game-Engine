@@ -15,7 +15,9 @@ namespace labyrinth_engine
     public:
         GameLevelOne(Application* a_application);
     private:
+        void BeginPlay() override;
         Wptr<PlayerSpaceship> testPlayerSpaceship;
+        void TestCallback();
     };
 }
 

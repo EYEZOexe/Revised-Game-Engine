@@ -7,13 +7,14 @@
 
 #include <SFML/Graphics.hpp>
 #include "Core.h"
+#include "Object.h"
 
 namespace labyrinth_engine
 {
     class Actor;
     class Application;
 
-    class World
+    class World : public Object
     {
     public:
         explicit World(Application* a_owningApplication);
@@ -33,8 +34,8 @@ namespace labyrinth_engine
 
 
     private:
-        void BeginPlay();
-        void WorldTick(float a_deltaTime);
+        virtual void BeginPlay();
+        virtual void WorldTick(float a_deltaTime);
 
         Application* m_owningApplication;
         bool m_bIsPlaying;

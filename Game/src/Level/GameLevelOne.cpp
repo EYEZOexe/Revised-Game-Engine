@@ -4,6 +4,7 @@
 
 #include "Level/GameLevelOne.h"
 #include "LabyrinthFramework/Actor.h"
+#include "LabyrinthFramework/TimeManager.h"
 #include "GameName/GameApplication.h"
 #include "Enemy/Vanguard.h"
 #include "Player/PlayerSpaceship.h"
@@ -18,5 +19,15 @@ namespace labyrinth_engine
 
         Wptr<Vanguard> testSpaceship = SpawnActor<Vanguard>();
         testSpaceship.lock()->SetActorLocation(sf::Vector2f(100.0f, 50.0f));
+    }
+
+    void GameLevelOne::BeginPlay()
+    {
+        TimeManager::GetInstance().SetTimer(GetWeakReference(), &GameLevelOne::TestCallback, 1.0f, true);
+    }
+
+    void GameLevelOne::TestCallback()
+    {
+        LE_LOG("Test Timer Callback");
     }
 }
