@@ -6,20 +6,13 @@
 #define GAMEAPPLICATION_H
 
 #include "LabyrinthFramework/Application.h"
-#include "LabyrinthFramework/Core.h"
 
 namespace labyrinth_engine
 {
-    class PlayerSpaceship;
-
     class GameApplication : public Application
     {
     public:
         GameApplication();
-        void Tick(float a_deltaTime) override;
-    private:
-        float m_counter;
-        Wptr<PlayerSpaceship> testPlayerSpaceship;
     };
 }
 

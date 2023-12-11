@@ -29,6 +29,9 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/Vanguard.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/Vanguard.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Level/GameLevelOne.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Level/GameLevelOne.h
+
 
 )
 
