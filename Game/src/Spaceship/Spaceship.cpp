@@ -30,13 +30,29 @@ namespace labyrinth_engine
         Actor::ActorBeginPlay();
         SetEnableActorPhysics(true);
 
-        m_healthComponent.OnDamage.Bind(GetWeakReference(), &Spaceship::OnHealthChange);
-
-        m_healthComponent.OnDamage.Broadcast(10, 89, 100);
+        m_healthComponent.OnHealthChange.Bind(GetWeakReference(), &Spaceship::OnHealthChange);
+        m_healthComponent.OnDamage.Bind(GetWeakReference(), &Spaceship::OnDamage);
+        m_healthComponent.OnDeath.Bind(GetWeakReference(), &Spaceship::OnDeath);
     }
+
+    void Spaceship::DoDamage(float a_damage)
+    {
+        m_healthComponent.SetHealth(-a_damage);
+    }
+
 
     void Spaceship::OnHealthChange(float a_amount, float a_currentHealth, float a_maxHealth)
     {
-        LE_LOG("health changed by: %f, and is now: %f/%f", a_amount, a_currentHealth, a_maxHealth);
+
+    }
+
+    void Spaceship::OnDamage(float a_damage, float a_currentHealth, float a_maxHealth)
+    {
+    }
+
+    void Spaceship::OnDeath()
+    {
+        //destroy the actor
+        Destroy();
     }
 }

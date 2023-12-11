@@ -12,7 +12,7 @@ namespace labyrinth_engine
         , m_speed(a_speed)
         , m_damage(a_damage)
     {
-
+        SetActorCollisionLayer(a_owner->GetCollisionLayer());
     }
 
     void Projectile::ActorTick(float a_deltaTime)
@@ -32,6 +32,15 @@ namespace labyrinth_engine
         Actor::ActorBeginPlay(); // Call the base class version of this function
 
         SetEnableActorPhysics(true);
+    }
+
+    void Projectile::OnActorBeginOverlap(Actor* a_otherActor)
+    {
+        if (IsHostileTo(a_otherActor))
+        {
+            a_otherActor->DoDamage(GetProjectileDamage());
+            Destroy();
+        }
     }
 
     void Projectile::MoveProjectile(float a_deltaTime)

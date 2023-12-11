@@ -32,7 +32,7 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
 
 )
 
-target_include_directories(${GAME_ENGINE_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the game target
+target_include_directories(${GAME_ENGINE_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the engine target
 
 include(FetchContent) # Includes the FetchContent module
 set(SFML_LIB_NAME SFML)
@@ -46,10 +46,10 @@ FetchContent_Declare( # Declares the SFML library
 
 FetchContent_MakeAvailable(${SFML_LIB_NAME}) # Makes the SFML library available
 
-target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC sfml-graphics) # Links the SFML graphics library to the game target
-target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC sfml-window) # Links the SFML window library to the game target
-target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC sfml-system) # Links the SFML system library to the game target
-target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC sfml-audio) # Links the SFML audio library to the game target
+target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC sfml-graphics) # Links the SFML graphics library to the engine target
+target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC sfml-window) # Links the SFML window library to the engine target
+target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC sfml-system) # Links the SFML system library to the engine target
+target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC sfml-audio) # Links the SFML audio library to the engine target
 
 set(BOX2D_LIB_NAME Box2D) # Sets the Box2D library name
 FetchContent_Declare(
@@ -61,9 +61,9 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(${BOX2D_LIB_NAME}) # Makes the Box2D library available
 
-target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC box2d) # Links the Box2D library to the game target
+target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC box2d) # Links the Box2D library to the engine target
 
-function(CopyLibrariesToTarget LIB_NAME TARGET_NAME) # Copies the SFML libraries to the game target
+function(CopyLibrariesToTarget LIB_NAME TARGET_NAME) # Copies the SFML libraries to the engine target
     add_custom_command(TARGET ${TARGET_NAME}
             POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
@@ -72,9 +72,9 @@ function(CopyLibrariesToTarget LIB_NAME TARGET_NAME) # Copies the SFML libraries
     )
 endfunction()
 
-CopyLibrariesToTarget(sfml-graphics ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML graphics library to the game target
-CopyLibrariesToTarget(sfml-window ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML window library to the game target
-CopyLibrariesToTarget(sfml-system ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML system library to the game target
-CopyLibrariesToTarget(sfml-audio ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML audio library to the game target
-CopyLibrariesToTarget(box2d ${GAME_ENGINE_TARGET_NAME}) # Copies the Box2D library to the game target
+CopyLibrariesToTarget(sfml-graphics ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML graphics library to the engine target
+CopyLibrariesToTarget(sfml-window ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML window library to the engine target
+CopyLibrariesToTarget(sfml-system ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML system library to the engine target
+CopyLibrariesToTarget(sfml-audio ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML audio library to the engine target
+CopyLibrariesToTarget(box2d ${GAME_ENGINE_TARGET_NAME}) # Copies the Box2D library to the engine target
 

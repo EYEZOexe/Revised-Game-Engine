@@ -25,6 +25,7 @@ namespace labyrinth_engine
         float GetProjectileDamage() const { return m_damage; };
 
     private:
+        void OnActorBeginOverlap(Actor* a_otherActor) override;
         void MoveProjectile(float a_deltaTime);
 
         Actor* m_owner;

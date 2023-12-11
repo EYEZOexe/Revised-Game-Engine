@@ -45,6 +45,16 @@ namespace labyrinth_engine
 
         World* GetWorld() const { return m_owningWorld; };
 
+        void SetActorCollisionLayer(const uint8 a_collisionLayer) {m_collisionLayer = a_collisionLayer;}
+
+        static uint8 GetDefaultCollisionLayer() { return m_defaultCollisionLayer; };
+        static uint8 GetPlayerCollisionLayer() { return m_playerCollisionLayer; };
+        static uint8 GetEnemyCollisionLayer() { return m_enemyCollisionLayer; };
+        uint8 GetCollisionLayer() const { return m_collisionLayer; };
+
+        bool IsHostileTo(const Actor* a_otherActor) const;
+        virtual void DoDamage(float a_damage);
+
         bool IsActorOutOfBounds() const;
         void SetEnableActorPhysics(bool a_bIsEnabled);
         virtual void OnActorBeginOverlap(Actor* m_actor);
@@ -64,6 +74,11 @@ namespace labyrinth_engine
         Sptr<sf::Texture> m_texture;
         b2Body* m_physicsBody;
         bool m_bIsPhysicsEnabled;
+
+        uint8 m_collisionLayer;
+        static constexpr uint8 m_defaultCollisionLayer = 255;
+        static constexpr uint8 m_playerCollisionLayer = 1;
+        static constexpr uint8 m_enemyCollisionLayer = 2;
     };
 
 }

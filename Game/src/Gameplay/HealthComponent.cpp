@@ -15,21 +15,6 @@ namespace labyrinth_engine
 
     }
 
-    void HealthComponent::Damage(float a_damage)
-    {
-        LE_LOG("Taken damage: %f, remaining HP: %f/%f", a_damage, m_health, m_maxHealth);
-    }
-
-    void HealthComponent::Die()
-    {
-        LE_LOG("Dead");
-    }
-
-    void HealthComponent::RegenerateHealth(float a_health)
-    {
-        LE_LOG("Health Regen: %f, remaining HP: %f/%f", a_health, m_health, m_maxHealth);
-    }
-
     void HealthComponent::SetHealth(float a_health)
     {
         if (a_health == 0) return;
@@ -48,15 +33,23 @@ namespace labyrinth_engine
 
         if (a_health < 0)
         {
-            Damage(-a_health);
+            TakenDamage(-a_health);
             if (m_health <= 0)
             {
                 Die();
             }
-            else
-            {
-                RegenerateHealth(a_health);
-            }
         }
+
+        OnHealthChange.Broadcast(a_health, m_health, m_maxHealth);
+    }
+
+    void HealthComponent::TakenDamage(float a_damage)
+    {
+        OnDamage.Broadcast(a_damage, m_health, m_maxHealth);
+    }
+
+    void HealthComponent::Die()
+    {
+        OnDeath.Broadcast();
     }
 }

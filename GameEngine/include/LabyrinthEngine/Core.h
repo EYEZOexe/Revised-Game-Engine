@@ -35,6 +35,8 @@ namespace labyrinth_engine
     template<typename T>
     using USet = std::unordered_set<T>; // a hash set is faster than a set but it's unordered.
 
+    using uint8 = unsigned char; // 1 byte
+
 
 #define LE_LOG(x, ...) printf(x "\n", ##__VA_ARGS__), fflush(stdout) // This is a macro, the 2 ## are for when there are no arguments, it will still compile.
 }

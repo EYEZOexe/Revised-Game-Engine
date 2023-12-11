@@ -20,6 +20,7 @@ namespace labyrinth_engine
         , m_texture{}
         , m_physicsBody{nullptr}
         , m_bIsPhysicsEnabled{false}
+        , m_collisionLayer{GetDefaultCollisionLayer()}
     {
         SetActorTexture(a_texturePath);
     }
@@ -122,6 +123,22 @@ namespace labyrinth_engine
         return m_owningWorld->GetWindowSize();
     }
 
+    bool Actor::IsHostileTo(const Actor* a_otherActor) const
+    {
+        if (GetCollisionLayer() == GetDefaultCollisionLayer() || a_otherActor->GetCollisionLayer() == GetDefaultCollisionLayer())
+        {
+            return false;
+        }
+
+        return GetCollisionLayer() != a_otherActor->GetCollisionLayer();
+
+    }
+
+    void Actor::DoDamage(float a_damage)
+    {
+
+    }
+
     bool Actor::IsActorOutOfBounds() const
     {
         float windowWidth = GetWorld()->GetWindowSize().x;
@@ -172,12 +189,10 @@ namespace labyrinth_engine
 
     void Actor::OnActorBeginOverlap(Actor* m_actor)
     {
-        LE_LOG("Overlap");
     }
 
     void Actor::OnActorEndOverlap(Actor* m_actor)
     {
-        LE_LOG("Overlap Finished");
     }
 
     void Actor::Destroy()

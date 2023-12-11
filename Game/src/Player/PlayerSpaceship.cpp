@@ -16,6 +16,7 @@ namespace labyrinth_engine
         , m_playerSpeed{200.0f}
         , m_projectileLauncher{new ProjectileLauncher{this, 0.1f}}
     {
+        SetActorCollisionLayer(GetPlayerCollisionLayer());
     }
 
     void PlayerSpaceship::ActorTick(const float a_deltaTime)

@@ -22,8 +22,11 @@ namespace labyrinth_engine
 
         virtual void Fire();
         void ActorBeginPlay() override;
+        void DoDamage(float a_damage) override;
     private:
-        void OnHealthChange(float a_amount, float a_currentHealth, float a_maxHealth);
+        virtual void OnHealthChange(float a_amount, float a_currentHealth, float a_maxHealth);
+        virtual void OnDamage(float a_damage, float a_currentHealth, float a_maxHealth);
+        virtual void OnDeath();
         sf::Vector2f m_velocity;
         HealthComponent m_healthComponent;
     };
