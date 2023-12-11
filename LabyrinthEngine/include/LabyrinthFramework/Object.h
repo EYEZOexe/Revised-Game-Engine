@@ -8,7 +8,7 @@
 #include <memory>
 
 #include "Core.h"
-#include "LabyrinthEngine/EventCallback.h"
+#include "LabyrinthFramework/EventCallback.h"
 
 namespace labyrinth_engine
 {

@@ -2,10 +2,10 @@
 // Created by Tomas Tzorta on 07/12/2023.
 //
 
-#include "LabyrinthEngine/World.h"
-#include "LabyrinthEngine/Core.h"
-#include "LabyrinthEngine/Actor.h"
-#include "LabyrinthEngine/Application.h"
+#include "LabyrinthFramework/World.h"
+#include "LabyrinthFramework/Core.h"
+#include "LabyrinthFramework/Actor.h"
+#include "LabyrinthFramework/Application.h"
 
 namespace labyrinth_engine
 {

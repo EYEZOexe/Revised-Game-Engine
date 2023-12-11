@@ -3,7 +3,7 @@
 //
 
 #include "EntryPoint.h"
-#include "LabyrinthEngine/Application.h"
+#include "LabyrinthFramework/Application.h"
 
 int main()
 {

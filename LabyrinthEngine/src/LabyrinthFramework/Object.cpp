@@ -2,8 +2,8 @@
 // Created by Tomas Tzorta on 07/12/2023.
 //
 
-#include "LabyrinthEngine/Object.h"
-#include "LabyrinthEngine/Core.h"
+#include "LabyrinthFramework/Object.h"
+#include "LabyrinthFramework/Core.h"
 
 namespace labyrinth_engine
 {

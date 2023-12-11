@@ -3,7 +3,7 @@
 //
 
 #include "Spaceship/Spaceship.h"
-#include "LabyrinthEngine/MathUtility.h"
+#include "LabyrinthFramework/MathUtility.h"
 
 namespace labyrinth_engine
 {

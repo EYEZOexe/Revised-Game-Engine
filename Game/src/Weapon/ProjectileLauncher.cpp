@@ -3,9 +3,9 @@
 //
 
 #include "Weapon/ProjectileLauncher.h"
-#include "LabyrinthEngine/Core.h"
+#include "LabyrinthFramework/Core.h"
 #include "Weapon/Projectile.h"
-#include "LabyrinthEngine/World.h"
+#include "LabyrinthFramework/World.h"
 
 namespace labyrinth_engine
 {

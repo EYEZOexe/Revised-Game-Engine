@@ -1,35 +1,36 @@
 add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Application.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Application.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/Application.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/Application.cpp
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/World.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/World.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/World.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/World.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Actor.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Actor.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/Actor.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/Actor.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Object.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Object.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/Object.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/Object.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/AssetManager.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/AssetManager.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/AssetManager.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/AssetManager.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/MathUtility.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/MathUtility.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/MathUtility.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/MathUtility.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/PhysicsSystem.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/PhysicsSystem.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/PhysicsSystem.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/PhysicsSystem.cpp
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/EventCallback.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/EventCallback.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/EventCallback.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/EventCallback.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthEngine/Core.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthEngine/Core.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthVFX/Particle.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthVFX/Particle.h
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/Core.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/Core.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
-
-
 )
 
 target_include_directories(${GAME_ENGINE_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the engine target

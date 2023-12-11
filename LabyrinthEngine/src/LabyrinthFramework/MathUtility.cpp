@@ -2,7 +2,8 @@
 // Created by Tomas Tzorta on 08/12/2023.
 //
 
-#include "LabyrinthEngine/MathUtility.h"
+#include "LabyrinthFramework/MathUtility.h"
+#include <random>
 
 namespace labyrinth_engine
 {
@@ -11,7 +12,7 @@ namespace labyrinth_engine
     sf::Vector2f RotationToVector(float a_rotation)
     {
         float radians = DegreesToradians(a_rotation);
-        return sf::Vector2f(cosf(radians), sinf(radians));
+        return {cosf(radians), sinf(radians)};
 
     }
 
@@ -35,10 +36,10 @@ namespace labyrinth_engine
 
     sf::Color InterpolateColour(const sf::Color& a_start, const sf::Color& a_end, float a_alpha)
     {
-        int Red = InterpolateFloat(a_start.r, a_end.r, a_alpha); //interpolate the red
-        int Green = InterpolateFloat(a_start.g, a_end.g, a_alpha); //interpolate the green
-        int Blue = InterpolateFloat(a_start.b, a_end.b, a_alpha); //interpolate the blue
-        int Alpha = InterpolateFloat(a_start.a, a_end.a, a_alpha); //interpolate the alpha
+        const int Red = InterpolateFloat(a_start.r, a_end.r, a_alpha); //interpolate the red
+        const int Green = InterpolateFloat(a_start.g, a_end.g, a_alpha); //interpolate the green
+        const int Blue = InterpolateFloat(a_start.b, a_end.b, a_alpha); //interpolate the blue
+        const int Alpha = InterpolateFloat(a_start.a, a_end.a, a_alpha); //interpolate the alpha
 
         return sf::Color(Red, Green, Blue, Alpha); //return the interpolated color
     }
@@ -48,6 +49,24 @@ namespace labyrinth_engine
         float x = InterpolateFloat(a_start.x, a_end.x, a_alpha); //interpolate the x
         float y = InterpolateFloat(a_start.y, a_end.y, a_alpha); //interpolate the y
 
-        return sf::Vector2f(x, y); //return the interpolated vector
+        return {x, y}; //return the interpolated vector
+    }
+
+    float RandomFloat(float a_min, float a_max)
+    {
+        std::random_device randomDevice;
+        std::mt19937 gen(randomDevice());
+        std::uniform_real_distribution<float> dis(a_min, a_max);
+
+        return dis(gen);
+    }
+
+    sf::Vector2f RandomVector()
+    {
+        float x = RandomFloat(-1.0f, 1.0f);
+        float y = RandomFloat(-1.0f, 1.0f);
+        sf::Vector2f randomVector{x, y};
+        NormalizeVector(randomVector);
+        return randomVector;
     }
 }

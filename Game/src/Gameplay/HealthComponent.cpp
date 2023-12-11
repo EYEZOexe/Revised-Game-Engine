@@ -4,7 +4,7 @@
 
 #include "Gameplay/HealthComponent.h"
 
-#include "LabyrinthEngine/Core.h"
+#include "LabyrinthFramework/Core.h"
 
 namespace labyrinth_engine
 {

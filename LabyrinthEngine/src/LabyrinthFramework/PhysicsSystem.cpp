@@ -8,9 +8,9 @@
 #include <box2d/b2_fixture.h>
 #include <box2d/b2_polygon_shape.h>
 
-#include "LabyrinthEngine/Actor.h"
-#include "LabyrinthEngine/PhysicsSystem.h"
-#include "LabyrinthEngine/MathUtility.h"
+#include "LabyrinthFramework/Actor.h"
+#include "LabyrinthFramework/PhysicsSystem.h"
+#include "LabyrinthFramework/MathUtility.h"
 
 namespace labyrinth_engine
 {

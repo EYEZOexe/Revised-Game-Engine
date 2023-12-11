@@ -42,6 +42,9 @@ namespace labyrinth_engine
     sf::Color InterpolateColour(const sf::Color& a_start, const sf::Color& a_end, float a_alpha);
     sf::Vector2f InterpolateVector(const sf::Vector2f& a_start, const sf::Vector2f& a_end, float a_alpha);
 
+    float RandomFloat(float a_min, float a_max);
+    sf::Vector2f RandomVector();
+
 }
 
 

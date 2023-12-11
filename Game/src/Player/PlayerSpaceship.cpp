@@ -4,7 +4,7 @@
 
 #include "Player/PlayerSpaceship.h"
 
-#include "LabyrinthEngine/MathUtility.h"
+#include "LabyrinthFramework/MathUtility.h"
 #include "SFML/System.hpp"
 #include "Weapon/ProjectileLauncher.h"
 

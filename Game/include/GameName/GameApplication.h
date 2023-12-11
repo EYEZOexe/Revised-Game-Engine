@@ -5,8 +5,8 @@
 #ifndef GAMEAPPLICATION_H
 #define GAMEAPPLICATION_H
 
-#include "LabyrinthEngine/Application.h"
-#include "LabyrinthEngine/Core.h"
+#include "LabyrinthFramework/Application.h"
+#include "LabyrinthFramework/Core.h"
 
 namespace labyrinth_engine
 {

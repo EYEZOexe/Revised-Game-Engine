@@ -5,7 +5,7 @@
 #ifndef HEALTHCOMPONENT_H
 #define HEALTHCOMPONENT_H
 
-#include "LabyrinthEngine/EventCallback.h"
+#include "LabyrinthFramework/EventCallback.h"
 
 namespace labyrinth_engine
 {

@@ -2,11 +2,11 @@
 // Created by Tomas Tzorta on 07/12/2023.
 //
 
-#include "LabyrinthEngine/Application.h"
-#include "LabyrinthEngine/Core.h"
-#include "LabyrinthEngine/World.h"
-#include "LabyrinthEngine/AssetManager.h"
-#include "LabyrinthEngine/PhysicsSystem.h"
+#include "LabyrinthFramework/Application.h"
+#include "LabyrinthFramework/Core.h"
+#include "LabyrinthFramework/World.h"
+#include "LabyrinthFramework/AssetManager.h"
+#include "LabyrinthFramework/PhysicsSystem.h"
 
 
 namespace labyrinth_engine

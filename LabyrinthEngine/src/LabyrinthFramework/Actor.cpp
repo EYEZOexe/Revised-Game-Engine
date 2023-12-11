@@ -4,12 +4,12 @@
 
 #include "box2d/b2_body.h"
 
-#include "LabyrinthEngine/Actor.h"
-#include "LabyrinthEngine/Core.h"
-#include "LabyrinthEngine/AssetManager.h"
-#include "LabyrinthEngine/MathUtility.h"
-#include "LabyrinthEngine/World.h"
-#include "LabyrinthEngine/PhysicsSystem.h"
+#include "LabyrinthFramework/Actor.h"
+#include "LabyrinthFramework/Core.h"
+#include "LabyrinthFramework/AssetManager.h"
+#include "LabyrinthFramework/MathUtility.h"
+#include "LabyrinthFramework/World.h"
+#include "LabyrinthFramework/PhysicsSystem.h"
 
 namespace labyrinth_engine
 {

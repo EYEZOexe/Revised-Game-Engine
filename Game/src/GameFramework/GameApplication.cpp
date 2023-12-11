@@ -3,9 +3,9 @@
 //
 
 #include "GameName/GameApplication.h"
-#include "LabyrinthEngine/World.h"
-#include "LabyrinthEngine/Actor.h"
-#include "LabyrinthEngine/AssetManager.h"
+#include "LabyrinthFramework/World.h"
+#include "LabyrinthFramework/Actor.h"
+#include "LabyrinthFramework/AssetManager.h"
 #include "Player/PlayerSpaceship.h"
 #include "config.h"
 

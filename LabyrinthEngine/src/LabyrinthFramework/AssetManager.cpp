@@ -2,7 +2,7 @@
 // Created by Tomas Tzorta on 07/12/2023.
 //
 
-#include "LabyrinthEngine/AssetManager.h"
+#include "LabyrinthFramework/AssetManager.h"
 
 namespace labyrinth_engine
 {

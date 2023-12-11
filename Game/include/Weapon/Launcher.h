@@ -5,7 +5,7 @@
 #ifndef WEAPON_H
 #define WEAPON_H
 
-#include "LabyrinthEngine/Actor.h"
+#include "LabyrinthFramework/Actor.h"
 
 namespace labyrinth_engine
 {
