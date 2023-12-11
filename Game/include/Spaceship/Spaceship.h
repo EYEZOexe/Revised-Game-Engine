@@ -18,8 +18,8 @@ namespace labyrinth_engine
         void ActorTick(float a_deltaTime) override; //tick event
         void ActorBeginPlay() override; //begin play event
 
-        void SetVelocity(const sf::Vector2f& a_velocity) { m_velocity = a_velocity; }
-        sf::Vector2f GetVelocity() const { return m_velocity; }
+        void SetSpaceshipVelocity(const sf::Vector2f& a_velocity) { m_velocity = a_velocity; }
+        sf::Vector2f GetSpaceshipVelocity() const { return m_velocity; }
 
         virtual void Fire(); //fire the weapon
         void DoDamage(float a_damage) override; //damage the actor

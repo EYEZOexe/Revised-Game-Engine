@@ -70,7 +70,7 @@ namespace labyrinth_engine
 
     void PlayerSpaceship::HandlePlayerMovementInput(float a_deltaTime)
     {
-        SetVelocity(m_playerMoveInput * m_playerSpeed);
+        SetSpaceshipVelocity(m_playerMoveInput * m_playerSpeed);
         m_playerMoveInput.x = m_playerMoveInput.y = 0.0f; // Reset the input
     }
 

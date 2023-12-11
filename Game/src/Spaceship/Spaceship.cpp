@@ -22,7 +22,7 @@ namespace labyrinth_engine
     void Spaceship::ActorTick(const float a_deltaTime)
     {
         Actor::ActorTick(a_deltaTime);
-        AddActorLocationOffset(GetVelocity() * a_deltaTime); //move the actor
+        AddActorLocationOffset(GetSpaceshipVelocity() * a_deltaTime); //move the actor
         UpdateHitEffect(a_deltaTime); //update the hit effect
     }
 

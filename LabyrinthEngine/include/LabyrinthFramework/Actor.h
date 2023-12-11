@@ -33,7 +33,7 @@ namespace labyrinth_engine
 
         /* Boolean functions */
         bool IsHostileTo(const Actor* a_otherActor) const;
-        bool IsActorOutOfBounds() const;
+        bool IsActorOutOfBounds(float a_border = 10.0f) const;
         /* End of Boolean functions */
 
         /* Virtual functions */

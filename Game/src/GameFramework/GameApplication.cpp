@@ -7,7 +7,9 @@
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/AssetManager.h"
 #include "Player/PlayerSpaceship.h"
+#include "Enemy/Vanguard.h"
 #include "config.h"
+
 
 labyrinth_engine::Application* GetApplication()
 {
@@ -25,10 +27,8 @@ namespace labyrinth_engine
         testPlayerSpaceship = newWorld.lock()->SpawnActor<PlayerSpaceship>();
         testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
 
-        Wptr<Spaceship> testSpaceship = newWorld.lock()->SpawnActor<Spaceship>();
-        testSpaceship.lock()->SetActorTexture("PNG/playerShip1_blue.png");
+        Wptr<Vanguard> testSpaceship = newWorld.lock()->SpawnActor<Vanguard>();
         testSpaceship.lock()->SetActorLocation(sf::Vector2f(100.0f, 50.0f));
-        testSpaceship.lock()->SetActorCollisionLayer(testSpaceship.lock()->GetEnemyCollisionLayer());
         m_counter = 0;
         LE_LOG("Player Collision Layer: %d", testPlayerSpaceship.lock()->GetPlayerCollisionLayer());
         LE_LOG("Enemy Collision Layer: %d", testSpaceship.lock()->GetEnemyCollisionLayer());

@@ -125,13 +125,14 @@ namespace labyrinth_engine
 
     bool Actor::IsHostileTo(const Actor* a_otherActor) const
     {
+        if (a_otherActor == nullptr) return false;
+
         if (GetCollisionLayer() == GetDefaultCollisionLayer() || a_otherActor->GetCollisionLayer() == GetDefaultCollisionLayer())
         {
             return false;
         }
 
         return GetCollisionLayer() != a_otherActor->GetCollisionLayer();
-
     }
 
     void Actor::DoDamage(float a_damage)
@@ -139,7 +140,7 @@ namespace labyrinth_engine
 
     }
 
-    bool Actor::IsActorOutOfBounds() const
+    bool Actor::IsActorOutOfBounds(float a_border) const
     {
         float windowWidth = GetWorld()->GetWindowSize().x;
         float windowHeight = GetWorld()->GetWindowSize().y;
@@ -149,22 +150,22 @@ namespace labyrinth_engine
 
         sf::Vector2f actorLocation = GetActorLocation();
 
-        if (actorLocation.x < -width)
+        if (actorLocation.x < -width - a_border)
         {
             return true;
         }
 
-        if (actorLocation.x > windowWidth + width)
+        if (actorLocation.x > windowWidth + width + a_border)
         {
             return true;
         }
 
-        if (actorLocation.y < -height)
+        if (actorLocation.y < -height - a_border)
         {
             return true;
         }
 
-        if (actorLocation.y > windowHeight + height)
+        if (actorLocation.y > windowHeight + height + a_border)
         {
             return true;
         }
