@@ -6,6 +6,7 @@
 #define GAMELEVELONE_H
 
 #include "LabyrinthFramework/World.h"
+#include "LabyrinthFramework/TimeManager.h"
 
 namespace labyrinth_engine
 {
@@ -18,7 +19,7 @@ namespace labyrinth_engine
         void BeginPlay() override;
         Weak<PlayerSpaceship> testPlayerSpaceship;
         void TestCallback();
-        unsigned int m_timerIndex_test;
+        TimerHandler m_timerHandler;
     };
 }
 

@@ -8,6 +8,19 @@ namespace labyrinth_engine
 {
     Unique<TimeManager> TimeManager::m_timeManager{nullptr};
 
+    unsigned int TimerHandler::m_timerKeyCounter = 0;
+
+    TimerHandler::TimerHandler()
+        : m_timerKey{GetNextTimerKey()}
+    {
+
+    }
+
+    bool operator==(const TimerHandler& a_timerHandler1, const TimerHandler& a_timerHandler2)
+    {
+        return a_timerHandler1.GetTimerKey() == a_timerHandler2.GetTimerKey();
+    }
+
     Timer::Timer(Weak<Object> a_weakObject, std::function<void()> a_function, float a_time, bool a_repeat)
         : m_function{a_weakObject, a_function}
         , m_time{a_time}
@@ -23,7 +36,6 @@ namespace labyrinth_engine
     {
 
     }
-    unsigned int TimeManager::m_currentIndex = 0;
 
     void Timer::Update(float a_deltaTime)
     {
@@ -67,9 +79,9 @@ namespace labyrinth_engine
         }
     }
 
-    void TimeManager::RemoveTimer(const unsigned int a_index)
+    void TimeManager::RemoveTimer( TimerHandler a_timerHandler)
     {
-        auto i = m_timers.find(a_index);
+        auto i = m_timers.find(a_timerHandler);
 
         if (i != m_timers.end())
         {

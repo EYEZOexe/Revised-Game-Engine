@@ -23,12 +23,12 @@ namespace labyrinth_engine
 
     void GameLevelOne::BeginPlay()
     {
-        m_timerIndex_test = TimeManager::GetInstance().SetTimer(GetWeakReference(), &GameLevelOne::TestCallback, 2.0f, true);
+        m_timerHandler = TimeManager::GetInstance().SetTimer(GetWeakReference(), &GameLevelOne::TestCallback, 2.0f, true);
     }
 
     void GameLevelOne::TestCallback()
     {
         LE_LOG("Test Timer Callback");
-        TimeManager::GetInstance().RemoveTimer(m_timerIndex_test);
+        TimeManager::GetInstance().RemoveTimer(m_timerHandler);
     }
 }

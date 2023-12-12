@@ -11,6 +11,28 @@
 
 namespace labyrinth_engine
 {
+    struct TimerHandler
+    {
+    public:
+        TimerHandler();
+        unsigned int GetTimerKey() const {return m_timerKey;}
+    private:
+        unsigned int m_timerKey;
+        static unsigned int m_timerKeyCounter;
+        static unsigned int GetNextTimerKey() {return ++m_timerKeyCounter;}
+    };
+
+    struct TimerHandlerHash
+    {
+    public:
+        std::size_t operator()(const TimerHandler& a_timerHandler) const // hash function for the timer handler that will be used in the dictionary
+        {
+            return a_timerHandler.GetTimerKey();
+        }
+    };
+
+    bool operator==(const TimerHandler& a_timerHandler1, const TimerHandler& a_timerHandler2); // operator overloading for the timer handler
+
     struct Timer
     {
     public:
@@ -36,7 +58,7 @@ namespace labyrinth_engine
 
         // Void Functions
         void UpdateTimerManager(float a_deltaTime);
-        void RemoveTimer(unsigned int a_index);
+        void RemoveTimer(TimerHandler a_timerHandler);
 
         // Boolean Functions
 
@@ -51,9 +73,9 @@ namespace labyrinth_engine
 
         // Setters
         template <typename ClassName>
-        unsigned int SetTimer(Weak<Object> a_weakObject, void (ClassName::*a_function)(), float a_time, bool a_repeat = false)
+        TimerHandler SetTimer(Weak<Object> a_weakObject, void (ClassName::*a_function)(), float a_time, bool a_repeat = false)
         {
-            ++m_currentIndex; // set the index to the next one
+            TimerHandler m_currentIndex{}; // create a timer handler
             m_timers.insert({m_currentIndex, Timer(a_weakObject, [=] {(static_cast<ClassName*>(a_weakObject.lock().get())->*a_function)(); }, a_time, a_repeat) }); // insert the timer in the dictionary and set the index as the key calling the constructor of the timer
             return m_currentIndex; // return the index
         }
@@ -68,8 +90,7 @@ namespace labyrinth_engine
 
     private:
         static Unique<TimeManager> m_timeManager; // unique pointer to the time manager
-        static unsigned int m_currentIndex; // current index of the timer
-        Dictionary<unsigned int, Timer> m_timers; // dictionary of timers
+        Dictionary<TimerHandler, Timer, TimerHandlerHash> m_timers; // dictionary of timers
     };
 }
 
