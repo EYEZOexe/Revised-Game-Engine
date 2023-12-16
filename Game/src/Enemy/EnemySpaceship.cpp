@@ -17,7 +17,7 @@ namespace labyrinth_engine
     void EnemySpaceship::ActorTick(const float a_deltaTime)
     {
         Spaceship::ActorTick(a_deltaTime);
-        if (IsActorOutOfBounds(GetActorBounds().width)) // If the actor is out of bounds, destroy it
+        if (IsActorOutOfBounds(GetActorBounds().width * 2.0f)) // If the actor is out of bounds, destroy it
         {
             Destroy();
         }

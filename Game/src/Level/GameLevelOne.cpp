@@ -4,9 +4,9 @@
 
 #include "Level/GameLevelOne.h"
 
-#include "Enemy/Hexagon.h"
 #include "Enemy/VanguardGameStage.h"
 #include "Enemy/TwinBladeGameStage.h"
+#include "Enemy/HexagonGameStage.h"
 #include "Gameplay/WaitStage.h"
 
 #include "LabyrinthFramework/Actor.h"
@@ -30,10 +30,13 @@ namespace labyrinth_engine
 
     void GameLevelOne::InitialiseGameStages()
     {
+        AddGameStage(Shared<HexagonGameStage>{new HexagonGameStage{this}});
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
         AddGameStage(Shared<VanguardGameStage>{new VanguardGameStage{this}});
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
         AddGameStage(Shared<TwinBladeGameStage>{new TwinBladeGameStage{this}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
+
 
     }
 }
