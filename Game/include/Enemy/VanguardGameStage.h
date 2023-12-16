@@ -62,7 +62,7 @@ namespace labyrinth_engine
         int m_vanguardCountPerRow; // Number of vanguards to spawn per row
         int m_currentRowVanguardCount; // Number of vanguards spawned in the current row
 
-        void OnEndStage() override;
+        void StageEnded() override;
         void SpawnEnemies();
         void SwitchEnemyRows();
     };

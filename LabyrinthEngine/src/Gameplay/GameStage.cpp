@@ -24,14 +24,15 @@ namespace labyrinth_engine
     {
     }
 
-    void GameStage::FinishStage()
+    void GameStage::EndStage()
     {
-        onEndStageEvent.Broadcast();
         m_bIsStageFinished = true;
-        OnEndStage();
+        StageEnded();
+        onEndStageEvent.Broadcast();
+
     }
 
-    void GameStage::OnEndStage()
+    void GameStage::StageEnded()
     {
         LE_LOG("Stage Ended");
     }

@@ -44,7 +44,7 @@ namespace labyrinth_engine
 
     private:
         void SpawnEnemy(); // Spawn an enemy
-        void FinishStage() override;
+        void EndStage() override;
 
         float m_enemySpawnInterval; // Time between spawning enemies
         float m_enemySpawnLocationDistanceFromCenter; // Distance from the center of the screen to spawn enemies
