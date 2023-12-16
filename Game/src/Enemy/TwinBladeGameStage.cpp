@@ -13,8 +13,8 @@ namespace labyrinth_engine
         : GameStage{a_world}
         , m_enemySpawnInterval{1.5f}
         , m_enemySpawnLocationDistanceFromCenter{100.0f}
-        , m_enemySpawnLocationLeft{a_world->GetWindowSize().x/2 - m_enemySpawnLocationDistanceFromCenter, -100}
-        , m_enemySpawnLocationRight{a_world->GetWindowSize().x/2 + m_enemySpawnLocationDistanceFromCenter, -100}
+        , m_enemySpawnLocationLeft{a_world->GetWindowSize().x/2.0f - m_enemySpawnLocationDistanceFromCenter, -100}
+        , m_enemySpawnLocationRight{a_world->GetWindowSize().x/2.0f + m_enemySpawnLocationDistanceFromCenter, -100}
         , m_enemySpawnLocation{m_enemySpawnLocationLeft}
         , m_enemySpawnAmount{10}
         , m_enemyCurrentSpawnCount{0}
@@ -47,7 +47,7 @@ namespace labyrinth_engine
         }
     }
 
-    void TwinBladeGameStage::EndStage()
+    void TwinBladeGameStage::StageEnded()
     {
         TimeManager::GetInstance().RemoveTimer(m_spawnTimerHandler);
     }

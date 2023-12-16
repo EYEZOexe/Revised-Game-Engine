@@ -30,7 +30,7 @@ namespace labyrinth_engine
 
     void GameLevelOne::InitialiseGameStages()
     {
-        AddGameStage(Shared<VanguardGameStage>{new VanguardGameStage{this}});
         AddGameStage(Shared<TwinBladeGameStage>{new TwinBladeGameStage{this}});
+        AddGameStage(Shared<VanguardGameStage>{new VanguardGameStage{this}});
     }
 }
