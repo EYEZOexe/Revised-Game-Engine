@@ -32,8 +32,12 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
         ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/Core.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/Core.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Gameplay/GameStage.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Gameplay/GameStage.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
+
 
 
 )
