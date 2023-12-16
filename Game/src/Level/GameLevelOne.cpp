@@ -4,6 +4,7 @@
 
 #include "Level/GameLevelOne.h"
 
+#include "Enemy/Hexagon.h"
 #include "Enemy/VanguardGameStage.h"
 #include "Enemy/TwinBladeGameStage.h"
 #include "Gameplay/WaitStage.h"
@@ -25,7 +26,6 @@ namespace labyrinth_engine
 
     void GameLevelOne::BeginPlay()
     {
-
     }
 
     void GameLevelOne::InitialiseGameStages()
