@@ -37,6 +37,7 @@ namespace labyrinth_engine
     {
         TimeManager::GetInstance().RemoveTimer(m_switchTimerHandler); //clear the switch timer handler
         TimeManager::GetInstance().RemoveTimer(m_spawnTimerHandler); //clear the spawn timer handler
+        LE_LOG("Vanguard Game Stage Ended");
     }
 
     void VanguardGameStage::SpawnEnemies()

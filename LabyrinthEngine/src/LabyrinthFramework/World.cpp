@@ -130,6 +130,7 @@ namespace labyrinth_engine
 
     void World::NextGameStage()
     {
+        LE_LOG("Game Stage Index: %d", m_currentGameStageIndex);
         ++m_currentGameStageIndex;
 
         if (m_currentGameStageIndex >= 0 && m_currentGameStageIndex < m_gameStages.size())

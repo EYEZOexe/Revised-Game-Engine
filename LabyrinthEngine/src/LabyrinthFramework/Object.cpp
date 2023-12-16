@@ -14,7 +14,7 @@ namespace labyrinth_engine
 
     Object::~Object()
     {
-        LE_LOG("Object Destroyed");
+
     }
 
     void Object::Destroy()

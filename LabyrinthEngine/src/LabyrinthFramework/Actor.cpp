@@ -27,7 +27,7 @@ namespace labyrinth_engine
 
     Actor::~Actor()
     {
-        LE_LOG("Actor Destroyed");
+
     }
 
     void Actor::ActorBeginPlayFramework()

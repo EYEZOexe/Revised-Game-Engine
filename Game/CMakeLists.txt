@@ -35,6 +35,9 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/TwinBlade.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/TwinBlade.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/TwinBladeGameStage.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/TwinBladeGameStage.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Level/GameLevelOne.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Level/GameLevelOne.h
 
