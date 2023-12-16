@@ -45,10 +45,11 @@ namespace labyrinth_engine
         List<Shared<Actor>> m_actors;
         List<Shared<Actor>> m_actorsToAdd; //reason for this is cause we can't add actors to the vector while we are iterating through it
         List<Shared<GameStage>> m_gameStages; //list of game stages
-        int m_currentGameStageIndex; //index of the current game stage
+        List<Shared<GameStage>>::iterator m_currentGameStage; //iterator of the current game stage
         virtual void InitialiseGameStages(); //initialise the game stages
         virtual void GameStagesFinished(); //when all game stages are finished
         void NextGameStage(); //go to the next game stage
+        void StartGameStages(); //start the game stages
     };
 
     //Template Functions

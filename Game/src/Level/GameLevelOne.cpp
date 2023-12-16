@@ -4,15 +4,15 @@
 
 #include "Level/GameLevelOne.h"
 
+#include "Enemy/VanguardGameStage.h"
 #include "Enemy/TwinBladeGameStage.h"
+#include "Gameplay/WaitStage.h"
+
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/TimeManager.h"
 #include "GameName/GameApplication.h"
-#include "Enemy/Vanguard.h"
-#include "Enemy/VanguardGameStage.h"
-#include "Enemy/TwinBladeGameStage.h"
 #include "Player/PlayerSpaceship.h"
-#include "Gameplay/GameStage.h"
+
 
 namespace labyrinth_engine
 {
@@ -30,7 +30,10 @@ namespace labyrinth_engine
 
     void GameLevelOne::InitialiseGameStages()
     {
-        AddGameStage(Shared<TwinBladeGameStage>{new TwinBladeGameStage{this}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
         AddGameStage(Shared<VanguardGameStage>{new VanguardGameStage{this}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
+        AddGameStage(Shared<TwinBladeGameStage>{new TwinBladeGameStage{this}});
+
     }
 }

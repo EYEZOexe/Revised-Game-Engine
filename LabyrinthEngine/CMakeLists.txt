@@ -27,7 +27,7 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
         ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthVFX/Particle.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/TimeManager.cpp
-        include/LabyrinthFramework/TimeManager.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/TimeManager.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/LabyrinthFramework/Core.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/LabyrinthFramework/Core.h
@@ -35,10 +35,11 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Gameplay/GameStage.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Gameplay/GameStage.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Gameplay/WaitStage.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Gameplay/WaitStage.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
-
-
 
 )
 

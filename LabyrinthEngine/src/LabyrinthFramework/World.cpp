@@ -15,8 +15,8 @@ namespace labyrinth_engine
         , m_bIsPlaying(false)
         , m_actors{}
         , m_actorsToAdd{}
-        , m_currentGameStageIndex{-1} //set the current game stage index to -1
         , m_gameStages{}
+        , m_currentGameStage{m_gameStages.end()}
     {
 
     }
@@ -28,7 +28,7 @@ namespace labyrinth_engine
             m_bIsPlaying = true;
             BeginPlay();
             InitialiseGameStages();
-            NextGameStage();
+            StartGameStages();
         }
     }
 
@@ -48,9 +48,9 @@ namespace labyrinth_engine
             ++i;
         }
 
-        if (m_currentGameStageIndex >= 0 && m_currentGameStageIndex < m_gameStages.size())
+        if (m_currentGameStage != m_gameStages.end())
         {
-            m_gameStages[m_currentGameStageIndex]->UpdateStage(a_deltaTime);
+            m_currentGameStage->get()->UpdateStage(a_deltaTime);
         }
 
         WorldTick(a_deltaTime);
@@ -88,19 +88,6 @@ namespace labyrinth_engine
                 ++i;
             }
         }
-
-        //this ensures that we can remove game stages without breaking the loop
-        for (auto i = m_gameStages.begin(); i != m_gameStages.end();)
-        {
-            if (i->get()->IsStageFinished())
-            {
-                i = m_gameStages.erase(i);
-            }
-            else
-            {
-                ++i;
-            }
-        }
     }
 
     void World::AddGameStage(const Shared<GameStage>& a_gameStage)
@@ -125,22 +112,28 @@ namespace labyrinth_engine
 
     void World::GameStagesFinished()
     {
-
+        LE_LOG("All game stages finished");
     }
 
     void World::NextGameStage()
     {
-        LE_LOG("Game Stage Index: %d", m_currentGameStageIndex);
-        ++m_currentGameStageIndex;
 
-        if (m_currentGameStageIndex >= 0 && m_currentGameStageIndex < m_gameStages.size())
+        m_currentGameStage = m_gameStages.erase(m_currentGameStage);
+        if (m_currentGameStage != m_gameStages.end())
         {
-            m_gameStages[m_currentGameStageIndex]->onEndStageEvent.Bind(GetWeakReference(), &World::NextGameStage); //bind the next game stage to the end of the current game stage
-            m_gameStages[m_currentGameStageIndex]->StartStage();
+            m_currentGameStage->get()->StartStage();
+            m_currentGameStage->get()->onEndStageEvent.Bind(GetWeakReference(), &World::NextGameStage);
         }
         else
         {
             GameStagesFinished();
         }
+    }
+
+    void World::StartGameStages()
+    {
+        m_currentGameStage = m_gameStages.begin();
+        m_currentGameStage->get()->StartStage();
+        m_currentGameStage->get()->onEndStageEvent.Bind(GetWeakReference(), &World::NextGameStage);
     }
 }
