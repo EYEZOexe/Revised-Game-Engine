@@ -41,8 +41,8 @@ namespace labyrinth_engine
         // Setters
 
         // Getters
-        const World* getWorld() const {return m_world;}
-        World* getWorld() {return m_world;}
+        const World* GetWorld() const {return m_world;}
+        World* GetWorld() {return m_world;}
 
         /* End of Setters and getters */
 

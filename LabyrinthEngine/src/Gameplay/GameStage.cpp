@@ -22,7 +22,6 @@ namespace labyrinth_engine
 
     void GameStage::UpdateStage(float a_deltaTime)
     {
-        LE_LOG("Stage Updated");
     }
 
     void GameStage::EndStage()

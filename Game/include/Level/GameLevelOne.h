@@ -17,7 +17,6 @@ namespace labyrinth_engine
         GameLevelOne(Application* a_application);
     private:
         void BeginPlay() override;
-        void TestCallback();
         void InitialiseGameStages() override;
         Weak<PlayerSpaceship> testPlayerSpaceship;
         TimerHandler m_timerHandler;

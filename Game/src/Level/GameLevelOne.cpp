@@ -7,6 +7,7 @@
 #include "LabyrinthFramework/TimeManager.h"
 #include "GameName/GameApplication.h"
 #include "Enemy/Vanguard.h"
+#include "Enemy/VanguardGameStage.h"
 #include "Player/PlayerSpaceship.h"
 #include "Gameplay/GameStage.h"
 
@@ -17,24 +18,15 @@ namespace labyrinth_engine
     {
         testPlayerSpaceship = SpawnActor<PlayerSpaceship>();
         testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
-
-        Weak<Vanguard> testSpaceship = SpawnActor<Vanguard>();
-        testSpaceship.lock()->SetActorLocation(sf::Vector2f(100.0f, 50.0f));
     }
 
     void GameLevelOne::BeginPlay()
     {
-        m_timerHandler = TimeManager::GetInstance().SetTimer(GetWeakReference(), &GameLevelOne::TestCallback, 2.0f, true);
-    }
 
-    void GameLevelOne::TestCallback()
-    {
-        LE_LOG("Test Timer Callback");
-        TimeManager::GetInstance().RemoveTimer(m_timerHandler);
     }
 
     void GameLevelOne::InitialiseGameStages()
     {
-        AddGameStage(Shared<GameStage>{new GameStage{this}});
+        AddGameStage(Shared<VanguardGameStage>{new VanguardGameStage{this}});
     }
 }
