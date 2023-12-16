@@ -44,6 +44,9 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/HexagonGameStage.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/HexagonGameStage.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/UFO.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/UFO.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Level/GameLevelOne.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Level/GameLevelOne.h
 

@@ -26,16 +26,19 @@ namespace labyrinth_engine
 
     void GameLevelOne::BeginPlay()
     {
+
     }
 
     void GameLevelOne::InitialiseGameStages()
     {
-        AddGameStage(Shared<HexagonGameStage>{new HexagonGameStage{this}});
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
         AddGameStage(Shared<VanguardGameStage>{new VanguardGameStage{this}});
+
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
         AddGameStage(Shared<TwinBladeGameStage>{new TwinBladeGameStage{this}});
+
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
+        AddGameStage(Shared<HexagonGameStage>{new HexagonGameStage{this}});
 
 
     }
