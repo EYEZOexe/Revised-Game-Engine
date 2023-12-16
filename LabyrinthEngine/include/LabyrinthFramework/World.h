@@ -13,6 +13,7 @@ namespace labyrinth_engine
 {
     class Actor;
     class Application;
+    class GameStage;
 
     class World : public Object
     {
@@ -31,6 +32,7 @@ namespace labyrinth_engine
         sf::Vector2u GetWindowSize() const;
 
         void Clear();
+        void AddGameStage(const Shared<GameStage>& a_gameStage);
 
 
     private:
@@ -42,6 +44,11 @@ namespace labyrinth_engine
 
         List<Shared<Actor>> m_actors;
         List<Shared<Actor>> m_actorsToAdd; //reason for this is cause we can't add actors to the vector while we are iterating through it
+        List<Shared<GameStage>> m_gameStages; //list of game stages
+        int m_currentGameStageIndex; //index of the current game stage
+        virtual void InitialiseGameStages(); //initialise the game stages
+        virtual void GameStagesFinished(); //when all game stages are finished
+        void NextGameStage(); //go to the next game stage
     };
 
     //Template Functions

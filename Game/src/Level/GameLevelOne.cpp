@@ -8,6 +8,7 @@
 #include "GameName/GameApplication.h"
 #include "Enemy/Vanguard.h"
 #include "Player/PlayerSpaceship.h"
+#include "Gameplay/GameStage.h"
 
 namespace labyrinth_engine
 {
@@ -30,5 +31,10 @@ namespace labyrinth_engine
     {
         LE_LOG("Test Timer Callback");
         TimeManager::GetInstance().RemoveTimer(m_timerHandler);
+    }
+
+    void GameLevelOne::InitialiseGameStages()
+    {
+        AddGameStage(Shared<GameStage>{new GameStage{this}});
     }
 }

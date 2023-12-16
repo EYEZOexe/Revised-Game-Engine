@@ -6,6 +6,7 @@
 #include "LabyrinthFramework/Core.h"
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/Application.h"
+#include "Gameplay/GameStage.h"
 
 namespace labyrinth_engine
 {
@@ -14,6 +15,8 @@ namespace labyrinth_engine
         , m_bIsPlaying(false)
         , m_actors{}
         , m_actorsToAdd{}
+        , m_currentGameStageIndex{-1} //set the current game stage index to -1
+        , m_gameStages{}
     {
 
     }
@@ -24,6 +27,8 @@ namespace labyrinth_engine
         {
             m_bIsPlaying = true;
             BeginPlay();
+            InitialiseGameStages();
+            NextGameStage();
         }
     }
 
@@ -37,11 +42,15 @@ namespace labyrinth_engine
 
         m_actorsToAdd.clear();
 
-        //this ensures that we can remove actors without breaking the loop
         for (auto i = m_actors.begin(); i != m_actors.end();) // we use iterator cause we are deleting from the vector
         {
             i->get()->ActorTickFramework(a_deltaTime);
             ++i;
+        }
+
+        if (m_currentGameStageIndex >= 0 && m_currentGameStageIndex < m_gameStages.size())
+        {
+            m_gameStages[m_currentGameStageIndex]->UpdateStage(a_deltaTime);
         }
 
         WorldTick(a_deltaTime);
@@ -67,6 +76,7 @@ namespace labyrinth_engine
 
     void World::Clear()
     {
+        //this ensures that we can remove actors without breaking the loop
         for (auto i = m_actors.begin(); i != m_actors.end();)
         {
             if (i->get()->IsPendingKill())
@@ -78,6 +88,24 @@ namespace labyrinth_engine
                 ++i;
             }
         }
+
+        //this ensures that we can remove game stages without breaking the loop
+        for (auto i = m_gameStages.begin(); i != m_gameStages.end();)
+        {
+            if (i->get()->IsStageFinished())
+            {
+                i = m_gameStages.erase(i);
+            }
+            else
+            {
+                ++i;
+            }
+        }
+    }
+
+    void World::AddGameStage(const Shared<GameStage>& a_gameStage)
+    {
+        m_gameStages.push_back(a_gameStage);
     }
 
     void World::BeginPlay()
@@ -88,5 +116,30 @@ namespace labyrinth_engine
     void World::WorldTick(float a_deltaTime)
     {
 
+    }
+
+    void World::InitialiseGameStages()
+    {
+
+    }
+
+    void World::GameStagesFinished()
+    {
+
+    }
+
+    void World::NextGameStage()
+    {
+        ++m_currentGameStageIndex;
+
+        if (m_currentGameStageIndex >= 0 && m_currentGameStageIndex < m_gameStages.size())
+        {
+            m_gameStages[m_currentGameStageIndex]->onEndStageEvent.Bind(GetWeakReference(), &World::NextGameStage); //bind the next game stage to the end of the current game stage
+            m_gameStages[m_currentGameStageIndex]->StartStage();
+        }
+        else
+        {
+            GameStagesFinished();
+        }
     }
 }
