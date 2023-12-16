@@ -14,7 +14,7 @@ namespace labyrinth_engine
         : Spaceship{a_owningWorld, a_path}
         , m_playerMoveInput{}
         , m_playerSpeed{200.0f}
-        , m_projectileLauncher{new ProjectileLauncher{this, 0.1f}}
+        , m_projectileLauncher{new ProjectileLauncher{this, 0.1f, {50.0f, 0.0f}}}
     {
         SetActorCollisionLayer(GetPlayerCollisionLayer());
     }
