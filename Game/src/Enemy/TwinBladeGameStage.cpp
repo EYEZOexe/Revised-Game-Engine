@@ -43,11 +43,11 @@ namespace labyrinth_engine
         ++m_enemyCurrentSpawnCount;
         if (m_enemyCurrentSpawnCount == m_enemySpawnAmount)
         {
-            EndStage();
+            FinishStage();
         }
     }
 
-    void TwinBladeGameStage::EndStage()
+    void TwinBladeGameStage::FinishStage()
     {
         TimeManager::GetInstance().RemoveTimer(m_spawnTimerHandler);
     }

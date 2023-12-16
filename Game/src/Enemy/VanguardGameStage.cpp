@@ -33,11 +33,10 @@ namespace labyrinth_engine
         SwitchEnemyRows();
     }
 
-    void VanguardGameStage::EndStage()
+    void VanguardGameStage::OnEndStage()
     {
         TimeManager::GetInstance().RemoveTimer(m_switchTimerHandler); //clear the switch timer handler
         TimeManager::GetInstance().RemoveTimer(m_spawnTimerHandler); //clear the spawn timer handler
-        LE_LOG("Vanguard Game Stage Ended");
     }
 
     void VanguardGameStage::SpawnEnemies()
@@ -57,7 +56,7 @@ namespace labyrinth_engine
     {
         if (m_enemySpawnCount == m_enemyRows)
         {
-            EndStage();
+            FinishStage();
             return;
         }
 

@@ -29,7 +29,7 @@ namespace labyrinth_engine
         // Virtual Functions
         virtual void StartStage();
         virtual void UpdateStage(float a_deltaTime);
-        virtual void EndStage();
+        virtual void FinishStage();
 
         /* End of Class Functions */
 

@@ -24,7 +24,7 @@ namespace labyrinth_engine
     {
     }
 
-    void GameStage::EndStage()
+    void GameStage::FinishStage()
     {
         onEndStageEvent.Broadcast();
         m_bIsStageFinished = true;
