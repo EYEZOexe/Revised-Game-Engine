@@ -2,20 +2,20 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef UFO_H
-#define UFO_H
+#ifndef UFOGAMESTAGE_H
+#define UFOGAMESTAGE_H
 
-#include "EnemySpaceship.h"
-
+#include "Gameplay/GameStage.h"
+#include <SFML/Graphics.hpp>
+#include "LabyrinthFramework/TimeManager.h"
 
 namespace labyrinth_engine
 {
-    class ProjectileLauncher;
-    class UFO : public EnemySpaceship
+    class UFOGameStage : public GameStage
     {
     public:
         /* Constructors and Destructors */
-        UFO(World* a_world, const sf::Vector2f& a_velocity, const std::string& a_texturePath = "PNG/UFO.png", float a_rotationSpeed = 40.0f);
+        UFOGameStage(World* a_world);
         /* End of Constructors and Destructors */
 
         /* Class Functions */
@@ -25,7 +25,7 @@ namespace labyrinth_engine
         // Boolean Functions
 
         // Virtual Functions
-        void ActorTick(float a_deltaTime) override;
+        void StartStage() override;
 
         /* End of Class Functions */
 
@@ -43,13 +43,17 @@ namespace labyrinth_engine
     protected:
 
     private:
-        void Fire() override;
+        void StageEnded() override;
+        sf::Vector2f GetRandomSpawnLocation();
+        void SpawnEnemies();
 
-        Unique<ProjectileLauncher> m_UFOLeftShooter;
-        Unique<ProjectileLauncher> m_UFORightShooter;
-        Unique<ProjectileLauncher> m_UFOMiddleShooter;
-        float m_RotationSpeed;
+        float m_enemySpawnInterval;
+        int m_enemySpawnAmount;
+        int m_enemyCurrentSpawnAmount;
+        float m_ufoSpeed;
+
+        TimerHandler m_enemySpawnTimer;
     };
 }
 
-#endif //UFO_H
+#endif //UFOGAMESTAGE_H

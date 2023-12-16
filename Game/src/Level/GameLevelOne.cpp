@@ -7,6 +7,7 @@
 #include "Enemy/VanguardGameStage.h"
 #include "Enemy/TwinBladeGameStage.h"
 #include "Enemy/HexagonGameStage.h"
+#include "Enemy/UFOGameStage.h"
 #include "Gameplay/WaitStage.h"
 
 #include "LabyrinthFramework/Actor.h"
@@ -40,6 +41,7 @@ namespace labyrinth_engine
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
         AddGameStage(Shared<HexagonGameStage>{new HexagonGameStage{this}});
 
-
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
+        AddGameStage(Shared<UFOGameStage>{new UFOGameStage{this}});
     }
 }
