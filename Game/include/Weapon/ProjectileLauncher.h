@@ -13,14 +13,17 @@ namespace labyrinth_engine
     class ProjectileLauncher : public Launcher
     {
     public:
-        ProjectileLauncher(Actor* a_owner, float a_cooldownTime = 1.0f, const sf::Vector2f& a_selfPositionOffset = {0.0f, 0.0f}, float a_selfRotationOffset = {0.0f});
+        ProjectileLauncher(Actor* a_owner, float a_cooldownTime = 1.0f, const sf::Vector2f& a_selfPositionOffset = {0.0f, 0.0f}, float a_selfRotationOffset = {0.0f}, const std::string& a_projectileTexturePath = "PNG/Lasers/laserBlue01.png");
         bool IsOnCooldown() const override;
+
+        void SetProjectileTexturePath(const std::string& a_projectileTexturePath) {m_projectileTexturePath = a_projectileTexturePath;}
     private:
         void OnFire() override;
         sf::Clock m_cooldown;
         float m_cooldownTime;
         sf::Vector2f m_selfPositionOffset;
         float m_selfRotationOffset;
+        std::string m_projectileTexturePath;
     };
 }
 

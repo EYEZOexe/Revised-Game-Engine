@@ -9,12 +9,13 @@
 
 namespace labyrinth_engine
 {
-    ProjectileLauncher::ProjectileLauncher(Actor* a_owner, float a_cooldownTime, const sf::Vector2f& a_selfPositionOffset, float a_selfRotationOffset)
+    ProjectileLauncher::ProjectileLauncher(Actor* a_owner, float a_cooldownTime, const sf::Vector2f& a_selfPositionOffset, float a_selfRotationOffset, const std::string& a_projectileTexturePath)
         : Launcher{a_owner}
         , m_cooldown{}
         , m_cooldownTime{a_cooldownTime}
         , m_selfPositionOffset{a_selfPositionOffset}
         , m_selfRotationOffset{a_selfRotationOffset}
+        , m_projectileTexturePath{a_projectileTexturePath}
     {
 
     }
@@ -35,7 +36,7 @@ namespace labyrinth_engine
         sf::Vector2f ownerRightVector = GetOwner()->GetActorRightVector();
 
         m_cooldown.restart();
-        Weak<Projectile> newProjectile = GetOwner()->GetWorld()->SpawnActor<Projectile>(GetOwner(), "PNG/Lasers/laserBlue01.png");
+        Weak<Projectile> newProjectile = GetOwner()->GetWorld()->SpawnActor<Projectile>(GetOwner(), m_projectileTexturePath);
         newProjectile.lock()->SetActorLocation(GetOwner()->GetActorLocation() + ownerForwardVector * m_selfPositionOffset.x + ownerRightVector * m_selfPositionOffset.y);
         newProjectile.lock()->SetActorRotation(GetOwner()->GetActorRotation() + m_selfRotationOffset);
 
