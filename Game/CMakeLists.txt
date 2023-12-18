@@ -17,6 +17,9 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/ThreeProjectileLauncher.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Weapon/ThreeProjectileLauncher.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/WiperProjectileLauncher.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Weapon/WiperProjectileLauncher.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Weapon/Projectile.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Weapon/Projectile.cpp
 
@@ -55,8 +58,9 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Level/GameLevelOne.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Level/GameLevelOne.h
-        src/Weapon/WiperProjectileLauncher.cpp
-        include/Weapon/WiperProjectileLauncher.h
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/PlayerRewards.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Player/PlayerRewards.h
 
 )
 
