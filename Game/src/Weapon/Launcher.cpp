@@ -5,7 +5,6 @@
 #include "Weapon/Launcher.h"
 
 
-
 namespace labyrinth_engine
 {
     void Launcher::Fire()

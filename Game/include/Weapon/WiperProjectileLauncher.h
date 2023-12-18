@@ -2,25 +2,22 @@
 // Created by Tomas Tzorta on 18/12/2023.
 //
 
-#ifndef THREEPROJECTILELAUNCHER_H
-#define THREEPROJECTILELAUNCHER_H
+#ifndef WIPERPROJECTILELAUNCHER_H
+#define WIPERPROJECTILELAUNCHER_H
 
-#include <SFML/Graphics.hpp>
 #include "Weapon/ProjectileLauncher.h"
+#include <SFML/Graphics.hpp>
 
 namespace labyrinth_engine
 {
-    class ThreeProjectileLauncher : public ProjectileLauncher
+    class WiperProjectileLauncher : public ProjectileLauncher
     {
     public:
         /* Constructors and Destructors */
-        ThreeProjectileLauncher(Actor* a_owner, float a_cooldown = 0.3, const sf::Vector2f& a_offset = {0.0f, 0.0f});
+        WiperProjectileLauncher(Actor* a_owner, float a_cooldown = 0.3, const sf::Vector2f& a_offset = {0.0f, 0.0f}, float a_bulletSpacing = 60.0f);
         /* End of Constructors and Destructors */
 
         /* Class Functions */
-        ProjectileLauncher launcherLeft;
-        ProjectileLauncher launcherCenter;
-        ProjectileLauncher launcherRight;
 
         // Void Functions
 
@@ -45,8 +42,13 @@ namespace labyrinth_engine
 
     private:
         void OnFire() override;
+        float m_width;
+        ProjectileLauncher m_projectileLauncher;
+        ProjectileLauncher m_projectileLauncher2;
+        ProjectileLauncher m_projectileLauncher3;
+        ProjectileLauncher m_projectileLauncher4;
     };
 }
 
 
-#endif //THREEPROJECTILELAUNCHER_H
+#endif //WIPERPROJECTILELAUNCHER_H
