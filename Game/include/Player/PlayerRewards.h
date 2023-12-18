@@ -9,10 +9,14 @@
 #include <functional>
 
 
+
 namespace labyrinth_engine
 {
+    class PlayerRewards;
+
     class PlayerSpaceship;
     using RewardFunction = std::function<void(PlayerSpaceship*)>; // a_rewardFunction is a function that takes a PlayerSpaceship as a parameter and returns void
+    using RewardInternalFunction = std::function<Weak<PlayerRewards>(World*)>;
 
     class PlayerRewards : public Actor
     {
@@ -51,6 +55,16 @@ namespace labyrinth_engine
         float m_rewardSpeed;
         RewardFunction m_rewardFunction;
     };
+
+    Weak<PlayerRewards> CreateHealthReward(World* a_world);
+    Weak<PlayerRewards> CreateThreewayShooterReward(World* a_world);
+    Weak<PlayerRewards> CreateWiperShooterReward(World* a_world);
+
+    Weak<PlayerRewards> CreateReward(World* a_world, const std::string& a_rewardTexturePath, RewardFunction a_rewardFunction);
+
+    void AddHealthReward(PlayerSpaceship* a_playerSpaceship);
+    void AddThreewayShooterReward(PlayerSpaceship* a_playerSpaceship);
+    void AddWiperShooterReward(PlayerSpaceship* a_playerSpaceship);
 }
 
 #endif //PLAYERREWARDS_H

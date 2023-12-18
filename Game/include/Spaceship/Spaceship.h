@@ -23,6 +23,7 @@ namespace labyrinth_engine
 
         virtual void Fire(); //fire the weapon
         void DoDamage(float a_damage) override; //damage the actor
+        HealthComponent& GetHealthComponent() { return m_healthComponent; } //get the health component
 
     private:
         void HitEffect(); //hit effect

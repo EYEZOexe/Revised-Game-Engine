@@ -4,6 +4,9 @@
 
 #include "Player/PlayerRewards.h"
 #include "Player/PlayerSpaceship.h"
+#include "Weapon/ThreeProjectileLauncher.h"
+#include "Weapon/WiperProjectileLauncher.h"
+#include "LabyrinthFramework/World.h"
 
 namespace labyrinth_engine
 {
@@ -33,6 +36,53 @@ namespace labyrinth_engine
         if (playerSpaceship != nullptr && !playerSpaceship->IsPendingKill())
         {
             m_rewardFunction(playerSpaceship);
+        }
+    }
+
+    Weak<PlayerRewards> CreateHealthReward(World* a_world)
+    {
+        return CreateReward(a_world, "PNG/pill_green.png", AddHealthReward);
+    }
+
+    Weak<PlayerRewards> CreateThreewayShooterReward(World* a_world)
+    {
+        return CreateReward(a_world, "PNG/things_bronze.png", AddThreewayShooterReward);
+    }
+
+    Weak<PlayerRewards> CreateWiperShooterReward(World* a_world)
+    {
+        return CreateReward(a_world, "PNG/powerupRed_shield.png", AddWiperShooterReward);
+    }
+
+
+    Weak<PlayerRewards> CreateReward(World* a_world, const std::string& a_rewardTexturePath, RewardFunction a_rewardFunction)
+    {
+        Weak<PlayerRewards> reward = a_world->SpawnActor<PlayerRewards>(a_rewardTexturePath, a_rewardFunction);
+        return reward;
+    }
+
+    void AddHealthReward(PlayerSpaceship* a_playerSpaceship)
+    {
+        static float healthReward = 10.0f; // static variables will only be initialized once
+        if (a_playerSpaceship != nullptr && !a_playerSpaceship->IsPendingKill())
+        {
+            a_playerSpaceship->GetHealthComponent().SetHealth(healthReward);
+        }
+    }
+
+    void AddThreewayShooterReward(PlayerSpaceship* a_playerSpaceship)
+    {
+        if (a_playerSpaceship != nullptr && !a_playerSpaceship->IsPendingKill())
+        {
+            a_playerSpaceship->SetProjectileLauncher(Unique<Launcher>{new ThreeProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
+        }
+    }
+
+    void AddWiperShooterReward(PlayerSpaceship* a_playerSpaceship)
+    {
+        if (a_playerSpaceship != nullptr && !a_playerSpaceship->IsPendingKill())
+        {
+            a_playerSpaceship->SetProjectileLauncher(Unique<Launcher>{new WiperProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
         }
     }
 }

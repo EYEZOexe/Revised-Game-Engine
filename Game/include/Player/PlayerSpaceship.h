@@ -22,6 +22,8 @@ namespace labyrinth_engine
 
         void Fire() override;
 
+        void SetProjectileLauncher(Unique<Launcher>&& a_projectileLauncher) { m_projectileLauncher = std::move(a_projectileLauncher); }
+
     private:
         void HandlePlayerInput();
         void NormalisePlayerInput();
