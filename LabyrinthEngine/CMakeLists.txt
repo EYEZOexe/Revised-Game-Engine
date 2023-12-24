@@ -38,6 +38,9 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Gameplay/WaitStage.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Gameplay/WaitStage.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/UI/HUD.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/UI/HUD.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
 
