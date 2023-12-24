@@ -14,6 +14,7 @@
 #include "LabyrinthFramework/TimeManager.h"
 #include "GameName/GameApplication.h"
 #include "Player/PlayerManager.h"
+#include "Player/PlayerSpaceship.h"
 
 
 namespace labyrinth_engine
@@ -27,7 +28,8 @@ namespace labyrinth_engine
     void GameLevelOne::BeginPlay()
     {
         Player player = PlayerManager::GetInstance().AddPlayer();
-        player.SpawnPlayerSpaceship(this);
+        m_playerSpaceship = player.SpawnPlayerSpaceship(this);
+        m_playerSpaceship.lock()->OnActorDestroy.Bind(GetWeakReference(), &GameLevelOne::PlayerSpaceshipDestroyed);
     }
 
     void GameLevelOne::InitialiseGameStages()
@@ -43,5 +45,25 @@ namespace labyrinth_engine
 
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
         AddGameStage(Shared<UFOGameStage>{new UFOGameStage{this}});
+    }
+
+    void GameLevelOne::PlayerSpaceshipDestroyed(Actor* a_actor)
+    {
+        m_playerSpaceship = PlayerManager::GetInstance().GetPlayer()->SpawnPlayerSpaceship(this);
+
+        if (!m_playerSpaceship.expired())
+        {
+            m_playerSpaceship.lock()->OnActorDestroy.Bind(GetWeakReference(), &GameLevelOne::PlayerSpaceshipDestroyed);
+        }
+        else
+        {
+            GameOver();
+        }
+
+    }
+
+    void GameLevelOne::GameOver()
+    {
+        LE_LOG("GAME OVER! YOU LOSE!");
     }
 }

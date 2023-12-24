@@ -18,7 +18,9 @@ namespace labyrinth_engine
     private:
         void BeginPlay() override;
         void InitialiseGameStages() override;
-        Weak<PlayerSpaceship> testPlayerSpaceship;
+        void PlayerSpaceshipDestroyed(Actor* a_actor);
+        void GameOver();
+        Weak<PlayerSpaceship> m_playerSpaceship;
         TimerHandler m_timerHandler;
     };
 }

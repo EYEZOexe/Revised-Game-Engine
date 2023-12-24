@@ -199,6 +199,7 @@ namespace labyrinth_engine
     void Actor::Destroy()
     {
         RemoveActorPhysics();
+        OnActorDestroy.Broadcast(this);
         Object::Destroy();
     }
 

@@ -29,6 +29,8 @@ namespace labyrinth_engine
         void Render(sf::RenderWindow& a_window);
         void AddActorLocationOffset(const sf::Vector2f& a_locationOffset);
         void AddActorRotationOffset(float a_rotationOffset);
+
+        EventCallback<Actor*> OnActorDestroy;
         /* End of Framework functions */
 
         /* Boolean functions */
