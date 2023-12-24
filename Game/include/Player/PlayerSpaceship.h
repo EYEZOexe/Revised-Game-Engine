@@ -2,10 +2,10 @@
 // Created by Tomas Tzorta on 09/12/2023.
 //
 
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef PLAYER_SPACESHIP_H
+#define PLAYER_SPACESHIP_H
+
 #include "Spaceship/Spaceship.h"
-#include "Weapon/Launcher.h"
 
 namespace labyrinth_engine
 {
@@ -41,4 +41,4 @@ namespace labyrinth_engine
 
 
 
-#endif //PLAYER_H
+#endif //PLAYER_SPACESHIP_H

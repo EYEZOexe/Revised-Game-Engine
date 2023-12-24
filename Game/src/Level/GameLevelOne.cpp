@@ -13,7 +13,6 @@
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/TimeManager.h"
 #include "GameName/GameApplication.h"
-#include "Player/PlayerSpaceship.h"
 
 
 namespace labyrinth_engine
@@ -21,8 +20,7 @@ namespace labyrinth_engine
     GameLevelOne::GameLevelOne(Application* a_application)
         : World{a_application}
     {
-        testPlayerSpaceship = SpawnActor<PlayerSpaceship>();
-        testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.0f, 490.0f));
+
     }
 
     void GameLevelOne::BeginPlay()
