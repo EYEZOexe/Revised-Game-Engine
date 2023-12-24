@@ -31,7 +31,7 @@ namespace labyrinth_engine
         Weak<a_ActorType> SpawnActor(arguments... a_args);
 
         template<typename HUDType, typename... arguments>
-        Weak<HUD> SpawnHUD(arguments... a_args);
+        Weak<HUDType> SpawnHUD(arguments... a_args);
 
         sf::Vector2u GetWindowSize() const;
 
@@ -71,7 +71,7 @@ namespace labyrinth_engine
     }
 
     template<typename HUDType, typename ... arguments>
-    Weak<HUD> World::SpawnHUD(arguments... a_args)
+    Weak<HUDType> World::SpawnHUD(arguments... a_args)
     {
         Shared<HUDType> newHUD{new HUDType(a_args...)};
         m_HUD = newHUD;

@@ -56,9 +56,13 @@ namespace labyrinth_engine
 
         WorldTick(a_deltaTime);
 
-        if (m_HUD && m_HUD->IsHUDInitialized())
+        if (m_HUD)
         {
-            m_HUD->HUDInitFramework(m_owningApplication->GetWindow());
+            if (m_HUD->IsHUDInitialized())
+            {
+                m_HUD->HUDInitFramework(m_owningApplication->GetWindow());
+            }
+           m_HUD->UpdateHUD(a_deltaTime);
         }
     }
 
@@ -109,6 +113,7 @@ namespace labyrinth_engine
         {
             return m_HUD->IsHUDClicked(a_event);
         }
+        return false;
     }
 
     void World::BeginPlay()

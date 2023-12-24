@@ -12,7 +12,7 @@ std::string GetAssetDirectory()
 #ifdef RELEASEMODE //Release build
     return "assets/";
 #else //Debug build
-    return "E:/Coding Projects/UdemyYears/Game/assets/";
+    return "E:/Coding Projects/Labyrinth-Engine/Game/assets/";
 #endif
 }
 

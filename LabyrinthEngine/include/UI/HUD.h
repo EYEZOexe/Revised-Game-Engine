@@ -26,6 +26,7 @@ namespace labyrinth_engine
 
         // Virtual Functions
         virtual void DrawHUD(sf::RenderWindow& a_window) = 0; // Pure virtual function to draw the HUD
+        virtual void UpdateHUD(float a_deltaTime);
         virtual bool IsHUDClicked(const sf::Event& a_event); // Pure virtual function to check if the HUD is clicked
 
         /* End of Class Functions */

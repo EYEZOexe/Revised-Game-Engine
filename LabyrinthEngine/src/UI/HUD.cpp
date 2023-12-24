@@ -16,6 +16,11 @@ namespace labyrinth_engine
         }
     }
 
+    void HUD::UpdateHUD(float a_deltaTime)
+    {
+
+    }
+
     bool HUD::IsHUDClicked(const sf::Event& a_event)
     {
         return false;

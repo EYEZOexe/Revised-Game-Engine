@@ -61,6 +61,7 @@ namespace labyrinth_engine
         {
             return m_currentWorld->ExecuteEvent(a_event);
         }
+        return false;
     }
 
     void Application::TickFramework(float a_deltaTime)

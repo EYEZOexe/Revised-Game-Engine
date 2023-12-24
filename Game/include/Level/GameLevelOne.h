@@ -11,6 +11,7 @@
 namespace labyrinth_engine
 {
     class PlayerSpaceship;
+    class GameHUD;
     class GameLevelOne : public World
     {
     public:
@@ -20,7 +21,9 @@ namespace labyrinth_engine
         void InitialiseGameStages() override;
         void PlayerSpaceshipDestroyed(Actor* a_actor);
         void GameOver();
+
         Weak<PlayerSpaceship> m_playerSpaceship;
+        Weak<GameHUD> m_GameHUD;
         TimerHandler m_timerHandler;
     };
 }

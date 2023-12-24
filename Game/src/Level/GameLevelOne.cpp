@@ -15,6 +15,7 @@
 #include "GameName/GameApplication.h"
 #include "Player/PlayerManager.h"
 #include "Player/PlayerSpaceship.h"
+#include "UI/GameHUD.h"
 
 
 namespace labyrinth_engine
@@ -30,6 +31,7 @@ namespace labyrinth_engine
         Player player = PlayerManager::GetInstance().AddPlayer();
         m_playerSpaceship = player.SpawnPlayerSpaceship(this);
         m_playerSpaceship.lock()->OnActorDestroy.Bind(GetWeakReference(), &GameLevelOne::PlayerSpaceshipDestroyed);
+        m_GameHUD = SpawnHUD<GameHUD>();
     }
 
     void GameLevelOne::InitialiseGameStages()
