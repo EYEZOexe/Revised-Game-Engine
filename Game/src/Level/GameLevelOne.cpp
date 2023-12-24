@@ -13,6 +13,7 @@
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/TimeManager.h"
 #include "GameName/GameApplication.h"
+#include "Player/PlayerManager.h"
 
 
 namespace labyrinth_engine
@@ -25,7 +26,8 @@ namespace labyrinth_engine
 
     void GameLevelOne::BeginPlay()
     {
-
+        Player player = PlayerManager::GetInstance().AddPlayer();
+        player.SpawnPlayerSpaceship(this);
     }
 
     void GameLevelOne::InitialiseGameStages()

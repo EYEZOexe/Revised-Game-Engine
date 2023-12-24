@@ -23,7 +23,7 @@ namespace labyrinth_engine
 
         /* Class Functions */
         Weak<PlayerSpaceship> SpawnPlayerSpaceship(World* a_world);
-        int IncreasePlayerScore(unsigned int a_playerScore);
+        void IncreasePlayerScore(unsigned int a_playerScore);
 
         EventCallback<int> OnPlayerLifeChange;
         EventCallback<int> OnPlayerScoreChange;

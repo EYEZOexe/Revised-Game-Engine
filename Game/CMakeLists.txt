@@ -65,6 +65,9 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/Player.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Player/Player.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/PlayerManager.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Player/PlayerManager.h
+
 )
 
 target_include_directories(${GAME_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the game target

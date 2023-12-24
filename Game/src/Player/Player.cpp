@@ -25,14 +25,16 @@ namespace labyrinth_engine
             m_playerSpaceship = a_world->SpawnActor<PlayerSpaceship>();
             m_playerSpaceship.lock()->SetActorLocation(sf::Vector2f(windowSize.x / 2.0f, windowSize.y - 50.0f));
             OnPlayerLifeChange.Broadcast(m_playerLives);
+            return m_playerSpaceship;
         }
         else
         {
             OnPlayerLifeLost.Broadcast();
         }
+        return Weak<PlayerSpaceship>{};
     }
 
-    int Player::IncreasePlayerScore(unsigned a_playerScore)
+    void Player::IncreasePlayerScore(unsigned a_playerScore)
     {
         if (a_playerScore > 0)
         {
