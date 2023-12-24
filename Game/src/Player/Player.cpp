@@ -29,6 +29,7 @@ namespace labyrinth_engine
         }
         else
         {
+            m_playerSpaceship = Weak<PlayerSpaceship>{};
             OnPlayerLifeLost.Broadcast();
         }
         return Weak<PlayerSpaceship>{};

@@ -31,6 +31,8 @@ namespace labyrinth_engine
             m_health = m_maxHealth;
         }
 
+        OnHealthChange.Broadcast(a_health, m_health, m_maxHealth);
+
         if (a_health < 0)
         {
             TakenDamage(-a_health);
@@ -40,7 +42,7 @@ namespace labyrinth_engine
             }
         }
 
-        OnHealthChange.Broadcast(a_health, m_health, m_maxHealth);
+
     }
 
     void HealthComponent::TakenDamage(float a_damage)

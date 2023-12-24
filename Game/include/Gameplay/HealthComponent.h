@@ -27,7 +27,6 @@ namespace labyrinth_engine
     private:
         void TakenDamage(float a_damage);
         void Die();
-        void RegenerateHealth(float a_health);
         float m_health;
         float m_maxHealth;
     };

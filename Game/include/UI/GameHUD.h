@@ -11,6 +11,7 @@
 
 namespace labyrinth_engine
 {
+    class Actor;
     class GameHUD : public HUD
     {
     public:
@@ -21,6 +22,7 @@ namespace labyrinth_engine
         /* Class Functions */
 
         // Void Functions
+
 
         // Boolean Functions
 
@@ -45,6 +47,9 @@ namespace labyrinth_engine
 
     private:
         void HUDInit(const sf::RenderWindow& a_window) override;
+        void PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth);
+        void PlayerDeath(Actor* a_actor);
+        void PlayerHUDReset();
         TextWidget m_gameFramerateText;
         StatusMeter m_playerHealthBar;
     };

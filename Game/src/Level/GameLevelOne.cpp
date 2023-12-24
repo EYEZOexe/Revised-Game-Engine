@@ -28,7 +28,7 @@ namespace labyrinth_engine
 
     void GameLevelOne::BeginPlay()
     {
-        Player player = PlayerManager::GetInstance().AddPlayer();
+        Player& player = PlayerManager::GetInstance().AddPlayer();
         m_playerSpaceship = player.SpawnPlayerSpaceship(this);
         m_playerSpaceship.lock()->OnActorDestroy.Bind(GetWeakReference(), &GameLevelOne::PlayerSpaceshipDestroyed);
         m_GameHUD = SpawnHUD<GameHUD>();
