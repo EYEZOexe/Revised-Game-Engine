@@ -37,6 +37,7 @@ namespace labyrinth_engine
         void SetWidgetTextSize(unsigned int a_fontSize);
 
         // Getters
+        sf::FloatRect GetWidgetBounds() const override;
 
         /* End of Setters and getters */
 

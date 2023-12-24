@@ -25,6 +25,11 @@ namespace labyrinth_engine
         m_widgetText.setCharacterSize(a_fontSize);
     }
 
+    sf::FloatRect TextWidget::GetWidgetBounds() const
+    {
+        return m_widgetText.getGlobalBounds();
+    }
+
     void TextWidget::UpdateWidgetLocation(const sf::Vector2f& a_position)
     {
         m_widgetText.setPosition(a_position);

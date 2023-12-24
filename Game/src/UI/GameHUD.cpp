@@ -13,6 +13,9 @@ namespace labyrinth_engine
     GameHUD::GameHUD()
         : m_gameFramerateText{"Frame Rate: "}
         , m_playerHealthBar{}
+        , m_playerMaxHealthColour{sf::Color::Green}
+        , m_playerDamageHealthColour{sf::Color::Red}
+        , m_playerDamagedHealthThreshold{0.3f}
     {
         m_gameFramerateText.SetWidgetTextSize(20);
     }
@@ -27,6 +30,15 @@ namespace labyrinth_engine
     void GameHUD::PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth)
     {
         m_playerHealthBar.UpdateStatus(a_currentHealth, a_maxHealth);
+
+        if (a_currentHealth/a_maxHealth < m_playerDamagedHealthThreshold)
+        {
+            m_playerHealthBar.SetFrontWidgetColour(m_playerDamageHealthColour);
+        }
+        else
+        {
+            m_playerHealthBar.SetFrontWidgetColour(m_playerMaxHealthColour);
+        }
     }
 
     void GameHUD::PlayerHUDReset()

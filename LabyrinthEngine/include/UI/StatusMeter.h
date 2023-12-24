@@ -13,7 +13,7 @@ namespace labyrinth_engine
     {
     public:
         /* Constructors and Destructors */
-        StatusMeter(const sf::Vector2f& a_size = sf::Vector2f{(300.0f), (40.0f)}, float a_minValue = 0.75f, const sf::Color& a_frontColour = sf::Color::Green, const sf::Color& a_backColour = sf::Color{128, 128, 128, 255});
+        StatusMeter(const sf::Vector2f& a_size = sf::Vector2f{200.0f, 30.0f}, float a_minValue = 0.75f, const sf::Color& a_frontColour = sf::Color::Green, const sf::Color& a_backColour = sf::Color{128, 128, 128, 255});
         /* End of Constructors and Destructors */
 
         /* Class Functions */
@@ -33,8 +33,12 @@ namespace labyrinth_engine
         /* Setters and Getters */
 
         // Setters
+        void SetStatusTextSize(unsigned int a_fontSize) {m_StatusText.setCharacterSize(a_fontSize);}
+        void SetFrontWidgetColour(const sf::Color& a_colour) {m_StatusMeterFront.setFillColor(a_colour);}
+        void SetBackWidgetColour(const sf::Color& a_colour) {m_StatusMeterBack.setFillColor(a_colour);}
 
         // Getters
+        sf::FloatRect GetWidgetBounds() const override;
 
         /* End of Setters and getters */
 
@@ -44,6 +48,7 @@ namespace labyrinth_engine
         void DrawWidget(sf::RenderWindow& a_window) override;
         void UpdateWidgetLocation(const sf::Vector2f& a_position) override;
         void UpdateWidgetRotation(float& a_rotation) override;
+        void CenterWidgetText();
         Shared<sf::Font> m_StatusFont;
         sf::Text m_StatusText;
 

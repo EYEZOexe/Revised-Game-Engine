@@ -19,6 +19,12 @@ namespace labyrinth_engine
         return false;
     }
 
+    sf::Vector2f Widget::GetWidgetCenterPosition() const
+    {
+        sf::FloatRect widgetBounds = GetWidgetBounds();
+        return sf::Vector2f{widgetBounds.left + widgetBounds.width/2.0f, widgetBounds.top + widgetBounds.height/2.0f};
+    }
+
     void Widget::SetWidgetPosition(const sf::Vector2f& a_position)
     {
         m_widgetTransform.setPosition(a_position);

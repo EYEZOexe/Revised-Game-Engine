@@ -52,6 +52,9 @@ namespace labyrinth_engine
         void PlayerHUDReset();
         TextWidget m_gameFramerateText;
         StatusMeter m_playerHealthBar;
+        sf::Color m_playerMaxHealthColour;
+        sf::Color m_playerDamageHealthColour;
+        float m_playerDamagedHealthThreshold;
     };
 }
 
