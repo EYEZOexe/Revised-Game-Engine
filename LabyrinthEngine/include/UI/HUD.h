@@ -6,7 +6,7 @@
 #define HUD_H
 
 #include "LabyrinthFramework/Object.h"
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 namespace labyrinth_engine
 {
