@@ -22,12 +22,17 @@ namespace labyrinth_engine
 
     bool ProjectileLauncher::IsOnCooldown() const
     {
-        if (m_cooldown.getElapsedTime().asSeconds() > m_cooldownTime) // If the cooldown has passed
+        if (m_cooldown.getElapsedTime().asSeconds() > m_cooldownTime / GetCurrentLauncherLevel()) // If the cooldown has passed
         {
             return false;
         }
 
         return true;
+    }
+
+    void ProjectileLauncher::IncreaseLauncherLevel(int a_increaseAmount)
+    {
+        Launcher::IncreaseLauncherLevel(a_increaseAmount);
     }
 
     void ProjectileLauncher::OnFire()

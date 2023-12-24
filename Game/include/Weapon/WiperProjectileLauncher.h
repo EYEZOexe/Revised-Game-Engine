@@ -24,6 +24,7 @@ namespace labyrinth_engine
         // Boolean Functions
 
         // Virtual Functions
+        void IncreaseLauncherLevel(int a_increaseAmount = 1) override;
 
         /* End of Class Functions */
 
@@ -47,6 +48,9 @@ namespace labyrinth_engine
         ProjectileLauncher m_projectileLauncher2;
         ProjectileLauncher m_projectileLauncher3;
         ProjectileLauncher m_projectileLauncher4;
+
+        ProjectileLauncher m_projectileLauncherMax;
+        ProjectileLauncher m_projectileLauncherMax2;
     };
 }
 

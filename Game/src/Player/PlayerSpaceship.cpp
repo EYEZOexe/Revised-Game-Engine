@@ -7,7 +7,7 @@
 #include "LabyrinthFramework/MathUtility.h"
 #include "SFML/System.hpp"
 
-#include "Weapon/WiperProjectileLauncher.h"
+#include "Weapon/ProjectileLauncher.h"
 
 namespace labyrinth_engine
 {
@@ -15,7 +15,7 @@ namespace labyrinth_engine
         : Spaceship{a_owningWorld, a_path}
         , m_playerMoveInput{}
         , m_playerSpeed{200.0f}
-        , m_projectileLauncher{new WiperProjectileLauncher{this, 0.1f, {50.0f, 0.0f}}}
+        , m_projectileLauncher{new ProjectileLauncher{this, 0.1f, {50.0f, 0.0f}}}
     {
         SetActorCollisionLayer(GetPlayerCollisionLayer());
     }
@@ -33,6 +33,17 @@ namespace labyrinth_engine
         {
             m_projectileLauncher->Fire();
         }
+    }
+
+    void PlayerSpaceship::SetProjectileLauncher(Unique<Launcher>&& a_projectileLauncher)
+    {
+        if (m_projectileLauncher && typeid(*m_projectileLauncher.get()) == typeid(*a_projectileLauncher.get()))
+        {
+            m_projectileLauncher->IncreaseLauncherLevel();
+            return;
+        }
+
+        m_projectileLauncher = std::move(a_projectileLauncher);
     }
 
     void PlayerSpaceship::HandlePlayerInput()

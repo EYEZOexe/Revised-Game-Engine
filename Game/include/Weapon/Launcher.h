@@ -20,6 +20,10 @@ namespace labyrinth_engine
         virtual bool IsOnCooldown() const {return false;}
 
         Actor* GetOwner() const {return m_owner;}
+        int GetCurrentLauncherLevel() const {return m_currentLauncherLevel;}
+        int GetMaxLauncherLevel() const {return m_maxLauncherLevel;}
+
+        virtual void IncreaseLauncherLevel(int a_increaseAmount = 1);
 
     protected:
         Launcher(Actor* a_owner);
@@ -27,6 +31,9 @@ namespace labyrinth_engine
     private:
         virtual void OnFire() = 0;
         Actor* m_owner;
+
+        int m_currentLauncherLevel;
+        int m_maxLauncherLevel;
     };
 }
 

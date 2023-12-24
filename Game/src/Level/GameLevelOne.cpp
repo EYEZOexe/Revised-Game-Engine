@@ -32,7 +32,7 @@ namespace labyrinth_engine
 
     void GameLevelOne::InitialiseGameStages()
     {
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
+        AddGameStage(Shared<UFOGameStage>{new UFOGameStage{this}});
         AddGameStage(Shared<VanguardGameStage>{new VanguardGameStage{this}});
 
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});

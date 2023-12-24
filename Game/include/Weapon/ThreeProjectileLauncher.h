@@ -22,11 +22,15 @@ namespace labyrinth_engine
         ProjectileLauncher launcherCenter;
         ProjectileLauncher launcherRight;
 
+        ProjectileLauncher launcherMaxLeft;
+        ProjectileLauncher launcherMaxRight;
+
         // Void Functions
 
         // Boolean Functions
 
         // Virtual Functions
+        void IncreaseLauncherLevel(int a_increaseAmount = 1) override;
 
         /* End of Class Functions */
 

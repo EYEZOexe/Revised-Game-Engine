@@ -15,8 +15,17 @@ namespace labyrinth_engine
         }
     }
 
+    void Launcher::IncreaseLauncherLevel(int a_increaseAmount)
+    {
+        if (m_currentLauncherLevel == m_maxLauncherLevel) return;
+
+        ++m_currentLauncherLevel;
+    }
+
     Launcher::Launcher(Actor* a_owner)
-        : m_owner(a_owner)
+        : m_owner{a_owner}
+        , m_currentLauncherLevel{1}
+        , m_maxLauncherLevel{4}
     {
 
     }
