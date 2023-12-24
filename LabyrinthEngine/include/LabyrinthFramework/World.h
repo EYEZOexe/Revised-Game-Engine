@@ -12,6 +12,7 @@
 namespace labyrinth_engine
 {
     class Actor;
+    class HUD;
     class Application;
     class GameStage;
 
@@ -29,16 +30,20 @@ namespace labyrinth_engine
         template<typename a_ActorType, typename... arguments>
         Weak<a_ActorType> SpawnActor(arguments... a_args);
 
+        template<typename HUDType, typename... arguments>
+        Weak<HUD> SpawnHUD(arguments... a_args);
+
         sf::Vector2u GetWindowSize() const;
 
         void Clear();
         void AddGameStage(const Shared<GameStage>& a_gameStage);
 
+        bool ExecuteEvent(const sf::Event& a_event);
 
     private:
         virtual void BeginPlay();
         virtual void WorldTick(float a_deltaTime);
-
+        void RenderHUD(sf::RenderWindow& a_window);
         Application* m_owningApplication;
         bool m_bIsPlaying;
 
@@ -46,6 +51,10 @@ namespace labyrinth_engine
         List<Shared<Actor>> m_actorsToAdd; //reason for this is cause we can't add actors to the vector while we are iterating through it
         List<Shared<GameStage>> m_gameStages; //list of game stages
         List<Shared<GameStage>>::iterator m_currentGameStage; //iterator of the current game stage
+
+        Shared<HUD> m_HUD;
+
+
         virtual void InitialiseGameStages(); //initialise the game stages
         virtual void GameStagesFinished(); //when all game stages are finished
         void NextGameStage(); //go to the next game stage
@@ -61,6 +70,13 @@ namespace labyrinth_engine
         return newActor;
     }
 
+    template<typename HUDType, typename ... arguments>
+    Weak<HUD> World::SpawnHUD(arguments... a_args)
+    {
+        Shared<HUDType> newHUD{new HUDType(a_args...)};
+        m_HUD = newHUD;
+        return newHUD;
+    }
 }
 
 

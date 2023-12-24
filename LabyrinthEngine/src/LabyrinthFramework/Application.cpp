@@ -39,6 +39,10 @@ namespace labyrinth_engine
                 {
                     m_window.close();
                 }
+                else
+                {
+                    ExecuteEvent(windowEvent);
+                }
             }
             const float frameDeltaTime = m_tick.restart().asSeconds();
             timePassed += frameDeltaTime;
@@ -48,6 +52,14 @@ namespace labyrinth_engine
                 TickFramework(targetDeltaTime);
                 RenderFramework();
             }
+        }
+    }
+
+    bool Application::ExecuteEvent(const sf::Event& a_event)
+    {
+        if (m_currentWorld != nullptr)
+        {
+            return m_currentWorld->ExecuteEvent(a_event);
         }
     }
 

@@ -25,9 +25,12 @@ namespace labyrinth_engine
         Weak<a_worldType> LoadWorld(); // Templates are defined in the header file
 
         sf::Vector2u GetWindowSize() const { return m_window.getSize(); }
+        sf::RenderWindow& GetWindow() { return m_window; }
+        const sf::RenderWindow& GetWindow() const { return m_window; }
 
 
     private:
+        bool ExecuteEvent(const sf::Event& a_event);
         void TickFramework(float a_deltaTime);
         void RenderFramework();
 

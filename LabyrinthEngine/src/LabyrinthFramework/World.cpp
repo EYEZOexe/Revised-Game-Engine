@@ -7,6 +7,7 @@
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/Application.h"
 #include "Gameplay/GameStage.h"
+#include "UI/HUD.h"
 
 namespace labyrinth_engine
 {
@@ -54,6 +55,11 @@ namespace labyrinth_engine
         }
 
         WorldTick(a_deltaTime);
+
+        if (m_HUD && m_HUD->IsHUDInitialized())
+        {
+            m_HUD->HUDInitFramework(m_owningApplication->GetWindow());
+        }
     }
 
     void World::Render(sf::RenderWindow& a_window)
@@ -62,6 +68,8 @@ namespace labyrinth_engine
         {
             actor->Render(a_window);
         }
+
+        RenderHUD();
     }
 
     World::~World()
@@ -95,6 +103,14 @@ namespace labyrinth_engine
         m_gameStages.push_back(a_gameStage);
     }
 
+    bool World::ExecuteEvent(const sf::Event& a_event)
+    {
+        if (m_HUD)
+        {
+            return m_HUD->IsHUDClicked(a_event);
+        }
+    }
+
     void World::BeginPlay()
     {
 
@@ -103,6 +119,14 @@ namespace labyrinth_engine
     void World::WorldTick(float a_deltaTime)
     {
 
+    }
+
+    void World::RenderHUD(sf::RenderWindow& a_window)
+    {
+        if (m_HUD)
+        {
+            m_HUD->DrawHUD(a_window);
+        }
     }
 
     void World::InitialiseGameStages()

@@ -6,7 +6,7 @@
 
 namespace labyrinth_engine
 {
-    void HUD::HUDInitFramework(sf::RenderWindow& a_window)
+    void HUD::HUDInitFramework( sf::RenderWindow& a_window)
     {
         if (!m_isHUDInitialised)
         {
