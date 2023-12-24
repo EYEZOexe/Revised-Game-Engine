@@ -58,7 +58,7 @@ namespace labyrinth_engine
 
         if (m_HUD)
         {
-            if (m_HUD->IsHUDInitialized())
+            if (!m_HUD->IsHUDInitialized())
             {
                 m_HUD->HUDInitFramework(m_owningApplication->GetWindow());
             }

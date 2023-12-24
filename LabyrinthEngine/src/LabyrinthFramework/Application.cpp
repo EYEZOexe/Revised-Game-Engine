@@ -57,7 +57,7 @@ namespace labyrinth_engine
 
     bool Application::ExecuteEvent(const sf::Event& a_event)
     {
-        if (m_currentWorld != nullptr)
+        if (m_currentWorld)
         {
             return m_currentWorld->ExecuteEvent(a_event);
         }
