@@ -7,6 +7,7 @@
 
 #include "UI/HUD.h"
 #include "UI/TextWidget.h"
+#include "UI/StatusMeter.h"
 
 namespace labyrinth_engine
 {
@@ -43,7 +44,9 @@ namespace labyrinth_engine
     protected:
 
     private:
+        void HUDInit(const sf::RenderWindow& a_window) override;
         TextWidget m_gameFramerateText;
+        StatusMeter m_playerHealthBar;
     };
 }
 
