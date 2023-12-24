@@ -5,11 +5,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Spaceship/Spaceship.h"
+#include "Weapon/Launcher.h"
 
 namespace labyrinth_engine
 {
-    class Launcher;
-
     class PlayerSpaceship : public Spaceship
     {
     public:

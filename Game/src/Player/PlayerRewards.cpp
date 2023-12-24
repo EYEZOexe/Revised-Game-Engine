@@ -31,27 +31,28 @@ namespace labyrinth_engine
 
     void PlayerRewards::OnActorBeginOverlap(Actor* m_actor)
     {
-        PlayerSpaceship* playerSpaceship = static_cast<PlayerSpaceship*>(m_actor);
+        PlayerSpaceship* playerSpaceship = dynamic_cast<PlayerSpaceship*>(m_actor);
 
         if (playerSpaceship != nullptr && !playerSpaceship->IsPendingKill())
         {
             m_rewardFunction(playerSpaceship);
+            Destroy();
         }
     }
 
     Weak<PlayerRewards> CreateHealthReward(World* a_world)
     {
-        return CreateReward(a_world, "PNG/pill_green.png", AddHealthReward);
+        return CreateReward(a_world, "PNG/power-ups/pill_green.png", AddHealthReward);
     }
 
     Weak<PlayerRewards> CreateThreewayShooterReward(World* a_world)
     {
-        return CreateReward(a_world, "PNG/things_bronze.png", AddThreewayShooterReward);
+        return CreateReward(a_world, "PNG/power-ups/things_bronze.png", AddThreewayShooterReward);
     }
 
     Weak<PlayerRewards> CreateWiperShooterReward(World* a_world)
     {
-        return CreateReward(a_world, "PNG/powerupRed_shield.png", AddWiperShooterReward);
+        return CreateReward(a_world, "PNG/power-ups/powerupRed_shield.png", AddWiperShooterReward);
     }
 
 

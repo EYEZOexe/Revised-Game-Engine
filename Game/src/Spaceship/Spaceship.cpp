@@ -38,7 +38,7 @@ namespace labyrinth_engine
 
         m_healthComponent.OnHealthChange.Bind(GetWeakReference(), &Spaceship::OnHealthChange); //bind the function to the event
         m_healthComponent.OnDamage.Bind(GetWeakReference(), &Spaceship::OnDamage);
-        m_healthComponent.OnDeath.Bind(GetWeakReference(), &Spaceship::OnDeath);
+        m_healthComponent.OnDeath.Bind(GetWeakReference(), &Spaceship::OnBaseDeath);
     }
 
     void Spaceship::DoDamage(float a_damage)
@@ -76,12 +76,18 @@ namespace labyrinth_engine
         HitEffect();
     }
 
-    void Spaceship::OnDeath()
+    void Spaceship::OnBaseDeath()
     {
         Explosion* explosion = new Explosion();
         explosion->SpawnExplosion(GetWorld(), GetActorLocation()); //spawn the explosion
+        OnDeath(); //call the death event
         //destroy the actor
         Destroy();
         delete explosion;
+    }
+
+    void Spaceship::OnDeath()
+    {
+
     }
 }

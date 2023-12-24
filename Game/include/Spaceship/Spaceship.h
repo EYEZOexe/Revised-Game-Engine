@@ -30,7 +30,8 @@ namespace labyrinth_engine
         void UpdateHitEffect(float a_deltaTime); //update the hit effect
         virtual void OnHealthChange(float a_amount, float a_currentHealth, float a_maxHealth); //health change event
         virtual void OnDamage(float a_damage, float a_currentHealth, float a_maxHealth); //damage event
-        virtual void OnDeath(); //death event
+        void OnBaseDeath(); //death event
+        virtual void OnDeath();
         sf::Vector2f m_velocity;
         HealthComponent m_healthComponent; //health component
 

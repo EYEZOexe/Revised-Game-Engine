@@ -6,6 +6,7 @@
 
 #include "LabyrinthFramework/MathUtility.h"
 #include "SFML/System.hpp"
+
 #include "Weapon/WiperProjectileLauncher.h"
 
 namespace labyrinth_engine
