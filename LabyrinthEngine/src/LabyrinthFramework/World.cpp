@@ -69,7 +69,7 @@ namespace labyrinth_engine
             actor->Render(a_window);
         }
 
-        RenderHUD();
+        RenderHUD(a_window);
     }
 
     World::~World()

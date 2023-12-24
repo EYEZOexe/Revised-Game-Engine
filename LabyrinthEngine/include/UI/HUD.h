@@ -19,7 +19,7 @@ namespace labyrinth_engine
         /* Class Functions */
 
         // Void Functions
-        void HUDInitFramework(sf::RenderWindow& a_window); // Function to initialize the HUD
+        void HUDInitFramework(const sf::RenderWindow& a_window); // Function to initialize the HUD
 
         // Boolean Functions
         bool IsHUDInitialized() {return m_isHUDInitialised;}
@@ -46,7 +46,7 @@ namespace labyrinth_engine
 
     private:
         bool m_isHUDInitialised; // Boolean to check if the HUD is initialized
-        virtual void HUDInit(sf::RenderWindow& a_window);
+        virtual void HUDInit(const sf::RenderWindow& a_window);
     };
 }
 
