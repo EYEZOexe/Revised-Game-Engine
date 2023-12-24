@@ -80,7 +80,7 @@ namespace labyrinth_engine
         if (m_ClearTimer.getElapsedTime().asSeconds() >= m_ClearTimeInterval)
         {
             m_ClearTimer.restart();
-            AssetManager::Get().Clear();
+            AssetManager::GetInstance().Clear();
             if (m_currentWorld)
             {
                 m_currentWorld->Clear();

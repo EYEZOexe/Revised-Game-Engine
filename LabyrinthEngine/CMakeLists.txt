@@ -44,8 +44,12 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
         ${CMAKE_CURRENT_SOURCE_DIR}/src/UI/Widget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/UI/Widget.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/UI/TextWidget.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/UI/TextWidget.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
+
 
 
 )

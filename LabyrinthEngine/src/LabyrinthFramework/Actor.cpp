@@ -59,7 +59,7 @@ namespace labyrinth_engine
 
     void Actor::SetActorTexture(const std::string& a_texturePath)
     {
-        AssetManager& assetManager = AssetManager::Get();
+        AssetManager& assetManager = AssetManager::GetInstance();
 
         m_texture = assetManager.LoadTexture(a_texturePath);
         if (!m_texture) return;
