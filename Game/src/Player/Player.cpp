@@ -39,7 +39,7 @@ namespace labyrinth_engine
     {
         if (a_playerScore > 0)
         {
-            m_playerScore = a_playerScore;
+            m_playerScore += a_playerScore;
             OnPlayerScoreChange.Broadcast(m_playerScore);
         }
     }

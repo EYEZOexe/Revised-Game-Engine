@@ -24,12 +24,14 @@ namespace labyrinth_engine
             }
        );
         void ActorTick(float a_deltaTime) override;
+        void SetEnemyScoreValue(unsigned int a_scoreValue) { m_scoreValue = a_scoreValue; }
     private:
         void InstantiateReward();
         void OnActorBeginOverlap(Actor* m_actor) override;
         void OnDeath() override;
         List<RewardInternalFunction> m_rewardFunctions;
         float m_spaceshipCollisionDamage;
+        unsigned int m_scoreValue;
 
     };
 }

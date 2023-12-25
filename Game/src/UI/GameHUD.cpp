@@ -17,11 +17,14 @@ namespace labyrinth_engine
         , m_playerDamageHealthColour{sf::Color::Red}
         , m_playerDamagedHealthThreshold{0.3f}
         , m_playerLifeIcon{"PNG/Power-ups/powerupRed_shield.png"}
-        , m_imageWidgetSpacing{10.0f}
         , m_playerLifeText{""}
+        , m_playerScoreIcon{"PNG/Power-ups/star_gold.png"}
+        , m_playerScoreText{""}
+        , m_imageWidgetSpacing{10.0f}
     {
         m_gameFramerateText.SetWidgetTextSize(20);
         m_playerLifeText.SetWidgetTextSize(20);
+        m_playerScoreText.SetWidgetTextSize(20);
     }
 
     void GameHUD::HUDInit(const sf::RenderWindow& a_window)
@@ -37,9 +40,15 @@ namespace labyrinth_engine
         widgetPosition += {m_playerLifeIcon.GetWidgetBounds().width + m_imageWidgetSpacing, 0};
         m_playerLifeText.SetWidgetPosition(widgetPosition);
 
+        widgetPosition += {m_playerLifeText.GetWidgetBounds().width + m_imageWidgetSpacing * 4, -2.0f};
+        m_playerScoreIcon.SetWidgetPosition(widgetPosition);
+
+        widgetPosition += {m_playerScoreIcon.GetWidgetBounds().width + m_imageWidgetSpacing, 2};
+        m_playerScoreText.SetWidgetPosition(widgetPosition);
+
 
         PlayerHUDReset();
-        WhenPlayerLifeUpdate();
+        PlayerStatsUpdate();
     }
 
     void GameHUD::PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth)
@@ -59,6 +68,11 @@ namespace labyrinth_engine
     void GameHUD::PlayerLifeUpdate(int a_amount)
     {
         m_playerLifeText.SetWidgetText(std::to_string(a_amount));
+    }
+
+    void GameHUD::PlayerScoreUpdate(int a_amount)
+    {
+        m_playerScoreText.SetWidgetText(std::to_string(a_amount));
     }
 
     void GameHUD::PlayerHUDReset()
@@ -86,6 +100,8 @@ namespace labyrinth_engine
         m_playerHealthBar.FrameworkWidgetDraw(a_window);
         m_playerLifeIcon.FrameworkWidgetDraw(a_window);
         m_playerLifeText.FrameworkWidgetDraw(a_window);
+        m_playerScoreIcon.FrameworkWidgetDraw(a_window);
+        m_playerScoreText.FrameworkWidgetDraw(a_window);
     }
 
     void GameHUD::UpdateHUD(float a_deltaTime)
@@ -95,7 +111,7 @@ namespace labyrinth_engine
         m_gameFramerateText.SetWidgetText(frameRateString);
     }
 
-    void GameHUD::WhenPlayerLifeUpdate()
+    void GameHUD::PlayerStatsUpdate()
     {
         Player* player = PlayerManager::GetInstance().GetPlayer();
 
@@ -104,6 +120,10 @@ namespace labyrinth_engine
             int playerLives = player->GetPlayerLives();
             m_playerLifeText.SetWidgetText(std::to_string(playerLives));
             player->OnPlayerLifeChange.Bind(GetWeakReference(), &GameHUD::PlayerLifeUpdate);
+
+            int playerScore = player->GetPlayerScore();
+            m_playerScoreText.SetWidgetText(std::to_string(playerScore));
+            player->OnPlayerScoreChange.Bind(GetWeakReference(), &GameHUD::PlayerScoreUpdate);
         }
     }
 }

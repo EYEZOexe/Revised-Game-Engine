@@ -47,11 +47,12 @@ namespace labyrinth_engine
     protected:
 
     private:
-        void WhenPlayerLifeUpdate();
+        void PlayerStatsUpdate();
 
         void HUDInit(const sf::RenderWindow& a_window) override;
         void PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth);
         void PlayerLifeUpdate(int a_amount);
+        void PlayerScoreUpdate(int a_amount);
         void PlayerDeath(Actor* a_actor);
         void PlayerHUDReset();
 
@@ -59,6 +60,9 @@ namespace labyrinth_engine
         StatusMeter m_playerHealthBar;
         ImageWidget m_playerLifeIcon;
         TextWidget m_playerLifeText;
+
+        ImageWidget m_playerScoreIcon;
+        TextWidget m_playerScoreText;
 
         sf::Color m_playerMaxHealthColour;
         sf::Color m_playerDamageHealthColour;

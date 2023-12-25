@@ -4,6 +4,7 @@
 
 #include "Enemy/EnemySpaceship.h"
 #include "LabyrinthFramework/MathUtility.h"
+#include "Player/PlayerManager.h"
 
 namespace labyrinth_engine
 {
@@ -11,6 +12,7 @@ namespace labyrinth_engine
         : Spaceship{a_owningWorld, a_texturePath}
         , m_spaceshipCollisionDamage{a_spaceshipCollisionDamage}
         , m_rewardFunctions{a_rewards}
+        , m_scoreValue{10}
     {
         SetActorCollisionLayer(GetEnemyCollisionLayer());
         SetActorRotation(180.0f);
@@ -51,5 +53,10 @@ namespace labyrinth_engine
     void EnemySpaceship::OnDeath()
     {
         InstantiateReward();
+        Player* player = PlayerManager::GetInstance().GetPlayer();
+        if (player)
+        {
+            player->IncreasePlayerScore(m_scoreValue);
+        }
     }
 }
