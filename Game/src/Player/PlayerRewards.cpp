@@ -7,6 +7,7 @@
 #include "Weapon/ThreeProjectileLauncher.h"
 #include "Weapon/WiperProjectileLauncher.h"
 #include "LabyrinthFramework/World.h"
+#include "Player/PlayerManager.h"
 
 namespace labyrinth_engine
 {
@@ -31,13 +32,22 @@ namespace labyrinth_engine
 
     void PlayerRewards::OnActorBeginOverlap(Actor* m_actor)
     {
-        PlayerSpaceship* playerSpaceship = dynamic_cast<PlayerSpaceship*>(m_actor);
+        if (!m_actor || m_actor->IsPendingKill()) return;
 
-        if (playerSpaceship != nullptr && !playerSpaceship->IsPendingKill())
+        if (!PlayerManager::GetInstance().GetPlayer()) return;
+
+        Weak<PlayerSpaceship> playerSpaceship = PlayerManager::GetInstance().GetPlayer()->GetPlayerSpaceship();
+
+        if (playerSpaceship.expired() || playerSpaceship.lock()->IsPendingKill()) return;
+
+        if (playerSpaceship.lock()->GetObjectID() == m_actor->GetObjectID())
         {
-            m_rewardFunction(playerSpaceship);
+            m_rewardFunction(playerSpaceship.lock().get());
             Destroy();
         }
+
+
+
     }
 
     Weak<PlayerRewards> CreateHealthReward(World* a_world)

@@ -7,8 +7,11 @@
 
 namespace labyrinth_engine
 {
+    unsigned int Object::s_objectIDCount = 0;
+
     Object::Object()
-        : m_bIsPendingKill(false)
+        : m_bIsPendingKill{false}
+        , m_objectID{GetAvailableObjectID()}
     {
     }
 
@@ -31,5 +34,10 @@ namespace labyrinth_engine
     Weak<const Object> Object::GetWeakReference() const
     {
         return weak_from_this();
+    }
+
+    unsigned int Object::GetAvailableObjectID()
+    {
+        return s_objectIDCount++;
     }
 }

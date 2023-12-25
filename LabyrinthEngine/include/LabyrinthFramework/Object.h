@@ -24,9 +24,14 @@ namespace labyrinth_engine
         Weak<Object> GetWeakReference();
         Weak<const Object> GetWeakReference() const;
         EventCallback<Object*> OnDestroy;
+        unsigned int GetObjectID() const {return m_objectID;}
 
     private:
         bool m_bIsPendingKill;
+        unsigned int m_objectID;
+
+        static unsigned int s_objectIDCount;
+        static unsigned int GetAvailableObjectID();
     };
 }
 
