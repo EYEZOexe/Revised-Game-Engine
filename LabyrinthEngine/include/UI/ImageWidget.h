@@ -24,6 +24,7 @@ namespace labyrinth_engine
         // Boolean Functions
 
         // Virtual Functions
+        sf::FloatRect GetWidgetBounds() const override;
 
         /* End of Class Functions */
 

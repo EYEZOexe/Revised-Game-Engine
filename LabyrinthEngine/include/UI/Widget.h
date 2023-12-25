@@ -25,7 +25,7 @@ namespace labyrinth_engine
 
         // Virtual Functions
         virtual bool IsMouseOver(const sf::Event& a_event);
-        virtual sf::FloatRect GetWidgetBounds() const { return sf::FloatRect();}
+        virtual sf::FloatRect GetWidgetBounds() const = 0;
         sf::Vector2f GetWidgetCenterPosition() const;
 
         /* End of Class Functions */

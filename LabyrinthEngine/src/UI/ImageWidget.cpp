@@ -14,6 +14,11 @@ namespace labyrinth_engine
 
     }
 
+    sf::FloatRect ImageWidget::GetWidgetBounds() const
+    {
+        return m_imageSprite.getGlobalBounds();
+    }
+
     void ImageWidget::SetWidgetImage(const Shared<sf::Texture>& a_imageTexture)
     {
         if (a_imageTexture)

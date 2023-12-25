@@ -18,19 +18,28 @@ namespace labyrinth_engine
         , m_playerDamagedHealthThreshold{0.3f}
         , m_playerLifeIcon{"PNG/Power-ups/powerupRed_shield.png"}
         , m_imageWidgetSpacing{10.0f}
+        , m_playerLifeText{""}
     {
         m_gameFramerateText.SetWidgetTextSize(20);
+        m_playerLifeText.SetWidgetTextSize(20);
     }
 
     void GameHUD::HUDInit(const sf::RenderWindow& a_window)
     {
         auto windowSize = a_window.getSize();
         m_playerHealthBar.SetWidgetPosition(sf::Vector2f{20.0f, windowSize.y - 50.0f});
-        sf::Vector2f playerLifeIconPosition = m_playerHealthBar.GetWidgetPosition();
-        playerLifeIconPosition += {m_playerHealthBar.GetWidgetBounds().width + m_imageWidgetSpacing, 0};
-        m_playerLifeIcon.SetWidgetPosition(playerLifeIconPosition);
+
+        sf::Vector2f widgetPosition = m_playerHealthBar.GetWidgetPosition();
+
+        widgetPosition += {m_playerHealthBar.GetWidgetBounds().width + m_imageWidgetSpacing, 0};
+        m_playerLifeIcon.SetWidgetPosition(widgetPosition);
+
+        widgetPosition += {m_playerLifeIcon.GetWidgetBounds().width + m_imageWidgetSpacing, 0};
+        m_playerLifeText.SetWidgetPosition(widgetPosition);
+
 
         PlayerHUDReset();
+        WhenPlayerLifeUpdate();
     }
 
     void GameHUD::PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth)
@@ -47,6 +56,11 @@ namespace labyrinth_engine
         }
     }
 
+    void GameHUD::PlayerLifeUpdate(int a_amount)
+    {
+        m_playerLifeText.SetWidgetText(std::to_string(a_amount));
+    }
+
     void GameHUD::PlayerHUDReset()
     {
         Player* player = PlayerManager::GetInstance().GetPlayer();
@@ -57,7 +71,7 @@ namespace labyrinth_engine
             playerSpaceship.lock()->OnActorDestroy.Bind(GetWeakReference(), &GameHUD::PlayerDeath);
             HealthComponent& healthComponent = player->GetPlayerSpaceship().lock()->GetHealthComponent();
             healthComponent.OnHealthChange.Bind(GetWeakReference(), &GameHUD::PlayerHealthUpdate);
-            m_playerHealthBar.UpdateStatus(healthComponent.GetHealth(), healthComponent.GetMaxHealth());
+            PlayerHealthUpdate(0, healthComponent.GetHealth(), healthComponent.GetMaxHealth());
         }
     }
 
@@ -71,6 +85,7 @@ namespace labyrinth_engine
         m_gameFramerateText.FrameworkWidgetDraw(a_window);
         m_playerHealthBar.FrameworkWidgetDraw(a_window);
         m_playerLifeIcon.FrameworkWidgetDraw(a_window);
+        m_playerLifeText.FrameworkWidgetDraw(a_window);
     }
 
     void GameHUD::UpdateHUD(float a_deltaTime)
@@ -78,5 +93,17 @@ namespace labyrinth_engine
         int frameRate = int(1 / a_deltaTime);
         std::string frameRateString = "Frame Rate: " + std::to_string(frameRate);
         m_gameFramerateText.SetWidgetText(frameRateString);
+    }
+
+    void GameHUD::WhenPlayerLifeUpdate()
+    {
+        Player* player = PlayerManager::GetInstance().GetPlayer();
+
+        if (player)
+        {
+            int playerLives = player->GetPlayerLives();
+            m_playerLifeText.SetWidgetText(std::to_string(playerLives));
+            player->OnPlayerLifeChange.Bind(GetWeakReference(), &GameHUD::PlayerLifeUpdate);
+        }
     }
 }
