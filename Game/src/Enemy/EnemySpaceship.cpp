@@ -8,11 +8,12 @@
 
 namespace labyrinth_engine
 {
-    EnemySpaceship::EnemySpaceship(World* a_owningWorld, const std::string& a_texturePath, float a_spaceshipCollisionDamage, const List<RewardInternalFunction> a_rewards)
+    EnemySpaceship::EnemySpaceship(World* a_owningWorld, const std::string& a_texturePath, float a_spaceshipCollisionDamage, float a_rewardSpawnChance, const List<RewardInternalFunction> a_rewards)
         : Spaceship{a_owningWorld, a_texturePath}
         , m_spaceshipCollisionDamage{a_spaceshipCollisionDamage}
         , m_rewardFunctions{a_rewards}
         , m_scoreValue{10}
+        , m_rewardSpawnChance{a_rewardSpawnChance}
     {
         SetActorCollisionLayer(GetEnemyCollisionLayer());
         SetActorRotation(180.0f);
@@ -31,8 +32,9 @@ namespace labyrinth_engine
     {
         if (m_rewardFunctions.empty()) return;
 
-        int randomReward = (int)RandomFloat(0, m_rewardFunctions.size());
+        if (m_rewardSpawnChance > RandomFloat(0.0f, 1.0f)) return; // If the random number is greater than the reward spawn chance, return (don't spawn a reward
 
+        int randomReward = (int)RandomFloat(0, m_rewardFunctions.size());
         if (randomReward >= 0 && randomReward < m_rewardFunctions.size())
         {
            Weak<PlayerRewards> playerReward = m_rewardFunctions[randomReward](GetWorld());

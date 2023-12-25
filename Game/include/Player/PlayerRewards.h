@@ -59,12 +59,14 @@ namespace labyrinth_engine
     Weak<PlayerRewards> CreateHealthReward(World* a_world);
     Weak<PlayerRewards> CreateThreewayShooterReward(World* a_world);
     Weak<PlayerRewards> CreateWiperShooterReward(World* a_world);
+    Weak<PlayerRewards> CreateLifeReward(World* a_world);
 
     Weak<PlayerRewards> CreateReward(World* a_world, const std::string& a_rewardTexturePath, RewardFunction a_rewardFunction);
 
     void AddHealthReward(PlayerSpaceship* a_playerSpaceship);
     void AddThreewayShooterReward(PlayerSpaceship* a_playerSpaceship);
     void AddWiperShooterReward(PlayerSpaceship* a_playerSpaceship);
+    void AddLifeReward(PlayerSpaceship* a_playerSpaceship);
 }
 
 #endif //PLAYERREWARDS_H

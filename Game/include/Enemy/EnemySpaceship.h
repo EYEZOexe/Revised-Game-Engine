@@ -16,11 +16,13 @@ namespace labyrinth_engine
         EnemySpaceship(World* a_owningWorld,
             const std::string& a_texturePath,
             float a_spaceshipCollisionDamage = 200.0f,
+            float a_rewardSpawnChance = 0.5f,
             const List<RewardInternalFunction> a_rewards =
             {
                 CreateHealthReward,
                 CreateThreewayShooterReward,
-                CreateWiperShooterReward
+                CreateWiperShooterReward,
+                CreateLifeReward
             }
        );
         void ActorTick(float a_deltaTime) override;
@@ -31,6 +33,7 @@ namespace labyrinth_engine
         void OnDeath() override;
         List<RewardInternalFunction> m_rewardFunctions;
         float m_spaceshipCollisionDamage;
+        float m_rewardSpawnChance;
         unsigned int m_scoreValue;
 
     };

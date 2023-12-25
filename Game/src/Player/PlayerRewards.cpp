@@ -52,7 +52,7 @@ namespace labyrinth_engine
 
     Weak<PlayerRewards> CreateHealthReward(World* a_world)
     {
-        return CreateReward(a_world, "PNG/power-ups/pill_green.png", AddHealthReward);
+        return CreateReward(a_world, "PNG/power-ups/powerupRed_bolt.png", AddHealthReward);
     }
 
     Weak<PlayerRewards> CreateThreewayShooterReward(World* a_world)
@@ -65,6 +65,11 @@ namespace labyrinth_engine
         return CreateReward(a_world, "PNG/power-ups/powerupRed_shield.png", AddWiperShooterReward);
     }
 
+    Weak<PlayerRewards> CreateLifeReward(World* a_world)
+    {
+        return CreateReward(a_world, "PNG/power-ups/pill_green.png", AddLifeReward);
+    }
+
 
     Weak<PlayerRewards> CreateReward(World* a_world, const std::string& a_rewardTexturePath, RewardFunction a_rewardFunction)
     {
@@ -75,7 +80,7 @@ namespace labyrinth_engine
     void AddHealthReward(PlayerSpaceship* a_playerSpaceship)
     {
         static float healthReward = 10.0f; // static variables will only be initialized once
-        if (a_playerSpaceship != nullptr && !a_playerSpaceship->IsPendingKill())
+        if (a_playerSpaceship && !a_playerSpaceship->IsPendingKill())
         {
             a_playerSpaceship->GetHealthComponent().SetHealth(healthReward);
         }
@@ -83,7 +88,7 @@ namespace labyrinth_engine
 
     void AddThreewayShooterReward(PlayerSpaceship* a_playerSpaceship)
     {
-        if (a_playerSpaceship != nullptr && !a_playerSpaceship->IsPendingKill())
+        if (a_playerSpaceship && !a_playerSpaceship->IsPendingKill())
         {
             a_playerSpaceship->SetProjectileLauncher(Unique<Launcher>{new ThreeProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
         }
@@ -91,9 +96,16 @@ namespace labyrinth_engine
 
     void AddWiperShooterReward(PlayerSpaceship* a_playerSpaceship)
     {
-        if (a_playerSpaceship != nullptr && !a_playerSpaceship->IsPendingKill())
+        if (a_playerSpaceship && !a_playerSpaceship->IsPendingKill())
         {
             a_playerSpaceship->SetProjectileLauncher(Unique<Launcher>{new WiperProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
         }
+    }
+
+    void AddLifeReward(PlayerSpaceship* a_playerSpaceship)
+    {
+        if (!PlayerManager::GetInstance().GetPlayer()) return;
+
+        PlayerManager::GetInstance().GetPlayer()->IncreasePlayerLives(1);
     }
 }
