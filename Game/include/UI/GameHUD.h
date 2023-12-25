@@ -8,6 +8,7 @@
 #include "UI/HUD.h"
 #include "UI/TextWidget.h"
 #include "UI/StatusMeter.h"
+#include "UI/ImageWidget.h"
 
 namespace labyrinth_engine
 {
@@ -50,11 +51,16 @@ namespace labyrinth_engine
         void PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth);
         void PlayerDeath(Actor* a_actor);
         void PlayerHUDReset();
+
         TextWidget m_gameFramerateText;
         StatusMeter m_playerHealthBar;
+        ImageWidget m_playerLifeIcon;
+
         sf::Color m_playerMaxHealthColour;
         sf::Color m_playerDamageHealthColour;
         float m_playerDamagedHealthThreshold;
+
+        float m_imageWidgetSpacing;
     };
 }
 

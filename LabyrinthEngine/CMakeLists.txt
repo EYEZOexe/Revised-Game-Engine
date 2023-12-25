@@ -50,11 +50,11 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
         ${CMAKE_CURRENT_SOURCE_DIR}/src/UI/StatusMeter.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/UI/StatusMeter.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/UI/ImageWidget.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/UI/ImageWidget.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
-
-
-
 )
 
 target_include_directories(${GAME_ENGINE_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the engine target

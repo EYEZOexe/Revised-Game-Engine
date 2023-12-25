@@ -16,6 +16,8 @@ namespace labyrinth_engine
         , m_playerMaxHealthColour{sf::Color::Green}
         , m_playerDamageHealthColour{sf::Color::Red}
         , m_playerDamagedHealthThreshold{0.3f}
+        , m_playerLifeIcon{"PNG/Power-ups/powerupRed_shield.png"}
+        , m_imageWidgetSpacing{10.0f}
     {
         m_gameFramerateText.SetWidgetTextSize(20);
     }
@@ -24,6 +26,10 @@ namespace labyrinth_engine
     {
         auto windowSize = a_window.getSize();
         m_playerHealthBar.SetWidgetPosition(sf::Vector2f{20.0f, windowSize.y - 50.0f});
+        sf::Vector2f playerLifeIconPosition = m_playerHealthBar.GetWidgetPosition();
+        playerLifeIconPosition += {m_playerHealthBar.GetWidgetBounds().width + m_imageWidgetSpacing, 0};
+        m_playerLifeIcon.SetWidgetPosition(playerLifeIconPosition);
+
         PlayerHUDReset();
     }
 
@@ -64,6 +70,7 @@ namespace labyrinth_engine
     {
         m_gameFramerateText.FrameworkWidgetDraw(a_window);
         m_playerHealthBar.FrameworkWidgetDraw(a_window);
+        m_playerLifeIcon.FrameworkWidgetDraw(a_window);
     }
 
     void GameHUD::UpdateHUD(float a_deltaTime)
