@@ -21,6 +21,7 @@ namespace labyrinth_engine
         , m_playerScoreIcon{"PNG/Power-ups/star_gold.png"}
         , m_playerScoreText{""}
         , m_imageWidgetSpacing{10.0f}
+        , m_testButton{}
     {
         m_gameFramerateText.SetWidgetTextSize(20);
         m_playerLifeText.SetWidgetTextSize(20);
@@ -45,6 +46,8 @@ namespace labyrinth_engine
 
         widgetPosition += {m_playerScoreIcon.GetWidgetBounds().width + m_imageWidgetSpacing, 2};
         m_playerScoreText.SetWidgetPosition(widgetPosition);
+
+        m_testButton.SetWidgetPosition({windowSize.x / 2.0f, windowSize.y / 2.0f});
 
 
         PlayerHUDReset();
@@ -102,6 +105,7 @@ namespace labyrinth_engine
         m_playerLifeText.FrameworkWidgetDraw(a_window);
         m_playerScoreIcon.FrameworkWidgetDraw(a_window);
         m_playerScoreText.FrameworkWidgetDraw(a_window);
+        m_testButton.FrameworkWidgetDraw(a_window);
     }
 
     void GameHUD::UpdateHUD(float a_deltaTime)

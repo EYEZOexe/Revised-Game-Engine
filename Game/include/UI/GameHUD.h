@@ -9,6 +9,7 @@
 #include "UI/TextWidget.h"
 #include "UI/StatusMeter.h"
 #include "UI/ImageWidget.h"
+#include "UI/ButtonWidget.h"
 
 namespace labyrinth_engine
 {
@@ -63,6 +64,8 @@ namespace labyrinth_engine
 
         ImageWidget m_playerScoreIcon;
         TextWidget m_playerScoreText;
+
+        ButtonWidget m_testButton;
 
         sf::Color m_playerMaxHealthColour;
         sf::Color m_playerDamageHealthColour;
