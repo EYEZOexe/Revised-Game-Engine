@@ -48,6 +48,8 @@ namespace labyrinth_engine
         m_playerScoreText.SetWidgetPosition(widgetPosition);
 
         m_testButton.SetWidgetPosition({windowSize.x / 2.0f, windowSize.y / 2.0f});
+        m_testButton.SetButtonTextSize(20);
+        m_testButton.OnButtonPressed.Bind(GetWeakReference(), &GameHUD::TestButtonPressed);
 
 
         PlayerHUDReset();
@@ -92,6 +94,11 @@ namespace labyrinth_engine
         }
     }
 
+    void GameHUD::TestButtonPressed()
+    {
+        LE_LOG("BUTTON PRESSED YEET");
+    }
+
     void GameHUD::PlayerDeath(Actor* a_actor)
     {
         PlayerHUDReset();
@@ -113,6 +120,11 @@ namespace labyrinth_engine
         int frameRate = int(1 / a_deltaTime);
         std::string frameRateString = "Frame Rate: " + std::to_string(frameRate);
         m_gameFramerateText.SetWidgetText(frameRateString);
+    }
+
+    bool GameHUD::IsHUDClicked(const sf::Event& a_event)
+    {
+        return m_testButton.IsMouseOver(a_event) || HUD::IsHUDClicked(a_event);
     }
 
     void GameHUD::PlayerStatsUpdate()

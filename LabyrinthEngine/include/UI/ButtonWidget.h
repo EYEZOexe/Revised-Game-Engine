@@ -18,6 +18,7 @@ namespace labyrinth_engine
         /* End of Constructors and Destructors */
 
         /* Class Functions */
+        EventCallback<> OnButtonPressed;
 
         // Void Functions
 
@@ -25,6 +26,8 @@ namespace labyrinth_engine
 
         // Virtual Functions
         sf::FloatRect GetWidgetBounds() const override {return m_buttonSprite.getGlobalBounds();}
+
+        bool IsMouseOver(const sf::Event& a_event) override;
 
         /* End of Class Functions */
 
@@ -34,6 +37,8 @@ namespace labyrinth_engine
         /* Setters and Getters */
 
         // Setters
+        void SetButtonText(const std::string& a_buttonText);
+        void SetButtonTextSize(unsigned int a_fontSize);
 
         // Getters
 
@@ -42,6 +47,7 @@ namespace labyrinth_engine
     protected:
 
     private:
+        void CenterWidgetText();
         void DrawWidget(sf::RenderWindow& a_window) override;
         void UpdateWidgetLocation(const sf::Vector2f& a_position) override;
         void UpdateWidgetRotation(float& a_rotation) override;
@@ -56,6 +62,9 @@ namespace labyrinth_engine
         sf::Color m_ButtonHoverColour;
 
         bool m_isButtonPressed;
+        void ButtonReleased();
+        void ButtonPressed();
+        void ButtonHovered();
     };
 }
 
