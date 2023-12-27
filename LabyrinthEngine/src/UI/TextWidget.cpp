@@ -40,8 +40,9 @@ namespace labyrinth_engine
         m_widgetText.setRotation(a_rotation);
     }
 
-    void TextWidget::DrawWidget(sf::RenderWindow& a_window)
+    void TextWidget::DrawWidget(SDL_Window& a_window)
     {
-        a_window.draw(m_widgetText);
+        //TODO: Fix this
+        //a_window.draw(m_widgetText);
     }
 }

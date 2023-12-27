@@ -73,7 +73,7 @@ namespace labyrinth_engine
             actor->Render(a_window);
         }
 
-        //RenderHUD(a_window);
+        RenderHUD(a_window);
     }
 
     World::~World()
@@ -126,7 +126,7 @@ namespace labyrinth_engine
 
     }
 
-    void World::RenderHUD(sf::RenderWindow& a_window)
+    void World::RenderHUD(SDL_Window& a_window)
     {
         if (m_HUD)
         {

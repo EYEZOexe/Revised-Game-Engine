@@ -45,7 +45,7 @@ namespace labyrinth_engine
     protected:
 
     private:
-        void DrawWidget(sf::RenderWindow& a_window) override;
+        void DrawWidget(SDL_Window& a_window) override;
         void UpdateWidgetLocation(const sf::Vector2f& a_position) override;
         void UpdateWidgetRotation(float& a_rotation) override;
         void CenterWidgetText();

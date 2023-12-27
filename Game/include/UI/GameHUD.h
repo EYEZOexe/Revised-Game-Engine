@@ -29,7 +29,7 @@ namespace labyrinth_engine
         // Boolean Functions
 
         // Virtual Functions
-        void DrawHUD(sf::RenderWindow& a_window) override;
+        void DrawHUD(SDL_Window& a_window) override;
         void UpdateHUD(float a_deltaTime) override;
         bool IsHUDClicked(const SDL_Event& a_event) override;
 

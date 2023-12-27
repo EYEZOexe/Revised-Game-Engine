@@ -6,7 +6,7 @@
 
 namespace labyrinth_engine
 {
-    void Widget::FrameworkWidgetDraw(sf::RenderWindow& a_window)
+    void Widget::FrameworkWidgetDraw(SDL_Window& a_window)
     {
         if (m_isWidgetVisible)
         {
@@ -44,7 +44,7 @@ namespace labyrinth_engine
 
     }
 
-    void Widget::DrawWidget(sf::RenderWindow& window)
+    void Widget::DrawWidget(SDL_Window& window)
     {
 
     }

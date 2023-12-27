@@ -44,7 +44,7 @@ namespace labyrinth_engine
     private:
         virtual void BeginPlay();
         virtual void WorldTick(float a_deltaTime);
-        void RenderHUD(sf::RenderWindow& a_window);
+        void RenderHUD(SDL_Window& a_window);
         Application* m_owningApplication;
         bool m_bIsPlaying;
 
@@ -54,7 +54,6 @@ namespace labyrinth_engine
         List<Shared<GameStage>>::iterator m_currentGameStage; //iterator of the current game stage
 
         Shared<HUD> m_HUD;
-
 
         virtual void InitialiseGameStages(); //initialise the game stages
         virtual void GameStagesFinished(); //when all game stages are finished

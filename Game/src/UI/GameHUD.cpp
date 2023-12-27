@@ -104,7 +104,7 @@ namespace labyrinth_engine
         PlayerHUDReset();
     }
 
-    void GameHUD::DrawHUD(sf::RenderWindow& a_window)
+    void GameHUD::DrawHUD(SDL_Window& a_window)
     {
         m_gameFramerateText.FrameworkWidgetDraw(a_window);
         m_playerHealthBar.FrameworkWidgetDraw(a_window);

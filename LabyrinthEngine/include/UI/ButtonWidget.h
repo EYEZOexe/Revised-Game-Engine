@@ -49,7 +49,7 @@ namespace labyrinth_engine
 
     private:
         void CenterWidgetText();
-        void DrawWidget(sf::RenderWindow& a_window) override;
+        void DrawWidget(SDL_Window& a_window) override;
         void UpdateWidgetLocation(const sf::Vector2f& a_position) override;
         void UpdateWidgetRotation(float& a_rotation) override;
         Shared<sf::Texture> m_buttonTexture;

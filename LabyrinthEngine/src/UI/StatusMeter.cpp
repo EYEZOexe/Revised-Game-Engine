@@ -39,11 +39,12 @@ namespace labyrinth_engine
         return m_StatusMeterBack.getGlobalBounds();
     }
 
-    void StatusMeter::DrawWidget(sf::RenderWindow& a_window)
+    void StatusMeter::DrawWidget(SDL_Window& a_window)
     {
-        a_window.draw(m_StatusMeterBack);
-        a_window.draw(m_StatusMeterFront);
-        a_window.draw(m_StatusText);
+        //TODO: Fix this
+        //a_window.draw(m_StatusMeterBack);
+        //a_window.draw(m_StatusMeterFront);
+        //a_window.draw(m_StatusText);
     }
 
     void StatusMeter::UpdateWidgetLocation(const sf::Vector2f& a_position)

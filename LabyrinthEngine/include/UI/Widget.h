@@ -20,7 +20,7 @@ namespace labyrinth_engine
         /* Class Functions */
 
         // Void Functions
-        void FrameworkWidgetDraw(sf::RenderWindow& a_window);
+        void FrameworkWidgetDraw(SDL_Window& a_window);
 
         // Boolean Functions
 
@@ -52,7 +52,7 @@ namespace labyrinth_engine
         Widget(); // protected because it is an abstract class
 
     private:
-        virtual void DrawWidget(sf::RenderWindow& window);
+        virtual void DrawWidget(SDL_Window& window);
         virtual void UpdateWidgetLocation(const sf::Vector2f& a_position);
         virtual void UpdateWidgetRotation(float& a_rotation);
         sf::Transformable m_widgetTransform; // Transformable object for the widget

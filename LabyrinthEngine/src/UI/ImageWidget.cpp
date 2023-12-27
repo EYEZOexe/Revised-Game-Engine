@@ -38,8 +38,9 @@ namespace labyrinth_engine
         m_imageSprite.setRotation(a_rotation);
     }
 
-    void ImageWidget::DrawWidget(sf::RenderWindow& window)
+    void ImageWidget::DrawWidget(SDL_Window& window)
     {
-        window.draw(m_imageSprite);
+        //TODO: Fix this
+        //window.draw(m_imageSprite);
     }
 }

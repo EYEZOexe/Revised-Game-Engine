@@ -21,6 +21,7 @@ namespace labyrinth_engine
     {
     public:
         Application(unsigned int a_windowWidth, unsigned int a_windowHeight, const std::string& a_windowTitle);
+        ~Application();
         void Run();
 
         // Weak Pointers are a type of smart pointer that provides a non-owning "weak" reference to an object that's managed by another shared pointer.

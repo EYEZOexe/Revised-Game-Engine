@@ -39,6 +39,13 @@ namespace labyrinth_engine
         }
     }
 
+    Application::~Application()
+    {
+        SDL_Rend_DeleteContext(m_SDLContext);
+        SDL_DestroyWindow(m_SDLWindow);
+        SDL_Quit();
+    }
+
     void Application::Run()
     {
         m_tick.restart();
@@ -113,14 +120,14 @@ namespace labyrinth_engine
 
         Render();
 
-        SDL_GL_SwapWindow(m_SDLWindow);
+        SDL_Rend_SwapWindow(m_SDLWindow);
     }
 
     void Application::Render()
     {
         if (m_currentWorld != nullptr)
         {
-            //m_currentWorld->Render(m_window);
+            m_currentWorld->Render(*m_SDLWindow);
         }
     }
 

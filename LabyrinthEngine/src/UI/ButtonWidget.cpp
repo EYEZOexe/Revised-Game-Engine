@@ -104,10 +104,11 @@ namespace labyrinth_engine
         m_buttonText.setPosition(widgetCenter - sf::Vector2f{textBounds.width/2.0f, textBounds.height});
     }
 
-    void ButtonWidget::DrawWidget(sf::RenderWindow& a_window)
+    void ButtonWidget::DrawWidget(SDL_Window& a_window)
     {
-        a_window.draw(m_buttonSprite);
-        a_window.draw(m_buttonText);
+        //TODO: Fix this
+        //a_window.draw(m_buttonSprite);
+        //a_window.draw(m_buttonText);
     }
 
     void ButtonWidget::UpdateWidgetLocation(const sf::Vector2f& a_position)

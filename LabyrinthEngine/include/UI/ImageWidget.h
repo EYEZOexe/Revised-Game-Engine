@@ -45,7 +45,7 @@ namespace labyrinth_engine
     private:
         void UpdateWidgetLocation(const sf::Vector2f& a_position) override;
         void UpdateWidgetRotation(float& a_rotation) override;
-        void DrawWidget(sf::RenderWindow& window) override;
+        void DrawWidget(SDL_Window& window) override;
         Shared<sf::Texture> m_imageTexture;
         sf::Sprite m_imageSprite;
     };
