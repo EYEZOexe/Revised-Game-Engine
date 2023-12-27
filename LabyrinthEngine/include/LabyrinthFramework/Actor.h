@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SDL2/SDL.h>
+#include <rend/rend.h>
 #include "Core.h"
 #include "Object.h"
 
@@ -82,10 +83,12 @@ namespace labyrinth_engine
         void UpdatePhysicsTransform();
         void CenterActorOrigin();
 
+
         World* m_owningWorld;
 
         bool m_bIsPlaying;
         bool m_bIsPhysicsEnabled;
+
 
         sf::Sprite m_sprite;
         Shared<sf::Texture> m_texture;

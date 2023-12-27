@@ -6,6 +6,7 @@
 #define ASSETMANAGER_H
 
 #include <SFML/Graphics.hpp>
+#include <rend/rend.h>
 #include "Core.h"
 
 namespace labyrinth_engine

@@ -23,6 +23,7 @@ namespace labyrinth_engine
         , m_collisionLayer{GetDefaultCollisionLayer()}
     {
         SetActorTexture(a_texturePath);
+
     }
 
     Actor::~Actor()
@@ -77,6 +78,7 @@ namespace labyrinth_engine
     {
         if (IsPendingKill()) //if the actor is pending kill, we don't want to render it
             return;
+
 
         //a_window.draw(m_sprite);
     }
