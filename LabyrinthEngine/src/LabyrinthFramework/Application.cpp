@@ -9,7 +9,6 @@
 #include "LabyrinthFramework/PhysicsSystem.h"
 #include "LabyrinthFramework/TimeManager.h"
 
-
 namespace labyrinth_engine
 {
     Application::Application(unsigned a_windowWidth, unsigned a_windowHeight, const std::string& a_windowTitle, sf::Uint32 a_windowStyle)

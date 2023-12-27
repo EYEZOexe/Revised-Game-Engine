@@ -63,6 +63,48 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
 
 target_include_directories(${GAME_ENGINE_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the engine target
 
+add_library(rend STATIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Animation.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Animation.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Buffer.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Buffer.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Debug.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Debug.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Font.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Font.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Mesh.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Mesh.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Model.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Model.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/ModelShader.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/ModelShader.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/RenderTexture.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/RenderTexture.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/rendmath.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/rendmath.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Shader.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Shader.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/TextShader.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/TextShader.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Texture.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/Texture.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/utils.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/rend/utils.h
+)
+target_include_directories(rend PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/external/include
+)
+
+target_link_directories(rend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/external/lib) # Links the external library directory to the rend target
+
+target_link_libraries(rend PUBLIC
+        GLEW32
+        opengl32
+)
+
+target_link_libraries(${GAME_ENGINE_TARGET_NAME} PUBLIC rend SDL2) # Links the rend library to the engine target
+
 include(FetchContent) # Includes the FetchContent module
 set(SFML_LIB_NAME SFML)
 
@@ -100,6 +142,13 @@ function(CopyLibrariesToTarget LIB_NAME TARGET_NAME) # Copies the SFML libraries
             $<TARGET_FILE_DIR:${TARGET_NAME}>
     )
 endfunction()
+
+add_custom_command(TARGET ${GAME_ENGINE_TARGET_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_CURRENT_SOURCE_DIR}/external/bin/glew32.dll"
+        "${CMAKE_CURRENT_SOURCE_DIR}/external/bin/SDL2.dll"
+        $<TARGET_FILE_DIR:${GAME_ENGINE_TARGET_NAME}>
+)
 
 CopyLibrariesToTarget(sfml-graphics ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML graphics library to the engine target
 CopyLibrariesToTarget(sfml-window ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML window library to the engine target
