@@ -11,7 +11,7 @@
 
 namespace labyrinth_engine
 {
-    Application::Application(unsigned a_windowWidth, unsigned a_windowHeight, const std::string& a_windowTitle, sf::Uint32 a_windowStyle)
+    Application::Application(unsigned a_windowWidth, unsigned a_windowHeight, const std::string& a_windowTitle)
         : m_targetFrameRate(60)
         , m_tick{}
         , m_currentWorld(nullptr)
@@ -109,18 +109,18 @@ namespace labyrinth_engine
 
     void Application::RenderFramework()
     {
-        m_window.clear();
+        SDL_Rend_ClearWindow(m_SDLWindow);
 
         Render();
 
-        m_window.display();
+        SDL_GL_SwapWindow(m_SDLWindow);
     }
 
     void Application::Render()
     {
         if (m_currentWorld != nullptr)
         {
-            m_currentWorld->Render(m_window);
+            //m_currentWorld->Render(m_window);
         }
     }
 

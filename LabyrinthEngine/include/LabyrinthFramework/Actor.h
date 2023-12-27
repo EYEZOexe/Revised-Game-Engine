@@ -6,6 +6,7 @@
 #define ACTOR_H
 
 #include <SFML/Graphics.hpp>
+#include <SDL2/SDL.h>
 #include "Core.h"
 #include "Object.h"
 
@@ -26,7 +27,7 @@ namespace labyrinth_engine
         /* Framework functions */
         void ActorBeginPlayFramework();
         void ActorTickFramework(float a_deltaTime);
-        void Render(sf::RenderWindow& a_window);
+        void Render(SDL_Window& a_window);
         void AddActorLocationOffset(const sf::Vector2f& a_locationOffset);
         void AddActorRotationOffset(float a_rotationOffset);
 

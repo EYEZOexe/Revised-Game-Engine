@@ -73,12 +73,12 @@ namespace labyrinth_engine
         CenterActorOrigin();
     }
 
-    void Actor::Render(sf::RenderWindow& a_window)
+    void Actor::Render(SDL_Window& a_window)
     {
         if (IsPendingKill()) //if the actor is pending kill, we don't want to render it
             return;
 
-        a_window.draw(m_sprite);
+        //a_window.draw(m_sprite);
     }
 
     void Actor::SetActorLocation(const sf::Vector2f& a_location)

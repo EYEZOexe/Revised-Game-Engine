@@ -17,7 +17,7 @@ labyrinth_engine::Application* GetApplication()
 namespace labyrinth_engine
 {
     GameApplication::GameApplication()
-        : Application{600, 900, "Game", sf::Style::Titlebar | sf::Style::Close}
+        : Application{600, 900, "Game"}
     {
         AssetManager::GetInstance().SetAssetDirectory(GetAssetDirectory());
         const Weak<GameLevelOne> newWorld = LoadWorld<GameLevelOne>();

@@ -66,14 +66,14 @@ namespace labyrinth_engine
         }
     }
 
-    void World::Render(sf::RenderWindow& a_window)
+    void World::Render(SDL_Window& a_window)
     {
         for (const auto& actor : m_actors)
         {
             actor->Render(a_window);
         }
 
-        RenderHUD(a_window);
+        //RenderHUD(a_window);
     }
 
     World::~World()
