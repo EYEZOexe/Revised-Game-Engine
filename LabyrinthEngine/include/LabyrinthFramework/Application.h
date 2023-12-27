@@ -7,7 +7,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "Core.h"
-
 #include "World.h"
 
 namespace labyrinth_engine

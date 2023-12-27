@@ -106,4 +106,3 @@ CopyLibrariesToTarget(sfml-window ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML 
 CopyLibrariesToTarget(sfml-system ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML system library to the engine target
 CopyLibrariesToTarget(sfml-audio ${GAME_ENGINE_TARGET_NAME}) # Copies the SFML audio library to the engine target
 CopyLibrariesToTarget(box2d ${GAME_ENGINE_TARGET_NAME}) # Copies the Box2D library to the engine target
-
