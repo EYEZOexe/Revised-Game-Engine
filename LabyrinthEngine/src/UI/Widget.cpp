@@ -14,7 +14,7 @@ namespace labyrinth_engine
         }
     }
 
-    bool Widget::IsMouseOver(const sf::Event& a_event)
+    bool Widget::IsMouseOver(const SDL_Event& a_event)
     {
         return false;
     }

@@ -6,6 +6,7 @@
 #define WORLD_H
 
 #include <SFML/Graphics.hpp>
+#include <SDL2/SDL.h>
 #include "Core.h"
 #include "Object.h"
 
@@ -38,7 +39,7 @@ namespace labyrinth_engine
         void Clear();
         void AddGameStage(const Shared<GameStage>& a_gameStage);
 
-        bool ExecuteEvent(const sf::Event& a_event);
+        bool ExecuteEvent(const SDL_Event& a_event);
 
     private:
         virtual void BeginPlay();

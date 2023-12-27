@@ -21,7 +21,7 @@ namespace labyrinth_engine
 
     }
 
-    bool HUD::IsHUDClicked(const sf::Event& a_event)
+    bool HUD::IsHUDClicked(const SDL_Event& a_event)
     {
         return false;
     }

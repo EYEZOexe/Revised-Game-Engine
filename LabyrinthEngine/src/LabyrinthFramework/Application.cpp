@@ -12,14 +12,31 @@
 namespace labyrinth_engine
 {
     Application::Application(unsigned a_windowWidth, unsigned a_windowHeight, const std::string& a_windowTitle, sf::Uint32 a_windowStyle)
-        : m_window(sf::VideoMode(a_windowWidth, a_windowHeight), a_windowTitle, a_windowStyle)
-        , m_targetFrameRate(60)
+        : m_targetFrameRate(60)
         , m_tick{}
         , m_currentWorld(nullptr)
         , m_ClearTimer{}
         , m_ClearTimeInterval(2.0f)
+        , m_isApplicationRunning{true}
     {
+        if (SDL_Init(SDL_INIT_VIDEO) < 0)
+        {
+            throw std::runtime_error("Failed to initialize SDL2");
+        }
 
+        m_SDLWindow = SDL_CreateWindow(a_windowTitle.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, a_windowWidth, a_windowHeight, SDL_WINDOW_RESIZABLE | SDL_WINDOW_REND);
+
+        if (!m_SDLWindow)
+        {
+            throw std::runtime_error("Failed to create SDL2 window");
+        }
+
+        m_SDLContext = SDL_Rend_CreateContext(m_SDLWindow);
+
+        if (!m_SDLContext)
+        {
+            throw std::runtime_error("Failed to create Rend OpenGL context");
+        }
     }
 
     void Application::Run()
@@ -29,20 +46,22 @@ namespace labyrinth_engine
         float timePassed = 0.0f;
         const float targetDeltaTime = 1.0f / m_targetFrameRate;
 
-        while (m_window.isOpen())
+        SDL_Event m_SDLWindowEvent{};
+
+        while (m_isApplicationRunning)
         {
-            sf::Event windowEvent{};
-            while (m_window.pollEvent(windowEvent))
+            while (SDL_PollEvent(&m_SDLWindowEvent))
             {
-                if (windowEvent.type == sf::Event::EventType::Closed)
+                if (m_SDLWindowEvent.type == SDL_QUIT)
                 {
-                    m_window.close();
+                    m_isApplicationRunning = false;
                 }
                 else
                 {
-                    ExecuteEvent(windowEvent);
+                    ExecuteEvent(m_SDLWindowEvent);
                 }
             }
+
             const float frameDeltaTime = m_tick.restart().asSeconds();
             timePassed += frameDeltaTime;
             while (timePassed > targetDeltaTime)
@@ -54,7 +73,7 @@ namespace labyrinth_engine
         }
     }
 
-    bool Application::ExecuteEvent(const sf::Event& a_event)
+    bool Application::ExecuteEvent(const SDL_Event& a_event)
     {
         if (m_currentWorld)
         {

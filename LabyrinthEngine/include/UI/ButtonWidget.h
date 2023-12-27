@@ -5,6 +5,7 @@
 #ifndef BUTTONWIDGET_H
 #define BUTTONWIDGET_H
 
+
 #include "UI/Widget.h"
 #include "LabyrinthFramework/EventCallback.h"
 
@@ -27,7 +28,7 @@ namespace labyrinth_engine
         // Virtual Functions
         sf::FloatRect GetWidgetBounds() const override {return m_buttonSprite.getGlobalBounds();}
 
-        bool IsMouseOver(const sf::Event& a_event) override;
+        bool IsMouseOver(const SDL_Event& a_event) override;
 
         /* End of Class Functions */
 

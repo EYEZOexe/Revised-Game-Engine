@@ -107,7 +107,7 @@ namespace labyrinth_engine
         m_gameStages.push_back(a_gameStage);
     }
 
-    bool World::ExecuteEvent(const sf::Event& a_event)
+    bool World::ExecuteEvent(const SDL_Event& a_event)
     {
         if (m_HUD)
         {

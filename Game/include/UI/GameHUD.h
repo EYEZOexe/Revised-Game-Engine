@@ -31,7 +31,7 @@ namespace labyrinth_engine
         // Virtual Functions
         void DrawHUD(sf::RenderWindow& a_window) override;
         void UpdateHUD(float a_deltaTime) override;
-        bool IsHUDClicked(const sf::Event& a_event) override;
+        bool IsHUDClicked(const SDL_Event& a_event) override;
 
         /* End of Class Functions */
 

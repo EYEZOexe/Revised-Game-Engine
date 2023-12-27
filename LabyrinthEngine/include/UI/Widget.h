@@ -6,6 +6,7 @@
 #define WIDGET_H
 
 #include <SFML/Graphics.hpp>
+#include <SDL2/SDL.h>
 #include "LabyrinthFramework/Object.h"
 
 namespace labyrinth_engine
@@ -24,7 +25,7 @@ namespace labyrinth_engine
         // Boolean Functions
 
         // Virtual Functions
-        virtual bool IsMouseOver(const sf::Event& a_event);
+        virtual bool IsMouseOver(const SDL_Event& a_event);
         virtual sf::FloatRect GetWidgetBounds() const = 0;
         sf::Vector2f GetWidgetCenterPosition() const;
 

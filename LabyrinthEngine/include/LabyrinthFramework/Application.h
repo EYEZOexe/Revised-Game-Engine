@@ -6,8 +6,11 @@
 #define APPLICATION_H
 
 #include <SFML/Graphics.hpp>
-#include "Core.h"
 #include <SDL2/SDL.h>
+#include <rend/rend.h>
+#include "Core.h"
+
+
 #include "World.h"
 
 namespace labyrinth_engine
@@ -30,7 +33,7 @@ namespace labyrinth_engine
 
 
     private:
-        bool ExecuteEvent(const sf::Event& a_event);
+        bool ExecuteEvent(const SDL_Event& a_event);
         void TickFramework(float a_deltaTime);
         void RenderFramework();
 
@@ -38,6 +41,9 @@ namespace labyrinth_engine
         virtual void Tick(float a_deltaTime);
 
         sf::RenderWindow m_window;
+        SDL_Window* m_SDLWindow;
+        SDL_GLContext m_SDLContext;
+        bool m_isApplicationRunning;
         float m_targetFrameRate;
         sf::Clock m_tick;
 

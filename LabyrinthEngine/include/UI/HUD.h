@@ -7,6 +7,7 @@
 
 #include "LabyrinthFramework/Object.h"
 #include <SFML/Graphics.hpp>
+#include <SDL2/SDL.h>
 
 namespace labyrinth_engine
 {
@@ -27,7 +28,7 @@ namespace labyrinth_engine
         // Virtual Functions
         virtual void DrawHUD(sf::RenderWindow& a_window) = 0; // Pure virtual function to draw the HUD
         virtual void UpdateHUD(float a_deltaTime);
-        virtual bool IsHUDClicked(const sf::Event& a_event); // Pure virtual function to check if the HUD is clicked
+        virtual bool IsHUDClicked(const SDL_Event& a_event); // Pure virtual function to check if the HUD is clicked
 
         /* End of Class Functions */
 

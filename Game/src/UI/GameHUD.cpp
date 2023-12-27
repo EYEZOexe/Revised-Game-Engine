@@ -122,7 +122,7 @@ namespace labyrinth_engine
         m_gameFramerateText.SetWidgetText(frameRateString);
     }
 
-    bool GameHUD::IsHUDClicked(const sf::Event& a_event)
+    bool GameHUD::IsHUDClicked(const SDL_Event& a_event)
     {
         return m_testButton.IsMouseOver(a_event) || HUD::IsHUDClicked(a_event);
     }

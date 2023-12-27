@@ -39,9 +39,9 @@ namespace labyrinth_engine
         m_buttonSprite.setColor(m_ButtonHoverColour);
     }
 
-    bool ButtonWidget::IsMouseOver(const sf::Event& a_event)
+    bool ButtonWidget::IsMouseOver(const SDL_Event& a_event)
     {
-        bool isMouseOver = false;
+        /*bool isMouseOver = false;
         if (a_event.type == sf::Event::MouseButtonReleased)
         {
             if (a_event.mouseButton.button == sf::Mouse::Left)
@@ -80,8 +80,9 @@ namespace labyrinth_engine
 
                 isMouseOver = true;
             }
-        }
-        return isMouseOver || Widget::IsMouseOver(a_event);
+        }*/
+        //return isMouseOver || Widget::IsMouseOver(a_event);
+        return false;
     }
 
     void ButtonWidget::SetButtonText(const std::string& a_buttonText)
