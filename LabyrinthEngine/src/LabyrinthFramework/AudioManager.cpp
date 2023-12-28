@@ -16,7 +16,8 @@ namespace labyrinth_engine
     AudioManager::AudioManager()
         : m_sfx{}
         , m_sfxPlayer{}
-        , m_music{}
+        , m_globalVolume{}
+        , m_sfxVolume{}
     {
 
     }
@@ -43,37 +44,14 @@ namespace labyrinth_engine
         if (itteration != m_sfxPlayer.end())
         {
             itteration->second.stop();
+
         }
     }
 
-    bool AudioManager::LoadMusic(const std::string& a_audioName, const std::string& a_audioPath)
+    void AudioManager::SetSFXLoop(const std::string& a_audioName, bool a_bLoop)
     {
-        return m_music[a_audioName].openFromFile(a_audioPath);
-
-    }
-
-    void AudioManager::PlayMusic(const std::string& a_audioName)
-    {
-        auto itteration = m_music.find(a_audioName);
-        if (itteration != m_music.end())
-        {
-            itteration->second.play();
-        }
-    }
-
-    void AudioManager::StopMusic(const std::string& a_audioName)
-    {
-        auto itteration = m_music.find(a_audioName);
-        if (itteration != m_music.end())
-        {
-            itteration->second.stop();
-        }
-    }
-
-    void AudioManager::SetMusicLoop(const std::string& a_audioName, bool a_bLoop)
-    {
-        auto itteration = m_music.find(a_audioName);
-        if (itteration != m_music.end())
+        auto itteration = m_sfxPlayer.find(a_audioName);
+        if (itteration != m_sfxPlayer.end())
         {
             itteration->second.setLoop(a_bLoop);
         }
@@ -86,9 +64,14 @@ namespace labyrinth_engine
         {
             i.second.setVolume(m_globalVolume);
         }
-        for (auto& i : m_music)
+    }
+
+    void AudioManager::SetSFXVolume(const std::string& a_audioName, float a_volume)
+    {
+        auto itteration = m_sfxPlayer.find(a_audioName);
+        if (itteration != m_sfxPlayer.end())
         {
-            i.second.setVolume(m_globalVolume);
+            itteration->second.setVolume(a_volume);
         }
     }
 

@@ -7,6 +7,7 @@
 
 namespace labyrinth_engine
 {
+
     DancerEnemy::DancerEnemy(World* a_world, const sf::Vector2f& a_velocity, const std::string& a_texturePath, float a_rotationSpeed)
         : EnemySpaceship{a_world, a_texturePath}
         , m_RotationSpeed{a_rotationSpeed}
@@ -15,6 +16,7 @@ namespace labyrinth_engine
         , m_dancerMiddleShooter{new ProjectileLauncher{this, 0.5f, {0.0f, 0.0f}, 180.0f}}
     {
         SetSpaceshipVelocity(a_velocity);
+
     }
 
     void DancerEnemy::ActorTick(float a_deltaTime)
@@ -30,6 +32,12 @@ namespace labyrinth_engine
         m_dancerLeftShooter->Fire();
         m_dancerRightShooter->Fire();
         m_dancerMiddleShooter->Fire();
+
+        if (GetLastTimeFired() >= m_dancerLeftShooter->GetCooldownTime())
+        {
+            AudioManager::GetInstance().PlaySFX("Shoot");
+            ResetLastTimeFired();
+        }
 
     }
 }

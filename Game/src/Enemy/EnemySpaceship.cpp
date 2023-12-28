@@ -14,6 +14,7 @@ namespace labyrinth_engine
         , m_rewardFunctions{a_rewards}
         , m_scoreValue{10}
         , m_rewardSpawnChance{a_rewardSpawnChance}
+        , m_lastTimeFired{0.0f}
     {
         SetActorCollisionLayer(GetEnemyCollisionLayer());
         SetActorRotation(180.0f);
@@ -23,6 +24,7 @@ namespace labyrinth_engine
     void EnemySpaceship::ActorTick(const float a_deltaTime)
     {
         Spaceship::ActorTick(a_deltaTime);
+        m_lastTimeFired += a_deltaTime;
         if (IsActorOutOfBounds(GetActorBounds().width * 2.0f)) // If the actor is out of bounds, destroy it
         {
             Destroy();
@@ -31,9 +33,7 @@ namespace labyrinth_engine
 
     void EnemySpaceship::Fire()
     {
-        AudioManager& audioManager = AudioManager::GetInstance();
-        audioManager.SetGlobalVolume(10);
-        audioManager.PlaySFX("Shoot");
+
     }
 
     void EnemySpaceship::InstantiateReward()

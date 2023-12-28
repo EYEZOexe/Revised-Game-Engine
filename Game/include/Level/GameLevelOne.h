@@ -6,7 +6,7 @@
 #define GAMELEVELONE_H
 
 #include "LabyrinthFramework/World.h"
-#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
+#include "LabyrinthFramework/TimeKeeper.h"
 
 namespace labyrinth_engine
 {

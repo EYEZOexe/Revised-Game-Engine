@@ -29,6 +29,8 @@ namespace labyrinth_engine
         void ActorTick(float a_deltaTime) override;
         void Fire() override;
         void SetEnemyScoreValue(unsigned int a_scoreValue) { m_scoreValue = a_scoreValue; }
+        float GetLastTimeFired() const { return m_lastTimeFired; }
+        void ResetLastTimeFired() { m_lastTimeFired = 0.0f; }
     private:
         void InstantiateReward();
         void OnActorBeginOverlap(Actor* m_actor) override;
@@ -37,6 +39,7 @@ namespace labyrinth_engine
         float m_spaceshipCollisionDamage;
         float m_rewardSpawnChance;
         unsigned int m_scoreValue;
+        float m_lastTimeFired;
 
     };
 }

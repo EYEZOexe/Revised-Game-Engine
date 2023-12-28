@@ -24,7 +24,10 @@ namespace labyrinth_engine
     GameLevelOne::GameLevelOne(Application* a_application)
         : World{a_application}
     {
-
+        AudioManager::GetInstance().LoadSFX("Shoot", "Bonus/blaster.mp3");
+        AudioManager::GetInstance().LoadSFX("BG", "Bonus/background.mp3");
+        AudioManager::GetInstance().SetSFXVolume("Shoot", 20.0f);
+        AudioManager::GetInstance().SetSFXVolume("BG", 50.0f);
     }
 
     void GameLevelOne::BeginPlay()
@@ -33,8 +36,9 @@ namespace labyrinth_engine
         m_playerSpaceship = player.SpawnPlayerSpaceship(this);
         m_playerSpaceship.lock()->OnActorDestroy.Bind(GetWeakReference(), &GameLevelOne::PlayerSpaceshipDestroyed);
         m_GameHUD = InstantiateHUD<GameHUD>();
-        AudioManager& audioManager = AudioManager::GetInstance();
-        audioManager.LoadSFX("Shoot", "Bonus/blaster.mp3");
+        AudioManager::GetInstance().PlaySFX("BG");
+        AudioManager::GetInstance().SetSFXLoop("BG", true);
+
     }
 
     void GameLevelOne::InitialiseGameStages()

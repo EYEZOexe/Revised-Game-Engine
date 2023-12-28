@@ -26,5 +26,10 @@ namespace labyrinth_engine
     {
         EnemySpaceship::Fire();
         m_projectileLauncher->Fire();
+        if (GetLastTimeFired() >= m_projectileLauncher->GetCooldownTime())
+        {
+            AudioManager::GetInstance().PlaySFX("Shoot");
+            ResetLastTimeFired();
+        }
     }
 }
