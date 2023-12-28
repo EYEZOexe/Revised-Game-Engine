@@ -27,10 +27,16 @@ namespace labyrinth_engine
         return LoadAsset(a_filename, m_mLoadedFonts);
     }
 
+    Shared<sf::SoundBuffer> AssetManager::LoadSoundBuffer(const std::string& a_filename)
+    {
+        return LoadAsset(a_filename, m_mLoadedSoundBuffers);
+    }
+
     void AssetManager::Clear()
     {
         ClearAssetMap(m_mLoadedTextures);
         ClearAssetMap(m_mLoadedFonts);
+        ClearAssetMap(m_mLoadedSoundBuffers);
     }
 
     void AssetManager::SetAssetDirectory(const std::string& a_directory)

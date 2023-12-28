@@ -4,25 +4,28 @@
 
 #include "LabyrinthFramework/AudioManager.h"
 
+#include <iostream>
+
+#include "LabyrinthFramework/AssetManager.h"
+
 namespace labyrinth_engine
 {
+
+    Unique<AudioManager> AudioManager::audioManager{nullptr};
+
     AudioManager::AudioManager()
         : m_sfx{}
         , m_sfxPlayer{}
         , m_music{}
-        , m_globalVolume{100.0f}
     {
 
     }
 
     void AudioManager::LoadSFX(const std::string& a_audioName, const std::string& a_audioPath)
     {
-        sf::SoundBuffer buffer;
-        if (buffer.loadFromFile(a_audioPath))
-        {
-            m_sfx[a_audioName] = buffer;
-            m_sfxPlayer[a_audioName].setBuffer(m_sfx[a_audioName]);
-        }
+        AssetManager& assetManager = AssetManager::GetInstance();
+        m_sfx[a_audioName] = assetManager.LoadSoundBuffer(a_audioPath);
+        m_sfxPlayer[a_audioName].setBuffer(*m_sfx[a_audioName]);
     }
 
     void AudioManager::PlaySFX(const std::string& a_audioName)
@@ -46,6 +49,7 @@ namespace labyrinth_engine
     bool AudioManager::LoadMusic(const std::string& a_audioName, const std::string& a_audioPath)
     {
         return m_music[a_audioName].openFromFile(a_audioPath);
+
     }
 
     void AudioManager::PlayMusic(const std::string& a_audioName)
@@ -86,5 +90,14 @@ namespace labyrinth_engine
         {
             i.second.setVolume(m_globalVolume);
         }
+    }
+
+    AudioManager& AudioManager::GetInstance()
+    {
+        if (audioManager == nullptr)
+        {
+            audioManager = std::move(Unique<AudioManager>{new AudioManager{}});
+        }
+        return *audioManager;
     }
 }

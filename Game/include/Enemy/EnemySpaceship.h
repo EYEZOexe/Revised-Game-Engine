@@ -7,6 +7,7 @@
 
 #include "Spaceship/Spaceship.h"
 #include "Player/PlayerRewards.h"
+#include "Weapon/ProjectileLauncher.h"
 
 namespace labyrinth_engine
 {
@@ -26,6 +27,7 @@ namespace labyrinth_engine
             }
        );
         void ActorTick(float a_deltaTime) override;
+        void Fire() override;
         void SetEnemyScoreValue(unsigned int a_scoreValue) { m_scoreValue = a_scoreValue; }
     private:
         void InstantiateReward();

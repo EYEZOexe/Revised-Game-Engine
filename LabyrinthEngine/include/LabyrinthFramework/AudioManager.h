@@ -14,7 +14,6 @@ namespace labyrinth_engine
     {
     public:
         /* Constructors and Destructors */
-        AudioManager();
         /* End of Constructors and Destructors */
 
         /* Class Functions */
@@ -43,16 +42,18 @@ namespace labyrinth_engine
         void SetGlobalVolume(float a_volume);
 
         // Getters
+        static AudioManager& GetInstance();
 
         /* End of Setters and getters */
 
     protected:
-
+        AudioManager();
     private:
-        Map<std::string, sf::SoundBuffer> m_sfx;
+        Map<std::string, Shared<sf::SoundBuffer>> m_sfx;
         Map<std::string, sf::Sound> m_sfxPlayer;
         Map<std::string, sf::Music> m_music;
         float m_globalVolume;
+        static Unique<AudioManager> audioManager;
     };
 }
 

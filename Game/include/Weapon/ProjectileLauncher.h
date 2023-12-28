@@ -17,6 +17,7 @@ namespace labyrinth_engine
         ProjectileLauncher(Actor* a_owner, float a_cooldownTime = 1.0f, const sf::Vector2f& a_selfPositionOffset = {0.0f, 0.0f}, float a_selfRotationOffset = {0.0f}, const std::string& a_projectileTexturePath = "PNG/Lasers/laserBlue01.png");
         bool IsOnCooldown() const override;
         void IncreaseLauncherLevel(int a_increaseAmount = 1) override;
+        float GetCooldownTime() const {return m_cooldownTime;}
         void SetProjectileTexturePath(const std::string& a_projectileTexturePath) {m_projectileTexturePath = a_projectileTexturePath;}
     private:
         void OnFire() override;
@@ -25,7 +26,6 @@ namespace labyrinth_engine
         sf::Vector2f m_selfPositionOffset;
         float m_selfRotationOffset;
         std::string m_projectileTexturePath;
-        AudioManager m_audioManager;
     };
 }
 

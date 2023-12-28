@@ -19,10 +19,12 @@ namespace labyrinth_engine
     {
         EnemySpaceship::ActorTick(a_deltaTime);
         Fire();
+
     }
 
     void RookieEnemy::Fire()
     {
+        EnemySpaceship::Fire();
         m_projectileLauncher->Fire();
     }
 }

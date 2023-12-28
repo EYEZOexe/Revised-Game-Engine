@@ -17,6 +17,7 @@ namespace labyrinth_engine
     {
         SetActorCollisionLayer(GetEnemyCollisionLayer());
         SetActorRotation(180.0f);
+
     }
 
     void EnemySpaceship::ActorTick(const float a_deltaTime)
@@ -26,6 +27,13 @@ namespace labyrinth_engine
         {
             Destroy();
         }
+    }
+
+    void EnemySpaceship::Fire()
+    {
+        AudioManager& audioManager = AudioManager::GetInstance();
+        audioManager.SetGlobalVolume(10);
+        audioManager.PlaySFX("Shoot");
     }
 
     void EnemySpaceship::InstantiateReward()

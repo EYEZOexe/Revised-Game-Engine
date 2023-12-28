@@ -26,8 +26,10 @@ namespace labyrinth_engine
 
     void DancerEnemy::Fire()
     {
+        EnemySpaceship::Fire();
         m_dancerLeftShooter->Fire();
         m_dancerRightShooter->Fire();
         m_dancerMiddleShooter->Fire();
+
     }
 }

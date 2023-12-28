@@ -6,6 +6,7 @@
 #define ASSETMANAGER_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Core.h"
 
 namespace labyrinth_engine
@@ -16,6 +17,7 @@ namespace labyrinth_engine
         static AssetManager& GetInstance();
         Shared<sf::Texture> LoadTexture(const std::string& a_filename);
         Shared<sf::Font> LoadFont(const std::string& a_filename);
+        Shared<sf::SoundBuffer> LoadSoundBuffer(const std::string& a_filename);
         void Clear();
         void SetAssetDirectory(const std::string& a_directory);
     protected:
@@ -31,6 +33,7 @@ namespace labyrinth_engine
         static Unique<AssetManager> assetManager;
         Dictionary<std::string, Shared<sf::Texture>> m_mLoadedTextures;
         Dictionary<std::string, Shared<sf::Font>> m_mLoadedFonts;
+        Dictionary<std::string, Shared<sf::SoundBuffer>> m_mLoadedSoundBuffers;
         std::string m_assetDirectory;
     };
 
