@@ -15,7 +15,7 @@ namespace labyrinth_engine
     class PlayerSpaceship : public Spaceship
     {
     public:
-        PlayerSpaceship(World* a_owningWorld, const std::string& a_path = "PNG/playerShip1_blue.png");
+        PlayerSpaceship(World* a_owningWorld, const std::string& a_path = "ss/Ship/2.png");
 
         void ActorTick(float a_deltaTime) override; //Override the ActorTick function from the Spaceship class
 

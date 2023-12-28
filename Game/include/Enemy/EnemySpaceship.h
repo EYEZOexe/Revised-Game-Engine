@@ -21,8 +21,8 @@ namespace labyrinth_engine
             const List<RewardInternalFunction> a_rewards =
             {
                 CreateHealthReward,
-                CreateThreewayShooterReward,
-                CreateWiperShooterReward,
+                CreateTripleTroubleShooterReward,
+                CreateMoonShooterReward,
                 CreateLifeReward
             }
        );

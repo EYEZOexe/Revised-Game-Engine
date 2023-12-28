@@ -13,7 +13,7 @@ namespace labyrinth_engine
     class ProjectileLauncher : public Launcher
     {
     public:
-        ProjectileLauncher(Actor* a_owner, float a_cooldownTime = 1.0f, const sf::Vector2f& a_selfPositionOffset = {0.0f, 0.0f}, float a_selfRotationOffset = {0.0f}, const std::string& a_projectileTexturePath = "PNG/Lasers/laserBlue01.png");
+        ProjectileLauncher(Actor* a_owner, float a_cooldownTime = 1.0f, const sf::Vector2f& a_selfPositionOffset = {0.0f, 0.0f}, float a_selfRotationOffset = {0.0f}, const std::string& a_projectileTexturePath = "ss/Shoot/3.png");
         bool IsOnCooldown() const override;
         void IncreaseLauncherLevel(int a_increaseAmount = 1) override;
         float GetCooldownTime() const {return m_cooldownTime;}

@@ -29,6 +29,7 @@ namespace labyrinth_engine
         AudioManager::GetInstance().LoadSFX("BG", "Bonus/background.mp3");
         AudioManager::GetInstance().LoadSFX("Explosion", "Bonus/explosion.wav");
         AudioManager::GetInstance().LoadSFX("PowerUp", "Bonus/sfx_zap.ogg");
+        AudioManager::GetInstance().LoadSFX("Game Over", "ss/Sound/5.wav");
         AudioManager::GetInstance().SetSFXVolume("Shoot", 5.0f);
         AudioManager::GetInstance().SetSFXVolume("BG", 10.0f);
         AudioManager::GetInstance().SetSFXVolume("Explosion", 40.0f);
@@ -49,7 +50,6 @@ namespace labyrinth_engine
 
     void GameLevelOne::InitialiseGameStages()
     {
-        AddGameStage(Shared<DancerGameStage>{new DancerGameStage{this}});
 
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<RookieGameStage>{new RookieGameStage{this}});
@@ -85,6 +85,7 @@ namespace labyrinth_engine
     void GameLevelOne::GameOver()
     {
         AudioManager::GetInstance().StopSFX("BG");
+        AudioManager::GetInstance().PlaySFX("Game Over");
         LE_LOG("GAME OVER! YOU LOSE!");
     }
 }

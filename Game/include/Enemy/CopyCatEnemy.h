@@ -14,7 +14,7 @@ namespace labyrinth_engine
     {
     public:
         /* Constructors and Destructors */
-        CopyCatEnemy(World* a_owningWorld, const std::string& a_texturePath = "PNG/Enemies/enemyBlack1.png", const sf::Vector2f& a_velocity = {0.0f, 120.0f});
+        CopyCatEnemy(World* a_owningWorld, const std::string& a_texturePath = "ss/Ship/jelly.png", const sf::Vector2f& a_velocity = {0.0f, 120.0f});
         /* End of Constructors and Destructors */
 
         /* Class Functions */

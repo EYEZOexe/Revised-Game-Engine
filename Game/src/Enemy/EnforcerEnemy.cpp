@@ -17,6 +17,7 @@ namespace labyrinth_engine
         , m_shooter6{new ProjectileLauncher{this, 1.0f, {-20.0f, -50.0f}, -120.0f}} //back right
     {
         SetSpaceshipVelocity(a_velocity);
+        GetSprite().setScale({3.0f, 3.0f});
     }
 
     void EnforcerEnemy::ActorTick(float a_deltaTime)

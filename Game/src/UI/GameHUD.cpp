@@ -16,9 +16,9 @@ namespace labyrinth_engine
         , m_playerMaxHealthColour{sf::Color::Green}
         , m_playerDamageHealthColour{sf::Color::Red}
         , m_playerDamagedHealthThreshold{0.3f}
-        , m_playerLifeIcon{"PNG/Power-ups/powerupRed_shield.png"}
+        , m_playerLifeIcon{"ss/HUD/LifeIcon.png"}
         , m_playerLifeText{""}
-        , m_playerScoreIcon{"PNG/Power-ups/star_gold.png"}
+        , m_playerScoreIcon{"ss/Item/Gem3.png"}
         , m_playerScoreText{""}
         , m_imageWidgetSpacing{10.0f}
     {
@@ -40,10 +40,10 @@ namespace labyrinth_engine
         widgetPosition += {m_playerLifeIcon.GetWidgetBounds().width + m_imageWidgetSpacing, 0};
         m_playerLifeText.SetWidgetPosition(widgetPosition);
 
-        widgetPosition += {m_playerLifeText.GetWidgetBounds().width + m_imageWidgetSpacing * 4, -2.0f};
+        widgetPosition += {m_playerLifeText.GetWidgetBounds().width + m_imageWidgetSpacing * 4, 2};
         m_playerScoreIcon.SetWidgetPosition(widgetPosition);
 
-        widgetPosition += {m_playerScoreIcon.GetWidgetBounds().width + m_imageWidgetSpacing, 2};
+        widgetPosition += {m_playerScoreIcon.GetWidgetBounds().width + m_imageWidgetSpacing, -2};
         m_playerScoreText.SetWidgetPosition(widgetPosition);
 
 

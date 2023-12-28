@@ -15,7 +15,7 @@ namespace labyrinth_engine
         : Spaceship{a_owningWorld, a_path}
         , m_playerMoveInput{}
         , m_playerSpeed{200.0f}
-        , m_projectileLauncher{new ProjectileLauncher{this, 0.1f, {50.0f, 0.0f}}}
+        , m_projectileLauncher{new ProjectileLauncher{this, 0.1f, {50.0f, 0.0f}, 0.0f, "ss/Shoot/4.png"}}
         , m_playerInvincibilityFrames{2.0f}
         , m_bIsPlayerInvincible{true}
         , m_playerInvincibilityFrameBlinkInterval{0.5f}
@@ -24,6 +24,7 @@ namespace labyrinth_engine
         , m_playerLastTimeFired{0.0f}
     {
         SetActorCollisionLayer(GetPlayerCollisionLayer());
+        GetSprite().setScale({3.0f, 3.0f});
     }
 
     void PlayerSpaceship::ActorTick(const float a_deltaTime)

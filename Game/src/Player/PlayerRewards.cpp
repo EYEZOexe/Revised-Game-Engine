@@ -4,8 +4,8 @@
 
 #include "Player/PlayerRewards.h"
 #include "Player/PlayerSpaceship.h"
-#include "Weapon/ThreeProjectileLauncher.h"
-#include "Weapon/WiperProjectileLauncher.h"
+#include "..\..\include\Weapon\TripleTroubleProjectileLauncher.h"
+#include "..\..\include\Weapon\MoonProjectileLauncher.h"
 #include "LabyrinthFramework/World.h"
 #include "Player/PlayerManager.h"
 
@@ -52,22 +52,22 @@ namespace labyrinth_engine
 
     Weak<PlayerRewards> CreateHealthReward(World* a_world)
     {
-        return CreateReward(a_world, "PNG/power-ups/powerupRed_bolt.png", AddHealthReward);
+        return CreateReward(a_world, "ss/Item/PowerUp5.png", AddHealthReward);
     }
 
-    Weak<PlayerRewards> CreateThreewayShooterReward(World* a_world)
+    Weak<PlayerRewards> CreateTripleTroubleShooterReward(World* a_world)
     {
-        return CreateReward(a_world, "PNG/power-ups/things_bronze.png", AddThreewayShooterReward);
+        return CreateReward(a_world, "ss/Item/1.png", AddTripleTroubleShooterReward);
     }
 
-    Weak<PlayerRewards> CreateWiperShooterReward(World* a_world)
+    Weak<PlayerRewards> CreateMoonShooterReward(World* a_world)
     {
-        return CreateReward(a_world, "PNG/power-ups/powerupRed_shield.png", AddWiperShooterReward);
+        return CreateReward(a_world, "ss/Shoot/9.png", AddMoonShooterReward);
     }
 
     Weak<PlayerRewards> CreateLifeReward(World* a_world)
     {
-        return CreateReward(a_world, "PNG/power-ups/pill_green.png", AddLifeReward);
+        return CreateReward(a_world, "ss/HUD/LifeIcon.png", AddLifeReward);
     }
 
 
@@ -86,19 +86,19 @@ namespace labyrinth_engine
         }
     }
 
-    void AddThreewayShooterReward(PlayerSpaceship* a_playerSpaceship)
+    void AddTripleTroubleShooterReward(PlayerSpaceship* a_playerSpaceship)
     {
         if (a_playerSpaceship && !a_playerSpaceship->IsPendingKill())
         {
-            a_playerSpaceship->SetProjectileLauncher(Unique<ProjectileLauncher>{new ThreeProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
+            a_playerSpaceship->SetProjectileLauncher(Unique<ProjectileLauncher>{new TripleTroubleProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
         }
     }
 
-    void AddWiperShooterReward(PlayerSpaceship* a_playerSpaceship)
+    void AddMoonShooterReward(PlayerSpaceship* a_playerSpaceship)
     {
         if (a_playerSpaceship && !a_playerSpaceship->IsPendingKill())
         {
-            a_playerSpaceship->SetProjectileLauncher(Unique<ProjectileLauncher>{new WiperProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
+            a_playerSpaceship->SetProjectileLauncher(Unique<ProjectileLauncher>{new MoonProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
         }
     }
 

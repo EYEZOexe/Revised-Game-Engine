@@ -15,7 +15,7 @@ namespace labyrinth_engine
     {
     public:
         /* Constructors and Destructors */
-        EnforcerEnemy(World* a_world, const std::string& texturePath = "PNG/Enemies/enemyGreen4.png", const sf::Vector2f& a_velocity = {0.0f, 100.0f});
+        EnforcerEnemy(World* a_world, const std::string& texturePath = "ss/Ship/jelly-2.png", const sf::Vector2f& a_velocity = {0.0f, 100.0f});
         /* End of Constructors and Destructors */
 
         /* Class Functions */

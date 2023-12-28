@@ -13,6 +13,7 @@ namespace labyrinth_engine
         , m_projectileLauncher{new ProjectileLauncher{this, 1.0f, {50.0f, 0.0f}}}
     {
         SetSpaceshipVelocity(a_velocity);
+        GetSprite().setScale({3.0f, 3.0f});
     }
 
     void RookieEnemy::ActorTick(float a_deltaTime)

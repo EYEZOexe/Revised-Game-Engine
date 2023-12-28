@@ -16,6 +16,7 @@ namespace labyrinth_engine
         , m_dancerMiddleShooter{new ProjectileLauncher{this, 0.5f, {0.0f, 0.0f}, 180.0f}}
     {
         SetSpaceshipVelocity(a_velocity);
+        GetSprite().setScale({1.5f, 1.5f});
 
     }
 

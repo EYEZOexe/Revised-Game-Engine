@@ -14,6 +14,7 @@ namespace labyrinth_engine
         , m_CopyCatRightShooter{new ProjectileLauncher{this, 1.0f, {50.0f, 20.0f}}}
     {
         SetSpaceshipVelocity(a_velocity);
+        GetSprite().setScale({3.0f, 3.0f});
     }
 
     void CopyCatEnemy::ActorTick(float a_deltaTime)
