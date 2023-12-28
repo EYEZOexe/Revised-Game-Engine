@@ -2,14 +2,14 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#include "Enemy/HexagonGameStage.h"
+#include "Enemy/EnforcerGameStage.h"
 
-#include "Enemy/Hexagon.h"
+#include "Enemy/EnforcerEnemy.h"
 #include "LabyrinthFramework/World.h"
 
 namespace labyrinth_engine
 {
-    HexagonGameStage::HexagonGameStage(World* a_world)
+    EnforcerGameStage::EnforcerGameStage(World* a_world)
         : GameStage{a_world}
         , m_enemySpawnInterval{5.0f}
         , m_enemySpawnOffset{80.0f}
@@ -22,25 +22,25 @@ namespace labyrinth_engine
 
     }
 
-    void HexagonGameStage::StartStage()
+    void EnforcerGameStage::StartStage()
     {
-        m_enemySpawnTimer = TimeManager::GetInstance().SetTimer(GetWeakReference(), &HexagonGameStage::SpawnEnemies, m_enemySpawnInterval, true);
+        m_enemySpawnTimer = TimeManager::GetInstance().SetTimer(GetWeakReference(), &EnforcerGameStage::SpawnEnemies, m_enemySpawnInterval, true);
     }
 
-    void HexagonGameStage::StageEnded()
+    void EnforcerGameStage::StageEnded()
     {
         TimeManager::GetInstance().RemoveTimer(m_enemySpawnTimer);
     }
 
-    void HexagonGameStage::SpawnEnemies()
+    void EnforcerGameStage::SpawnEnemies()
     {
-        Weak<Hexagon> newHexagon = GetWorld()->SpawnActor<Hexagon>();
+        Weak<EnforcerEnemy> newHexagon = GetWorld()->SpawnActor<EnforcerEnemy>();
         newHexagon.lock()->SetActorLocation(m_enemySpawnPositionMid);
 
-        newHexagon = GetWorld()->SpawnActor<Hexagon>();
+        newHexagon = GetWorld()->SpawnActor<EnforcerEnemy>();
         newHexagon.lock()->SetActorLocation(m_enemySpawnPositionLeft);
 
-        newHexagon = GetWorld()->SpawnActor<Hexagon>();
+        newHexagon = GetWorld()->SpawnActor<EnforcerEnemy>();
         newHexagon.lock()->SetActorLocation(m_enemySpawnPositionRight);
 
         if (++m_enemyCurrentSpawnSize >= m_enemySpawnGroupSize)

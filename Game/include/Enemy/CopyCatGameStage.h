@@ -11,11 +11,11 @@
 
 namespace labyrinth_engine
 {
-    class TwinBladeGameStage : public GameStage
+    class CopyCatGameStage : public GameStage
     {
     public:
         /* Constructors and Destructors */
-        TwinBladeGameStage(World* a_world);
+        CopyCatGameStage(World* a_world);
         /* End of Constructors and Destructors */
 
         /* Class Functions */

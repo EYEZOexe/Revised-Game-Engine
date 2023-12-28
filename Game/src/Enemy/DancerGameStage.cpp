@@ -2,14 +2,14 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#include "Enemy/UFOGameStage.h"
+#include "Enemy/DancerGameStage.h"
 #include "LabyrinthFramework/MathUtility.h"
 #include "LabyrinthFramework/World.h"
-#include "Enemy/UFO.h"
+#include "Enemy/DancerEnemy.h"
 
 namespace labyrinth_engine
 {
-    UFOGameStage::UFOGameStage(World* a_world)
+    DancerGameStage::DancerGameStage(World* a_world)
         : GameStage{a_world}
         , m_enemySpawnInterval{4.0f}
         , m_enemySpawnAmount{10}
@@ -19,17 +19,17 @@ namespace labyrinth_engine
 
     }
 
-    void UFOGameStage::StartStage()
+    void DancerGameStage::StartStage()
     {
-        m_enemySpawnTimer = TimeManager::GetInstance().SetTimer(GetWeakReference(), &UFOGameStage::SpawnEnemies, m_enemySpawnInterval, true);
+        m_enemySpawnTimer = TimeManager::GetInstance().SetTimer(GetWeakReference(), &DancerGameStage::SpawnEnemies, m_enemySpawnInterval, true);
     }
 
-    void UFOGameStage::StageEnded()
+    void DancerGameStage::StageEnded()
     {
         TimeManager::GetInstance().RemoveTimer(m_enemySpawnTimer);
     }
 
-    sf::Vector2f UFOGameStage::GetRandomSpawnLocation()
+    sf::Vector2f DancerGameStage::GetRandomSpawnLocation()
     {
         auto windowSize = GetWorld()->GetWindowSize();
         float enemySpawnLeft = RandomFloat(-1, 1);
@@ -48,7 +48,7 @@ namespace labyrinth_engine
 
     }
 
-    void UFOGameStage::SpawnEnemies()
+    void DancerGameStage::SpawnEnemies()
     {
         sf::Vector2f spawnLocation = GetRandomSpawnLocation();
         auto windowSize = GetWorld()->GetWindowSize();
@@ -60,7 +60,7 @@ namespace labyrinth_engine
         sf::Vector2f spawnVelocity = direction * m_ufoSpeed;
 
 
-        Weak<UFO> newUFO = GetWorld()->SpawnActor<UFO>(spawnVelocity);
+        Weak<DancerEnemy> newUFO = GetWorld()->SpawnActor<DancerEnemy>(spawnVelocity);
         newUFO.lock()->SetActorLocation(spawnLocation);
 
         if (++m_enemyCurrentSpawnAmount >= m_enemySpawnAmount)

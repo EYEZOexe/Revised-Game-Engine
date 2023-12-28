@@ -31,7 +31,7 @@ namespace labyrinth_engine
         Weak<a_ActorType> SpawnActor(arguments... a_args);
 
         template<typename HUDType, typename... arguments>
-        Weak<HUDType> SpawnHUD(arguments... a_args);
+        Weak<HUDType> InstantiateHUD(arguments... a_args);
 
         sf::Vector2u GetWindowSize() const;
 
@@ -39,6 +39,8 @@ namespace labyrinth_engine
         void AddGameStage(const Shared<GameStage>& a_gameStage);
 
         bool ExecuteEvent(const sf::Event& a_event);
+        Application* GetOwningApplication() {return m_owningApplication;}
+        Application* GetOwningApplication() const {return m_owningApplication;}
 
     private:
         virtual void BeginPlay();
@@ -53,7 +55,6 @@ namespace labyrinth_engine
         List<Shared<GameStage>>::iterator m_currentGameStage; //iterator of the current game stage
 
         Shared<HUD> m_HUD;
-
 
         virtual void InitialiseGameStages(); //initialise the game stages
         virtual void GameStagesFinished(); //when all game stages are finished
@@ -71,7 +72,7 @@ namespace labyrinth_engine
     }
 
     template<typename HUDType, typename ... arguments>
-    Weak<HUDType> World::SpawnHUD(arguments... a_args)
+    Weak<HUDType> World::InstantiateHUD(arguments... a_args)
     {
         Shared<HUDType> newHUD{new HUDType(a_args...)};
         m_HUD = newHUD;

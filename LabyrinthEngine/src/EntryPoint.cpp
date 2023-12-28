@@ -10,4 +10,5 @@ int main()
     labyrinth_engine::Application* application = GetApplication();
     application->Run();
     delete application;
+    return 0;
 }

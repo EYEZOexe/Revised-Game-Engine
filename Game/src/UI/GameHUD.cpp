@@ -21,7 +21,6 @@ namespace labyrinth_engine
         , m_playerScoreIcon{"PNG/Power-ups/star_gold.png"}
         , m_playerScoreText{""}
         , m_imageWidgetSpacing{10.0f}
-        , m_testButton{}
     {
         m_gameFramerateText.SetWidgetTextSize(20);
         m_playerLifeText.SetWidgetTextSize(20);
@@ -46,10 +45,6 @@ namespace labyrinth_engine
 
         widgetPosition += {m_playerScoreIcon.GetWidgetBounds().width + m_imageWidgetSpacing, 2};
         m_playerScoreText.SetWidgetPosition(widgetPosition);
-
-        m_testButton.SetWidgetPosition({windowSize.x / 2.0f, windowSize.y / 2.0f});
-        m_testButton.SetButtonTextSize(20);
-        m_testButton.OnButtonPressed.Bind(GetWeakReference(), &GameHUD::TestButtonPressed);
 
 
         PlayerHUDReset();
@@ -94,11 +89,6 @@ namespace labyrinth_engine
         }
     }
 
-    void GameHUD::TestButtonPressed()
-    {
-        LE_LOG("BUTTON PRESSED YEET");
-    }
-
     void GameHUD::PlayerDeath(Actor* a_actor)
     {
         PlayerHUDReset();
@@ -112,7 +102,6 @@ namespace labyrinth_engine
         m_playerLifeText.FrameworkWidgetDraw(a_window);
         m_playerScoreIcon.FrameworkWidgetDraw(a_window);
         m_playerScoreText.FrameworkWidgetDraw(a_window);
-        m_testButton.FrameworkWidgetDraw(a_window);
     }
 
     void GameHUD::UpdateHUD(float a_deltaTime)
@@ -120,11 +109,6 @@ namespace labyrinth_engine
         int frameRate = int(1 / a_deltaTime);
         std::string frameRateString = "Frame Rate: " + std::to_string(frameRate);
         m_gameFramerateText.SetWidgetText(frameRateString);
-    }
-
-    bool GameHUD::IsHUDClicked(const sf::Event& a_event)
-    {
-        return m_testButton.IsMouseOver(a_event) || HUD::IsHUDClicked(a_event);
     }
 
     void GameHUD::PlayerStatsUpdate()

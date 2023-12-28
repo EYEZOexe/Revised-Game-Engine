@@ -19,8 +19,8 @@ namespace labyrinth_engine
         , m_currentWorld(nullptr)
         , m_ClearTimer{}
         , m_ClearTimeInterval(2.0f)
+        , m_isApplicationRunning(true)
     {
-
     }
 
     void Application::Run()
@@ -37,7 +37,8 @@ namespace labyrinth_engine
             {
                 if (windowEvent.type == sf::Event::EventType::Closed)
                 {
-                    m_window.close();
+                    QuitGame();
+                    m_isApplicationRunning = false;
                 }
                 else
                 {
@@ -53,6 +54,11 @@ namespace labyrinth_engine
                 RenderFramework();
             }
         }
+    }
+
+    void Application::QuitGame()
+    {
+        m_window.close();
     }
 
     bool Application::ExecuteEvent(const sf::Event& a_event)
@@ -86,6 +92,12 @@ namespace labyrinth_engine
             {
                 m_currentWorld->Clear();
             }
+        }
+
+        if (m_nextWorld && m_nextWorld != m_currentWorld)
+        {
+            m_currentWorld = m_nextWorld;
+            m_currentWorld->BeginPlayFramework();
         }
     }
 

@@ -32,32 +32,38 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/EnemySpaceship.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/EnemySpaceship.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/Vanguard.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/Vanguard.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/RookieEnemy.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/RookieEnemy.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/VanguardGameStage.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/VanguardGameStage.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/RookieGameStage.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/RookieGameStage.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/TwinBlade.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/TwinBlade.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/CopyCatEnemy.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/CopyCatEnemy.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/TwinBladeGameStage.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/TwinBladeGameStage.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/CopyCatGameStage.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/CopyCatGameStage.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/Hexagon.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/Hexagon.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/EnforcerEnemy.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/EnforcerEnemy.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/HexagonGameStage.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/HexagonGameStage.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/EnforcerGameStage.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/EnforcerGameStage.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/UFO.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/UFO.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/DancerEnemy.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/DancerEnemy.h
 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/UFOGameStage.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/UFOGameStage.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/DancerGameStage.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/DancerGameStage.h
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/MadMaxGameStage.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/MadMaxGameStage.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Level/GameLevelOne.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Level/GameLevelOne.h
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Level/MainMenu.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Level/MainMenu.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/PlayerRewards.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Player/PlayerRewards.h
@@ -68,9 +74,11 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/UI/GameHUD.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/UI/GameHUD.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/UI/MainMenuHUD.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/UI/MainMenuHUD.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/PlayerManager.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Player/PlayerManager.h
-
 )
 
 target_include_directories(${GAME_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the game target

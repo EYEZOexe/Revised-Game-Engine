@@ -4,10 +4,10 @@
 
 #include "Level/GameLevelOne.h"
 
-#include "Enemy/VanguardGameStage.h"
-#include "Enemy/TwinBladeGameStage.h"
-#include "Enemy/HexagonGameStage.h"
-#include "Enemy/UFOGameStage.h"
+#include "..\..\include\Enemy\RookieGameStage.h"
+#include "..\..\include\Enemy\CopyCatGameStage.h"
+#include "..\..\include\Enemy\EnforcerGameStage.h"
+#include "..\..\include\Enemy\DancerGameStage.h"
 #include "Gameplay/WaitStage.h"
 
 #include "LabyrinthFramework/Actor.h"
@@ -31,22 +31,22 @@ namespace labyrinth_engine
         Player& player = PlayerManager::GetInstance().AddPlayer();
         m_playerSpaceship = player.SpawnPlayerSpaceship(this);
         m_playerSpaceship.lock()->OnActorDestroy.Bind(GetWeakReference(), &GameLevelOne::PlayerSpaceshipDestroyed);
-        m_GameHUD = SpawnHUD<GameHUD>();
+        m_GameHUD = InstantiateHUD<GameHUD>();
     }
 
     void GameLevelOne::InitialiseGameStages()
     {
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
-        AddGameStage(Shared<VanguardGameStage>{new VanguardGameStage{this}});
+        AddGameStage(Shared<RookieGameStage>{new RookieGameStage{this}});
 
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
-        AddGameStage(Shared<TwinBladeGameStage>{new TwinBladeGameStage{this}});
+        AddGameStage(Shared<CopyCatGameStage>{new CopyCatGameStage{this}});
 
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
-        AddGameStage(Shared<HexagonGameStage>{new HexagonGameStage{this}});
+        AddGameStage(Shared<EnforcerGameStage>{new EnforcerGameStage{this}});
 
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
-        AddGameStage(Shared<UFOGameStage>{new UFOGameStage{this}});
+        AddGameStage(Shared<DancerGameStage>{new DancerGameStage{this}});
     }
 
     void GameLevelOne::PlayerSpaceshipDestroyed(Actor* a_actor)

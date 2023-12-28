@@ -5,7 +5,8 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/OpenGL.hpp>
 #include "Core.h"
 #include "World.h"
 
@@ -26,7 +27,7 @@ namespace labyrinth_engine
         sf::Vector2u GetWindowSize() const { return m_window.getSize(); }
         sf::RenderWindow& GetWindow() { return m_window; }
         const sf::RenderWindow& GetWindow() const { return m_window; }
-
+        void QuitGame();
 
     private:
         bool ExecuteEvent(const sf::Event& a_event);
@@ -42,8 +43,11 @@ namespace labyrinth_engine
 
         // Shared Pointers are a type of smart pointer that automatically manages the lifetime of an object and its memory.
         Shared<World> m_currentWorld;
+        Shared<World> m_nextWorld;
+
         sf::Clock m_ClearTimer;
         float m_ClearTimeInterval;
+        bool m_isApplicationRunning;
     };
 
     // Template Implementations
@@ -51,8 +55,7 @@ namespace labyrinth_engine
     Weak<a_worldType> Application::LoadWorld()
     {
         Shared<a_worldType> newWorld{new a_worldType(this)};
-        m_currentWorld = newWorld;
-        m_currentWorld->BeginPlayFramework();
+        m_nextWorld = newWorld;
         return newWorld;
     }
 

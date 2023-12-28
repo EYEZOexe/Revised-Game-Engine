@@ -2,20 +2,19 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef UFOGAMESTAGE_H
-#define UFOGAMESTAGE_H
+#ifndef TWINBLADE_H
+#define TWINBLADE_H
 
-#include "Gameplay/GameStage.h"
-#include <SFML/Graphics.hpp>
-#include "LabyrinthFramework/TimeManager.h"
+#include "Enemy/EnemySpaceship.h"
 
 namespace labyrinth_engine
 {
-    class UFOGameStage : public GameStage
+    class ProjectileLauncher;
+    class CopyCatEnemy : public EnemySpaceship
     {
     public:
         /* Constructors and Destructors */
-        UFOGameStage(World* a_world);
+        CopyCatEnemy(World* a_owningWorld, const std::string& a_texturePath = "PNG/Enemies/enemyBlack1.png", const sf::Vector2f& a_velocity = {0.0f, 120.0f});
         /* End of Constructors and Destructors */
 
         /* Class Functions */
@@ -25,7 +24,8 @@ namespace labyrinth_engine
         // Boolean Functions
 
         // Virtual Functions
-        void StartStage() override;
+        void ActorTick(float a_deltaTime) override;
+        void Fire() override;
 
         /* End of Class Functions */
 
@@ -43,17 +43,11 @@ namespace labyrinth_engine
     protected:
 
     private:
-        void StageEnded() override;
-        sf::Vector2f GetRandomSpawnLocation();
-        void SpawnEnemies();
-
-        float m_enemySpawnInterval;
-        int m_enemySpawnAmount;
-        int m_enemyCurrentSpawnAmount;
-        float m_ufoSpeed;
-
-        TimerHandler m_enemySpawnTimer;
+        Unique<ProjectileLauncher> m_TwinBladeLeftShooter;
+        Unique<ProjectileLauncher> m_TwinBladeRightShooter;
     };
 }
 
-#endif //UFOGAMESTAGE_H
+
+
+#endif //TWINBLADE_H

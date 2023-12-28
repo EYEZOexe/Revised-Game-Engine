@@ -3,7 +3,7 @@
 //
 
 #include "GameName/GameApplication.h"
-#include "Level/GameLevelOne.h"
+#include "Level/MainMenu.h"
 #include "LabyrinthFramework/AssetManager.h"
 #include "config.h"
 
@@ -20,6 +20,6 @@ namespace labyrinth_engine
         : Application{600, 900, "Game", sf::Style::Titlebar | sf::Style::Close}
     {
         AssetManager::GetInstance().SetAssetDirectory(GetAssetDirectory());
-        const Weak<GameLevelOne> newWorld = LoadWorld<GameLevelOne>();
+        const Weak<MainMenu> newWorld = LoadWorld<MainMenu>();
     }
 }

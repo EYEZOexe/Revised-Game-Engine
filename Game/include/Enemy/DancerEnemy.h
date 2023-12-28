@@ -2,20 +2,20 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef HEXAGON_H
-#define HEXAGON_H
+#ifndef UFO_H
+#define UFO_H
 
-#include "Enemy/EnemySpaceship.h"
+#include "EnemySpaceship.h"
+
 
 namespace labyrinth_engine
 {
     class ProjectileLauncher;
-
-    class Hexagon : public EnemySpaceship
+    class DancerEnemy : public EnemySpaceship
     {
     public:
         /* Constructors and Destructors */
-        Hexagon(World* a_world, const std::string& texturePath = "PNG/Enemies/enemyGreen4.png", const sf::Vector2f& a_velocity = {0.0f, 100.0f});
+        DancerEnemy(World* a_world, const sf::Vector2f& a_velocity, const std::string& a_texturePath = "PNG/UFO.png", float a_rotationSpeed = 40.0f);
         /* End of Constructors and Destructors */
 
         /* Class Functions */
@@ -45,13 +45,11 @@ namespace labyrinth_engine
     private:
         void Fire() override;
 
-        Unique<ProjectileLauncher> m_shooter;
-        Unique<ProjectileLauncher> m_shooter2;
-        Unique<ProjectileLauncher> m_shooter3;
-        Unique<ProjectileLauncher> m_shooter4;
-        Unique<ProjectileLauncher> m_shooter5;
-        Unique<ProjectileLauncher> m_shooter6;
+        Unique<ProjectileLauncher> m_UFOLeftShooter;
+        Unique<ProjectileLauncher> m_UFORightShooter;
+        Unique<ProjectileLauncher> m_UFOMiddleShooter;
+        float m_RotationSpeed;
     };
 }
 
-#endif //HEXAGON_H
+#endif //UFO_H

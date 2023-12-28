@@ -31,7 +31,6 @@ namespace labyrinth_engine
         // Virtual Functions
         void DrawHUD(sf::RenderWindow& a_window) override;
         void UpdateHUD(float a_deltaTime) override;
-        bool IsHUDClicked(const sf::Event& a_event) override;
 
         /* End of Class Functions */
 
@@ -65,9 +64,6 @@ namespace labyrinth_engine
 
         ImageWidget m_playerScoreIcon;
         TextWidget m_playerScoreText;
-
-        ButtonWidget m_testButton;
-        void TestButtonPressed();
 
         sf::Color m_playerMaxHealthColour;
         sf::Color m_playerDamageHealthColour;

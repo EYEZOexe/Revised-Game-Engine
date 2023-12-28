@@ -161,8 +161,12 @@ namespace labyrinth_engine
 
     void World::StartGameStages()
     {
+
         m_currentGameStage = m_gameStages.begin();
-        m_currentGameStage->get()->StartStage();
-        m_currentGameStage->get()->onEndStageEvent.Bind(GetWeakReference(), &World::NextGameStage);
+        if (m_currentGameStage != m_gameStages.end())
+        {
+            m_currentGameStage->get()->StartStage();
+            m_currentGameStage->get()->onEndStageEvent.Bind(GetWeakReference(), &World::NextGameStage);
+        }
     }
 }

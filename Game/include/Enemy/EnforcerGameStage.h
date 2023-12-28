@@ -10,11 +10,11 @@
 
 namespace labyrinth_engine
 {
-    class HexagonGameStage : public GameStage
+    class EnforcerGameStage : public GameStage
     {
     public:
         /* Constructors and Destructors */
-        HexagonGameStage(World* a_world);
+        EnforcerGameStage(World* a_world);
         /* End of Constructors and Destructors */
 
         /* Class Functions */

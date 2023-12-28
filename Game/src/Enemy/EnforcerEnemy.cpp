@@ -2,12 +2,12 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#include "Enemy/Hexagon.h"
+#include "Enemy/EnforcerEnemy.h"
 #include "Weapon/ProjectileLauncher.h"
 
 namespace labyrinth_engine
 {
-    Hexagon::Hexagon(World* a_world, const std::string& texturePath, const sf::Vector2f& a_velocity)
+    EnforcerEnemy::EnforcerEnemy(World* a_world, const std::string& texturePath, const sf::Vector2f& a_velocity)
         : EnemySpaceship{a_world, texturePath}
         , m_shooter{new ProjectileLauncher{this, 1.0f, {20.0f, 50.0f}, 30.0f}} //front left
         , m_shooter2{new ProjectileLauncher{this, 1.0f, {20.0f, -50.0f}, -30.0f}} //front right
@@ -19,13 +19,13 @@ namespace labyrinth_engine
         SetSpaceshipVelocity(a_velocity);
     }
 
-    void Hexagon::ActorTick(float a_deltaTime)
+    void EnforcerEnemy::ActorTick(float a_deltaTime)
     {
         EnemySpaceship::ActorTick(a_deltaTime);
         Fire();
     }
 
-    void Hexagon::Fire()
+    void EnforcerEnemy::Fire()
     {
         m_shooter->Fire();
         m_shooter2->Fire();

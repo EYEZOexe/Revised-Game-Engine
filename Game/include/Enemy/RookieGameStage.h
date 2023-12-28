@@ -13,11 +13,11 @@
 
 namespace labyrinth_engine
 {
-    class VanguardGameStage : public GameStage
+    class RookieGameStage : public GameStage
     {
     public:
         /* Constructors and Destructors */
-        VanguardGameStage(World* a_world);
+        RookieGameStage(World* a_world);
         /* End of Constructors and Destructors */
 
         /* Class Functions */
