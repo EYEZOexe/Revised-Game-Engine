@@ -12,6 +12,7 @@ namespace labyrinth_engine
         if(CanFire() && !IsOnCooldown())
         {
             OnFire();
+
         }
     }
 

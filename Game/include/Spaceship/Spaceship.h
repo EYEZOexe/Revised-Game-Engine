@@ -8,6 +8,7 @@
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/World.h"
 #include "Gameplay/HealthComponent.h"
+#include "LabyrinthFramework/AudioManager.h"
 
 namespace labyrinth_engine
 {
@@ -38,6 +39,7 @@ namespace labyrinth_engine
         float m_hitEffectTime; //timer for the hit effect
         float m_hitEffectDuration; //duration of the hit effect
         sf::Color m_hitEffectColor; //color of the hit effect
+        AudioManager m_audioManager;
     };
 
 }

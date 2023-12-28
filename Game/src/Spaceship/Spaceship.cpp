@@ -28,7 +28,8 @@ namespace labyrinth_engine
 
     void Spaceship::Fire()
     {
-
+        m_audioManager.LoadSFX("Laser", "Bonus/sfx_laser1.ogg");
+        m_audioManager.PlaySFX("Laser");
     }
 
     void Spaceship::ActorBeginPlay()

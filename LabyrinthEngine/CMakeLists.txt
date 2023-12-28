@@ -58,6 +58,8 @@ add_library(${GAME_ENGINE_TARGET_NAME} STATIC # Creates the game target
 
         ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
+        src/LabyrinthFramework/AudioManager.cpp
+        include/LabyrinthFramework/AudioManager.h
 
 )
 

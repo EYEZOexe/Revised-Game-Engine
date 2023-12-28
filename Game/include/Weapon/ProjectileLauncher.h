@@ -7,6 +7,7 @@
 
 #include <SFML/System.hpp>
 #include "Launcher.h"
+#include "LabyrinthFramework/AudioManager.h"
 
 namespace labyrinth_engine
 {
@@ -24,6 +25,7 @@ namespace labyrinth_engine
         sf::Vector2f m_selfPositionOffset;
         float m_selfRotationOffset;
         std::string m_projectileTexturePath;
+        AudioManager m_audioManager;
     };
 }
 
