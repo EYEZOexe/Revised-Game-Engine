@@ -18,6 +18,7 @@ namespace labyrinth_engine
 
     void TripleTroubleProjectileLauncher::IncreaseLauncherLevel(int a_increaseAmount)
     {
+        //Increase the level of the launcher
         ProjectileLauncher::IncreaseLauncherLevel(a_increaseAmount);
         launcherLeft.IncreaseLauncherLevel(a_increaseAmount);
         launcherCenter.IncreaseLauncherLevel(a_increaseAmount);
@@ -29,10 +30,12 @@ namespace labyrinth_engine
 
     void TripleTroubleProjectileLauncher::OnFire()
     {
+        //Fire for all the launchers
         launcherLeft.Fire();
         launcherCenter.Fire();
         launcherRight.Fire();
 
+        //If the launcher is at max level, fire the max level launchers
         if (GetCurrentLauncherLevel() == GetMaxLauncherLevel())
         {
             launcherMaxLeft.Fire();

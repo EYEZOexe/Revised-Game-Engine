@@ -65,6 +65,7 @@ namespace labyrinth_engine
         if (!m_bIsPlayerInvincible)
         {
             Spaceship::DoDamage(a_damage);
+            AudioManager::GetInstance().PlaySFX("PlayerHit");
         }
     }
 

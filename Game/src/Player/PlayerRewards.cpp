@@ -16,6 +16,7 @@ namespace labyrinth_engine
         , m_rewardFunction{a_rewardFunction}
         , m_rewardSpeed{a_rewardSpeed}
     {
+
     }
 
     void PlayerRewards::ActorBeginPlay()
@@ -57,7 +58,7 @@ namespace labyrinth_engine
 
     Weak<PlayerRewards> CreateTripleTroubleShooterReward(World* a_world)
     {
-        return CreateReward(a_world, "ss/Item/1.png", AddTripleTroubleShooterReward);
+        return CreateReward(a_world, "ss/Shoot/1.png", AddTripleTroubleShooterReward);
     }
 
     Weak<PlayerRewards> CreateMoonShooterReward(World* a_world)
@@ -74,12 +75,13 @@ namespace labyrinth_engine
     Weak<PlayerRewards> CreateReward(World* a_world, const std::string& a_rewardTexturePath, RewardFunction a_rewardFunction)
     {
         Weak<PlayerRewards> reward = a_world->SpawnActor<PlayerRewards>(a_rewardTexturePath, a_rewardFunction);
+        reward.lock()->GetSprite().setScale({1.5f, 1.5f});
         return reward;
     }
 
     void AddHealthReward(PlayerSpaceship* a_playerSpaceship)
     {
-        static float healthReward = 10.0f; // static variables will only be initialized once
+        static float healthReward = 20.0f; // static variables will only be initialized once
         if (a_playerSpaceship && !a_playerSpaceship->IsPendingKill())
         {
             a_playerSpaceship->GetHealthComponent().SetHealth(healthReward);

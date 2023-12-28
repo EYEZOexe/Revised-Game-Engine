@@ -26,6 +26,7 @@ namespace labyrinth_engine
     {
         AudioManager::GetInstance().LoadSFX("Shoot", "Bonus/blaster.mp3");
         AudioManager::GetInstance().LoadSFX("PlayerShoot", "Bonus/sfx_laser2.ogg");
+        AudioManager::GetInstance().LoadSFX("PlayerHit", "ss/Sound/2.wav");
         AudioManager::GetInstance().LoadSFX("BG", "Bonus/background.mp3");
         AudioManager::GetInstance().LoadSFX("Explosion", "Bonus/explosion.wav");
         AudioManager::GetInstance().LoadSFX("PowerUp", "Bonus/sfx_zap.ogg");
