@@ -59,6 +59,12 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/MadMaxGameStage.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/MadMaxGameStage.h
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/Sinner.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/Sinner.h
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/SinnerBossGameStage.cpp
+        include/Enemy/SinnerBossGameStage.h
+
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Level/GameLevelOne.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Level/GameLevelOne.h
 
@@ -79,6 +85,7 @@ add_executable(${GAME_TARGET_NAME} # Adds the executable for the game
 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/PlayerManager.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/Player/PlayerManager.h
+
 )
 
 target_include_directories(${GAME_TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include) # Adds the include directory to the game target

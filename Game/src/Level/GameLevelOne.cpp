@@ -10,6 +10,7 @@
 #include "Enemy/DancerGameStage.h"
 #include "Gameplay/WaitStage.h"
 #include "Enemy/MadMaxGameStage.h"
+#include "Enemy/SinnerBossGameStage.h"
 
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/TimeKeeper.h"
@@ -53,6 +54,8 @@ namespace labyrinth_engine
 
     void GameLevelOne::InitialiseGameStages()
     {
+
+        AddGameStage(Shared<SinnerBossGameStage>{new SinnerBossGameStage{this}});
 
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<RookieGameStage>{new RookieGameStage{this}});
