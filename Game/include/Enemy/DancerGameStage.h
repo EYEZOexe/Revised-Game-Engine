@@ -2,8 +2,8 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef UFOGAMESTAGE_H
-#define UFOGAMESTAGE_H
+#ifndef DANCERGAMESTAGE_H
+#define DANCERGAMESTAGE_H
 
 #include "Gameplay/GameStage.h"
 #include <SFML/Graphics.hpp>
@@ -50,10 +50,10 @@ namespace labyrinth_engine
         float m_enemySpawnInterval;
         int m_enemySpawnAmount;
         int m_enemyCurrentSpawnAmount;
-        float m_ufoSpeed;
+        float m_dancerSpeed;
 
         TimerHandler m_enemySpawnTimer;
     };
 }
 
-#endif //UFOGAMESTAGE_H
+#endif //DANCERGAMESTAGE_H

@@ -2,8 +2,8 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef TWINBLADE_H
-#define TWINBLADE_H
+#ifndef COPYCAT_H
+#define COPYCAT_H
 
 #include "Enemy/EnemySpaceship.h"
 
@@ -43,11 +43,11 @@ namespace labyrinth_engine
     protected:
 
     private:
-        Unique<ProjectileLauncher> m_TwinBladeLeftShooter;
-        Unique<ProjectileLauncher> m_TwinBladeRightShooter;
+        Unique<ProjectileLauncher> m_CopyCatLeftShooter;
+        Unique<ProjectileLauncher> m_CopyCatRightShooter;
     };
 }
 
 
 
-#endif //TWINBLADE_H
+#endif //COPYCAT_H

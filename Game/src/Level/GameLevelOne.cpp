@@ -4,11 +4,12 @@
 
 #include "Level/GameLevelOne.h"
 
-#include "..\..\include\Enemy\RookieGameStage.h"
-#include "..\..\include\Enemy\CopyCatGameStage.h"
-#include "..\..\include\Enemy\EnforcerGameStage.h"
-#include "..\..\include\Enemy\DancerGameStage.h"
+#include "Enemy/RookieGameStage.h"
+#include "Enemy/CopyCatGameStage.h"
+#include "Enemy/EnforcerGameStage.h"
+#include "Enemy/DancerGameStage.h"
 #include "Gameplay/WaitStage.h"
+#include "Enemy/MadMaxGameStage.h"
 
 #include "LabyrinthFramework/Actor.h"
 #include "LabyrinthFramework/TimeManager.h"
@@ -36,6 +37,8 @@ namespace labyrinth_engine
 
     void GameLevelOne::InitialiseGameStages()
     {
+        AddGameStage(Shared<MadMaxGameStage>{new MadMaxGameStage{this}});
+
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<RookieGameStage>{new RookieGameStage{this}});
 

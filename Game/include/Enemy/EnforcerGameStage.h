@@ -2,8 +2,8 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef HEXAGONGAMESTAGE_H
-#define HEXAGONGAMESTAGE_H
+#ifndef ENFORCERGAMESTAGE_H
+#define ENFORCERGAMESTAGE_H
 #include "Gameplay/GameStage.h"
 #include <SFML/Graphics.hpp>
 #include "LabyrinthFramework/TimeManager.h"
@@ -58,4 +58,4 @@ namespace labyrinth_engine
     };
 }
 
-#endif //HEXAGONGAMESTAGE_H
+#endif //ENFORCERGAMESTAGE_H

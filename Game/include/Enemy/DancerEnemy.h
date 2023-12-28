@@ -2,8 +2,8 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef UFO_H
-#define UFO_H
+#ifndef DANCER_H
+#define DANCER_H
 
 #include "EnemySpaceship.h"
 
@@ -45,11 +45,11 @@ namespace labyrinth_engine
     private:
         void Fire() override;
 
-        Unique<ProjectileLauncher> m_UFOLeftShooter;
-        Unique<ProjectileLauncher> m_UFORightShooter;
-        Unique<ProjectileLauncher> m_UFOMiddleShooter;
+        Unique<ProjectileLauncher> m_dancerLeftShooter;
+        Unique<ProjectileLauncher> m_dancerRightShooter;
+        Unique<ProjectileLauncher> m_dancerMiddleShooter;
         float m_RotationSpeed;
     };
 }
 
-#endif //UFO_H
+#endif //DANCER_H

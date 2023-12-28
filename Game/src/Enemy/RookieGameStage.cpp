@@ -18,8 +18,8 @@ namespace labyrinth_engine
         , m_enemySpawnLocation{0.0f, 0.0f}
         , m_enemyRows{2}
         , m_enemySpawnCount{0}
-        , m_vanguardCountPerRow{5}
-        , m_currentRowVanguardCount{0}
+        , m_rookieCountPerRow{5}
+        , m_currentRowRookieCount{0}
     {
 
     }
@@ -41,14 +41,14 @@ namespace labyrinth_engine
 
     void RookieGameStage::SpawnEnemies()
     {
-        Weak<RookieEnemy> newVanguard = GetWorld()->SpawnActor<RookieEnemy>(); //spawn a new vanguard
-        newVanguard.lock()->SetActorLocation(m_enemySpawnLocation); //set the position of the vanguard to the enemy spawn location
-        ++m_currentRowVanguardCount; //increment the current row vanguard count
-        if (m_currentRowVanguardCount == m_vanguardCountPerRow) //if the current row vanguard count is equal to the vanguard count per row
+        Weak<RookieEnemy> newRookie = GetWorld()->SpawnActor<RookieEnemy>(); //spawn a new rookie enemy
+        newRookie.lock()->SetActorLocation(m_enemySpawnLocation); //set the position of the rookie enemy to the enemy spawn location
+        ++m_currentRowRookieCount; //increment the current row rookie enemy count
+        if (m_currentRowRookieCount == m_rookieCountPerRow) //if the current row rookie enemy count is equal to the rookie count per row
         {
             TimeManager::GetInstance().RemoveTimer(m_spawnTimerHandler); //clear the spawn timer handler
             m_switchTimerHandler = TimeManager::GetInstance().SetTimer(GetWeakReference(), &RookieGameStage::SwitchEnemyRows, m_enemySwitchInterval, false); //set the switch timer handler
-            m_currentRowVanguardCount = 0; //reset the current row vanguard count
+            m_currentRowRookieCount = 0; //reset the current row rookie count
         }
     }
 

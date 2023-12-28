@@ -2,8 +2,8 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef HEXAGON_H
-#define HEXAGON_H
+#ifndef ENFORCER_H
+#define ENFORCER_H
 
 #include "Enemy/EnemySpaceship.h"
 
@@ -54,4 +54,4 @@ namespace labyrinth_engine
     };
 }
 
-#endif //HEXAGON_H
+#endif //ENFORCER_H

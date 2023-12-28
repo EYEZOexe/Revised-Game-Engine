@@ -28,8 +28,8 @@ namespace labyrinth_engine
 
     void CopyCatGameStage::SpawnEnemy()
     {
-        Weak<CopyCatEnemy> newTwinBlade = GetWorld()->SpawnActor<CopyCatEnemy>();
-        newTwinBlade.lock()->SetActorLocation(m_enemySpawnLocation);
+        Weak<CopyCatEnemy> newCopyCat = GetWorld()->SpawnActor<CopyCatEnemy>();
+        newCopyCat.lock()->SetActorLocation(m_enemySpawnLocation);
 
         if (m_enemySpawnLocation == m_enemySpawnLocationLeft)
         {

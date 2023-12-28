@@ -34,14 +34,14 @@ namespace labyrinth_engine
 
     void EnforcerGameStage::SpawnEnemies()
     {
-        Weak<EnforcerEnemy> newHexagon = GetWorld()->SpawnActor<EnforcerEnemy>();
-        newHexagon.lock()->SetActorLocation(m_enemySpawnPositionMid);
+        Weak<EnforcerEnemy> newEnforcer = GetWorld()->SpawnActor<EnforcerEnemy>();
+        newEnforcer.lock()->SetActorLocation(m_enemySpawnPositionMid);
 
-        newHexagon = GetWorld()->SpawnActor<EnforcerEnemy>();
-        newHexagon.lock()->SetActorLocation(m_enemySpawnPositionLeft);
+        newEnforcer = GetWorld()->SpawnActor<EnforcerEnemy>();
+        newEnforcer.lock()->SetActorLocation(m_enemySpawnPositionLeft);
 
-        newHexagon = GetWorld()->SpawnActor<EnforcerEnemy>();
-        newHexagon.lock()->SetActorLocation(m_enemySpawnPositionRight);
+        newEnforcer = GetWorld()->SpawnActor<EnforcerEnemy>();
+        newEnforcer.lock()->SetActorLocation(m_enemySpawnPositionRight);
 
         if (++m_enemyCurrentSpawnSize >= m_enemySpawnGroupSize)
         {

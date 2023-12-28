@@ -2,8 +2,8 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef VANGUARDGAMESTAGE_H
-#define VANGUARDGAMESTAGE_H
+#ifndef ROOKIEGAMESTAGE_H
+#define ROOKIEGAMESTAGE_H
 
 #include "Gameplay/GameStage.h"
 #include "LabyrinthFramework/TimeManager.h"
@@ -59,8 +59,8 @@ namespace labyrinth_engine
         int m_enemyRows; // Number of rows of enemies
         int m_enemySpawnCount; // Number of enemies to spawn
 
-        int m_vanguardCountPerRow; // Number of vanguards to spawn per row
-        int m_currentRowVanguardCount; // Number of vanguards spawned in the current row
+        int m_rookieCountPerRow; // Number of rookie enemy to spawn per row
+        int m_currentRowRookieCount; // Number of rookie spawned in the current row
 
         void StageEnded() override;
         void SpawnEnemies();
@@ -69,4 +69,4 @@ namespace labyrinth_engine
 }
 
 
-#endif //VANGUARDGAMESTAGE_H
+#endif //ROOKIEGAMESTAGE_H

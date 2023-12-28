@@ -2,8 +2,8 @@
 // Created by s5216712 on 11/12/2023.
 //
 
-#ifndef VANGUARD_H
-#define VANGUARD_H
+#ifndef ROOKIEENEMY_H
+#define ROOKIEENEMY_H
 #include "EnemySpaceship.h"
 
 namespace labyrinth_engine
@@ -22,4 +22,4 @@ namespace labyrinth_engine
 
 
 
-#endif //VANGUARD_H
+#endif //ROOKIEENEMY_H

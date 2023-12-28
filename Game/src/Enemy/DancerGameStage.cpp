@@ -14,7 +14,7 @@ namespace labyrinth_engine
         , m_enemySpawnInterval{4.0f}
         , m_enemySpawnAmount{10}
         , m_enemyCurrentSpawnAmount{0}
-        , m_ufoSpeed{200.0f}
+        , m_dancerSpeed{200.0f}
     {
 
     }
@@ -57,11 +57,11 @@ namespace labyrinth_engine
         sf::Vector2f direction{ center.x - spawnLocation.x, center.y - spawnLocation.y};
         NormalizeVector(direction);
 
-        sf::Vector2f spawnVelocity = direction * m_ufoSpeed;
+        sf::Vector2f spawnVelocity = direction * m_dancerSpeed;
 
 
-        Weak<DancerEnemy> newUFO = GetWorld()->SpawnActor<DancerEnemy>(spawnVelocity);
-        newUFO.lock()->SetActorLocation(spawnLocation);
+        Weak<DancerEnemy> newDancer = GetWorld()->SpawnActor<DancerEnemy>(spawnVelocity);
+        newDancer.lock()->SetActorLocation(spawnLocation);
 
         if (++m_enemyCurrentSpawnAmount >= m_enemySpawnAmount)
         {

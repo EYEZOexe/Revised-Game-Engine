@@ -2,8 +2,8 @@
 // Created by Tomas Tzorta on 16/12/2023.
 //
 
-#ifndef TWINBLADEGAMESTAGE_H
-#define TWINBLADEGAMESTAGE_H
+#ifndef COPYCATGAMESTAGE_H
+#define COPYCATGAMESTAGE_H
 
 #include "Gameplay/GameStage.h"
 #include "LabyrinthFramework/TimeManager.h"
@@ -61,4 +61,4 @@ namespace labyrinth_engine
 }
 
 
-#endif //TWINBLADEGAMESTAGE_H
+#endif //COPYCATGAMESTAGE_H

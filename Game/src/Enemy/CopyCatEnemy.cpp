@@ -10,8 +10,8 @@ namespace labyrinth_engine
 {
     CopyCatEnemy::CopyCatEnemy(World* a_owningWorld, const std::string& a_texturePath, const sf::Vector2f& a_velocity)
         : EnemySpaceship{a_owningWorld, a_texturePath}
-        , m_TwinBladeLeftShooter{new ProjectileLauncher{this, 1.0f, {50.0f, -20.0f}}}
-        , m_TwinBladeRightShooter{new ProjectileLauncher{this, 1.0f, {50.0f, 20.0f}}}
+        , m_CopyCatLeftShooter{new ProjectileLauncher{this, 1.0f, {50.0f, -20.0f}}}
+        , m_CopyCatRightShooter{new ProjectileLauncher{this, 1.0f, {50.0f, 20.0f}}}
     {
         SetSpaceshipVelocity(a_velocity);
     }
@@ -24,7 +24,7 @@ namespace labyrinth_engine
 
     void CopyCatEnemy::Fire()
     {
-        m_TwinBladeLeftShooter->Fire();
-        m_TwinBladeRightShooter->Fire();
+        m_CopyCatLeftShooter->Fire();
+        m_CopyCatRightShooter->Fire();
     }
 }
