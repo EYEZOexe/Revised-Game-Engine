@@ -7,7 +7,7 @@
 #include "LabyrinthFramework/World.h"
 #include "LabyrinthFramework/AssetManager.h"
 #include "LabyrinthFramework/PhysicsSystem.h"
-#include "..\..\include\LabyrinthFramework\TimeKeeper.h"
+#include "LabyrinthFramework/TimeKeeper.h"
 
 
 namespace labyrinth_engine

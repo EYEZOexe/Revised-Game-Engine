@@ -6,7 +6,7 @@
 #define ENFORCERGAMESTAGE_H
 #include "Gameplay/GameStage.h"
 #include <SFML/Graphics.hpp>
-#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
+#include "LabyrinthFramework/TimeKeeper.h"
 
 namespace labyrinth_engine
 {

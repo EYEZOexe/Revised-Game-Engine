@@ -4,8 +4,8 @@
 
 #include "Player/PlayerRewards.h"
 #include "Player/PlayerSpaceship.h"
-#include "..\..\include\Weapon\TripleTroubleProjectileLauncher.h"
-#include "..\..\include\Weapon\MoonProjectileLauncher.h"
+#include "Weapon/TripleTroubleProjectileLauncher.h"
+#include "Weapon/MoonProjectileLauncher.h"
 #include "LabyrinthFramework/World.h"
 #include "Player/PlayerManager.h"
 

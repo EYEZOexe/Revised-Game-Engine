@@ -2,7 +2,7 @@
 // Created by Tomas Tzorta on 18/12/2023.
 //
 
-#include "..\..\include\Weapon\TripleTroubleProjectileLauncher.h"
+#include "Weapon/TripleTroubleProjectileLauncher.h"
 
 namespace labyrinth_engine
 {

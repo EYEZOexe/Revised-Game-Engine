@@ -6,7 +6,7 @@
 #define ROOKIEGAMESTAGE_H
 
 #include "Gameplay/GameStage.h"
-#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
+#include "LabyrinthFramework/TimeKeeper.h"
 #include <SFML/Graphics.hpp>
 
 
