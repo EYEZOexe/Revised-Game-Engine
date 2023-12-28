@@ -19,6 +19,16 @@ namespace labyrinth_engine
 
     }
 
+    void Spaceship::ActorBeginPlay()
+    {
+        Actor::ActorBeginPlay();
+        SetEnableActorPhysics(true);
+
+        m_healthComponent.OnHealthChange.Bind(GetWeakReference(), &Spaceship::OnHealthChange); //bind the function to the event
+        m_healthComponent.OnDamage.Bind(GetWeakReference(), &Spaceship::OnDamage);
+        m_healthComponent.OnDeath.Bind(GetWeakReference(), &Spaceship::OnBaseDeath);
+    }
+
     void Spaceship::ActorTick(const float a_deltaTime)
     {
         Actor::ActorTick(a_deltaTime);
@@ -29,16 +39,6 @@ namespace labyrinth_engine
     void Spaceship::Fire()
     {
 
-    }
-
-    void Spaceship::ActorBeginPlay()
-    {
-        Actor::ActorBeginPlay();
-        SetEnableActorPhysics(true);
-
-        m_healthComponent.OnHealthChange.Bind(GetWeakReference(), &Spaceship::OnHealthChange); //bind the function to the event
-        m_healthComponent.OnDamage.Bind(GetWeakReference(), &Spaceship::OnDamage);
-        m_healthComponent.OnDeath.Bind(GetWeakReference(), &Spaceship::OnBaseDeath);
     }
 
     void Spaceship::DoDamage(float a_damage)

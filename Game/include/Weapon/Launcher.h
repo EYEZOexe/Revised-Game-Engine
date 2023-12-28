@@ -16,24 +16,25 @@ namespace labyrinth_engine
     public:
         void Fire();
 
-        virtual bool CanFire() const {return true;}
-        virtual bool IsOnCooldown() const {return false;}
+        int GetCurrentLauncherLevel() const {return m_currentLauncherLevel;} // getter for the current launcher level
+        int GetMaxLauncherLevel() const {return m_maxLauncherLevel;} // getter for the max launcher level
 
-        Actor* GetOwner() const {return m_owner;}
-        int GetCurrentLauncherLevel() const {return m_currentLauncherLevel;}
-        int GetMaxLauncherLevel() const {return m_maxLauncherLevel;}
+        Actor* GetOwner() const {return m_owner;} // getter for the owner of the launcher
+        virtual void IncreaseLauncherLevel(int a_increaseAmount = 1); // virtual function that will be used to increase the launcher level
 
-        virtual void IncreaseLauncherLevel(int a_increaseAmount = 1);
+        virtual bool CanFire() const {return true;} // virtual function that will be used to check if the launcher can fire
+        virtual bool IsOnCooldown() const {return false;} // virtual function that will be used to check if the launcher is on cooldown
+
 
     protected:
-        Launcher(Actor* a_owner);
+        Launcher(Actor* a_owner); // constructor for the launcher
 
     private:
-        virtual void OnFire() = 0;
-        Actor* m_owner;
+        virtual void OnFire() = 0; // virtual function that will be used when the launcher fires
+        Actor* m_owner; // pointer to the owner of the launcher
 
-        int m_currentLauncherLevel;
-        int m_maxLauncherLevel;
+        int m_currentLauncherLevel; // current launcher level
+        int m_maxLauncherLevel; // max launcher level
     };
 }
 

@@ -29,8 +29,8 @@ namespace labyrinth_engine
         // Boolean Functions
 
         // Virtual Functions
-        void DrawHUD(sf::RenderWindow& a_window) override;
-        void UpdateHUD(float a_deltaTime) override;
+        void DrawHUD(sf::RenderWindow& a_window) override; // draw the HUD
+        void UpdateHUD(float a_deltaTime) override; // update the HUD
 
         /* End of Class Functions */
 
@@ -48,28 +48,29 @@ namespace labyrinth_engine
     protected:
 
     private:
-        void PlayerStatsUpdate();
+        void PlayerStatsUpdate(); // update the player stats
 
-        void HUDInit(const sf::RenderWindow& a_window) override;
-        void PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth);
-        void PlayerLifeUpdate(int a_amount);
-        void PlayerScoreUpdate(int a_amount);
-        void PlayerDeath(Actor* a_actor);
-        void PlayerHUDReset();
+        void HUDInit(const sf::RenderWindow& a_window) override; // initialise the HUD
+        void PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth); // update the player health
+        void PlayerLifeUpdate(int a_amount); // update the player life
+        void PlayerScoreUpdate(int a_amount); // update the player score
+        void PlayerDeath(Actor* a_actor); // player death
+        void PlayerHUDReset(); // reset the player HUD
+
+        float m_playerDamagedHealthThreshold;
+        float m_imageWidgetSpacing;
 
         TextWidget m_gameFramerateText;
-        StatusMeter m_playerHealthBar;
-        ImageWidget m_playerLifeIcon;
         TextWidget m_playerLifeText;
-
-        ImageWidget m_playerScoreIcon;
         TextWidget m_playerScoreText;
+
+        StatusMeter m_playerHealthBar;
+
+        ImageWidget m_playerLifeIcon;
+        ImageWidget m_playerScoreIcon;
 
         sf::Color m_playerMaxHealthColour;
         sf::Color m_playerDamageHealthColour;
-        float m_playerDamagedHealthThreshold;
-
-        float m_imageWidgetSpacing;
     };
 }
 

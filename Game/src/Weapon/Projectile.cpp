@@ -15,31 +15,31 @@ namespace labyrinth_engine
         SetActorCollisionLayer(a_owner->GetCollisionLayer());
     }
 
-    void Projectile::ActorTick(float a_deltaTime)
-    {
-        Actor::ActorTick(a_deltaTime); // Call the base class version of this function
-
-        MoveProjectile(a_deltaTime);
-
-        if (IsActorOutOfBounds())
-        {
-            Destroy();
-        }
-    }
-
     void Projectile::ActorBeginPlay()
     {
         Actor::ActorBeginPlay(); // Call the base class version of this function
 
-        SetEnableActorPhysics(true);
+        SetEnableActorPhysics(true); // Enable the physics of the projectile
+    }
+
+    void Projectile::ActorTick(float a_deltaTime)
+    {
+        Actor::ActorTick(a_deltaTime); // Call the base class version of this function
+
+        MoveProjectile(a_deltaTime); // Move the projectile
+
+        if (IsActorOutOfBounds()) // If the projectile is out of bounds
+        {
+            Destroy(); // Destroy the projectile
+        }
     }
 
     void Projectile::OnActorBeginOverlap(Actor* a_otherActor)
     {
-        if (IsHostileTo(a_otherActor))
+        if (IsHostileTo(a_otherActor)) // If the projectile is hostile to the other actor
         {
-            a_otherActor->DoDamage(GetProjectileDamage());
-            Destroy();
+            a_otherActor->DoDamage(GetProjectileDamage()); // Do damage to the other actor
+            Destroy(); // Destroy the projectile
         }
     }
 

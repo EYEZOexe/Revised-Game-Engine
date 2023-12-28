@@ -21,7 +21,7 @@ namespace labyrinth_engine
 
     void MoonProjectileLauncher::IncreaseLauncherLevel(int a_increaseAmount)
     {
-        ProjectileLauncher::IncreaseLauncherLevel(a_increaseAmount);
+        ProjectileLauncher::IncreaseLauncherLevel(a_increaseAmount); // call the base class function
         m_projectileLauncher.IncreaseLauncherLevel(a_increaseAmount);
         m_projectileLauncher2.IncreaseLauncherLevel(a_increaseAmount);
         m_projectileLauncher3.IncreaseLauncherLevel(a_increaseAmount);
@@ -30,14 +30,14 @@ namespace labyrinth_engine
 
     void MoonProjectileLauncher::OnFire()
     {
-        m_projectileLauncher.Fire();
+        m_projectileLauncher.Fire(); // fire the projectile
         m_projectileLauncher2.Fire();
         m_projectileLauncher3.Fire();
         m_projectileLauncher4.Fire();
 
         if (GetCurrentLauncherLevel() == GetMaxLauncherLevel())
         {
-            m_projectileLauncherMax.Fire();
+            m_projectileLauncherMax.Fire(); // fire the projectile
             m_projectileLauncherMax2.Fire();
         }
     }

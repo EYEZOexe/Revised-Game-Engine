@@ -8,13 +8,12 @@
 #include "LabyrinthFramework/Actor.h"
 #include <functional>
 
-
-
 namespace labyrinth_engine
 {
     class PlayerRewards;
 
     class PlayerSpaceship;
+
     using RewardFunction = std::function<void(PlayerSpaceship*)>; // a_rewardFunction is a function that takes a PlayerSpaceship as a parameter and returns void
     using RewardInternalFunction = std::function<Weak<PlayerRewards>(World*)>;
 

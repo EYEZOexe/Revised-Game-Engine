@@ -24,20 +24,20 @@ namespace labyrinth_engine
     {
     }
 
-    void Explosion::SpawnExplosion(World* a_world, const sf::Vector2f& a_location)
+    void Explosion::SpawnExplosion(World* a_world, const sf::Vector2f& a_location) // spawns the explosion
     {
-        if (!a_world) return;
+        if (!a_world) return; // if the world is null then return
 
-        for (int i = 0; i < m_particleAmount; i++)
+        for (int i = 0; i < m_particleAmount; i++) // for loop that spawns the particles
         {
-            std::string particleTexture = m_particleTextures[(int)RandomFloat(0, m_particleTextures.size())];
-            Weak<Particle> newParticle = a_world->SpawnActor<Particle>(particleTexture);
+            std::string particleTexture = m_particleTextures[(int)RandomFloat(0, m_particleTextures.size())]; // gets a random texture from the list of textures
+            Weak<Particle> newParticle = a_world->SpawnActor<Particle>(particleTexture); // spawns a new particle
 
-            newParticle.lock()->RandomiseLifeTime(m_particleLifeTimeMin, m_particleLifeTimeMax);
-            newParticle.lock()->SetActorLocation(a_location);
-            newParticle.lock()->RandomiseScale(m_particleSizeMin, m_particleSizeMax);
-            newParticle.lock()->RandomiseVelocity(m_particleSpeedMin, m_particleSpeedMax);
-            newParticle.lock()->GetSprite().setColor(m_particleColour);
+            newParticle.lock()->RandomiseLifeTime(m_particleLifeTimeMin, m_particleLifeTimeMax); // randomises the lifetime of the particle
+            newParticle.lock()->SetActorLocation(a_location); // sets the location of the particle
+            newParticle.lock()->RandomiseScale(m_particleSizeMin, m_particleSizeMax); // randomises the scale of the particle
+            newParticle.lock()->RandomiseVelocity(m_particleSpeedMin, m_particleSpeedMax); // randomises the velocity of the particle
+            newParticle.lock()->GetSprite().setColor(m_particleColour); // sets the colour of the particle
         }
     }
 }

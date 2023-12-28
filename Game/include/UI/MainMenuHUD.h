@@ -27,6 +27,7 @@ namespace labyrinth_engine
         // Virtual Functions
         void DrawHUD(sf::RenderWindow& a_window) override; // draw HUD
         bool IsHUDClicked(const sf::Event& a_event) override; // check if HUD is clicked
+
         EventCallback<> OnPlayButtonPressed; // play button pressed event
         EventCallback<> OnQuitButtonPressed; // quit button pressed event
         /* End of Class Functions */
@@ -48,6 +49,7 @@ namespace labyrinth_engine
         void HUDInit(const sf::RenderWindow& a_window) override; // initialize HUD
         void PlayButtonPressed(); // play button pressed
         void QuitButtonPressed(); // quit button pressed
+
         TextWidget m_mainMenuTitleText; // main menu text
         ButtonWidget m_mainMenuPlayButton; // main menu play button
         ButtonWidget m_mainMenuQuitButton; // main menu quit button

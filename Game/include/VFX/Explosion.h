@@ -53,13 +53,16 @@ namespace labyrinth_engine
 
     private:
         int m_particleAmount;
+
         float m_particleLifeTimeMin;
         float m_particleLifeTimeMax;
         float m_particleSpeedMin;
         float m_particleSpeedMax;
         float m_particleSizeMin;
         float m_particleSizeMax;
+
         sf::Color m_particleColour;
+
         List<std::string>  m_particleTextures;
     };
 }

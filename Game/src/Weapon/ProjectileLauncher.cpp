@@ -30,20 +30,19 @@ namespace labyrinth_engine
         return true;
     }
 
-    void ProjectileLauncher::IncreaseLauncherLevel(int a_increaseAmount)
+    void ProjectileLauncher::IncreaseLauncherLevel(int a_increaseAmount) // Increases the launcher level by the amount specified
     {
-        Launcher::IncreaseLauncherLevel(a_increaseAmount);
+        Launcher::IncreaseLauncherLevel(a_increaseAmount); // Increase the launcher level
     }
 
-    void ProjectileLauncher::OnFire()
+    void ProjectileLauncher::OnFire() // Fires the projectile
     {
-        sf::Vector2f ownerForwardVector = GetOwner()->GetActorForwardVector();
-        sf::Vector2f ownerRightVector = GetOwner()->GetActorRightVector();
+        sf::Vector2f ownerForwardVector = GetOwner()->GetActorForwardVector(); // Get the owner forward vector
+        sf::Vector2f ownerRightVector = GetOwner()->GetActorRightVector(); // Get the owner right vector
 
         m_cooldown.restart();
-        Weak<Projectile> newProjectile = GetOwner()->GetWorld()->SpawnActor<Projectile>(GetOwner(), m_projectileTexturePath);
-        newProjectile.lock()->SetActorLocation(GetOwner()->GetActorLocation() + ownerForwardVector * m_selfPositionOffset.x + ownerRightVector * m_selfPositionOffset.y);
-        newProjectile.lock()->SetActorRotation(GetOwner()->GetActorRotation() + m_selfRotationOffset);
-
+        Weak<Projectile> newProjectile = GetOwner()->GetWorld()->SpawnActor<Projectile>(GetOwner(), m_projectileTexturePath); // Spawn the projectile
+        newProjectile.lock()->SetActorLocation(GetOwner()->GetActorLocation() + ownerForwardVector * m_selfPositionOffset.x + ownerRightVector * m_selfPositionOffset.y); // Set the projectile location
+        newProjectile.lock()->SetActorRotation(GetOwner()->GetActorRotation() + m_selfRotationOffset); // Set the projectile rotation
     }
 }

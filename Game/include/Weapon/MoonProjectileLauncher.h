@@ -24,7 +24,7 @@ namespace labyrinth_engine
         // Boolean Functions
 
         // Virtual Functions
-        void IncreaseLauncherLevel(int a_increaseAmount = 1) override;
+        void IncreaseLauncherLevel(int a_increaseAmount = 1) override; // increase the launcher level
 
         /* End of Class Functions */
 
@@ -43,8 +43,10 @@ namespace labyrinth_engine
 
     private:
         void OnFire() override;
+
         float m_width;
-        ProjectileLauncher m_projectileLauncher;
+
+        ProjectileLauncher m_projectileLauncher; // projectile launcher
         ProjectileLauncher m_projectileLauncher2;
         ProjectileLauncher m_projectileLauncher3;
         ProjectileLauncher m_projectileLauncher4;

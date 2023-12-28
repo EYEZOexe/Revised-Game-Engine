@@ -16,6 +16,16 @@ namespace labyrinth_engine
         m_mainMenuQuitButton.SetButtonTextSize(20); // set main menu quit button text size
     }
 
+    void MainMenuHUD::HUDInit(const sf::RenderWindow& a_window)
+    {
+        sf::Vector2u windowSize = a_window.getSize(); // get window size
+        m_mainMenuTitleText.SetWidgetPosition({windowSize.x / 2.0f - m_mainMenuTitleText.GetWidgetBounds().width /2, 100.0f}); // set main menu text position
+        m_mainMenuPlayButton.SetWidgetPosition({windowSize.x / 2.0f - m_mainMenuPlayButton.GetWidgetBounds().width /2, windowSize.y / 2.0f}); // set main menu play button position
+        m_mainMenuQuitButton.SetWidgetPosition(m_mainMenuPlayButton.GetWidgetPosition() + sf::Vector2f{0.0f, 50.0f}); // set main menu quit button position
+        m_mainMenuPlayButton.OnButtonPressed.Bind(GetWeakReference(), &MainMenuHUD::PlayButtonPressed); // bind play button pressed event
+        m_mainMenuQuitButton.OnButtonPressed.Bind(GetWeakReference(), &MainMenuHUD::QuitButtonPressed); // bind quit button pressed event
+    }
+
     void MainMenuHUD::DrawHUD(sf::RenderWindow& a_window)
     {
         m_mainMenuTitleText.FrameworkWidgetDraw(a_window); // draw main menu text
@@ -26,16 +36,6 @@ namespace labyrinth_engine
     bool MainMenuHUD::IsHUDClicked(const sf::Event& a_event)
     {
         return m_mainMenuPlayButton.IsMouseOver(a_event) || m_mainMenuQuitButton.IsMouseOver(a_event) || HUD::IsHUDClicked(a_event); // check if HUD is clicked
-    }
-
-    void MainMenuHUD::HUDInit(const sf::RenderWindow& a_window)
-    {
-        sf::Vector2u windowSize = a_window.getSize(); // get window size
-        m_mainMenuTitleText.SetWidgetPosition({windowSize.x / 2.0f - m_mainMenuTitleText.GetWidgetBounds().width /2, 100.0f}); // set main menu text position
-        m_mainMenuPlayButton.SetWidgetPosition({windowSize.x / 2.0f - m_mainMenuPlayButton.GetWidgetBounds().width /2, windowSize.y / 2.0f}); // set main menu play button position
-        m_mainMenuQuitButton.SetWidgetPosition(m_mainMenuPlayButton.GetWidgetPosition() + sf::Vector2f{0.0f, 50.0f}); // set main menu quit button position
-        m_mainMenuPlayButton.OnButtonPressed.Bind(GetWeakReference(), &MainMenuHUD::PlayButtonPressed); // bind play button pressed event
-        m_mainMenuQuitButton.OnButtonPressed.Bind(GetWeakReference(), &MainMenuHUD::QuitButtonPressed); // bind quit button pressed event
     }
 
     void MainMenuHUD::PlayButtonPressed()

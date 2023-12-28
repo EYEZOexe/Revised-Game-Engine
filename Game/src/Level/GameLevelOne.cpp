@@ -30,12 +30,14 @@ namespace labyrinth_engine
         AudioManager::GetInstance().LoadSFX("BG", "Bonus/background.mp3");
         AudioManager::GetInstance().LoadSFX("Explosion", "Bonus/explosion.wav");
         AudioManager::GetInstance().LoadSFX("PowerUp", "Bonus/sfx_zap.ogg");
+        AudioManager::GetInstance().LoadSFX("LevelUp", "ss/Sound/powerUp2.wav");
         AudioManager::GetInstance().LoadSFX("Game Over", "ss/Sound/5.wav");
         AudioManager::GetInstance().SetSFXVolume("Shoot", 5.0f);
         AudioManager::GetInstance().SetSFXVolume("BG", 10.0f);
         AudioManager::GetInstance().SetSFXVolume("Explosion", 40.0f);
         AudioManager::GetInstance().SetSFXVolume("PowerUp", 70.0f);
         AudioManager::GetInstance().SetSFXVolume("PlayerShoot", 50.0f);
+        AudioManager::GetInstance().SetSFXVolume("LevelUp", 70.0f);
     }
 
     void GameLevelOne::BeginPlay()

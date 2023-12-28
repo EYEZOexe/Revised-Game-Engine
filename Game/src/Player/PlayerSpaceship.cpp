@@ -4,6 +4,7 @@
 
 #include "Player/PlayerSpaceship.h"
 
+#include "LabyrinthFramework/AssetManager.h"
 #include "LabyrinthFramework/MathUtility.h"
 #include "SFML/System.hpp"
 #include "Weapon/Launcher.h"
@@ -53,6 +54,7 @@ namespace labyrinth_engine
     {
         if (m_projectileLauncher && typeid(*m_projectileLauncher.get()) == typeid(*a_projectileLauncher.get()))
         {
+            AudioManager::GetInstance().PlaySFX("LevelUp");
             m_projectileLauncher->IncreaseLauncherLevel();
             return;
         }
