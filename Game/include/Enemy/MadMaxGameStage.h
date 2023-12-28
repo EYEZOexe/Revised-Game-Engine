@@ -7,7 +7,7 @@
 
 #include "Gameplay/GameStage.h"
 #include <SFML/Graphics.hpp>
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
 
 namespace labyrinth_engine
 {
@@ -63,8 +63,8 @@ namespace labyrinth_engine
 
         float m_madMaxStageDuration; // Duration of the stage
 
-        TimerHandler m_difficultyIncreaseTimerHandler; // Timer handler for increasing the difficulty
-        TimerHandler m_enemySpawnTimerHandler; // Timer handler for spawning enemies
+        TimeKeeper m_difficultyIncreaseTimerHandler; // Timer handler for increasing the difficulty
+        TimeKeeper m_enemySpawnTimerHandler; // Timer handler for spawning enemies
     };
 }
 

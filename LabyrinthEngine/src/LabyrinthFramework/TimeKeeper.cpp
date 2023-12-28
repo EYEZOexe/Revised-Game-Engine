@@ -2,21 +2,21 @@
 // Created by Tomas Tzorta on 11/12/2023.
 //
 
-#include "LabyrinthFramework/TimeManager.h"
+#include "LabyrinthFramework/TimeKeeper.h"
 
 namespace labyrinth_engine
 {
     Unique<TimeManager> TimeManager::m_timeManager{nullptr};
 
-    unsigned int TimerHandler::m_timerKeyCounter = 0;
+    unsigned int TimeKeeper::m_timerKeyCounter = 0;
 
-    TimerHandler::TimerHandler()
+    TimeKeeper::TimeKeeper()
         : m_timerKey{GetNextTimerKey()}
     {
 
     }
 
-    bool operator==(const TimerHandler& a_timerHandler1, const TimerHandler& a_timerHandler2)
+    bool operator==(const TimeKeeper& a_timerHandler1, const TimeKeeper& a_timerHandler2)
     {
         return a_timerHandler1.GetTimerKey() == a_timerHandler2.GetTimerKey();
     }
@@ -79,7 +79,7 @@ namespace labyrinth_engine
         }
     }
 
-    void TimeManager::RemoveTimer( TimerHandler a_timerHandler)
+    void TimeManager::RemoveTimer( TimeKeeper a_timerHandler)
     {
         auto i = m_timers.find(a_timerHandler);
 

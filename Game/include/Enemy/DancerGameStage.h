@@ -7,7 +7,7 @@
 
 #include "Gameplay/GameStage.h"
 #include <SFML/Graphics.hpp>
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
 
 namespace labyrinth_engine
 {
@@ -52,7 +52,7 @@ namespace labyrinth_engine
         int m_enemyCurrentSpawnAmount;
         float m_dancerSpeed;
 
-        TimerHandler m_enemySpawnTimer;
+        TimeKeeper m_enemySpawnTimer;
     };
 }
 

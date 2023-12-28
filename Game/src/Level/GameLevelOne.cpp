@@ -12,7 +12,7 @@
 #include "Enemy/MadMaxGameStage.h"
 
 #include "LabyrinthFramework/Actor.h"
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
 #include "GameName/GameApplication.h"
 #include "Player/PlayerManager.h"
 #include "Player/PlayerSpaceship.h"

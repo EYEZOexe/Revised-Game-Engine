@@ -38,12 +38,12 @@ namespace labyrinth_engine
         // Setters
         void SetWidgetPosition(const sf::Vector2f& a_position);
         void SetWidgetRotation(float& a_rotation);
-        void SetWidgetVisible(bool a_visible) {m_isWidgetVisible = a_visible;}
+        void SetWidgetVisible(bool a_visible) {m_bIsWidgetVisible = a_visible;}
 
         // Getters
         sf::Vector2f GetWidgetPosition() const {return m_widgetTransform.getPosition();}
         float GetWidgetRotation() const {return m_widgetTransform.getRotation();}
-        bool IsWidgetVisible() const {return m_isWidgetVisible;}
+        bool IsWidgetVisible() const {return m_bIsWidgetVisible;}
 
         /* End of Setters and getters */
 
@@ -55,7 +55,7 @@ namespace labyrinth_engine
         virtual void UpdateWidgetLocation(const sf::Vector2f& a_position);
         virtual void UpdateWidgetRotation(float& a_rotation);
         sf::Transformable m_widgetTransform; // Transformable object for the widget
-        bool m_isWidgetVisible; // Boolean to check if the widget is visible
+        bool m_bIsWidgetVisible; // Boolean to check if the widget is visible
     };
 }
 

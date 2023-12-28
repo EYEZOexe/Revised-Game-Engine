@@ -27,7 +27,7 @@ namespace labyrinth_engine
     {
         // Spawn the first enemy
         m_enemySpawnTimerHandler = TimeManager::GetInstance().SetTimer(GetWeakReference(), &MadMaxGameStage::SpawnRookie, m_enemySpawnInterval);
-        m_difficultyIncreaseTimerHandler = TimeManager::GetInstance().SetTimer(GetWeakReference(), &MadMaxGameStage::IncreaseStageDifficulty, m_enemySpawnDecreaseRate); // Increase the difficulty of the stage
+        m_difficultyIncreaseTimerHandler = TimeManager::GetInstance().SetTimer(GetWeakReference(), &MadMaxGameStage::IncreaseStageDifficulty, m_enemySpawnDecreaseRate, true); // Increase the difficulty of the stage
         TimeManager::GetInstance().SetTimer(GetWeakReference(), &MadMaxGameStage::StageDurationEnded, m_madMaxStageDuration); // Set the timer for the stage duration
     }
 
@@ -89,7 +89,7 @@ namespace labyrinth_engine
 
     void MadMaxGameStage::StageDurationEnded()
     {
-        StageEnded();
+        EndStage();
     }
 
     sf::Vector2f MadMaxGameStage::GetEnemyRandomSpawnPosition() const

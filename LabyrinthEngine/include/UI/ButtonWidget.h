@@ -61,7 +61,7 @@ namespace labyrinth_engine
         sf::Color m_ButtonPressedColour;
         sf::Color m_ButtonHoverColour;
 
-        bool m_isButtonPressed;
+        bool m_bIsButtonPressed;
         void ButtonReleased();
         void ButtonPressed();
         void ButtonHovered();

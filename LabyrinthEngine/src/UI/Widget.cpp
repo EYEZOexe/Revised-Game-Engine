@@ -8,7 +8,7 @@ namespace labyrinth_engine
 {
     void Widget::FrameworkWidgetDraw(sf::RenderWindow& a_window)
     {
-        if (m_isWidgetVisible)
+        if (m_bIsWidgetVisible)
         {
             DrawWidget(a_window);
         }
@@ -38,7 +38,7 @@ namespace labyrinth_engine
     }
 
     Widget::Widget()
-        : m_isWidgetVisible{true}
+        : m_bIsWidgetVisible{true}
         , m_widgetTransform{}
     {
 

@@ -6,7 +6,7 @@
 #define ROOKIEGAMESTAGE_H
 
 #include "Gameplay/GameStage.h"
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
 #include <SFML/Graphics.hpp>
 
 
@@ -53,8 +53,8 @@ namespace labyrinth_engine
         sf::Vector2f m_enemyRightSpawnLocation; // Right spawn location
         sf::Vector2f m_enemySpawnLocation; // Current spawn location
 
-        TimerHandler m_spawnTimerHandler; // Timer handler for spawning enemies
-        TimerHandler m_switchTimerHandler; // Timer handler for switching enemies
+        TimeKeeper m_spawnTimerHandler; // Timer handler for spawning enemies
+        TimeKeeper m_switchTimerHandler; // Timer handler for switching enemies
 
         int m_enemyRows; // Number of rows of enemies
         int m_enemySpawnCount; // Number of enemies to spawn

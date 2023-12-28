@@ -47,7 +47,7 @@ namespace labyrinth_engine
 
         sf::Clock m_ClearTimer;
         float m_ClearTimeInterval;
-        bool m_isApplicationRunning;
+        bool m_bIsApplicationRunning;
     };
 
     // Template Implementations

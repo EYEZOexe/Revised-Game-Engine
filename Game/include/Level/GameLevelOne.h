@@ -6,7 +6,7 @@
 #define GAMELEVELONE_H
 
 #include "LabyrinthFramework/World.h"
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
 
 namespace labyrinth_engine
 {
@@ -24,7 +24,7 @@ namespace labyrinth_engine
 
         Weak<PlayerSpaceship> m_playerSpaceship;
         Weak<GameHUD> m_GameHUD;
-        TimerHandler m_timerHandler;
+        TimeKeeper m_timerHandler;
     };
 }
 

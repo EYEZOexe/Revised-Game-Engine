@@ -8,9 +8,9 @@ namespace labyrinth_engine
 {
     void HUD::HUDInitFramework(const sf::RenderWindow& a_window)
     {
-        if (!m_isHUDInitialised)
+        if (!m_bIsHUDInitialised)
         {
-            m_isHUDInitialised = true;
+            m_bIsHUDInitialised = true;
             HUDInit(a_window);
 
         }
@@ -27,7 +27,7 @@ namespace labyrinth_engine
     }
 
     HUD::HUD()
-        : m_isHUDInitialised{false}
+        : m_bIsHUDInitialised{false}
     {
 
     }

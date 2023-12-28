@@ -6,7 +6,7 @@
 #define ENFORCERGAMESTAGE_H
 #include "Gameplay/GameStage.h"
 #include <SFML/Graphics.hpp>
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
 
 namespace labyrinth_engine
 {
@@ -54,7 +54,7 @@ namespace labyrinth_engine
         sf::Vector2f m_enemySpawnPositionRight;
         sf::Vector2f m_enemySpawnPositionMid;
 
-        TimerHandler m_enemySpawnTimer;
+        TimeKeeper m_enemySpawnTimer;
     };
 }
 

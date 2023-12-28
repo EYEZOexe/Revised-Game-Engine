@@ -6,7 +6,7 @@
 #define COPYCATGAMESTAGE_H
 
 #include "Gameplay/GameStage.h"
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
 #include <SFML/Graphics.hpp>
 
 namespace labyrinth_engine
@@ -56,7 +56,7 @@ namespace labyrinth_engine
         int m_enemySpawnAmount; // Number of enemies to spawn
         int m_enemyCurrentSpawnCount; // Number of enemies to spawn
 
-        TimerHandler m_spawnTimerHandler; // Timer handler for spawning enemies
+        TimeKeeper m_spawnTimerHandler; // Timer handler for spawning enemies
     };
 }
 

@@ -3,7 +3,7 @@
 //
 
 #include "Gameplay/WaitStage.h"
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\include\LabyrinthFramework\TimeKeeper.h"
 
 namespace labyrinth_engine
 {

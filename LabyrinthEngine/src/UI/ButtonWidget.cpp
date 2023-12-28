@@ -16,7 +16,7 @@ namespace labyrinth_engine
         , m_ButtonIdleColour{128, 128, 128, 255}
         , m_ButtonPressedColour{64, 64, 64, 255}
         , m_ButtonHoverColour{192, 192, 192, 255}
-        , m_isButtonPressed{false}
+        , m_bIsButtonPressed{false}
     {
         m_buttonSprite.setColor(m_ButtonIdleColour);
         CenterWidgetText();
@@ -24,13 +24,13 @@ namespace labyrinth_engine
 
     void ButtonWidget::ButtonReleased()
     {
-        m_isButtonPressed = false;
+        m_bIsButtonPressed = false;
         m_buttonSprite.setColor(m_ButtonIdleColour);
     }
 
     void ButtonWidget::ButtonPressed()
     {
-        m_isButtonPressed = true;
+        m_bIsButtonPressed = true;
         m_buttonSprite.setColor(m_ButtonPressedColour);
     }
 
@@ -46,7 +46,7 @@ namespace labyrinth_engine
         {
             if (a_event.mouseButton.button == sf::Mouse::Left)
             {
-                if(m_buttonSprite.getGlobalBounds().contains(a_event.mouseButton.x, a_event.mouseButton.y) && m_isButtonPressed)
+                if(m_buttonSprite.getGlobalBounds().contains(a_event.mouseButton.x, a_event.mouseButton.y) && m_bIsButtonPressed)
                 {
                     OnButtonPressed.Broadcast();
                     isMouseOver = true;

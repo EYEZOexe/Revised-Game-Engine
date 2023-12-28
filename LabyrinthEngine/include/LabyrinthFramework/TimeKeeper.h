@@ -11,10 +11,10 @@
 
 namespace labyrinth_engine
 {
-    struct TimerHandler
+    struct TimeKeeper
     {
     public:
-        TimerHandler();
+        TimeKeeper();
         unsigned int GetTimerKey() const {return m_timerKey;}
     private:
         unsigned int m_timerKey;
@@ -25,13 +25,13 @@ namespace labyrinth_engine
     struct TimerHandlerHash
     {
     public:
-        std::size_t operator()(const TimerHandler& a_timerHandler) const // hash function for the timer handler that will be used in the dictionary
+        std::size_t operator()(const TimeKeeper& a_timerHandler) const // hash function for the timer handler that will be used in the dictionary
         {
             return a_timerHandler.GetTimerKey();
         }
     };
 
-    bool operator==(const TimerHandler& a_timerHandler1, const TimerHandler& a_timerHandler2); // operator overloading for the timer handler
+    bool operator==(const TimeKeeper& a_timerHandler1, const TimeKeeper& a_timerHandler2); // operator overloading for the timer handler
 
     struct Timer
     {
@@ -58,7 +58,7 @@ namespace labyrinth_engine
 
         // Void Functions
         void UpdateTimerManager(float a_deltaTime);
-        void RemoveTimer(TimerHandler a_timerHandler);
+        void RemoveTimer(TimeKeeper a_timerHandler);
 
         // Boolean Functions
 
@@ -73,9 +73,9 @@ namespace labyrinth_engine
 
         // Setters
         template <typename ClassName>
-        TimerHandler SetTimer(Weak<Object> a_weakObject, void (ClassName::*a_function)(), float a_time, bool a_repeat = false)
+        TimeKeeper SetTimer(Weak<Object> a_weakObject, void (ClassName::*a_function)(), float a_time, bool a_repeat = false)
         {
-            TimerHandler m_currentIndex{}; // create a timer handler
+            TimeKeeper m_currentIndex{}; // create a timer handler
             m_timers.insert({m_currentIndex, Timer(a_weakObject, [=] {(static_cast<ClassName*>(a_weakObject.lock().get())->*a_function)(); }, a_time, a_repeat) }); // insert the timer in the dictionary and set the index as the key calling the constructor of the timer
             return m_currentIndex; // return the index
         }
@@ -90,7 +90,7 @@ namespace labyrinth_engine
 
     private:
         static Unique<TimeManager> m_timeManager; // unique pointer to the time manager
-        Dictionary<TimerHandler, Timer, TimerHandlerHash> m_timers; // dictionary of timers
+        Dictionary<TimeKeeper, Timer, TimerHandlerHash> m_timers; // dictionary of timers
     };
 }
 

@@ -7,7 +7,7 @@
 #include "LabyrinthFramework/World.h"
 #include "LabyrinthFramework/AssetManager.h"
 #include "LabyrinthFramework/PhysicsSystem.h"
-#include "LabyrinthFramework/TimeManager.h"
+#include "..\..\include\LabyrinthFramework\TimeKeeper.h"
 
 
 namespace labyrinth_engine
@@ -19,7 +19,7 @@ namespace labyrinth_engine
         , m_currentWorld(nullptr)
         , m_ClearTimer{}
         , m_ClearTimeInterval(2.0f)
-        , m_isApplicationRunning(true)
+        , m_bIsApplicationRunning(true)
     {
     }
 
@@ -38,7 +38,7 @@ namespace labyrinth_engine
                 if (windowEvent.type == sf::Event::EventType::Closed)
                 {
                     QuitGame();
-                    m_isApplicationRunning = false;
+                    m_bIsApplicationRunning = false;
                 }
                 else
                 {
