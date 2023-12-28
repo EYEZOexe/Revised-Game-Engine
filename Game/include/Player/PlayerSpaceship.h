@@ -10,7 +10,7 @@
 
 namespace labyrinth_engine
 {
-    class Launcher;
+    class ProjectileLauncher;
 
     class PlayerSpaceship : public Spaceship
     {
@@ -24,7 +24,7 @@ namespace labyrinth_engine
 
         void Fire() override; //Override the Fire function from the Spaceship class
 
-        void SetProjectileLauncher(Unique<Launcher>&& a_projectileLauncher); //Set the projectile launcher
+        void SetProjectileLauncher(Unique<ProjectileLauncher>&& a_projectileLauncher); //Set the projectile launcher
         void DoDamage(float a_damage) override;
         void ActorBeginPlay() override;
     private:
@@ -37,8 +37,9 @@ namespace labyrinth_engine
 
         sf::Vector2f m_playerMoveInput; //Player move input
         float m_playerSpeed; //Player speed
+        float m_playerLastTimeFired; //Player last time fired
 
-        Unique<Launcher> m_projectileLauncher; //Projectile launcher unique pointer
+        Unique<ProjectileLauncher> m_projectileLauncher; //Projectile launcher unique pointer
         float m_playerInvincibilityFrames; //Time where the player is invincible after being respawn
         TimeKeeper m_playerInvincibilityTimerHandler; //Timer handler for the player invincibility
         bool m_bIsPlayerInvincible; //Bool to check if the player is invincible
@@ -46,6 +47,7 @@ namespace labyrinth_engine
         float m_playerInvincibilityFrameBlinkInterval; //Time interval for the player invincibility blink
         float m_playerInvincibilityFrameBlinkTime; //Time for the player invincibility blink
         float m_playerInvincibilityFrameBlinkReveal; //Time for the player to blink or not blink
+
     };
 
 }

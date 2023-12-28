@@ -33,5 +33,11 @@ namespace labyrinth_engine
         m_shooter4->Fire();
         m_shooter5->Fire();
         m_shooter6->Fire();
+
+        if (GetLastTimeFired() >= m_shooter->GetCooldownTime())
+        {
+            AudioManager::GetInstance().PlaySFX("Shoot");
+            ResetLastTimeFired();
+        }
     }
 }

@@ -84,6 +84,7 @@ namespace labyrinth_engine
         //destroy the actor
         Destroy();
         delete explosion;
+        AudioManager::GetInstance().PlaySFX("Explosion");
     }
 
     void Spaceship::OnDeath()

@@ -26,5 +26,11 @@ namespace labyrinth_engine
     {
         m_CopyCatLeftShooter->Fire();
         m_CopyCatRightShooter->Fire();
+
+        if (GetLastTimeFired() >= m_CopyCatLeftShooter->GetCooldownTime())
+        {
+            AudioManager::GetInstance().PlaySFX("Shoot");
+            ResetLastTimeFired();
+        }
     }
 }

@@ -42,10 +42,10 @@ namespace labyrinth_engine
 
         if (playerSpaceship.lock()->GetObjectID() == m_actor->GetObjectID())
         {
+            AudioManager::GetInstance().PlaySFX("PowerUp");
             m_rewardFunction(playerSpaceship.lock().get());
             Destroy();
         }
-
 
 
     }
@@ -90,7 +90,7 @@ namespace labyrinth_engine
     {
         if (a_playerSpaceship && !a_playerSpaceship->IsPendingKill())
         {
-            a_playerSpaceship->SetProjectileLauncher(Unique<Launcher>{new ThreeProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
+            a_playerSpaceship->SetProjectileLauncher(Unique<ProjectileLauncher>{new ThreeProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
         }
     }
 
@@ -98,7 +98,7 @@ namespace labyrinth_engine
     {
         if (a_playerSpaceship && !a_playerSpaceship->IsPendingKill())
         {
-            a_playerSpaceship->SetProjectileLauncher(Unique<Launcher>{new WiperProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
+            a_playerSpaceship->SetProjectileLauncher(Unique<ProjectileLauncher>{new WiperProjectileLauncher{a_playerSpaceship, 0.4, {50.0f, 0.0f}}});
         }
     }
 

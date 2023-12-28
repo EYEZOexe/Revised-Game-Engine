@@ -21,6 +21,7 @@ namespace labyrinth_engine
         , m_playerInvincibilityFrameBlinkInterval{0.5f}
         , m_playerInvincibilityFrameBlinkTime{0.0f}
         , m_playerInvincibilityFrameBlinkReveal{1.0f}
+        , m_playerLastTimeFired{0.0f}
     {
         SetActorCollisionLayer(GetPlayerCollisionLayer());
     }
@@ -28,6 +29,7 @@ namespace labyrinth_engine
     void PlayerSpaceship::ActorTick(const float a_deltaTime)
     {
         Spaceship::ActorTick(a_deltaTime);
+        m_playerLastTimeFired += a_deltaTime;
         HandlePlayerInput();
         HandlePlayerMovementInput(a_deltaTime);
         HandlePlayerInvincibilityFrames(a_deltaTime);
@@ -38,10 +40,15 @@ namespace labyrinth_engine
         if (m_projectileLauncher)
         {
             m_projectileLauncher->Fire();
+            if (m_playerLastTimeFired >= m_projectileLauncher->GetCooldownTime())
+            {
+                AudioManager::GetInstance().PlaySFX("PlayerShoot");
+                m_playerLastTimeFired = 0.0f;
+            }
         }
     }
 
-    void PlayerSpaceship::SetProjectileLauncher(Unique<Launcher>&& a_projectileLauncher)
+    void PlayerSpaceship::SetProjectileLauncher(Unique<ProjectileLauncher>&& a_projectileLauncher)
     {
         if (m_projectileLauncher && typeid(*m_projectileLauncher.get()) == typeid(*a_projectileLauncher.get()))
         {

@@ -12,7 +12,7 @@
 #include "Enemy/MadMaxGameStage.h"
 
 #include "LabyrinthFramework/Actor.h"
-#include "..\..\..\LabyrinthEngine\include\LabyrinthFramework\TimeKeeper.h"
+#include "LabyrinthFramework/TimeKeeper.h"
 #include "GameName/GameApplication.h"
 #include "Player/PlayerManager.h"
 #include "Player/PlayerSpaceship.h"
@@ -25,9 +25,15 @@ namespace labyrinth_engine
         : World{a_application}
     {
         AudioManager::GetInstance().LoadSFX("Shoot", "Bonus/blaster.mp3");
+        AudioManager::GetInstance().LoadSFX("PlayerShoot", "Bonus/sfx_laser2.ogg");
         AudioManager::GetInstance().LoadSFX("BG", "Bonus/background.mp3");
-        AudioManager::GetInstance().SetSFXVolume("Shoot", 20.0f);
-        AudioManager::GetInstance().SetSFXVolume("BG", 50.0f);
+        AudioManager::GetInstance().LoadSFX("Explosion", "Bonus/explosion.wav");
+        AudioManager::GetInstance().LoadSFX("PowerUp", "Bonus/sfx_zap.ogg");
+        AudioManager::GetInstance().SetSFXVolume("Shoot", 5.0f);
+        AudioManager::GetInstance().SetSFXVolume("BG", 10.0f);
+        AudioManager::GetInstance().SetSFXVolume("Explosion", 40.0f);
+        AudioManager::GetInstance().SetSFXVolume("PowerUp", 70.0f);
+        AudioManager::GetInstance().SetSFXVolume("PlayerShoot", 50.0f);
     }
 
     void GameLevelOne::BeginPlay()
@@ -78,6 +84,7 @@ namespace labyrinth_engine
 
     void GameLevelOne::GameOver()
     {
+        AudioManager::GetInstance().StopSFX("BG");
         LE_LOG("GAME OVER! YOU LOSE!");
     }
 }
