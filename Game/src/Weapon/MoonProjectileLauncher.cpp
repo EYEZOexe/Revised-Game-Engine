@@ -28,6 +28,16 @@ namespace labyrinth_engine
         m_projectileLauncher4.IncreaseLauncherLevel(a_increaseAmount);
     }
 
+    void MoonProjectileLauncher::SetLauncherLevel(int a_level)
+    {
+        ProjectileLauncher::SetLauncherLevel(a_level);
+
+        m_projectileLauncher.SetLauncherLevel(a_level);
+        m_projectileLauncher2.SetLauncherLevel(a_level);
+        m_projectileLauncher3.SetLauncherLevel(a_level);
+        m_projectileLauncher4.SetLauncherLevel(a_level);
+    }
+
     void MoonProjectileLauncher::OnFire()
     {
         m_projectileLauncher.Fire(); // fire the projectile

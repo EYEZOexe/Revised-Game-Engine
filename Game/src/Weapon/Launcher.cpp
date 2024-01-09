@@ -35,4 +35,9 @@ namespace labyrinth_engine
 
         ++m_currentLauncherLevel; // increase the current launcher level
     }
+
+    void Launcher::SetLauncherLevel(int a_level)
+    {
+        m_currentLauncherLevel = a_level; // set the current launcher level to the level specified
+    }
 }

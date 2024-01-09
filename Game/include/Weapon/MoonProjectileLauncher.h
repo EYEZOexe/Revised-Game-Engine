@@ -25,6 +25,7 @@ namespace labyrinth_engine
 
         // Virtual Functions
         void IncreaseLauncherLevel(int a_increaseAmount = 1) override; // increase the launcher level
+        void SetLauncherLevel(int a_level) override;
 
         /* End of Class Functions */
 

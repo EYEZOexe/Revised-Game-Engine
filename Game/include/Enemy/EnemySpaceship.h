@@ -29,6 +29,7 @@ namespace labyrinth_engine
         void ActorTick(float a_deltaTime) override;
         void Fire() override;
         void SetEnemyScoreValue(unsigned int a_scoreValue) { m_scoreValue = a_scoreValue; }
+        void SetEnemyRewardSpawnChance(float a_rewardSpawnChance);
         float GetLastTimeFired() const { return m_lastTimeFired; }
         void ResetLastTimeFired() { m_lastTimeFired = 0.0f; }
     private:

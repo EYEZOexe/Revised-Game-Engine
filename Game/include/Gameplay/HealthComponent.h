@@ -15,6 +15,7 @@ namespace labyrinth_engine
         HealthComponent(float a_health, float a_maxHealth);
 
         void SetHealth(float a_health);
+        void SetMaxHealth(float a_health, float a_maxHealth);
 
         // Getters
         float GetHealth() const {return m_health;}

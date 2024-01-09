@@ -45,6 +45,12 @@ namespace labyrinth_engine
 
     }
 
+    void HealthComponent::SetMaxHealth(float a_health, float a_maxHealth)
+    {
+        m_health = a_health;
+        m_maxHealth = a_maxHealth;
+    }
+
     void HealthComponent::TakenDamage(float a_damage)
     {
         OnDamage.Broadcast(a_damage, m_health, m_maxHealth);

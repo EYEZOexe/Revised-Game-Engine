@@ -28,6 +28,18 @@ namespace labyrinth_engine
         launcherMaxRight.IncreaseLauncherLevel(a_increaseAmount);
     }
 
+    void TripleTroubleProjectileLauncher::SetLauncherLevel(int a_level)
+    {
+        ProjectileLauncher::SetLauncherLevel(a_level);
+
+        launcherLeft.SetLauncherLevel(a_level);
+        launcherCenter.SetLauncherLevel(a_level);
+        launcherRight.SetLauncherLevel(a_level);
+
+        launcherMaxLeft.SetLauncherLevel(a_level);
+        launcherMaxRight.SetLauncherLevel(a_level);
+    }
+
     void TripleTroubleProjectileLauncher::OnFire()
     {
         //Fire for all the launchers

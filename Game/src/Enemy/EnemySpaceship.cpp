@@ -36,6 +36,12 @@ namespace labyrinth_engine
 
     }
 
+    void EnemySpaceship::SetEnemyRewardSpawnChance(float a_rewardSpawnChance)
+    {
+        if (a_rewardSpawnChance < 0 || a_rewardSpawnChance > 1) return; // If the reward spawn chance is less than 0 or greater than 1, return
+        m_rewardSpawnChance = a_rewardSpawnChance;
+    }
+
     void EnemySpaceship::InstantiateReward()
     {
         if (m_rewardFunctions.empty()) return;

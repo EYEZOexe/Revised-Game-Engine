@@ -21,7 +21,7 @@ namespace labyrinth_engine
 
         Actor* GetOwner() const {return m_owner;} // getter for the owner of the launcher
         virtual void IncreaseLauncherLevel(int a_increaseAmount = 1); // virtual function that will be used to increase the launcher level
-
+        virtual void SetLauncherLevel(int a_level); // Sets the launcher level
         virtual bool CanFire() const {return true;} // virtual function that will be used to check if the launcher can fire
         virtual bool IsOnCooldown() const {return false;} // virtual function that will be used to check if the launcher is on cooldown
 
