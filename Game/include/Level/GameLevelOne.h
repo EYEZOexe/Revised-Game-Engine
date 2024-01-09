@@ -21,6 +21,9 @@ namespace labyrinth_engine
         void InitialiseGameStages() override;
         void PlayerSpaceshipDestroyed(Actor* a_actor);
         void GameOver();
+        void GameStagesFinished() override;
+        void RestartGame();
+        void QuitGame();
 
         Weak<PlayerSpaceship> m_playerSpaceship;
         Weak<GameHUD> m_GameHUD;

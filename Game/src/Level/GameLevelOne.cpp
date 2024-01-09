@@ -4,6 +4,7 @@
 
 #include "Level/GameLevelOne.h"
 
+#include "EntryPoint.h"
 #include "Enemy/RookieGameStage.h"
 #include "Enemy/CopyCatGameStage.h"
 #include "Enemy/EnforcerGameStage.h"
@@ -47,6 +48,8 @@ namespace labyrinth_engine
         m_playerSpaceship = player.SpawnPlayerSpaceship(this);
         m_playerSpaceship.lock()->OnActorDestroy.Bind(GetWeakReference(), &GameLevelOne::PlayerSpaceshipDestroyed);
         m_GameHUD = InstantiateHUD<GameHUD>();
+        m_GameHUD.lock()->OnRestartButtonPressed.Bind(GetWeakReference(), &GameLevelOne::RestartGame);
+        m_GameHUD.lock()->OnQuitButtonPressed.Bind(GetWeakReference(), &GameLevelOne::QuitGame);
         AudioManager::GetInstance().PlaySFX("BG");
         AudioManager::GetInstance().SetSFXLoop("BG", true);
 
@@ -55,22 +58,23 @@ namespace labyrinth_engine
     void GameLevelOne::InitialiseGameStages()
     {
 
-        AddGameStage(Shared<SinnerBossGameStage>{new SinnerBossGameStage{this}});
-
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<RookieGameStage>{new RookieGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<CopyCatGameStage>{new CopyCatGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 8.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<EnforcerGameStage>{new EnforcerGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 11.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<DancerGameStage>{new DancerGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 15.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<MadMaxGameStage>{new MadMaxGameStage{this}});
+
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
+        AddGameStage(Shared<SinnerBossGameStage>{new SinnerBossGameStage{this}});
     }
 
     void GameLevelOne::PlayerSpaceshipDestroyed(Actor* a_actor)
@@ -92,6 +96,21 @@ namespace labyrinth_engine
     {
         AudioManager::GetInstance().StopSFX("BG");
         AudioManager::GetInstance().PlaySFX("Game Over");
-        LE_LOG("GAME OVER! YOU LOSE!");
+        m_GameHUD.lock()->GameStageComplete(false);
+    }
+
+    void GameLevelOne::GameStagesFinished()
+    {
+        m_GameHUD.lock()->GameStageComplete(true);
+    }
+
+    void GameLevelOne::RestartGame()
+    {
+        GetApplication()->LoadWorld<GameLevelOne>();
+    }
+
+    void GameLevelOne::QuitGame()
+    {
+        GetApplication()->QuitGame();
     }
 }

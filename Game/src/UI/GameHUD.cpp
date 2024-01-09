@@ -21,10 +21,20 @@ namespace labyrinth_engine
         , m_playerScoreIcon{"ss/Item/Gem3.png"}
         , m_playerScoreText{""}
         , m_imageWidgetSpacing{10.0f}
+        , m_playerGameStateText{""}
+        , m_playerFinalScoreText{""}
+        , m_playerRestartButton{"Try Again!"}
+        , m_playerQuitButton{"Quit"}
     {
         m_gameFramerateText.SetWidgetTextSize(20);
         m_playerLifeText.SetWidgetTextSize(20);
         m_playerScoreText.SetWidgetTextSize(20);
+
+        //Set them to false at the start
+        m_playerGameStateText.SetWidgetVisible(false);
+        m_playerFinalScoreText.SetWidgetVisible(false);
+        m_playerRestartButton.SetWidgetVisible(false);
+        m_playerQuitButton.SetWidgetVisible(false);
     }
 
     void GameHUD::HUDInit(const sf::RenderWindow& a_window)
@@ -48,6 +58,21 @@ namespace labyrinth_engine
 
         PlayerHUDReset(); // reset the player HUD
         PlayerStatsUpdate(); // update the player stats
+
+        m_playerGameStateText.SetWidgetPosition({windowSize.x / 2.0f - m_playerGameStateText.GetWidgetBounds().width /2, 100.0f}); // set main menu text position
+
+        m_playerRestartButton.SetWidgetPosition({windowSize.x / 2.0f - m_playerRestartButton.GetWidgetBounds().width /2, windowSize.y / 2.0f}); // set main menu play button position
+        m_playerQuitButton.SetWidgetPosition(m_playerRestartButton.GetWidgetPosition() + sf::Vector2f{0.0f, 50.0f}); // set main menu quit button position
+        m_playerRestartButton.OnButtonPressed.Bind(GetWeakReference(), &GameHUD::RestartButtonPressed); // bind play button pressed event
+        m_playerQuitButton.OnButtonPressed.Bind(GetWeakReference(), &GameHUD::QuitButtonPressed); // bind quit button pressed event
+    }
+
+    bool GameHUD::IsHUDClicked(const sf::Event& a_event)
+    {
+        if (m_playerRestartButton.IsMouseOver(a_event)) return true; // if the player restart button is clicked
+        if (m_playerQuitButton.IsMouseOver(a_event)) return true; // if the player quit button is clicked
+
+        return HUD::IsHUDClicked(a_event);
     }
 
     void GameHUD::DrawHUD(sf::RenderWindow& a_window)
@@ -58,6 +83,10 @@ namespace labyrinth_engine
         m_playerLifeText.FrameworkWidgetDraw(a_window); // draw the life text
         m_playerScoreIcon.FrameworkWidgetDraw(a_window); // draw the score icon
         m_playerScoreText.FrameworkWidgetDraw(a_window); // draw the score text
+        m_playerGameStateText.FrameworkWidgetDraw(a_window); // draw the player game state text
+        m_playerFinalScoreText.FrameworkWidgetDraw(a_window); // draw the player final score text
+        m_playerRestartButton.FrameworkWidgetDraw(a_window); // draw the player restart button
+        m_playerQuitButton.FrameworkWidgetDraw(a_window); // draw the player quit button
     }
 
     void GameHUD::UpdateHUD(float a_deltaTime)
@@ -118,6 +147,36 @@ namespace labyrinth_engine
             HealthComponent& healthComponent = player->GetPlayerSpaceship().lock()->GetHealthComponent(); // get the health component of the player spaceship
             healthComponent.OnHealthChange.Bind(GetWeakReference(), &GameHUD::PlayerHealthUpdate); // bind the player health update function to the player spaceship health change event
             PlayerHealthUpdate(0, healthComponent.GetHealth(), healthComponent.GetMaxHealth()); // update the player health
+        }
+    }
+
+    void GameHUD::RestartButtonPressed()
+    {
+        OnRestartButtonPressed.Broadcast(); // broadcast restart button pressed event
+    }
+
+    void GameHUD::QuitButtonPressed()
+    {
+        OnQuitButtonPressed.Broadcast(); // broadcast quit button pressed event
+    }
+
+    void GameHUD::GameStageComplete(bool a_gameEnd)
+    {
+        //TODO: maybe add a way to put widgets into a category and hide them all at once or a widget switcher
+
+        m_playerGameStateText.SetWidgetVisible(true); // set the player game state text to visible
+        m_playerFinalScoreText.SetWidgetVisible(true); // set the player final score text to visible
+        m_playerRestartButton.SetWidgetVisible(true); // set the player restart button to visible
+        m_playerQuitButton.SetWidgetVisible(true); // set the player quit button to visible
+
+
+        if (a_gameEnd) // if the game has ended
+        {
+            m_playerGameStateText.SetWidgetText("You Win!"); // set the text of the player game state text to "You Win!"
+        }
+        else
+        {
+            m_playerGameStateText.SetWidgetText("You Lose!"); // set the text of the player game state text to "You Lose!"
         }
     }
 

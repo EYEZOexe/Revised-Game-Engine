@@ -22,9 +22,11 @@ namespace labyrinth_engine
         /* End of Constructors and Destructors */
 
         /* Class Functions */
+        EventCallback<> OnRestartButtonPressed; // restart button pressed event
+        EventCallback<> OnQuitButtonPressed; // quit button pressed event
 
         // Void Functions
-
+        void GameStageComplete(bool a_gameEnd); // game over
 
         // Boolean Functions
 
@@ -51,11 +53,14 @@ namespace labyrinth_engine
         void PlayerStatsUpdate(); // update the player stats
 
         void HUDInit(const sf::RenderWindow& a_window) override; // initialise the HUD
+        bool IsHUDClicked(const sf::Event& a_event) override; // check if the HUD is clicked
         void PlayerHealthUpdate(float a_amount, float a_currentHealth, float a_maxHealth); // update the player health
         void PlayerLifeUpdate(int a_amount); // update the player life
         void PlayerScoreUpdate(int a_amount); // update the player score
         void PlayerDeath(Actor* a_actor); // player death
         void PlayerHUDReset(); // reset the player HUD
+        void RestartButtonPressed(); // player restart button pressed
+        void QuitButtonPressed(); // player quit button pressed
 
         float m_playerDamagedHealthThreshold;
         float m_imageWidgetSpacing;
@@ -63,6 +68,10 @@ namespace labyrinth_engine
         TextWidget m_gameFramerateText;
         TextWidget m_playerLifeText;
         TextWidget m_playerScoreText;
+        TextWidget m_playerGameStateText;
+        TextWidget m_playerFinalScoreText;
+        ButtonWidget m_playerRestartButton;
+        ButtonWidget m_playerQuitButton;
 
         StatusMeter m_playerHealthBar;
 

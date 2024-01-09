@@ -41,6 +41,8 @@ namespace labyrinth_engine
 
     bool ButtonWidget::IsMouseOver(const sf::Event& a_event)
     {
+        if (!IsWidgetVisible()) return false; // if the widget is not visible, return false
+
         bool isMouseOver = false;
         if (a_event.type == sf::Event::MouseButtonReleased)
         {
@@ -77,8 +79,6 @@ namespace labyrinth_engine
                 {
                     ButtonReleased();
                 }
-
-                isMouseOver = true;
             }
         }
         return isMouseOver || Widget::IsMouseOver(a_event);
