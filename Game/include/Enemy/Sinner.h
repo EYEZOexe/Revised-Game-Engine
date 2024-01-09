@@ -48,6 +48,7 @@ namespace labyrinth_engine
         int m_sinnerState; // progression for boss stages
         void SetSinnerState(int a_state); // set the state of the sinner
 
+        float m_sinnerStartingSpeed; // starting speed of the sinner
         float m_sinnerSpeed; // speed of the sinner
         float m_sinnerEdgeBoundaries; // boundaries for the sinner
 

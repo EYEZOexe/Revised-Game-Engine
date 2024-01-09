@@ -13,8 +13,8 @@ namespace labyrinth_engine
         , m_projectileLauncher2{a_owner, a_cooldown, {a_offset.x, a_offset.y - a_bulletSpacing / 6.0f}, 0.0f, "ss/Shoot/9.png"}
         , m_projectileLauncher3{a_owner, a_cooldown, {a_offset.x, a_offset.y + a_bulletSpacing / 6.0f}, 0.0f, "ss/Shoot/9.png"}
         , m_projectileLauncher4{a_owner, a_cooldown, {a_offset.x, a_offset.y + a_bulletSpacing / 2.0f}, 0.0f, "ss/Shoot/9.png"}
-        , m_projectileLauncherMax{a_owner, 0.1, {a_offset.x, a_offset.y - a_bulletSpacing / 1.5f}, -15.0f, "ss/Shoot/9.png"}
-        , m_projectileLauncherMax2{a_owner, 0.1, {a_offset.x, a_offset.y + a_bulletSpacing / 1.5f}, 15.0f, "ss/Shoot/9.png"}
+        , m_projectileLauncherMax{a_owner, a_cooldown, {a_offset.x, a_offset.y - a_bulletSpacing / 1.5f}, -15.0f, "ss/Shoot/9.png"}
+        , m_projectileLauncherMax2{a_owner, a_cooldown, {a_offset.x, a_offset.y + a_bulletSpacing / 1.5f}, 15.0f, "ss/Shoot/9.png"}
     {
 
     }
@@ -26,6 +26,8 @@ namespace labyrinth_engine
         m_projectileLauncher2.IncreaseLauncherLevel(a_increaseAmount);
         m_projectileLauncher3.IncreaseLauncherLevel(a_increaseAmount);
         m_projectileLauncher4.IncreaseLauncherLevel(a_increaseAmount);
+        m_projectileLauncherMax.IncreaseLauncherLevel(a_increaseAmount);
+        m_projectileLauncherMax2.IncreaseLauncherLevel(a_increaseAmount);
     }
 
     void MoonProjectileLauncher::SetLauncherLevel(int a_level)
@@ -36,6 +38,8 @@ namespace labyrinth_engine
         m_projectileLauncher2.SetLauncherLevel(a_level);
         m_projectileLauncher3.SetLauncherLevel(a_level);
         m_projectileLauncher4.SetLauncherLevel(a_level);
+        m_projectileLauncherMax.SetLauncherLevel(a_level);
+        m_projectileLauncherMax2.SetLauncherLevel(a_level);
     }
 
     void MoonProjectileLauncher::OnFire()

@@ -10,12 +10,13 @@ namespace labyrinth_engine
     Sinner::Sinner(World* a_world)
         : EnemySpaceship{a_world, "ss/Ship/7.png"}
         , m_sinnerSpeed{100.0f}
+        , m_sinnerStartingSpeed{100.0f}
         , m_sinnerEdgeBoundaries{100.0f}
         , m_projectileLauncherLeft{this, 1.0f, {130.0f, -130.0f}}
         , m_projectileLauncherRight{this, 1.0f, {130.0f, 130.0f}}
-        , m_tripleTroubleProjectileLauncher{this, 4.0f, {130.0f, 0.0f}}
-        , m_moonProjectileLauncherLeft{this, 5.0f, {130.0f, 130.0f}}
-        , m_moonProjectileLauncherRight{this, 5.0f, {130.0f, -130.0f}}
+        , m_tripleTroubleProjectileLauncher{this, 5.0f, {130.0f, 0.0f}}
+        , m_moonProjectileLauncherLeft{this, 6.0f, {130.0f, 130.0f}}
+        , m_moonProjectileLauncherRight{this, 6.0f, {130.0f, -130.0f}}
         , m_sinnerState{1}
 
     {
@@ -45,11 +46,12 @@ namespace labyrinth_engine
     void Sinner::SetSinnerState(int a_state)
     {
         m_sinnerState = a_state;
-        m_projectileLauncherLeft.SetLauncherLevel(a_state);
-        m_projectileLauncherRight.SetLauncherLevel(a_state);
-        m_tripleTroubleProjectileLauncher.SetLauncherLevel(a_state);
-        m_moonProjectileLauncherLeft.SetLauncherLevel(a_state);
-        m_moonProjectileLauncherRight.SetLauncherLevel(a_state);
+        m_projectileLauncherLeft.SetLauncherLevel(m_sinnerState);
+        m_projectileLauncherRight.SetLauncherLevel(m_sinnerState);
+        m_tripleTroubleProjectileLauncher.SetLauncherLevel(m_sinnerState);
+        m_moonProjectileLauncherLeft.SetLauncherLevel(m_sinnerState);
+        m_moonProjectileLauncherRight.SetLauncherLevel(m_sinnerState);
+        m_sinnerSpeed = m_sinnerState * m_sinnerStartingSpeed;
     }
 
     void Sinner::SinnerMovement()
