@@ -18,9 +18,9 @@ namespace labyrinth_engine
         /* Class Functions */
 
         // Void Functions
-        void RandomiseVelocity(float a_minSpeed, float a_maxSpeed);
-        void RandomiseScale(float a_minScale, float a_maxScale);
-        void RandomiseLifeTime(float a_minLifeTime, float a_maxLifeTime);
+        void RandomiseVelocity(float a_minSpeed, float a_maxSpeed); // Randomises the velocity of the particle
+        void RandomiseScale(float a_minScale, float a_maxScale); // Randomises the scale of the particle
+        void RandomiseLifeTime(float a_minLifeTime, float a_maxLifeTime); // Randomises the life time of the particle
 
         // Boolean Functions
 
@@ -44,11 +44,11 @@ namespace labyrinth_engine
     protected:
 
     private:
-        void MoveParticle(float a_deltaTime);
-        void FadeParticle(float a_deltaTime);
-        sf::Vector2f m_velocity;
-        float m_lifeTime;
-        sf::Clock m_lifeTimer;
+        void MoveParticle(float a_deltaTime); // Moves the particle
+        void FadeParticle(float a_deltaTime); // Fades the particle
+        sf::Vector2f m_velocity; // The velocity of the particle
+        float m_lifeTime; // The life time of the particle
+        sf::Clock m_lifeTimer; // The timer for the life time of the particle
     };
 }
 

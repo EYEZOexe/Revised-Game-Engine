@@ -18,7 +18,7 @@ namespace labyrinth_engine
         /* End of Constructors and Destructors */
 
         /* Class Functions */
-        EventCallback<> OnButtonPressed;
+        EventCallback<> OnButtonPressed; // Event Callback for when the button is pressed
 
         // Void Functions
 
@@ -27,7 +27,7 @@ namespace labyrinth_engine
         // Virtual Functions
         sf::FloatRect GetWidgetBounds() const override {return m_buttonSprite.getGlobalBounds();}
 
-        bool IsMouseOver(const sf::Event& a_event) override;
+        bool IsMouseOver(const sf::Event& a_event) override; // Returns true if the mouse is over the button
 
         /* End of Class Functions */
 
@@ -37,8 +37,8 @@ namespace labyrinth_engine
         /* Setters and Getters */
 
         // Setters
-        void SetButtonText(const std::string& a_buttonText);
-        void SetButtonTextSize(unsigned int a_fontSize);
+        void SetButtonText(const std::string& a_buttonText); // Sets the text of the button
+        void SetButtonTextSize(unsigned int a_fontSize); // Sets the size of the text
 
         // Getters
 

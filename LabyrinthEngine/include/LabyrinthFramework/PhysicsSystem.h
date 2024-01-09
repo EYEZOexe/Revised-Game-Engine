@@ -21,20 +21,20 @@ namespace labyrinth_engine
 {
     class PhysicsContactListner : public b2ContactListener
     {
-        void BeginContact(b2Contact* contact) override;
-        void EndContact(b2Contact* contact) override;
+        void BeginContact(b2Contact* contact) override; //begin contact
+        void EndContact(b2Contact* contact) override; //end contact
     };
 
     class PhysicsSystem
     {
     public:
-        static PhysicsSystem& GetInstance();
-        void Update(float a_deltaTime);
+        static PhysicsSystem& GetInstance(); //get instance of physics system
+        void Update(float a_deltaTime); //update physics system
         b2Body* AddListener(Actor* a_actor); //add actor to physics world
         void RemoveListener(b2Body* a_body); //remove actor from physics world
 
         //getters
-        float GetPhysicsScale() const { return m_physicsScale; }
+        float GetPhysicsScale() const { return m_physicsScale; } //get physics scale
 
         static void Clear();
 
@@ -43,8 +43,8 @@ namespace labyrinth_engine
     protected:
         PhysicsSystem();
     private:
-        void CalculateListenersToRemove();
-        static Unique<PhysicsSystem> physicsSystem;
+        void CalculateListenersToRemove(); //calculate listeners to remove
+        static Unique<PhysicsSystem> physicsSystem; //unique pointer to physics system
         b2World m_physicsWorld;
         float m_physicsScale;
         int m_velocityIterations;

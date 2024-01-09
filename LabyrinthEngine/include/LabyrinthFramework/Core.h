@@ -15,16 +15,16 @@
 namespace labyrinth_engine
 {
     template<typename T>
-    using Unique = std::unique_ptr<T>;
+    using Unique = std::unique_ptr<T>; //Unique pointer is a smart pointer that owns and manages another object through a pointer and disposes of that object when the unique_ptr goes out of scope.
 
     template<typename T>
-    using Shared = std::shared_ptr<T>;
+    using Shared = std::shared_ptr<T>; // Shared pointer is a smart pointer that retains shared ownership of an object through a pointer. Several shared_ptr objects may own the same object.
 
     template<typename T>
-    using Weak = std::weak_ptr<T>;
+    using Weak = std::weak_ptr<T>; // Weak pointer is a smart pointer that holds a non-owning ("weak") reference to an object that is managed by std::shared_ptr.
 
     template<typename T>
-    using List = std::vector<T>;
+    using List = std::vector<T>; // a list is slower but it's ordered.
 
     template<typename a_keyType, typename a_valueType, typename a_predicate = std::less<a_keyType>>
     using Map = std::map<a_keyType, a_valueType, a_predicate>; // a map is slower but it's ordered.

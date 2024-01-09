@@ -33,8 +33,8 @@ namespace labyrinth_engine
         /* Setters and Getters */
 
         // Setters
-        void SetWidgetText(const std::string& a_text);
-        void SetWidgetTextSize(unsigned int a_fontSize);
+        void SetWidgetText(const std::string& a_text); // Set the text of the widget
+        void SetWidgetTextSize(unsigned int a_fontSize); // Set the size of the text
 
         // Getters
         sf::FloatRect GetWidgetBounds() const override;
@@ -44,11 +44,11 @@ namespace labyrinth_engine
     protected:
 
     private:
-        void UpdateWidgetLocation(const sf::Vector2f& a_position) override;
-        void UpdateWidgetRotation(float& a_rotation) override;
-        void DrawWidget(sf::RenderWindow& a_window) override;
-        Shared<sf::Font> m_widgetFont;
-        sf::Text m_widgetText;
+        void UpdateWidgetLocation(const sf::Vector2f& a_position) override; // Update the location of the widget
+        void UpdateWidgetRotation(float& a_rotation) override; // Update the rotation of the widget
+        void DrawWidget(sf::RenderWindow& a_window) override; // Draw the widget
+        Shared<sf::Font> m_widgetFont; // Font of the widget
+        sf::Text m_widgetText; // Text of the widget
     };
 }
 

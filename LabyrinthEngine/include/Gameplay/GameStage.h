@@ -19,17 +19,17 @@ namespace labyrinth_engine
         /* End of Constructors and Destructors */
 
         /* Class Functions */
-        EventCallback<> onEndStageEvent;
+        EventCallback<> onEndStageEvent; // Event called when the stage is finished
 
         // Void Functions
 
         // Boolean Functions
-        bool IsStageFinished() const {return m_bIsStageFinished;}
+        bool IsStageFinished() const {return m_bIsStageFinished;} // Returns true if the stage is finished
 
         // Virtual Functions
-        virtual void StartStage();
-        virtual void UpdateStage(float a_deltaTime);
-        virtual void EndStage();
+        virtual void StartStage(); // Called when the stage starts
+        virtual void UpdateStage(float a_deltaTime); // Called every frame
+        virtual void EndStage(); // Called when the stage ends
 
         /* End of Class Functions */
 
@@ -41,15 +41,15 @@ namespace labyrinth_engine
         // Setters
 
         // Getters
-        const World* GetWorld() const {return m_world;}
-        World* GetWorld() {return m_world;}
+        const World* GetWorld() const {return m_world;} // Returns the world
+        World* GetWorld() {return m_world;}        // Returns the world
 
         /* End of Setters and getters */
 
     protected:
 
     private:
-        virtual void StageEnded();
+        virtual void StageEnded(); // Called when the stage is finished
         World* m_world;
         bool m_bIsStageFinished;
     };

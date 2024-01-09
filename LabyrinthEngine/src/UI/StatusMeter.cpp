@@ -25,6 +25,7 @@ namespace labyrinth_engine
     {
         if (a_maxValue == 0) return;
 
+        // Update the status value and text
         m_StatusValue = a_value / a_maxValue;
         std::string statusText = std::to_string((int)a_value) + "/" + std::to_string((int)a_maxValue);
         m_StatusText.setString(statusText);

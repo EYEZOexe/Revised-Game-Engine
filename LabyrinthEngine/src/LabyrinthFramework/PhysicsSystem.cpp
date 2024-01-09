@@ -26,6 +26,18 @@ namespace labyrinth_engine
         return *physicsSystem;
     }
 
+    PhysicsSystem::PhysicsSystem()
+        : m_physicsWorld{b2Vec2{0.0f, 0.0f}} //gravity
+          , m_physicsScale{0.01f} //1 meter = 100 pixels
+          , m_velocityIterations{8}
+          , m_positionIterations{3}
+          , m_contactListner{}
+          , m_listenersToRemove{}
+    {
+        m_physicsWorld.SetContactListener(&m_contactListner);
+        m_physicsWorld.SetAllowSleeping(false);
+    }
+
     void PhysicsSystem::Update(float a_deltaTime)
     {
         CalculateListenersToRemove(); //calculate listeners to remove
@@ -62,24 +74,12 @@ namespace labyrinth_engine
 
     void PhysicsSystem::RemoveListener(b2Body* a_body)
     {
-        m_listenersToRemove.insert(a_body);
+        m_listenersToRemove.insert(a_body); //insert body to remove
     }
 
     void PhysicsSystem::Clear()
     {
         physicsSystem = std::move(Unique<PhysicsSystem>{new PhysicsSystem});
-    }
-
-    PhysicsSystem::PhysicsSystem()
-        : m_physicsWorld{b2Vec2{0.0f, 0.0f}} //gravity
-        , m_physicsScale{0.01f} //1 meter = 100 pixels
-        , m_velocityIterations{8}
-        , m_positionIterations{3}
-        , m_contactListner{}
-        , m_listenersToRemove{}
-    {
-        m_physicsWorld.SetContactListener(&m_contactListner);
-        m_physicsWorld.SetAllowSleeping(false);
     }
 
     void PhysicsSystem::CalculateListenersToRemove()

@@ -18,20 +18,19 @@ namespace labyrinth_engine
         Object();
         virtual ~Object();
 
-        virtual void Destroy();
-        bool IsPendingKill() const {return m_bIsPendingKill;}
+        virtual void Destroy(); // destroy the object
+        bool IsPendingKill() const {return m_bIsPendingKill;} // check if the object is pending kill
 
-        Weak<Object> GetWeakReference();
-        Weak<const Object> GetWeakReference() const;
-        EventCallback<Object*> OnDestroy;
-        unsigned int GetObjectID() const {return m_objectID;}
+        Weak<Object> GetWeakReference(); // get a weak reference to the object
+        Weak<const Object> GetWeakReference() const; // get a weak reference to the object
+        EventCallback<Object*> OnDestroy; // event callback for when the object is destroyed
+        unsigned int GetObjectID() const {return m_objectID;} // get the object ID
 
     private:
-        bool m_bIsPendingKill;
-        unsigned int m_objectID;
-
-        static unsigned int s_objectIDCount;
-        static unsigned int GetAvailableObjectID();
+        bool m_bIsPendingKill; // is the object pending kill
+        unsigned int m_objectID; // object ID
+        static unsigned int s_objectIDCount; // object ID count
+        static unsigned int GetAvailableObjectID(); // get an available object ID
     };
 }
 

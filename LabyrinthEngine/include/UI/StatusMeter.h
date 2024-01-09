@@ -19,44 +19,40 @@ namespace labyrinth_engine
         /* Class Functions */
 
         // Void Functions
-        void UpdateStatus(float a_value, float a_maxValue);
-
+        void UpdateStatus(float a_value, float a_maxValue); // update the status
         // Boolean Functions
 
         // Virtual Functions
 
         /* End of Class Functions */
 
-        /* Override Functions */
-        /* End of Override Functions */
-
         /* Setters and Getters */
 
         // Setters
-        void SetStatusTextSize(unsigned int a_fontSize) {m_StatusText.setCharacterSize(a_fontSize);}
-        void SetFrontWidgetColour(const sf::Color& a_colour) {m_StatusMeterFront.setFillColor(a_colour);}
-        void SetBackWidgetColour(const sf::Color& a_colour) {m_StatusMeterBack.setFillColor(a_colour);}
+        void SetStatusTextSize(unsigned int a_fontSize) {m_StatusText.setCharacterSize(a_fontSize);} // set the font size
+        void SetFrontWidgetColour(const sf::Color& a_colour) {m_StatusMeterFront.setFillColor(a_colour);} // set the front colour
+        void SetBackWidgetColour(const sf::Color& a_colour) {m_StatusMeterBack.setFillColor(a_colour);} // set the back colour
 
         // Getters
-        sf::FloatRect GetWidgetBounds() const override;
+        sf::FloatRect GetWidgetBounds() const override; // get the bounds of the widget
 
         /* End of Setters and getters */
 
     protected:
 
     private:
-        void DrawWidget(sf::RenderWindow& a_window) override;
-        void UpdateWidgetLocation(const sf::Vector2f& a_position) override;
-        void UpdateWidgetRotation(float& a_rotation) override;
-        void CenterWidgetText();
-        Shared<sf::Font> m_StatusFont;
-        sf::Text m_StatusText;
+        void DrawWidget(sf::RenderWindow& a_window) override; // draw the widget
+        void UpdateWidgetLocation(const sf::Vector2f& a_position) override; // update the widget location
+        void UpdateWidgetRotation(float& a_rotation) override; // update the widget rotation
+        void CenterWidgetText(); // center the widget text
+        Shared<sf::Font> m_StatusFont; // the font of the status text
+        sf::Text m_StatusText; // the status text
 
-        sf::RectangleShape m_StatusMeterFront;
-        sf::RectangleShape m_StatusMeterBack;
+        sf::RectangleShape m_StatusMeterFront; // the front of the status meter
+        sf::RectangleShape m_StatusMeterBack; // the back of the status meter
 
-        sf::Color m_StatusMeterFrontColour;
-        sf::Color m_StatusMeterBackColour;
+        sf::Color m_StatusMeterFrontColour; // the front colour of the status meter
+        sf::Color m_StatusMeterBackColour; // the back colour of the status meter
 
         float m_StatusValue;
     };

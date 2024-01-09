@@ -15,19 +15,19 @@ namespace labyrinth_engine
     {
     public:
         TimeKeeper();
-        unsigned int GetTimerKey() const {return m_timerKey;}
+        unsigned int GetTimerKey() const {return m_timerKey;} // getter for the timer key
     private:
         unsigned int m_timerKey;
         static unsigned int m_timerKeyCounter;
         static unsigned int GetNextTimerKey() {return ++m_timerKeyCounter;}
     };
 
-    struct TimerHandlerHash
+    struct TimerHandlerHash // hash function for the timer handler that will be used in the dictionary
     {
     public:
         std::size_t operator()(const TimeKeeper& a_timerHandler) const // hash function for the timer handler that will be used in the dictionary
         {
-            return a_timerHandler.GetTimerKey();
+            return a_timerHandler.GetTimerKey(); // return the timer key
         }
     };
 
@@ -36,10 +36,10 @@ namespace labyrinth_engine
     struct Timer
     {
     public:
-        Timer(Weak<Object> a_weakObject, std::function<void()> a_function, float a_time, bool a_repeat);
-        void Update(float a_deltaTime);
-        bool IsFinished() const;
-        void SetToFinish() {m_bIsFinished = true;}
+        Timer(Weak<Object> a_weakObject, std::function<void()> a_function, float a_time, bool a_repeat); // constructor for the timer
+        void Update(float a_deltaTime); // update function for the timer
+        bool IsFinished() const; // check if the timer is finished
+        void SetToFinish() {m_bIsFinished = true;} // set the timer to finish
     private:
         std::pair<Weak<Object>, std::function<void()>> m_function; // pair of weak object and function which is a lambda function
         float m_time;
@@ -73,7 +73,7 @@ namespace labyrinth_engine
 
         // Setters
         template <typename ClassName>
-        TimeKeeper SetTimer(Weak<Object> a_weakObject, void (ClassName::*a_function)(), float a_time, bool a_repeat = false)
+        TimeKeeper SetTimer(Weak<Object> a_weakObject, void (ClassName::*a_function)(), float a_time, bool a_repeat = false) // set the timer
         {
             TimeKeeper m_currentIndex{}; // create a timer handler
             m_timers.insert({m_currentIndex, Timer(a_weakObject, [=] {(static_cast<ClassName*>(a_weakObject.lock().get())->*a_function)(); }, a_time, a_repeat) }); // insert the timer in the dictionary and set the index as the key calling the constructor of the timer
@@ -81,7 +81,7 @@ namespace labyrinth_engine
         }
 
         // Getters
-        static TimeManager& GetInstance();
+        static TimeManager& GetInstance(); // get the instance of the time manager
 
         /* End of Setters and getters */
 
