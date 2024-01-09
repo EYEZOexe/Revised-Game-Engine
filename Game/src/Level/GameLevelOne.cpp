@@ -61,19 +61,19 @@ namespace labyrinth_engine
         AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
         AddGameStage(Shared<RookieGameStage>{new RookieGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 5.0f}});
         AddGameStage(Shared<CopyCatGameStage>{new CopyCatGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 6.0f}});
         AddGameStage(Shared<EnforcerGameStage>{new EnforcerGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 7.0f}});
         AddGameStage(Shared<DancerGameStage>{new DancerGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 8.0f}});
         AddGameStage(Shared<MadMaxGameStage>{new MadMaxGameStage{this}});
 
-        AddGameStage(Shared<WaitStage>{new WaitStage{this, 2.0f}});
+        AddGameStage(Shared<WaitStage>{new WaitStage{this, 10.0f}});
         AddGameStage(Shared<SinnerBossGameStage>{new SinnerBossGameStage{this}});
     }
 
@@ -106,11 +106,12 @@ namespace labyrinth_engine
 
     void GameLevelOne::RestartGame()
     {
-        GetApplication()->LoadWorld<GameLevelOne>();
+        PlayerManager::GetInstance().PlayerReset();
+        GetOwningApplication()->LoadWorld<GameLevelOne>();
     }
 
     void GameLevelOne::QuitGame()
     {
-        GetApplication()->QuitGame();
+        GetOwningApplication()->QuitGame();
     }
 }

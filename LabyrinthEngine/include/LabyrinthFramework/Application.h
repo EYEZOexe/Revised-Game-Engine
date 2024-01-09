@@ -47,14 +47,13 @@ namespace labyrinth_engine
 
         sf::Clock m_ClearTimer;
         float m_ClearTimeInterval;
-        bool m_bIsApplicationRunning;
     };
 
     // Template Implementations
     template<typename a_worldType>
     Weak<a_worldType> Application::LoadWorld()
     {
-        Shared<a_worldType> newWorld{new a_worldType(this)};
+        Shared<a_worldType> newWorld{new a_worldType{this}};
         m_nextWorld = newWorld;
         return newWorld;
     }

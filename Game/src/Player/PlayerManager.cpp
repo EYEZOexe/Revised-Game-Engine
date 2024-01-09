@@ -47,4 +47,9 @@ namespace labyrinth_engine
         }
         return *playerManager;
     }
+
+    void PlayerManager::PlayerReset()
+    {
+        m_players.clear();
+    }
 }

@@ -80,6 +80,7 @@ namespace labyrinth_engine
 
         sf::Color m_playerMaxHealthColour;
         sf::Color m_playerDamageHealthColour;
+        sf::Vector2u m_windowSize;
     };
 }
 

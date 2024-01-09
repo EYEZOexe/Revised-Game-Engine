@@ -17,6 +17,7 @@ namespace labyrinth_engine
         Player* GetPlayer(int a_playerIndex = 0);
         const Player* GetPlayer(int a_playerIndex = 0) const;
         static PlayerManager& GetInstance();
+        void PlayerReset();
     protected:
         PlayerManager();
 

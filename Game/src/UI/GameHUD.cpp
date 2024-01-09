@@ -25,6 +25,7 @@ namespace labyrinth_engine
         , m_playerFinalScoreText{""}
         , m_playerRestartButton{"Try Again!"}
         , m_playerQuitButton{"Quit"}
+        , m_windowSize{}
     {
         m_gameFramerateText.SetWidgetTextSize(20);
         m_playerLifeText.SetWidgetTextSize(20);
@@ -40,6 +41,7 @@ namespace labyrinth_engine
     void GameHUD::HUDInit(const sf::RenderWindow& a_window)
     {
         auto windowSize = a_window.getSize(); // get the size of the window
+        m_windowSize = windowSize;
         m_playerHealthBar.SetWidgetPosition(sf::Vector2f{20.0f, windowSize.y - 50.0f}); // set the position of the health bar
 
         sf::Vector2f widgetPosition = m_playerHealthBar.GetWidgetPosition();
@@ -59,7 +61,10 @@ namespace labyrinth_engine
         PlayerHUDReset(); // reset the player HUD
         PlayerStatsUpdate(); // update the player stats
 
+        m_playerGameStateText.SetWidgetTextSize(40);
         m_playerGameStateText.SetWidgetPosition({windowSize.x / 2.0f - m_playerGameStateText.GetWidgetBounds().width /2, 100.0f}); // set main menu text position
+        m_playerFinalScoreText.SetWidgetTextSize(40);
+        m_playerFinalScoreText.SetWidgetPosition({windowSize.x / 2.0f - m_playerFinalScoreText.GetWidgetBounds().width /2, 200.0f}); // set main menu text position
 
         m_playerRestartButton.SetWidgetPosition({windowSize.x / 2.0f - m_playerRestartButton.GetWidgetBounds().width /2, windowSize.y / 2.0f}); // set main menu play button position
         m_playerQuitButton.SetWidgetPosition(m_playerRestartButton.GetWidgetPosition() + sf::Vector2f{0.0f, 50.0f}); // set main menu quit button position
@@ -77,6 +82,7 @@ namespace labyrinth_engine
 
     void GameHUD::DrawHUD(sf::RenderWindow& a_window)
     {
+        m_windowSize = a_window.getSize(); // get the size of the window
         m_gameFramerateText.FrameworkWidgetDraw(a_window); // draw the framerate text
         m_playerHealthBar.FrameworkWidgetDraw(a_window); // draw the health bar
         m_playerLifeIcon.FrameworkWidgetDraw(a_window); // draw the life icon
@@ -169,6 +175,9 @@ namespace labyrinth_engine
         m_playerRestartButton.SetWidgetVisible(true); // set the player restart button to visible
         m_playerQuitButton.SetWidgetVisible(true); // set the player quit button to visible
 
+        int playerScore = PlayerManager::GetInstance().GetPlayer()->GetPlayerScore(); // get the player score
+        m_playerFinalScoreText.SetWidgetText("Score: " + std::to_string(playerScore)); // set the text of the player final score text
+        m_playerFinalScoreText.SetWidgetTextSize(40);
 
         if (a_gameEnd) // if the game has ended
         {
@@ -178,6 +187,8 @@ namespace labyrinth_engine
         {
             m_playerGameStateText.SetWidgetText("You Lose!"); // set the text of the player game state text to "You Lose!"
         }
+        m_playerGameStateText.SetWidgetPosition({m_windowSize.x / 2.0f - m_playerGameStateText.GetWidgetBounds().width /2, 100.0f}); // set the position of the player game state text
+        m_playerFinalScoreText.SetWidgetPosition({m_windowSize.x / 2.0f - m_playerFinalScoreText.GetWidgetBounds().width /2, 200.0f}); // set main menu text position
     }
 
     void GameHUD::PlayerDeath(Actor* a_actor)

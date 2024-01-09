@@ -19,7 +19,6 @@ namespace labyrinth_engine
         , m_currentWorld(nullptr)
         , m_ClearTimer{}
         , m_ClearTimeInterval(2.0f)
-        , m_bIsApplicationRunning(true)
     {
     }
 
@@ -38,7 +37,6 @@ namespace labyrinth_engine
                 if (windowEvent.type == sf::Event::EventType::Closed)
                 {
                     QuitGame();
-                    m_bIsApplicationRunning = false;
                 }
                 else
                 {
@@ -97,6 +95,7 @@ namespace labyrinth_engine
         if (m_nextWorld && m_nextWorld != m_currentWorld)
         {
             m_currentWorld = m_nextWorld;
+            PhysicsSystem::GetInstance().Clear();
             m_currentWorld->BeginPlayFramework();
         }
     }
@@ -112,7 +111,7 @@ namespace labyrinth_engine
 
     void Application::Render()
     {
-        if (m_currentWorld != nullptr)
+        if (m_currentWorld)
         {
             m_currentWorld->Render(m_window);
         }
