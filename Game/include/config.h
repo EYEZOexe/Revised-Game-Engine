@@ -9,7 +9,7 @@
 
 std::string GetAssetDirectory()
 {
-#ifdef RELEASEMODE //Release build
+#ifdef NDEBUG //Release build
     return "assets/";
 #else //Debug build
     return "E:/Coding Projects/Labyrinth-Engine/Game/assets/";

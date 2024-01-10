@@ -114,6 +114,6 @@ add_custom_command(
 )
 
 configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/config.in"
+        "${CMAKE_CURRENT_SOURCE_DIR}/config.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/include/config.h" ESCAPE_QUOTES # Configures the config.h file
 )
