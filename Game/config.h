@@ -9,7 +9,7 @@
 
 std::string GetAssetDirectory()
 {
-#ifdef RELEASEMODE //Release build
+#ifdef NDEBUG //Release build
     return "@ASSET_FOLDER_NAME@/";
 #else //Debug build
     return "@ASSET_FOLDER_PATH@/";
