@@ -10,9 +10,12 @@ Labyrinth Engine was developed as part of my Game Software Engineering degree at
 
 - **Hybrid Architecture** — Combines inheritance-based class hierarchy with a component system for maximum flexibility
 - **Swappable Graphics Pipeline** — Modular renderer design allowing different graphics backends to be plugged in without changing game logic
-- **Component System** — Attach and detach behaviours at runtime for dynamic entity configuration
-- **Input Handling** — Abstracted input system supporting keyboard and controller
-- **Physics** — Basic 2D collision detection and response
+- **Physics System** — 2D collision detection and response
+- **Audio Manager** — Integrated audio playback system
+- **Asset Manager** — Centralised asset loading and management
+- **UI Framework** — Widget-based UI system with buttons, text, images, status meters, and HUD support
+- **Particle System** — VFX through the LabyrinthVFX module
+- **Game Stage System** — Stage-based game flow management
 
 ## Tech Stack
 
@@ -20,16 +23,19 @@ Labyrinth Engine was developed as part of my Game Software Engineering degree at
 - **Build System:** CMake
 - **Architecture:** Entity-Component hybrid with modular subsystems
 
-## Architecture Highlights
+## Project Structure
 
 ```
-Engine/
-├── Core/          # Engine loop, timing, memory
-├── Graphics/      # Swappable rendering pipeline
-├── Physics/       # Collision detection & response
-├── Input/         # Abstracted input handling
-├── Components/    # Reusable behaviour components
-└── Entities/      # Game object hierarchy
+LabyrinthEngine/
+├── include/
+│   ├── LabyrinthFramework/   # Core engine (Actor, Application, World, Physics, Audio, Assets)
+│   ├── LabyrinthVFX/         # Particle system
+│   ├── Gameplay/             # Game stages and flow control
+│   └── UI/                   # Widget-based UI (Buttons, Text, Images, HUD, StatusMeter)
+├── src/                      # Implementation files (mirrors include structure)
+└── CMakeLists.txt
+Game/                         # Sample game built on the engine
+CMakeLists.txt                # Root build configuration
 ```
 
 ## Documentation
